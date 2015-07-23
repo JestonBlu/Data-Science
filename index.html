@@ -27,16 +27,32 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">Data Science</a>
+                    <a href="http://jestonblu.github.io/DataScience/">Data Science</a>
                 </li>
                 <li>
-                    <a href="content/Test.html" target="iframe_a">Statistics</a>
-                    <a href="content/Test2.html" target="iframe_a">Simulation</a>
-                    <a href="#">Clustering</a>
-                    <a href="#">Machine Learning</a>
-                    <a href="#">Forecasting</a>
+                    <a href="#submenu1" data-toggle="collapse" data-parent="#submenu1">Statistics</a>
+	                  <div class="collapse list-group-submenu" id="submenu1">
+	                    <a href="content/Test.html" class = "text-center" target="iframe_a" data-parent="#submenu1">Test1</a>
+	                    <a href="content/Test2.html" class = "text-center" target="iframe_a" data-parent="#submenu1">Test2</a>
+	                  </div>
+	                <a href="#submenu2" data-toggle="collapse" data-parent="#submenu2">Clustering</a>
+	                  <div class="collapse list-group-submenu" id="submenu2">
+	                    <a href="content/Test.html" class = "text-center" target="iframe_a" data-parent="#submenu2">Test1</a>
+	                    <a href="content/Test2.html" class = "text-center" target="iframe_a" data-parent="#submenu2">Test2</a>
+	                  </div>
+	                  <a href="#submenu3" data-toggle="collapse" data-parent="#submenu3">Machine Learning</a>
+	                  <div class="collapse list-group-submenu" id="submenu3">
+	                    <a href="content/Test.html" class = "text-center" target="iframe_a" data-parent="#submenu3">Test1</a>
+	                    <a href="content/Test2.html" class = "text-center" target="iframe_a" data-parent="#submenu3">Test2</a>
+	                  </div>
+	                  <a href="#submenu4" data-toggle="collapse" data-parent="#submenu4">Forecasting</a>
+	                  <div class="collapse list-group-submenu" id="submenu4">
+	                    <a href="content/Test.html" class = "text-center" target="iframe_a" data-parent="#submenu4">Test1</a>
+	                    <a href="content/Test2.html" class = "text-center" target="iframe_a" data-parent="#submenu4">Test2</a>
+	                  </div>
                 </li>
             </ul>
+            
             
         </div>
         <!-- /#sidebar-wrapper -->
@@ -45,12 +61,9 @@
 			<div id="page-content-wrapper">
 		        <div class="page-content">
 		            <div class="container">
-		            <p>Some text</p>
 		                <div class="row">
 		                    <div class="col-md-12">
-		                    
-		                    <iframe src="" style="border:none" width="80%" height="1500" name="iframe_a"></iframe>
-		                    
+		                    <iframe src="content/about_me.html" style="border:none" width="80%" height="1500" name="iframe_a"></iframe>
 		                        <!-- content of page -->
 		                    </div>
 		                </div>
