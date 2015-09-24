@@ -1,79 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="utf-8">
-
-    <link href="css/bootstrap.css" rel="stylesheet"> <!-- Bootstrap Core CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet"> <!-- Custom CSS -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>Data Science</title>
 
-</head>
+    <!-- CSSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
 
-<body>
-
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="http://jestonblu.github.io/DataScience/">Data Science</a>
-                </li>
-                <li>
-                    <a href="#submenu1" data-toggle="collapse" data-parent="#submenu1">Statistics</a>
-	                  <div class="collapse list-group-submenu" id="submenu1">
-	                    <a href="content/Test.html" class = "text-center" target="iframe_a" data-parent="#submenu1">Test1</a>
-	                  </div>
-	                <a href="#submenu2" data-toggle="collapse" data-parent="#submenu2">Clustering</a>
-	                  <div class="collapse list-group-submenu" id="submenu2">
-	                  </div>
-	                <a href="#submenu3" data-toggle="collapse" data-parent="#submenu3">Machine Learning</a>
-	                  <div class="collapse list-group-submenu" id="submenu3">
-	                  </div>
-	                <a href="#submenu4" data-toggle="collapse" data-parent="#submenu4">Forecasting</a>
-	                  <div class="collapse list-group-submenu" id="submenu4">
-	                  </div>
-	                <a href="#submenu5" data-toggle="collapse" data-parent="#submenu5">Simulation</a>
-	                  <div class="collapse list-group-submenu" id="submenu5">
-	                  	<a href="content/boot_bjsales.html" class = "text-center" target="iframe_a" data-parent="#submenu5">Bootstrapping</a>
-	                  </div>
-                </li>
-            </ul>
-            <
-
-
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-			<div id="page-content-wrapper">
-		        <div class="page-content">
-		            <div class="container">
-		                <div class="row">
-		                    <div class="col-xs-11">
-                        <div class="embed-responsive embed-responsive-4by3">
-                          <iframe class="embed-responsive-item" src="content/about_me.html" frameborder="0" scrolling="yes" name="iframe_a" style="position:absolute;"></iframe>
-                        </div>
-                            <!-- content of page -->
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-
-	<!-- Bootstrap Core JavaScript -->
- 	<script src="js/jquery.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-</body>
+  </head>
 
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-left">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Data Science</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Statistics <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+            <li><a href="#about">Clustering</a></li>
+            <li><a href="#contact">Machine Learning</a></li>
+            <li><a href="#forecasting">Forecasting</a></li>
+            <li><a href="#simulation">Simulation</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <br>
+      <br>
+      <div class="embed-responsive embed-responsive-4by3">
+        <iframe class="embed-responsive-item" src="content/about_me.html" frameborder="0" scrolling="yes" name="iframe_a" style="position:absolute;"></iframe>
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>
