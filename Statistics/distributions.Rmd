@@ -1,0 +1,26 @@
+---
+output: html_document
+---
+
+# **Distributions**
+
+```{r uni, comment=NA}
+## QQ plot for normal distribution
+set.seed(100)
+x1 = sort(rnorm(10))
+
+## Use the QQ function for testing normality
+qqnorm(x1)
+qqline(x1)
+
+## Are the data from a normal distribution?
+shapiro.test(x1)     ## Shapiro-Wilk Test
+library(nortest)
+ad.test(x1)          ## Anderson Darling Test
+ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
+
+## Is the true mean equal to 0?
+t.test(x1)
+
+```
+
