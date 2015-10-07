@@ -1,20 +1,27 @@
 # DataScience Files
 
-**To do**:  
-  Stats:  
-    Univariate Distributions:  
-      Basics:  
-        --> qq plot  
-        --> normality  
-        --> t-test  
-      Parameter Estimation:  
-        --> graphical  
-        --> method of moments  
-        --> mle  
+##### **Statistics**  
+  * To do:
+    * Distributions & Parameter Estimation
+    * Goodness of Fit
+  * Complete:
 
-**Statistics**  
-**Clustering**  
-**Machine Learning**  
-**Forecasting**  
-**Simulation**  
-**Visualization**  
+##### **Clustering**  
+  * To do:
+  * Complete:
+
+##### **Machine Learning**  
+  * To do:
+  * Complete:
+
+##### **Forecasting**  
+  * To do:
+  * Complete:
+
+##### **Simulation**  
+  * To do:
+  * Complete:
+
+##### **Visualization**  
+  * To do:
+  * Complete:
