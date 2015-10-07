@@ -19,7 +19,7 @@
   <style media="screen">
   .trm {
     max-width: 1000px;
-    max-height: 600px;
+    max-height: 1000px;
   }
   </style>
 
@@ -38,18 +38,29 @@
 
 
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Distributions</li>
+              <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Section 2</li>
+              <li><a href="Test2.html" target="contentFrame">Test2</a></li>
+            </ul>
+          </li>
+          <!--
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li class="dropdown-header">Distributions</li>
-          <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
+          <li class="dropdown-header">Section 1</li>
+          <li><a href="Test.html" target="contentFrame">Test1</a></li>
           <li role="separator" class="divider"></li>
           <li class="dropdown-header">Section 2</li>
           <li><a href="Test2.html" target="contentFrame">Test2</a></li>
         </ul>
       </li>
-      <!--
+
       <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
       <ul class="dropdown-menu">
       <li class="dropdown-header">Section 1</li>
       <li><a href="Test.html" target="contentFrame">Test1</a></li>
@@ -60,24 +71,13 @@
   </li>
 
   <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
   <ul class="dropdown-menu">
   <li class="dropdown-header">Section 1</li>
   <li><a href="Test.html" target="contentFrame">Test1</a></li>
   <li role="separator" class="divider"></li>
   <li class="dropdown-header">Section 2</li>
   <li><a href="Test2.html" target="contentFrame">Test2</a></li>
-</ul>
-</li>
-
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
-<ul class="dropdown-menu">
-<li class="dropdown-header">Section 1</li>
-<li><a href="Test.html" target="contentFrame">Test1</a></li>
-<li role="separator" class="divider"></li>
-<li class="dropdown-header">Section 2</li>
-<li><a href="Test2.html" target="contentFrame">Test2</a></li>
 </ul>
 </li>
 
@@ -110,14 +110,15 @@
 
 <br>
 <br>
+<br>
+<br>
 
 <div class="container-fluid trm">
-  <br>
   <div class="embed-responsive embed-responsive-16by9">
     <iframe class="col-lg-12 col-md-12 col-sm-12"  name="contentFrame" src="about_me.html">
     </iframe>
   </div>
-</div> <!-- /container -->
+</div>
 
 </body>
 </html>
