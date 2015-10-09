@@ -1,0 +1,19 @@
+---
+output: html_document
+---
+
+# **Distributions**
+
+```{r code}
+x = rnorm(10)
+mean(x)
+
+library(nortest)
+## ad.test anderson-darling
+## cvm.test CvM
+## lillie.test ks
+
+ks.test(x, y = "pnorm")
+lillie.test(x)
+
+```
