@@ -2,8 +2,11 @@
 
 ##### **Statistics**  
   * To do:
-    * Distributions & Parameter Estimation
-    * Goodness of Fit
+    * Univariate
+      * Distributions & Parameter Estimation
+      * Goodness of Fit
+      * Bootstrap Sampling of Mean and Var
+      * Sample Size Determination
   * Complete:
 
 ##### **Clustering**  
