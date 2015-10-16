@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/JestonBlu/DataScience.svg)](https://travis-ci.org/JestonBlu/DataScience)
+
 # DataScience Files
 
 ##### **Statistics**  
