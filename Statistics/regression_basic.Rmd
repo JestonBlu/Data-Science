@@ -10,14 +10,14 @@ output: html_document
 library(mvtnorm)
 
 ## Covariance matrix for random data
-(A = matrix(c(1,-1,-1,4), nrow = 2))
+(A = matrix(c(3, 1.5, 1.5, 3), nrow = 2))
 
 ## number of observations to generate
-n = 5
+n = 10
 
 ## Generate data
 set.seed(1123)
-(dta = rmvnorm(n, c(10, 20), A))
+(dta = rmvnorm(n = n, mean = c(10, 20), sigma = A))
 
 ## Create Y vector from random data
 (Y = dta[, 1])
@@ -40,9 +40,11 @@ set.seed(1123)
 ## Hat Matrix
 ## Projected onto Y will give you Y-hat
 ## Diagonals of Hat Matrix are leverage
-(H = X %*% B)
+H = X %*% B
+diag(H)
 
 ## calculate leverage manually
+## values greater thatn 4/n are considered high leverage
 1/n + (dta[, 2] - colMeans(dta)[2])^2 / SXX
 
 ## verify results
