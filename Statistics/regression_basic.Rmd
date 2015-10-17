@@ -1,0 +1,59 @@
+---
+output: html_document
+---
+
+## **Basic Regression**
+
+
+```{r p1, comment=NA}
+
+library(mvtnorm)
+
+## Covariance matrix for random data
+(A = matrix(c(1,-1,-1,4), nrow = 2))
+
+## number of observations to generate
+n = 5
+
+## Generate data
+set.seed(1123)
+(dta = rmvnorm(n, c(10, 20), A))
+
+## Create Y vector from random data
+(Y = dta[, 1])
+
+## Create design matrix
+(X = as.matrix(data.frame("b" = rep(1, n), "x" = dta[, 2])))
+
+## SSX
+(SXX = sum((dta[, 2] - colMeans(dta)[2])^2))
+
+## Beta
+(B = solve(t(X) %*% X) %*% t(X))
+
+## Solve coefficients
+(B %*% Y)
+
+## Verify results
+(mdl = lm(dta[,1] ~ dta[,2]))
+
+## Hat Matrix
+## Projected onto Y will give you Y-hat
+## Diagonals of Hat Matrix are leverage
+(H = X %*% B)
+
+## calculate leverage manually
+1/n + (dta[, 2] - colMeans(dta)[2])^2 / SXX
+
+## verify results
+hatvalues(mdl)
+
+## Project Hat Matrix on to Y to get Y-hat
+H %*% Y
+
+## Verify results
+predict(mdl, data.frame(X))
+
+
+```
+
