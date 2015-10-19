@@ -35,5 +35,11 @@ colnames(boston) = c("CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE",
 
 attach(boston)
 head(boston)
+```
+
+```{r p2, comment=NA, warning=FALSE, message=FALSE}
+options(width = 100)
+
+round(cor(boston), 2)
 
 ```
