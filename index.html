@@ -17,109 +17,51 @@
   <script src="Web/js/bootstrap.min.js"></script>
 
   <style media="screen">
-  .trm {
-    overflow: inherit;
-  }
-  </style>
+  iframe, object, embed{
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    }
+    </style>
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Distributions</li>
+                <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Regression</li>
+                <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+    </nav>
 
+    <br>
+    <br>
+    <br>
+    <br>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li class="dropdown-header">Distributions</li>
-              <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
-              <li role="separator" class="divider"></li>
-              <li class="dropdown-header">Regression</li>
-              <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
-            </ul>
-          </li>
-          <!--
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li class="dropdown-header">Section 1</li>
-          <li><a href="Test.html" target="contentFrame">Test1</a></li>
-          <li role="separator" class="divider"></li>
-          <li class="dropdown-header">Section 2</li>
-          <li><a href="Test2.html" target="contentFrame">Test2</a></li>
-        </ul>
-      </li>
-
-      <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-      <li class="dropdown-header">Section 1</li>
-      <li><a href="Test.html" target="contentFrame">Test1</a></li>
-      <li role="separator" class="divider"></li>
-      <li class="dropdown-header">Section 2</li>
-      <li><a href="Test2.html" target="contentFrame">Test2</a></li>
-    </ul>
-  </li>
-
-  <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-  <li class="dropdown-header">Section 1</li>
-  <li><a href="Test.html" target="contentFrame">Test1</a></li>
-  <li role="separator" class="divider"></li>
-  <li class="dropdown-header">Section 2</li>
-  <li><a href="Test2.html" target="contentFrame">Test2</a></li>
-</ul>
-</li>
-
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
-<ul class="dropdown-menu">
-<li class="dropdown-header">Section 1</li>
-<li><a href="Test.html" target="contentFrame">Test1</a></li>
-<li role="separator" class="divider"></li>
-<li class="dropdown-header">Section 2</li>
-<li><a href="Test2.html" target="contentFrame">Test2</a></li>
-</ul>
-</li>
-
-<li class="dropdown">
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization<span class="caret"></span></a>
-<ul class="dropdown-menu">
-<li class="dropdown-header">Section 1</li>
-<li><a href="Test.html" target="contentFrame">Test1</a></li>
-<li role="separator" class="divider"></li>
-<li class="dropdown-header">Section 2</li>
-<li><a href="Test2.html" target="contentFrame">Test2</a></li>
-</ul>
-</li>
--->
-</ul>
-</div><!--/.nav-collapse -->
-</div>
-</nav>
-
-<br>
-<br>
-<br>
-<br>
-
-
-<div class="container-fluid trm">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" width="100%" height="100%" name="contentFrame" src="about_me.html">
-    </iframe>
+<div class="container">
+    <div class="embed-responsive embed-responsive-4by3 trm">
+      <iframe class="embed-responsive-item" name="contentFrame" src="about_me.html">
+      </iframe>
+    </div>
   </div>
-</div>
 
-
-</body>
-</html>
+  </body>
+  </html>
