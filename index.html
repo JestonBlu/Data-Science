@@ -16,19 +16,13 @@
   <script src="Web/js/jquery.js"></script>
   <script src="Web/js/bootstrap.min.js"></script>
 
-  <style media="screen">
-  iframe, object, embed{
-    max-width: 100%;
-    max-height: 80%;
-    position: absolute;
-    }
-    </style>
-
   </head>
 
   <body>
 
     <!-- Fixed navbar -->
+    <div class="container">
+      <div class="row">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -50,18 +44,23 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+  </div>
 
     <br>
     <br>
     <br>
     <br>
 
-<div class="container">
+
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="embed-responsive embed-responsive-4by3 trm">
-      <iframe class="embed-responsive-item" name="contentFrame" src="about_me.html">
+      <iframe class="embed-responsive-item" height=100% name="contentFrame" src="about_me.html">
       </iframe>
     </div>
   </div>
+</div>
+</div>
 
   </body>
   </html>
