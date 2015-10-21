@@ -28,18 +28,21 @@ Data Set Information: Concerns housing values in suburbs of Boston.
 
 
 ```{r p1, comment=NA, warning=FALSE, message=FALSE}
-boston = read.table("data/housing.data", quote="\"", comment.char="")
+options(width = 100)
+defects <- read.delim("data/housing.data")
 
-colnames(boston) = c("CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE",
-  "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT", "MEDV")
-
-attach(boston)
-head(boston)
+attach(defects)
+head(defects)
 ```
 
-```{r p2, comment=NA, warning=FALSE, message=FALSE}
-options(width = 100)
 
-round(cor(boston), 2)
+```{r p2, comment=NA, warning=FALSE, message=FALSE}
+
+
+plot(density(Defective))
+
+mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
+summary(mdl)
+
 
 ```

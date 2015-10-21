@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# **Distributions**
+## **Distributions**
 
 ```{r uni, comment=NA}
 ## QQ plot for normal distribution
