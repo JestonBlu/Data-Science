@@ -4,45 +4,67 @@ output: html_document
 
 ## **Multiple Regression**
 
+The following is an output from a basic multivariate regression analysis using a dataset that comes from Dr. Sheather's **A Modern Approach to Regression with R** [Source](http://www.stat.tamu.edu/~sheather/book/)
 
-This dataset was taken from the StatLib library which is maintained at Carnegie Mellon University.
-[Source](http://archive.ics.uci.edu/ml/datasets/Housing)
-
-Data Set Information: Concerns housing values in suburbs of Boston.
-
-##### Attribute Information:
-  * CRIM: per capita crime rate by town
-  * ZN: proportion of residential land zoned for lots over 25,000 sq.ft.
-  * INDUS: proportion of non-retail business acres per town
-  * CHAS: Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)
-  * NOX: nitric oxides concentration (parts per 10 million)  
-  * RM: average number of rooms per dwelling  
-  * AGE: proportion of owner-occupied units built prior to 1940  
-  * DIS: weighted distances to five Boston employment centres  
-  * RAD: index of accessibility to radial highways  
-  * TAX: full-value property-tax rate per $10,000
-  * PTRATIO: pupil-teacher ratio by town  
-  * B: 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town  
-  * LSTAT: % lower status of the population  
-  * MEDV: Median value of owner-occupied homes in $1000's  
-
+##### **Techniques Used**
+  * Marginal Model Plots
+  * Added Variable Plots
+  * Diagnostic Plots
+  * Test of normality for the response variable
+  * Test of correlation for the predictor variables using VIF
 
 ```{r p1, comment=NA, warning=FALSE, message=FALSE}
 options(width = 100)
-defects <- read.delim("data/housing.data")
 
+library(car)
+library(alr3)
+
+defects = read.delim("data/defects.txt")
 attach(defects)
 head(defects)
 ```
 
+The response variable does not appear to be normal when using a histogram and the qqplot shows that there is more probabilty in the tail than you would expect in normally distributed data.
 
-```{r p2, comment=NA, warning=FALSE, message=FALSE}
+```{r p2, comment=NA, fig.width=8, fig.height=4, warning=FALSE, message=FALSE}
+par(mfrow = c(1,2))
+hist(Defective); qqnorm(Defective); qqline(Defective)
+```
 
+A formal test for normality shows that Defective is right on the border of testing positive for non-normality. We may want to see if a transformation could make the predictor variable more normal. It turns out that the box-cox transformation does not help in this case.
 
-plot(density(Defective))
+```{r a1, comment=NA, warning=FALSE, message=FALSE}
+shapiro.test(Defective)
+```
+---
 
+Now look at the predictor variables. It looks like there is a lot of correlation between the predictor variables which means they are not independent. This is fine for prediction, but we cant perform hypothesis tests.
+
+```{r p22, comment=NA, warning=FALSE, message=FALSE}
+pairs(defects[, 2:5])
+```
+---
+
+Train the model.
+
+```{r p3, comment=NA, warning=FALSE, message=FALSE}
 mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
-summary(mdl)
+summary(mdl); anova(mdl)
 
+## Test for correlation
+vif(mdl)
+```
+None of the variables show as being statistically significant most likely because of the high correlation between then VIF > 5 is considered highly correlated
 
+---
+
+* Marginal model plots show how well the model mean is fits the data.
+* Added variable plots show the additional variance explained by adding a variable after all other variables have been added to the model.
+
+```{r p4, comment=NA, warning=FALSE, message=FALSE}
+## marginal model plots
+mmps(mdl, Temperature ~ .)
+
+## Added variable plots
+avPlots(mdl)
 ```

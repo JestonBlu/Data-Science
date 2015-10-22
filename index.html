@@ -16,51 +16,52 @@
   <script src="Web/js/jquery.js"></script>
   <script src="Web/js/bootstrap.min.js"></script>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Fixed navbar -->
-    <div class="container">
-      <div class="row">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
+  <!-- Fixed navbar -->
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">Distributions</li>
+                  <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Regression</li>
+                  <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
+                  <li><a href="Statistics/regression_multiple.html" target="contentFrame">Multiple Regression</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Distributions</li>
-                <li><a href="Statistics/distributions.html" target="contentFrame">Univariate Distributions</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Regression</li>
-                <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+      </nav>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="embed-responsive embed-responsive-4by3 trm">
+          <iframe class="embed-responsive-item" height=100% name="contentFrame" src="about_me.html">
+          </iframe>
+        </div>
       </div>
-    </nav>
-  </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-  <div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="embed-responsive embed-responsive-4by3 trm">
-      <iframe class="embed-responsive-item" height=100% name="contentFrame" src="about_me.html">
-      </iframe>
     </div>
   </div>
-</div>
-</div>
 
-  </body>
-  </html>
+</body>
+</html>
