@@ -4,6 +4,8 @@ output: html_document
 
 ## **Multiple Regression**
 
+---
+
 The following is an output from a basic multivariate regression analysis using a dataset that comes from Dr. Sheather's **A Modern Approach to Regression with R** [Source](http://www.stat.tamu.edu/~sheather/book/)
 
 ##### **Techniques Used**
@@ -12,6 +14,8 @@ The following is an output from a basic multivariate regression analysis using a
   * Diagnostic Plots
   * Test of normality for the response variable
   * Test of correlation for the predictor variables using VIF
+  
+---
 
 ```{r p1, comment=NA, warning=FALSE, message=FALSE}
 options(width = 100)

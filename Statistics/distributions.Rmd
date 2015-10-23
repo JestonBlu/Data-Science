@@ -2,25 +2,67 @@
 output: html_document
 ---
 
-## **Distributions**
+## **Univariate Distributions and Parameter Estimation**
 
-```{r uni, comment=NA}
+---
+
+##### **Techniques Used**
+  * Various Distribution Plots
+  * Formal Tests for Distribution Fit
+  * Hypothesis Testing
+
+---
+
+```{r a1, comment=NA, fig.width=8, fig.height=7}
 ## QQ plot for normal distribution
-set.seed(100)
-x1 = sort(rnorm(10))
+set.seed(10)
+x1 = rnorm(20)
 
 ## Use the QQ function for testing normality
+par(mfrow = c(2, 2))
 qqnorm(x1)
 qqline(x1)
+boxplot(x1, main = "Boxplot")
+hist(x1, freq = FALSE, main = "Histogram with Density Curve")
+lines(density(x1))
+plot(ecdf(x1), main = "Empiracle CDF")
 
+```
+
+QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption. 
+
+Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality. 
+
+```{r a2, comment=NA, warning=FALSE, message=FALSE}
 ## Are the data from a normal distribution?
 shapiro.test(x1)     ## Shapiro-Wilk Test
 library(nortest)
 ad.test(x1)          ## Anderson Darling Test
 ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
 
+```
+
+---
+
+#### **Hypothesis Testing**
+
+$$H_0: \mu = 0, H_a: \mu \ne 0$$
+
+```{r a3, comment=NA, warning=FALSE, message=FALSE}
 ## Is the true mean equal to 0?
 t.test(x1)
+## What is the power of our test?
+power.t.test(n = length(x1), delta = mean(x1), sd = sd(x1), sig.level = .05, type = "one.sample")
+
+```
+
+
+
+```{r a4, comment=NA, warning=FALSE, message=FALSE}
+x1 = rnorm(100)
+## What is the power of our test?
+power.t.test(n = length(x1), delta = .25, sd = 1, sig.level = .05, type = "one.sample")
+
 
 ```
 
