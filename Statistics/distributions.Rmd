@@ -75,6 +75,8 @@ plot(ecdf(x2), main = "Empiracle CDF")
 
 ```{r a4, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=6}
 
+par(mfrow = c(1,1))
+
 ## Plot the Chi-Squared Distribution with multiple degrees of freedom.
 ## As DF increases, the distibution converges to the normal distribution
 x = seq(.01, 15, by = .05)
