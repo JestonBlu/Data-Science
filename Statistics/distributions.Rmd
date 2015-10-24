@@ -2,23 +2,29 @@
 output: html_document
 ---
 
-## **Univariate Distributions and Parameter Estimation**
+## **Distribution Fitting**
 
 ---
 
 ##### **Techniques Used**
-  * Various Distribution Plots
+  * Assessing Distributions Visually
   * Formal Tests for Distribution Fit
   * Hypothesis Testing
+  * Base Plot
 
 ---
 
+##### **Normal Distribution**
+
 ```{r a1, comment=NA, fig.width=8, fig.height=7}
-## QQ plot for normal distribution
+library(nortest)
+library(MASS)
+
+## Draw some random data
 set.seed(10)
 x1 = rnorm(20)
 
-## Use the QQ function for testing normality
+## Distribution plots
 par(mfrow = c(2, 2))
 qqnorm(x1)
 qqline(x1)
@@ -36,7 +42,6 @@ Formal tests all agree that the data are from the normal distribution. Shapiro W
 ```{r a2, comment=NA, warning=FALSE, message=FALSE}
 ## Are the data from a normal distribution?
 shapiro.test(x1)     ## Shapiro-Wilk Test
-library(nortest)
 ad.test(x1)          ## Anderson Darling Test
 ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
 
@@ -44,25 +49,48 @@ ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
 
 ---
 
-#### **Hypothesis Testing**
+##### **Chi-squared Distribution**
 
-$$H_0: \mu = 0, H_a: \mu \ne 0$$
+```{r a3, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=7}
+## Draw some random data
+set.seed(10)
+x2 = rchisq(n = 20, 2)
 
-```{r a3, comment=NA, warning=FALSE, message=FALSE}
-## Is the true mean equal to 0?
-t.test(x1)
-## What is the power of our test?
-power.t.test(n = length(x1), delta = mean(x1), sd = sd(x1), sig.level = .05, type = "one.sample")
+## Estimate the DF parameter by maximum likelihood 
+fitdistr(x = x2, dchisq, start = list(df = 2))
+
+## Input the estimate from MLE
+ks.test(x = x2, y = pchisq, df = 1.8140625)
+
+## Distribution plots
+par(mfrow = c(2, 2))
+qqplot(qchisq(ppoints(20), df = 1.8140625), x2)
+qqline(x2, distribution = function(p) qchisq(p, df = 1.8140625))
+boxplot(x2, main = "Boxplot")
+hist(x2, freq = FALSE, main = "Histogram with Density Curve")
+lines(density(x2))
+plot(ecdf(x2), main = "Empiracle CDF")
+
+## Plot the Chi-Squared Distribution with multiple degrees of freedom.
+## As DF increases, the distibution converges to the normal distribution
+x = seq(.01, 15, by = .05)
+
+plot(x = c(0, 15), y = c(0, .3), type = "n", 
+     xlab = "", ylab = "", main = "Chi-Squared Distribution")
+lines(x = x, y = dchisq(x, df = 1), col = "red", lwd = 2)
+lines(x = x, y = dchisq(x, df = 2), col = "blue", lwd = 2)
+lines(x = x, y = dchisq(x, df = 3), col = "green", lwd = 2)
+lines(x = x, y = dchisq(x, df = 5), col = "purple", lwd = 2)
+lines(x = x, y = dchisq(x, df = 10), col = "orange", lwd = 2)
+
+legend(12, .30,
+       c("DF = 1", "DF = 2", "DF = 3", "DF = 5", "DF = 10"),
+       lty = rep(1, 5),
+       lwd = rep(2, 5),
+       col = c("red", "blue", "green", "purple", "orange"))
+
+
 
 ```
 
-
-
-```{r a4, comment=NA, warning=FALSE, message=FALSE}
-x1 = rnorm(100)
-## What is the power of our test?
-power.t.test(n = length(x1), delta = .25, sd = 1, sig.level = .05, type = "one.sample")
-
-
-```
-
+---

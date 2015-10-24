@@ -1,0 +1,61 @@
+---
+output: html_document
+---
+
+## **Hypothesis Testing**
+
+---
+
+##### **Techniques Used**
+  * Shapiro Wilks Normality Test
+  * T-Test
+  * Calculating Power
+  * Hypothesis Testing
+
+---
+
+
+```{r a1, comment=NA, fig.width=8, fig.height=7}
+## QQ plot for normal distribution
+set.seed(10)
+x1 = rnorm(20)
+
+## Are the data from a normal distribution?
+shapiro.test(x1)     ## Shapiro-Wilk Tes
+
+mean(x1)
+
+```
+
+
+---
+
+How does the sample mean compare to a hypothesis test that the tru mean is 0?
+$$H_0: \mu = 0, H_a: \mu \ne 0$$
+
+|             | $H_0$ is True |  $H_a$ is True  |
+|:-----------:|:-------------:|:--------------:|
+|Accept $H_0$ |    Correct    |  Type II Error |
+|Accept $H_a$ | Type I Error  |   Correct      |
+
+
+```{r a3, comment=NA, warning=FALSE, message=FALSE}
+## Is the true mean equal to 0?
+t.test(x1)
+## What is the power of our test?
+power.t.test(n = length(x1), delta = mean(x1), sd = sd(x1), sig.level = .05, 
+             type = "one.sample", alternative = "two.sided", strict = T)
+
+```
+
+
+
+```{r a4, comment=NA, warning=FALSE, message=FALSE}
+x1 = rnorm(200)
+## What is the power of our test?
+power.t.test(n = length(x1), delta = .05, sd = 1, sig.level = .05, 
+             type = "one.sample", alternative = "two.sided", strict = TRUE)
+
+
+```
+
