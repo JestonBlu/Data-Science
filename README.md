@@ -5,16 +5,19 @@
 
 #### **Statistics**  
   * Univariate
-    * Distributions & Parameter Estimation
     * Goodness of Fit
     * Bootstrap Sampling of Mean and Var
-    * Sample Size Determination
+  * Regression
+    * Poisson
+    * GLM
 
 #### **Clustering**  
   * To do:
 
 #### **Machine Learning**  
   * To do:
+    * Random Forest
+    * Neural Net
 
 #### **Forecasting**  
   * To do:
