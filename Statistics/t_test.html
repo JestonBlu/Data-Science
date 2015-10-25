@@ -109,8 +109,8 @@ W = 0.95643, p-value = 0.4753</code></pre>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>## Is the true mean equal to 0?
-t.test(x1)</code></pre>
+<pre class="r"><code>## Is the true mean equal to 0? Verify the t statistic.
+t.test(x1); (mean(x1) / sd(x1) * sqrt(length(x1)))</code></pre>
 <pre><code>
     One Sample t-test
 
@@ -122,6 +122,7 @@ alternative hypothesis: true mean is not equal to 0
 sample estimates:
   mean of x 
 -0.06053267 </code></pre>
+<pre><code>[1] -0.3384263</code></pre>
 <pre class="r"><code>## What is the power of our test?
 power.t.test(n = length(x1), delta = mean(x1), sd = sd(x1), sig.level = .05, 
              type = &quot;one.sample&quot;, alternative = &quot;two.sided&quot;, strict = T)</code></pre>

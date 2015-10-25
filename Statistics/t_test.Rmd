@@ -40,8 +40,8 @@ $$H_0: \mu = 0, H_a: \mu \ne 0$$
 
 
 ```{r a3, comment=NA, warning=FALSE, message=FALSE}
-## Is the true mean equal to 0?
-t.test(x1)
+## Is the true mean equal to 0? Verify the t statistic.
+t.test(x1); (mean(x1) / sd(x1) * sqrt(length(x1)))
 ## What is the power of our test?
 power.t.test(n = length(x1), delta = mean(x1), sd = sd(x1), sig.level = .05, 
              type = "one.sample", alternative = "two.sided", strict = T)
