@@ -87,7 +87,8 @@ W = 0.95643, p-value = 0.4753</code></pre>
 <pre class="r"><code>mean(x1)</code></pre>
 <pre><code>[1] -0.06053267</code></pre>
 <hr />
-<p>How does the sample mean compare to a hypothesis test that the true mean is 0? <span class="math display">\[H_0: \mu = 0, H_a: \mu \ne 0\]</span></p>
+<p>How does the sample mean compare to a hypothesis test that the true mean is 0? What is the power of the test? Check the power when the you reject the null.</p>
+<p><span class="math display">\[H_0: \mu = 0, H_a: \mu \ne 0\]</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -123,8 +124,10 @@ sample estimates:
   mean of x 
 -0.06053267 </code></pre>
 <pre><code>[1] -0.3384263</code></pre>
-<p>When we reject the null we can calculate the power of the test. 1 - Power is the probability of making a Type II Error.</p>
-<pre class="r"><code>## Generate random data from N(1,1)
+<pre class="r"><code>## We dont need to check the power of the test because we did not reject the null.
+## Lets generate some data that will rejec the null
+
+## Generate random data from N(1,1)
 set.seed(10)
 x2 = rnorm(20, mean = 1)
 

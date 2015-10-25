@@ -29,7 +29,8 @@ mean(x1)
 
 ---
 
-How does the sample mean compare to a hypothesis test that the true mean is 0?
+How does the sample mean compare to a hypothesis test that the true mean is 0? What is the power of the test? Check the power when the you reject the null.
+
 $$H_0: \mu = 0, H_a: \mu \ne 0$$
 
 |             | $H_0$ is True |  $H_a$ is True  |
@@ -42,11 +43,8 @@ $$H_0: \mu = 0, H_a: \mu \ne 0$$
 ## Is the true mean equal to 0? Verify the t statistic.
 t.test(x1); (mean(x1) / sd(x1) * sqrt(length(x1)))
 
-```
-
-When we reject the null we can calculate the power of the test. 1 - Power is the probability of making a Type II Error.
-
-```{r a4, comment=NA, warning=FALSE, message=FALSE}
+## We dont need to check the power of the test because we did not reject the null.
+## Lets generate some data that will rejec the null
 
 ## Generate random data from N(1,1)
 set.seed(10)
