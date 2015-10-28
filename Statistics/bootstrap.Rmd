@@ -11,54 +11,35 @@ output: html_document
 
 ---
 
-```{r a1, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=3}
+```{r a1, warning=FALSE, message=FALSE, comment=NA, fig.width=7, fig.height=4}
 
 ## Create a mixed Distribution
 set.seed(10)
-y1 = rnorm(5, 5, 3); y2 = rnorm(10, 10, 1); y3 = rnorm(5, 20, 5)
+y1 = rnorm(10, 10, 2); y2 = rnorm(10, 15, 1); y3 = rnorm(10, 20, 2)
 Y = c(y1, y2, y3)
 
 par(mfrow = c(1, 2))
-hist(Y, breaks = 10)
+hist(Y)
 plot(density(Y))
-
-par(mfrow = c(1,1))
 
 ## Is Y part of a normal distribution?
 shapiro.test(Y)
 
 ## Bootstrap simulation to estimate the mean
-X = data.frame()
+X = c()
 
 ## Draw 10k random samples from Y and calculate the mean
 for (i in 1:10000) {
   x = sample(Y, length(Y), replace = TRUE)
   mu.x = mean(x)
-  sd.x = sd(x)
-  X = rbind(X, cbind(mu.x, sd.x))
+  X = c(X, mu.x)
 }
 
-par(mfrow = c(1, 2))
-hist(X$mu.x, breaks = 50, main = "Histogram of X_Bar")
-hist(X$sd.x, breaks = 50, main = "Histogram of X_SD")
-
-## We can see that a sample of the repeated sampling of the boostrap creates a 
-## normal distribution of sample means although we do not need to use a formal test
-shapiro.test(sample(X$mu.x, 1000))
-
-## Mean Comparions
-mean(X$mu.x); mean(Y)
-
-## Standard Deviation Comparisons
-mean(X$sd.x); sd(Y)
-
-## What is the probability that the true mean is greater than the original sample mean
-length(which(X$mu.x > mean(Y))) / 10000
-
-## What is the probability that the true mean is greater than 13?
-length(which(X$mu.x > 13)) / 10000
+par(mfrow = c(1,1))
+## Draw a histogram of the bootstrap samples for the sample means
+hist(X, breaks = 50, main = "Histogram of X_Bar")
 
 ## What is a 95% confidence interval for mu?
-mean(X$mu.x) + c(-1, 1) * qt(1 - .05/2, 9999) * sd(X$mu.x)/sqrt(10000)
+sort(X)[c(250, 9750)]
 
 ```
