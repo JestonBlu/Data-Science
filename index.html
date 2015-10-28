@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,109 +18,120 @@
   <script src="Web/js/bootstrap.min.js"></script>
 
   <style media="screen">
-  body{
-    overflow-y:hidden;
-  }
-  @media only screen and (max-width:960px){
-    body{
-      overflow-y:scroll;
+    body {
+      overflow-y: hidden;
     }
-  }
-  iframe{
-    max-width: '100%';
-  }
-  li{}
-    </style>
 
-  </head>
+    @media only screen and (max-width:960px) {
+      body {
+        overflow-y: scroll;
+      }
+    }
 
-  <body>
+    iframe {
+      max-width: '100%';
+    }
 
-    <!-- Fixed navbar -->
-    <div class="container">
-      <div class="row">
-        <nav class="navbar navbar-inverse navbar-top">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
-          </div>
-          <div id="navbar" class="navbar-inner">
-            <ul class="nav navbar-nav">
-              <!--Statistics -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">Univariate</li>
-                  <li><a href="Statistics/distributions.html" target="contentFrame">Distribution Fitting</a></li>
-                  <li><a href="Statistics/t_test.html" target="contentFrame">Hypothesis Testing</a></li>
-                  <li><a href="Statistics/bootstrap.html" target="contentFrame">Bootstrap Sampling</a></li>
-                  <li><a href="#" target="contentFrame">Goodness of Fit</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Multivariate</li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Regression</li>
-                  <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
-                  <li><a href="Statistics/regression_multiple.html" target="contentFrame">Multiple Regression</a></li>
-                </ul>
-              </li>
-              <!-- Clustering -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">TBD</li>
-                </ul>
-              </li>
-              <!-- Machine learning -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">TBD</li>
-                </ul>
-              </li>
-              <!-- Forecasting -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">TBD</li>
-                </ul>
-              </li>
-              <!-- Simulation -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">TBD</li>
-                </ul>
-              </li>
-              <!-- Visualization -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-header">TBD</li>
-                </ul>
-              </li>
-            </ul>
-          </div> <!--/.nav-collapse -->
-        </nav>
-      </div>
+    li {}
+  </style>
 
-      <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="embed-responsive embed-responsive-4by3" style="overflow:auto;-webkit-overflow-scrolling:touch">
-            <iframe class="embed-responsive-item" name="contentFrame" seamless="seamless" src="about_me.html"></iframe>
-          </div>
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-inverse navbar-top">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
+        </div>
+        <div id="navbar" class="navbar-inner">
+          <ul class="nav navbar-nav">
+            <!--Statistics -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Statistics <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Univariate</li>
+                <li><a href="Statistics/distributions.html" target="contentFrame">Distribution Fitting</a></li>
+                <li><a href="Statistics/t_test.html" target="contentFrame">Hypothesis Testing</a></li>
+                <li><a href="Statistics/bootstrap.html" target="contentFrame">Bootstrap Sampling</a></li>
+                <li><a href="#" target="contentFrame">Goodness of Fit</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Multivariate</li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Regression</li>
+                <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
+                <li><a href="Statistics/regression_multiple.html" target="contentFrame">Multiple Regression</a></li>
+              </ul>
+            </li>
+            <!-- Clustering -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">TBD</li>
+              </ul>
+            </li>
+            <!-- Machine learning -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">TBD</li>
+              </ul>
+            </li>
+            <!-- Forecasting -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">TBD</li>
+              </ul>
+            </li>
+            <!-- Simulation -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">TBD</li>
+              </ul>
+            </li>
+            <!-- Visualization -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">TBD</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="embed-responsive embed-responsive-4by3" style="overflow:auto;-webkit-overflow-scrolling:touch">
+          <iframe class="embed-responsive-item" name="contentFrame" seamless="seamless" src="about_me.html"></iframe>
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-69347324-1', 'auto');
-      ga('send', 'pageview');
-    
-    </script>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  </body>
-  </html>
+    ga('create', 'UA-69347324-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+
+</html>
