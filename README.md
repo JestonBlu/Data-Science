@@ -3,16 +3,15 @@
 --------------------------------------------------------------------------------
 
 ## **Statistics**
-- Univariate
-  - Goodness of Fit
-  - Bootstrap Sampling of Mean and Var
-
+- Multivariate
 - Regression
   - Poisson
   - GLM
 
 ## **Clustering**
-- To do:
+- Hiearchial
+- Kmeans
+- Model Based
 
 ## **Machine Learning**
 - To do:
@@ -20,10 +19,8 @@
   - Neural Net
 
 ## **Forecasting**
-- To do:
 
 ## **Simulation**
-- To do:
 
 ## **Visualization**
-- To do:
+
