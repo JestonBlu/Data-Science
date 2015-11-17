@@ -7,15 +7,48 @@ output: html_document
 ---
 
 
-```{r s1, warning=FALSE, message=FALSE, comment=NA}
+```{r s1, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=7}
 
 library(cluster)
 
-## Standardize the mtcars dataset by creating a standardized distance matrix
-cars.dist = dist(scale(mtcars))
+## Hierarchical clustering using the mtcars dataset
+##
+## Data description from R:
+## The data was extracted from the 1974 Motor Trend US magazine, and comprises 
+## fuel consumption and 10 aspects of automobile design and performance for 
+## 32 automobiles (1973-74 models).
+##
 
-## Cluster model
-mdl = hclust(cars.dist)
-plot(mdl)
+## Since the attributes have different scales we need to standardize them
+cars.dist = dist(scale(mtcars, center = TRUE, scale = TRUE))
+
+## Clustering by rows (cars)
+plot(hclust(cars.dist, method = "average"), xlab = "", ylab ="Distance")
+
+```
+
+
+```{r s2, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=5}
+## Clustering by Attributes
+attr.dist = dist(scale(t(mtcars), center = TRUE, scale = TRUE))
+plot(hclust(attr.dist, method = "average"), xlab = "", ylab ="Distance")
+
+## Attribute Descriptions:
+##
+## mpg	 Miles/(US) gallon
+## cyl	 Number of cylinders
+## disp	 Displacement (cu.in.)
+## hp	 Gross horsepower
+## drat	 Rear axle ratio
+## wt	 Weight (lb/1000)
+## qsec	 1/4 mile time
+## vs	 V/S
+## am	 Transmission (0 = automatic, 1 = manual)
+## gear	 Number of forward gears
+## carb	 Number of carburetors
+
+## Data and Summary
+mtcars
+summary(mtcars)
 
 ```
