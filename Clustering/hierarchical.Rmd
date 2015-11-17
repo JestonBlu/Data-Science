@@ -1,0 +1,21 @@
+---
+output: html_document
+---
+
+## **Hierarchical Clustering**
+
+---
+
+
+```{r s1, warning=FALSE, message=FALSE, comment=NA}
+
+library(cluster)
+
+## Standardize the mtcars dataset by creating a standardized distance matrix
+cars.dist = dist(scale(mtcars))
+
+## Cluster model
+mdl = hclust(cars.dist)
+plot(mdl)
+
+```
