@@ -12,13 +12,9 @@ The objective is to create a binomial model from randomly generated binomial dat
 ---
 
 ##### **Tasks**
-  *  Fitting a Binomial model   
+  *  Fitting a Binomial model
   *  Chi-squared goodness of fit test
-  *  Producing a markdown table  
-
----
-
-Access the script [here](https://github.com/JestonBlu/reference/blob/gh-pages/r_scripts/dist_fit_binom.r).
+  *  Producing a markdown table
 
 ---
 
@@ -343,5 +339,3 @@ binom.fit = function(n, size, prob, show.table=TRUE, show.plot=TRUE) {
 
 
 ```
-
-
