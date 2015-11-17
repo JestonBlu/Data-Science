@@ -6,18 +6,18 @@ output: html_document
 
 ---
 
-The following is an output from a basic multivariate regression analysis using a dataset that comes from Dr. Sheather's **A Modern Approach to Regression with R** [Source](http://www.stat.tamu.edu/~sheather/book/)
+The following is an output from a basic multivariate regression analysis using a dataset that comes from Dr. Sheather's *A Modern Approach to Regression with R* [Source](http://www.stat.tamu.edu/~sheather/book/)
 
 ##### **Techniques Used**
   * Marginal Model Plots
   * Added Variable Plots
   * Diagnostic Plots
-  * Test of normality for the response variable
-  * Test of correlation for the predictor variables using VIF
-  
+  * Testing normality in model residuals
+  * Testing correlation using VIF
+
 ---
 
-```{r p1, comment=NA, warning=FALSE, message=FALSE}
+```{r p1, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
 options(width = 100)
 
 library(car)
@@ -26,49 +26,42 @@ library(alr3)
 defects = read.delim("data/defects.txt")
 attach(defects)
 head(defects)
-```
 
-The response variable does not appear to be normal when using a histogram and the qqplot shows that there is more probabilty in the tail than you would expect in normally distributed data.
-
-```{r p2, comment=NA, fig.width=8, fig.height=4, warning=FALSE, message=FALSE}
+## The response variable does not appear to be normal when using a histogram and the 
+## qqplot shows that there is more probabilty in the tail than you would expect in 
+## normally distributed data.
 par(mfrow = c(1,2))
 hist(Defective); qqnorm(Defective); qqline(Defective)
-```
 
-A formal test for normality shows that Defective is right on the border of testing positive for non-normality. We may want to see if a transformation could make the predictor variable more normal. It turns out that the box-cox transformation does not help in this case.
-
-```{r a1, comment=NA, warning=FALSE, message=FALSE}
-shapiro.test(Defective)
-```
----
-
-Now look at the predictor variables. It looks like there is a lot of correlation between the predictor variables which means they are not independent. This is fine for prediction, but we cant perform hypothesis tests.
-
-```{r p22, comment=NA, warning=FALSE, message=FALSE}
+## Are the predictor variables independent?
 pairs(defects[, 2:5])
-```
----
 
-Train the model.
+## It looks like there is a lot of correlation between the predictor variables 
+## which means they are not independent. This is fine for prediction, but we 
+## cant perform hypothesis tests.
 
-```{r p3, comment=NA, warning=FALSE, message=FALSE}
+## Train the model
 mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
 summary(mdl); anova(mdl)
 
-## Test for correlation
+## Do the errors follow a normal distribution?
+shapiro.test(mdl$residuals)
+
+## Look at some standard model diagnostics
+par(mfrow = c(2,2))
+plot(mdl)
+
+## Test for hidden correlation, VIF > 5 is considered highly correlated
 vif(mdl)
-```
-None of the variables show as being statistically significant most likely because of the high correlation between then VIF > 5 is considered highly correlated
 
----
+## None of the variables show as being statistically significant most likely 
+## because of the high correlation
 
-* Marginal model plots show how well the model mean is fits the data.
-* Added variable plots show the additional variance explained by adding a variable after all other variables have been added to the model.
-
-```{r p4, comment=NA, warning=FALSE, message=FALSE}
-## marginal model plots
+## Marginal model plots show how well the model mean is fits the data.
 mmps(mdl, Temperature ~ .)
 
-## Added variable plots
+## Added variable plots show the additional variance explained by adding a variable 
+## after all other variables have been added to the model.
 avPlots(mdl)
+
 ```
