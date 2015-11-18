@@ -4,13 +4,16 @@
 
 ## **Statistics**
 - Multivariate
+  - Eigen distance
+  - Principal components
+  - Biplots
 - Regression
   - Poisson
   - GLM
 
 ## **Clustering**
-- Hiearchial
 - Kmeans
+- MDS
 - Model Based
 
 ## **Machine Learning**
@@ -23,4 +26,3 @@
 ## **Simulation**
 
 ## **Visualization**
-

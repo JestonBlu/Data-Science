@@ -1,0 +1,28 @@
+---
+output: html_document
+---
+
+## **Kmeans Clustering**
+
+---
+
+```{r s1, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=7}
+
+## The famous iris dataset
+data(iris)
+flower = iris
+
+summary(flower)
+
+## Kmeans requires you to predetermine the number of clusters
+mdl = kmeans(flower[, 1:4], centers = 3)
+flower$cluster = mdl$cluster
+
+## plot
+par(mfrow = c(2, 2))
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$Species))
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$cluster))
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$cluster))
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$Species))
+
+```
