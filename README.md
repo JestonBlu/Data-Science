@@ -17,12 +17,15 @@
 - Model Based
 
 ## **Machine Learning**
-- To do:
-  - Random Forest
-  - Neural Net
+- Random Forest
+- Neural Net
 
 ## **Forecasting**
 
 ## **Simulation**
 
 ## **Visualization**
+
+## **Programming Tasks**
+- caret package
+- parallel processing in windows and linux
