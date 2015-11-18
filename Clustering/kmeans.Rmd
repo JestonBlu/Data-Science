@@ -7,11 +7,13 @@ output: html_document
 ---
 
 ```{r s1, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=7}
+options(width = 90)
 
 ## The famous iris dataset
 data(iris)
 flower = iris
 
+head(flower)
 summary(flower)
 
 ## Kmeans requires you to predetermine the number of clusters
