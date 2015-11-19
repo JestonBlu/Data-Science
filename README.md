@@ -26,6 +26,6 @@
 
 ## **Visualization**
 
-## **Programming Tasks**
+## **Other Items**
 - caret package
 - parallel processing in windows and linux
