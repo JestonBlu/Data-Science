@@ -22,10 +22,10 @@ flower$cluster = mdl$cluster
 
 ## plot kmeans for a few of the variable combinations
 par(mfrow = c(2, 2))
-plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$Species))
-plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$cluster))
-plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$cluster))
-plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$Species))
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$Species), main = "Actual")
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$cluster), main = "Model")
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$Species), main = "Actual")
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$cluster), main = "Model")
 
 ## Try using principal components to draw one picture that catures all of the variance
 pc = prcomp(flower[, 1:4], cor = TRUE)
