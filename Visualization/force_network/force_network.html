@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <title>Data Science</title>
+
+  <!--Data -->
+  <script type="text/javascript" src="data.js"></script>
+
+  <!--Javascript files -->
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/d3.js"></script>
+
+  <!--Custom JS -->
+  <script type="text/javascript" src="js/slider.js"></script>
+
+  <!--Stylesheets -->
+  <link href="css/jquery-ui.css" type="text/css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+  <link href="css/force.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class='col-md-1'>
+      </div>
+      <div class='col-md-10'>
+        <label>Force Directed Graph</label>
+        <p>
+          This graph is the output of a clustering algorithm that
+          links observations together based on their similarities. In
+          this example I have generated 300 data points with 50 binary
+          variables.  Clusters are created by finding and grouping each
+          observation to its closest match. When all of the nearest
+          neighbors are accounted for, a new group is created and the
+          process repeats.
+        </p>
+      </div>
+      <div class='col-md-1'>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="jumbotron">
+          <label>Control Panel</label>
+          <!--Table of Current Selection-->
+          <label>Selection</label>
+          <table class="table">
+            <tr>
+              <td>Node:</td>
+              <td id="pn"></td>
+            </tr>
+            <tr>
+              <td>Nearest Neighbor:</td>
+              <td id="nn"></td>
+            </tr>
+            <tr>
+              <td>Similarity Score:</td>
+              <td id="score"></td>
+            </tr>
+            <tr>
+              <td>Cluster Id:</td>
+              <td id="clust" name="clust"></td>
+            </tr>
+            <tr></tr>
+          </table>
+
+          <!--Adding slider for controlling node links-->
+          <label for="MinScore">Min Score:
+            <span id="MinScore-value">.01</span>
+          </label>
+          <input type="range" value=.05 min=.05 max=.95 step=.05 id="MinScore" onchange="threshold(this.value)" name="points">
+
+        </div>
+      </div>
+
+      <!--Main Graphic --------------------------------------------->
+      <div class="col-md-9">
+          <div id="sectionA">
+            <script type="text/javascript" src="js/force.js"></script>
+          </div>
+      </div>
+
+</body>
+
+</html>
