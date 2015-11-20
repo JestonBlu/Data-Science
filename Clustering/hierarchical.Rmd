@@ -14,8 +14,8 @@ library(cluster)
 ## Hierarchical clustering using the mtcars dataset
 ##
 ## Data description from R:
-## The data was extracted from the 1974 Motor Trend US magazine, and comprises 
-## fuel consumption and 10 aspects of automobile design and performance for 
+## The data was extracted from the 1974 Motor Trend US magazine, and comprises
+## fuel consumption and 10 aspects of automobile design and performance for
 ## 32 automobiles (1973-74 models).
 ##
 
@@ -23,15 +23,17 @@ library(cluster)
 cars.dist = dist(scale(mtcars, center = TRUE, scale = TRUE))
 
 ## Clustering by rows (cars)
+## Method Average, average distance between all points in a cluster
 plot(hclust(cars.dist, method = "average"), xlab = "", ylab ="Distance")
 
-```
+## Method Single, shortest distance between each cluster
+plot(hclust(cars.dist, method = "single"), xlab = "", ylab ="Distance")
 
+## Method Complete, longest distance between each cluster
+plot(hclust(cars.dist, method = "complete"), xlab = "", ylab ="Distance")
 
-```{r s2, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=5}
-## Clustering by Attributes
-attr.dist = dist(scale(t(mtcars), center = TRUE, scale = TRUE))
-plot(hclust(attr.dist, method = "average"), xlab = "", ylab ="Distance")
+## Method Ward, minimizes the loss of exmplained variance
+plot(hclust(cars.dist, method = "ward.D"), xlab = "", ylab ="Distance")
 
 ## Attribute Descriptions:
 ##
@@ -48,7 +50,6 @@ plot(hclust(attr.dist, method = "average"), xlab = "", ylab ="Distance")
 ## carb	 Number of carburetors
 
 ## Data and Summary
-mtcars
-summary(mtcars)
+mtcars; summary(mtcars)
 
 ```
