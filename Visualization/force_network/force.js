@@ -3,8 +3,8 @@ var graph = dta;
 graphRec = JSON.parse(JSON.stringify(graph)); //Add this line
 
 // Graph parameters
-var width = 200;
-var height = 200;
+var width = 700;
+var height = 600;
 
 var color = d3.scale.category20();
 
@@ -16,10 +16,10 @@ var zoom = d3.behavior.zoom()
 
 var force = d3.layout.force()
   .charge(-45)
-  .gravity(.1)
+  .gravity(.25)
   .theta(.1)
   .alpha(1)
-  .linkDistance(25)
+  .linkDistance(10)
   .size([width, height]);
 
 var svg = d3.select("#sectionA")
@@ -63,7 +63,7 @@ var link = svg.selectAll(".link")
   .enter().append("line")
   .attr("class", "link")
   .style("stroke-width", 1)
-  .style("stroke", "gray")
+  .style("stroke", "#999")
   .style("marker-end", "url(#suit)");
 
 // Attributes for nodes
@@ -71,7 +71,7 @@ var node = svg.selectAll(".node")
   .data(graph.nodes)
   .enter().append("circle")
   .attr("class", "node")
-  .attr("r", 6)
+  .attr("r", 4)
   .attr("opacity", .75)
   .attr("stroke-opacity", 0)
   .call(force.drag)
