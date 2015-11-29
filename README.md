@@ -18,7 +18,7 @@
 ## **Machine Learning**
 - Random Forest
 - SVM
-- Linear Discriminant Analysis (multiple logistica regr)
+- Linear Discriminant Analysis (multiple logistic regression)
 - K Nearest Neighbors
 
 ## **Forecasting**
