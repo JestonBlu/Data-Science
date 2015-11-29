@@ -9,6 +9,7 @@
 - Regression
   - Poisson
   - GLM
+- Analysis of Proportions
 
 ## **Clustering**
 - Kmeans
