@@ -4,7 +4,6 @@
 
 ## **Statistics**
 - Multivariate
-  - Eigen distance
   - Principal components
   - Biplots
 - Regression
@@ -18,7 +17,9 @@
 
 ## **Machine Learning**
 - Random Forest
-- Neural Net
+- SVM
+- Linear Discriminant Analysis (multiple logistica regr)
+- K Nearest Neighbors
 
 ## **Forecasting**
 
