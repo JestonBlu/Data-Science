@@ -1,0 +1,13 @@
+---
+output: html_document
+---
+
+## **Analysis of Proportion**
+
+---
+
+```{r s1, comment=NA, warning=FALSE, message=FALSE}
+
+
+
+```
