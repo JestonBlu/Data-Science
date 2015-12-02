@@ -14,49 +14,31 @@
   <link rel="stylesheet" type="text/css" href="Web/css/simple-sidebar.css">
 
   <style media="screen">
-    body {
-      overflow-y: hidden;
+    body { overflow-y: hidden; }
+  /* Large desktops and laptops */
+  @media (min-width: 1200px) {}
+  /* Landscape tablets and medium desktops */
+  @media (min-width: 992px) and (max-width: 1199px) {}
+  /* Portrait tablets and small desktops */
+  @media (min-width: 768px) and (max-width: 991px) {}
+  /* Landscape phones and portrait tablets */
+  @media (max-width: 767px) {}
+  /* Portrait phones and smaller */
+  @media (max-width: 480px) {}
+
+  .dropdown-menu > li > a:hover,
+  .dropdown-menu > li > a:focus {
+    background-image: none !important;
+    background-color: #555;
     }
 
-    @media only screen and (min-width: 320px) {}
-    /* Extra Small Devices, Phones */
-
-    @media only screen and (min-width: 480px) {}
-    /* Small Devices, Tablets */
-
-    @media only screen and (min-width: 768px) {}
-    /* Medium Devices, Desktops */
-
-    @media only screen and (min-width: 992px) {}
-    /* Large Devices, Wide Screens */
-
-    @media only screen and (min-width: 1200px) {}
-    /*==========  Non-Mobile First Method  ==========*/
-    /* Large Devices, Wide Screens */
-
-    @media only screen and (max-width: 1200px) {}
-    /* Medium Devices, Desktops */
-
-    @media only screen and (max-width: 992px) {}
-    /* Small Devices, Tablets */
-
-    @media only screen and (max-width: 768px) {}
-    /* Extra Small Devices, Phones */
-
-    @media only screen and (max-width: 480px) {}
-    /* Custom, iPhone Retina */
-
-    @media only screen and (max-width: 320px) {}
-
-    .dropdown-menu > li > a:hover,
-    .dropdown-menu > li > a:focus {
-      background-image: none !important;
-    }
-
-    .dropdown-menu > li > a:hover,
-    .dropdown-menu > li > a:focus {
-      background-color: #555;
-    }
+    .icon-r {
+      background-image: url("file://Web/img/rlogo.png");
+      background-position: center center;
+      height: 24px;
+      line-height: 24px;
+      width: 24px;
+  }
   </style>
 
 </head>
@@ -75,17 +57,17 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">Univariate</li>
-            <li><a href="Statistics/distributions.html" target="contentFrame">Distribution Fitting</a></li>
+            <li class="dropdown-header"><b>Univariate Statistics</b></li>
+            <li><a href="Statistics/distributions.html" target="contentFrame"><i class="icon-r icon-white"></i>Distribution Fitting</a></li>
             <li><a href="Statistics/t_test.html" target="contentFrame">Hypothesis Testing</a></li>
             <li><a href="Statistics/bootstrap.html" target="contentFrame">Bootstrap Sampling</a></li>
             <li><a href="Statistics/goodness_of_fit.html" target="contentFrame">Goodness of Fit</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Multivariate</li>
+            <li class="dropdown-header"><b>Multivariate Statistics</b></li>
             <li><a href="Statistics/eigen.html" target="contentFrame">Eigen & Distance</a></li>
             <li><a href="Statistics/prin_comp.html" target="contentFrame">Principal Components</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Regression</li>
+            <li class="dropdown-header"><b>Regression Modeling</b></li>
             <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
             <li><a href="Statistics/regression_multiple.html" target="contentFrame">Multiple Regression</a></li>
           </ul>
@@ -102,7 +84,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="dropdown-header">Basic</li>
+            <li class="dropdown-header"></li>
             <li><a href="MachineLearning/basic_nn.html" target="contentFrame">Basic Neural Net</a></li>
           </ul>
         </li>
@@ -110,14 +92,13 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="dropdown-header">TBD</li>
           </ul>
         </li>
         <!-- Simulation -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="dropdown-header">Basic</li>
+            <li class="dropdown-header"></li>
             <li><a href="Simulation/boot_bjsales.html" target="contentFrame">Basic Bootstrap</a></li>
           </ul>
         </li>
@@ -125,8 +106,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="dropdown-header">Javascript Based</li>
+            <li class="dropdown-header"><b>Javascript Based</b></li>
             <li><a href="Visualization/force_network/index.html" target="contentFrame">Force Directed Network</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header"><b>R ggplot2 Based</b></li>
           </ul>
         </li>
       </ul>
@@ -135,10 +118,8 @@
     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
 
     <div id="page-content-wrapper">
-      <div class="container-fluid">
-        <div class="embed-responsive embed-responsive-16by9" style="overflow:auto;-webkit-overflow-scrolling:touch">
-          <iframe class="embed-responsive-item" name="contentFrame" src="about_me.html"></iframe>
-        </div>
+      <div class="embed-responsive embed-responsive-16by9" style="overflow:auto;-webkit-overflow-scrolling:touch;min-height:500px">
+          <iframe class="iframe" name="contentFrame" src="about_me.html"></iframe>
       </div>
     </div>
 
@@ -149,14 +130,14 @@
   <script src="Web/js/bootstrap.min.js"></script>
 
   <!-- Menu Toggle Script -->
-  <script>
+  <script type="text/javascript">
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
   </script>
 
-  <script>
+  <script type="text/javascript">
     (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function() {
