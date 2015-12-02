@@ -12,39 +12,7 @@
   <!-- CSSS -->
   <link rel="stylesheet" type="text/css" href="Web/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="Web/css/simple-sidebar.css">
-
-  <style media="screen">
-    body {
-      overflow-y: hidden;
-    }
-    /* Large desktops and laptops */
-
-    @media (min-width: 1200px) {}
-    /* Landscape tablets and medium desktops */
-
-    @media (min-width: 992px) and (max-width: 1199px) {}
-    /* Portrait tablets and small desktops */
-
-    @media (min-width: 768px) and (max-width: 991px) {}
-    /* Landscape phones and portrait tablets */
-
-    @media (max-width: 767px) {}
-    /* Portrait phones and smaller */
-
-    @media (max-width: 480px) {}
-
-    .dropdown-menu > li > a:hover,
-    .dropdown-menu > li > a:focus {
-      background-image: none !important;
-      background-color: #555;
-    }
-
-    .icon-r {
-      width: 15px;
-      height: 15px;
-      padding-bottom: 1px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="Web/css/custom.css">
 
 </head>
 
@@ -65,25 +33,25 @@
             <li class="dropdown-header"><b>Univariate Statistics</b></li>
             <li><a href="Statistics/distributions.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Distribution Fitting</a>
         </li>
-        <li><a href="Statistics/t_test.html" target="contentFrame">Hypothesis Testing</a></li>
-        <li><a href="Statistics/bootstrap.html" target="contentFrame">Bootstrap Sampling</a></li>
-        <li><a href="Statistics/goodness_of_fit.html" target="contentFrame">Goodness of Fit</a></li>
+        <li><a href="Statistics/t_test.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Hypothesis Testing</a></li>
+        <li><a href="Statistics/bootstrap.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Bootstrap Sampling</a></li>
+        <li><a href="Statistics/goodness_of_fit.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Goodness of Fit</a></li>
         <li role="separator" class="divider"></li>
         <li class="dropdown-header"><b>Multivariate Statistics</b></li>
-        <li><a href="Statistics/eigen.html" target="contentFrame">Eigen & Distance</a></li>
-        <li><a href="Statistics/prin_comp.html" target="contentFrame">Principal Components</a></li>
+        <li><a href="Statistics/eigen.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Eigen & Distance</a></li>
+        <li><a href="Statistics/prin_comp.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Principal Components</a></li>
         <li role="separator" class="divider"></li>
         <li class="dropdown-header"><b>Regression Modeling</b></li>
-        <li><a href="Statistics/regression_basic.html" target="contentFrame">Basic Regression</a></li>
-        <li><a href="Statistics/regression_multiple.html" target="contentFrame">Multiple Regression</a></li>
+        <li><a href="Statistics/regression_basic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Regression</a></li>
+        <li><a href="Statistics/regression_multiple.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Multiple Regression</a></li>
       </ul>
       </li>
       <!-- Clustering -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="Clustering/hierarchical.html" target="contentFrame">Hierarchical</a></li>
-          <li><a href="Clustering/kmeans.html" target="contentFrame">Kmeans</a></li>
+          <li><a href="Clustering/hierarchical.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Hierarchical</a></li>
+          <li><a href="Clustering/kmeans.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Kmeans</a></li>
         </ul>
       </li>
       <!-- Machine learning -->
@@ -91,7 +59,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li class="dropdown-header"></li>
-          <li><a href="MachineLearning/basic_nn.html" target="contentFrame">Basic Neural Net</a></li>
+          <li><a href="MachineLearning/basic_nn.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Neural Net</a></li>
         </ul>
       </li>
       <!-- Forecasting -->
@@ -105,7 +73,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li class="dropdown-header"></li>
-          <li><a href="Simulation/boot_bjsales.html" target="contentFrame">Basic Bootstrap</a></li>
+          <li><a href="Simulation/boot_bjsales.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Bootstrap</a></li>
         </ul>
       </li>
       <!-- Visualization -->
@@ -113,7 +81,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li class="dropdown-header"><b>Javascript Based</b></li>
-          <li><a href="Visualization/force_network/index.html" target="contentFrame">Force Directed Network</a></li>
+          <li><a href="Visualization/force_network/index.html" target="contentFrame"><img class="icon-r" src="Web/img/jslogo.png"/>     Force Directed Network</a></li>
           <li role="separator" class="divider"></li>
           <li class="dropdown-header"><b>R ggplot2 Based</b></li>
         </ul>
@@ -121,7 +89,7 @@
       </ul>
     </div>
 
-    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 
     <div id="page-content-wrapper">
       <div class="embed-responsive embed-responsive-16by9" style="overflow:auto;-webkit-overflow-scrolling:touch;min-height:500px">
