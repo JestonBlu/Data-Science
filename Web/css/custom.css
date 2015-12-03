@@ -1,8 +1,8 @@
 body {
   overflow-y: hidden;
 }
-/* Large desktops and laptops */
 
+/* Large desktops and laptops */
 @media (min-width: 1200px) {}
 /* Landscape tablets and medium desktops */
 
