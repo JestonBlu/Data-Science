@@ -23,6 +23,16 @@ body {
   background-color: #555;
 }
 
+.my-responsive-table-wrapper {
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: 1px solid #dddddd;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+}
+
 .icon-r {
   width: 13px;
   height: 13px;
