@@ -13,6 +13,7 @@
   <!-- CSSS -->
   <link rel="stylesheet" type="text/css" href="Web/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="Web/css/simple-sidebar.css">
+  <link rel="stylesheet" type="text/css" href="Web/css/custom.css">
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="Web/js/jquery.js"></script>
@@ -24,17 +25,58 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
-      <div class="well">
-        <p><b>Welcome to my</b></p>
-          <p>This website is intended to be a personal reference for data science related tasks. To date all tasks have been written in R using Rmarkdown. In the future I intend to include code using Julia, a new scientific computing langauge, and interactive visualizations written in JavaScript.</p>
-          <p>All code is available on my <a href="https://github.com/JestonBlu/DataScience" target="_blank">Github project page</a>.
-             Also feel free to connect with me on <a href="https://www.linkedin.com/in/josephblubaugh" target="_blank">LinkedIn</a>.</p>
-          <p>I recommend viewing this website from Chrome especially for the visualizations.</p>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="well">
+          <p><b>Welcome to my Data Science site</b></p>
+
+          <p>This website is intended to be a personal reference for data science related tasks. It consists of reproducible programming examples for various analytic and visualization techniques. In the sidebar menu, an icon next to each item identifies
+            the source language used to create each example.</p>
+
+          <p>I am not a web programmer and I pretty much use <a href="https://www.google.com/chrome/browser/desktop/" target="_blank">Google Chrome</a> exclusively for testing so I recommend it for viewing this website especially for the javascript visualizations.</p>
+
+          <p>All code is available on my <a href="https://github.com/JestonBlu/DataScience" target="_blank">Github project page</a>.</p>
+
+          <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/josephblubaugh" target="_blank">LinkedIn</a></p>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
         <div class="well">
+          <p><b>Computer Languages and Tools</b></p>
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <tr>
+                <td>
+                  <img class="logo" src="Web/img/rlogo.png" />
+                </td>
+                <td>
+                  All R examples have been generated using the <a href="https://cran.r-project.org/web/packages/rmarkdown/index.html" target="_blank">Rmarkdown Package </a><br>
+                  which generates HTML reports directly from R code and also allows<br>
+                  for markdown style formatting. It is a very handy package for generating<br>
+                  reproducible reports.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="logo" src="Web/img/jslogo.png" />
+                </td>
+                <td>
+                  My primary interest in javascript is for interactive visualization.<br>
+                  One particular visualization library of interest is <a href="http://d3js.org/" target="_blank">D3</a>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img class="logo" src="Web/img/julialogo.png" />
+                </td>
+                <td>
+                  <a href="http://julialang.org/" target="_blank">Julia</a> is a new developing language for technical computing.<br>
+                  It is fast, flexible, and shows a lot of promise. I have experimented <br>
+                  with it off and on, but so far I have no reproducible examples.
+                </td>
+              </tr>
+
+            </table>
+          </div>
         </div>
       </div>
     </div>

@@ -24,13 +24,17 @@ body {
 }
 
 .icon-r {
-  width: 15px;
-  height: 15px;
-  padding-bottom: 1px;
+  width: 13px;
+  height: 13px;
 }
 
 .icon-js {
   width: 15px;
   height: 15px;
   padding-bottom: 1px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
 }
