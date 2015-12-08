@@ -2,11 +2,12 @@
 output: html_document
 ---
 
-## **Eigen Values and Statistical Distance**
+## **Principal Components**
 
 ---
 
 ```{r s1, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+options(width = 120)
 
 ## Generate some data
 library(mvtnorm)
@@ -24,17 +25,35 @@ cov = matrix(nrow = 6, byrow = TRUE,
 set.seed(1000)
 X = rmvnorm(100, mu, cov)
 
+colnames(X) = paste("x", 1:6, sep = "")
+
 ## How do the data correlate?
-cor(X)
+round(cor(X), 3)
 pairs(X)
 
-## Principal Components
 summary(X)
 
-## Since all of the variables are roughly the same scale we do not need to standardize the data
+## Build the principal components. We do not need to standardize the data 
+## since all of the variables are roughly the same scale.
 (pr = prcomp(X))
 
-## Principal components rotation matrix is actually the same as th eigen vectors
-sqrt(eigen(cov)$values)
+## Principal components rotation matrix is actually the same as the eigen vectors
+eigen(cov(X))$vectors
+
+## Build the principal components from the coefficients
+X.pca = X %*% pr$rotation
+
+## The variance of the principal components is equal to the eigen values
+eigen(cov(X))$values
+diag(var(X.pca))
+
+## PCA Summary
+## The first two PCA account for 80% of all variation in the data
+summary(pr)
+
+X.pca = data.frame(X.pca)
+
+## plot of the first two PCA
+plot(X.pca$PC1, X.pca$PC2)
 
 ```
