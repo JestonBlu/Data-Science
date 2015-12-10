@@ -4,7 +4,6 @@
 
 ## **Statistics**
 - Multivariate
-  - Principal components
   - Biplots
 - Regression
   - Poisson
@@ -12,7 +11,6 @@
 - Analysis of Proportions
 
 ## **Clustering**
-- Kmeans
 - MDS
 - Model Based
 
