@@ -70,26 +70,6 @@ hist(x2, freq = FALSE, main = "Histogram with Density Curve")
 lines(density(x2))
 plot(ecdf(x2), main = "Empiracle CDF")
 
-par(mfrow = c(1,1))
-
-## Plot the Chi-Squared Distribution with multiple degrees of freedom.
-## As DF increases, the distibution converges to the normal distribution
-x = seq(.01, 15, by = .05)
-
-plot(x = c(0, 15), y = c(0, .3), type = "n", 
-     xlab = "", ylab = "", main = "Chi-Squared Distribution")
-lines(x = x, y = dchisq(x, df = 1), col = "red", lwd = 2)
-lines(x = x, y = dchisq(x, df = 2), col = "blue", lwd = 2)
-lines(x = x, y = dchisq(x, df = 3), col = "green", lwd = 2)
-lines(x = x, y = dchisq(x, df = 5), col = "purple", lwd = 2)
-lines(x = x, y = dchisq(x, df = 10), col = "orange", lwd = 2)
-
-legend(12, .30,
-       c("DF = 1", "DF = 2", "DF = 3", "DF = 5", "DF = 10"),
-       lty = rep(1, 5),
-       lwd = rep(2, 5),
-       col = c("red", "blue", "green", "purple", "orange"))
-
 ```
 
 ---
