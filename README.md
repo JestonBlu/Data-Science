@@ -9,6 +9,8 @@
   - Poisson
   - GLM
 - Analysis of Proportions
+- Univariate
+  - Survival Analysis
 
 ## **Clustering**
 - MDS
