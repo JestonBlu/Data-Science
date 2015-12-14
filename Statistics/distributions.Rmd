@@ -9,14 +9,13 @@ output: html_document
 ##### **Techniques Used**
   * Assessing Distributions Visually
   * Formal Tests for Distribution Fit
-  * Hypothesis Testing
-  * Base Plot
+  * Maximum Likelihood
 
 ---
 
 ##### **Normal Distribution**
 
-```{r a1, comment=NA, fig.width=8, fig.height=7}
+```{r a1, comment=NA, fig.width=8, fig.height=7, warning=FALSE, message=FALSE}
 library(nortest)
 library(MASS)
 
@@ -71,10 +70,6 @@ hist(x2, freq = FALSE, main = "Histogram with Density Curve")
 lines(density(x2))
 plot(ecdf(x2), main = "Empiracle CDF")
 
-```
-
-```{r a4, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=6}
-
 par(mfrow = c(1,1))
 
 ## Plot the Chi-Squared Distribution with multiple degrees of freedom.
@@ -97,5 +92,38 @@ legend(12, .30,
 
 ```
 
-
 ---
+
+##### **Calculating the MLE manually for the Exponential Distribution**
+
+```{r a5, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+## Generate data from the exponential distribution with mean = 1/5
+set.seed(1000)
+X = rexp(n = 10, rate = 5)
+
+## sample size and range of betas to test
+n = 10; beta = seq(.01, .5, by = .01)
+
+## Liklihood function
+Likelihood = (1/beta)^n * exp(-1/beta * sum(X))
+
+## Maximum Likelihood
+(mle = max(Likelihood))
+(mle.beta = beta[which(Likelihood == mle)])
+
+## Statistical test for how well the specified distribution fits the data
+ks.test(x = X, y = "pexp", rate = 1/mle.beta)
+
+par(mfrow = c(1, 2))
+
+## Plot the maximum likelihood
+plot(x = beta, y = Likelihood, type = "l", main = "Maximum Likelihood", lwd = 2)
+abline(h = mle, v = mle.beta, lty = 2, col = "blue")
+
+## QQplot for assessing distribution fit visually
+qqplot(qexp(ppoints(10), rate = 1/mle.beta), X, xlab = "QQ", main = "QQ Plot")
+qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta), col = "blue")
+
+
+```
