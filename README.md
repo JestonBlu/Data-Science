@@ -11,6 +11,7 @@
 - Analysis of Proportions
 - Univariate
   - Survival Analysis
+  - Sample Size Determination
 
 ## **Clustering**
 - MDS
