@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-## **Distribution Fitting**
+## **Continuous Distribution Fitting**
 
 ---
 
@@ -63,7 +63,7 @@ ks.test(x = x2, y = pchisq, df = 1.8140625)
 
 ## Distribution plots
 par(mfrow = c(2, 2))
-qqplot(qchisq(ppoints(20), df = 1.8140625), x2)
+qqplot(qchisq(ppoints(20), df = 1.8140625), x2, main = "QQ Plot")
 qqline(x2, distribution = function(p) qchisq(p, df = 1.8140625))
 boxplot(x2, main = "Boxplot")
 hist(x2, freq = FALSE, main = "Histogram with Density Curve")
@@ -80,10 +80,10 @@ plot(ecdf(x2), main = "Empiracle CDF")
 
 ## Generate data from the exponential distribution with mean = 1/5
 set.seed(1000)
-X = rexp(n = 10, rate = 5)
+X = rexp(n = 20, rate = 5)
 
 ## sample size and range of betas to test
-n = 10; beta = seq(.01, .5, by = .01)
+n = 20; beta = seq(.01, .5, by = .01)
 
 ## Liklihood function
 Likelihood = (1/beta)^n * exp(-1/beta * sum(X))
@@ -99,11 +99,11 @@ par(mfrow = c(1, 2))
 
 ## Plot the maximum likelihood
 plot(x = beta, y = Likelihood, type = "l", main = "Maximum Likelihood", lwd = 2)
-abline(h = mle, v = mle.beta, lty = 2, col = "blue")
+abline(h = mle, v = mle.beta, lty = 2)
 
 ## QQplot for assessing distribution fit visually
 qqplot(qexp(ppoints(10), rate = 1/mle.beta), X, xlab = "QQ", main = "QQ Plot")
-qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta), col = "blue")
+qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta))
 
 
 ```
