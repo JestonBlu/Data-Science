@@ -77,4 +77,12 @@ points(x = dta$Diseased, y = dta$Exp.Diseased, col = "red", pch = 19, type = "b"
 
 kable(dta)
 
+## Some Conclusions
+## Since N is large we can use asymptotic confidence intervals
+## A 95% confidence interval for whether a child will have the disease
+mle + c(-1, 1) * 1.96 * sqrt(.27 * (1 - .27))/sqrt(100)
+
+## What is the probability that a couple will have at least 1 child with the disease?
+1 - pbinom(q = 0, size = 5, prob = .27)
+
 ```

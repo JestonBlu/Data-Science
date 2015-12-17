@@ -202,6 +202,14 @@ points(x = dta$Diseased, y = dta$Exp.Diseased, col = &quot;red&quot;, pch = 19, 
 </tr>
 </tbody>
 </table>
+<pre class="r"><code>## Some Conclusions
+## Since N is large we can use asymptotic confidence intervals
+## A 95% confidence interval for whether a child will have the disease
+mle + c(-1, 1) * 1.96 * sqrt(.27 * (1 - .27))/sqrt(100)</code></pre>
+<pre><code>[1] 0.1829839 0.3570161</code></pre>
+<pre class="r"><code>## What is the probability that a couple will have at least 1 child with the disease?
+1 - pbinom(q = 0, size = 5, prob = .27)</code></pre>
+<pre><code>[1] 0.7926928</code></pre>
 </div>
 </div>
 
