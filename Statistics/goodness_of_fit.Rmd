@@ -14,7 +14,7 @@ output: html_document
 ---
 
 ##### **Dataset**
-A rare but fatal disease of genetic origin occurring chiefly in infants and children is under investigation. If a couple are both carriers of the disease, a child of theirs has a probability .25 of being born with the disease. For 100 such couples having five children, a researcher recorded the number, Y , of children having the disease.
+A rare but fatal disease of genetic origin occurring chiefly in infants and children is under investigation. If a couple are both carriers of the disease, a child of theirs has a probability .25 of being born with the disease. A researcher recorded the number of children having the disease.
 
 ```{r src, comment=NA, fig.width=8, fig.height=6, warning=FALSE, message=FALSE}
 library(knitr)
