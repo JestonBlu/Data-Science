@@ -7,54 +7,78 @@ output: html_document
 ---
 
 ##### **Techniques Used**
-  * Shapiro Wilks Normality Test
-  * T-Test
+  * Shapiro Wilks
+  * One Sample T-Test
   * Calculating Power
   * Hypothesis Testing
+  * Sample Size Determination
 
 ---
 
 
-```{r a1, comment=NA, fig.width=8, fig.height=7}
-## QQ plot for normal distribution
-set.seed(10)
-x1 = rnorm(20)
+```{r a1, comment=NA, fig.width=8, fig.height=5}
+
+## Data sample on chick weights
+data(chickwts)
+head(chickwts)
+
+## Normal reference plot for height
+qqnorm(chickwts$weight)
+qqline(chickwts$weight)
 
 ## Are the data from a normal distribution?
-shapiro.test(x1)     ## Shapiro-Wilk Test
-
-mean(x1)
+shapiro.test(chickwts$weight)
+mean(chickwts$weight)
 
 ```
 
----
+How does the sample mean compare to a hypothesis test that the true mean is < 260? What is the power of the test?
 
-How does the sample mean compare to a hypothesis test that the true mean is 0? What is the power of the test? Check the power when the you reject the null.
+$$H_0: \mu \ge 260, H_a: \mu \lt 260$$
 
-$$H_0: \mu = 0, H_a: \mu \ne 0$$
-
-|             | $H_0$ is True |  $H_a$ is True  |
-|:-----------:|:-------------:|:--------------:|
-|Accept $H_0$ |    Correct    |  Type II Error |
-|Accept $H_a$ | Type I Error  |   Correct      |
+|  Population  | Fail to Reject |  Reject $H_0$  |
+|:------------:|:--------------:|:--------------:|
+|$H_0$ is True |    Correct     |  Type I Error  |
+|$H_a$ is True | Type II Error  |   Correct      |
 
 ```{r a3, comment=NA, warning=FALSE, message=FALSE}
 
-## Is the true mean equal to 0? Verify the t statistic.
-t.test(x1); (mean(x1) / sd(x1) * sqrt(length(x1)))
+## What is the probability of a Type I error if we say the true mean is less than 250?
+t.test(chickwts$weight, mu = 250, alternative = "less")
 
-## We dont need to check the power of the test because we did not reject the null.
-## Lets generate some data that will rejec the null
+## Verify the t statistic and p-value
+(ts = (mean(chickwts$weight) - 250) / (sd(chickwts$weight) / sqrt(length(chickwts$weight))))
+pt(ts, df = 70)
 
-## Generate random data from N(1,1)
-set.seed(10)
-x2 = rnorm(20, mean = 1)
+## What is the probability of a Type I error if we say the true mean is > 245?
+t.test(chickwts$weight, mu = 245, alternative = "greater")
 
-## Is the true mean equal to 0?
-t.test(x2)
+## Verify the t statistic and p-value
+(ts = (mean(chickwts$weight) - 245) / (sd(chickwts$weight) / sqrt(length(chickwts$weight))))
+1 - pt(ts, df = 70)
 
-## Since we reject the null lets check the power of our test
-power.t.test(n = length(x2), delta = mean(x2), sd = sd(x2), sig.level = .05,
-             type = "one.sample", alternative = "two.sided", strict = TRUE)
+## We have rejected the null hypothesis and said under an alpha of .05 there is enough evidence
+## to suppor that the true mean of Chick Weights is > 245
+
+## What is the power of our test?
+power.t.test(n = length(chickwts$weight), 
+             delta = abs(mean(chickwts$weight) - 245), 
+             sd = sd(chickwts$weight), 
+             sig.level = .05,
+             type = "one.sample", 
+             alternative = "one.sided", strict = TRUE)
+
+## What sample size would we need to have a power of .8?
+power.t.test(delta = abs(mean(chickwts$weight) - 245), 
+             sd = sd(chickwts$weight), 
+             sig.level = .05,
+             power = .8,
+             type = "one.sample", 
+             alternative = "one.sided", strict = TRUE)
+
+## Verify manually
+(sd(chickwts$weight)^2 * (qnorm(p = .95) + qnorm(p = .8))^2) / abs(mean(chickwts$weight) - 245)^2
+
+
 
 ```
