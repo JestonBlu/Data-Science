@@ -5,10 +5,14 @@
 ## **Statistics**
 - Multivariate
   - Biplots
+  - Analysis of Proportions
 - Regression
   - Poisson
   - GLM
-- Analysis of Proportions
+- Experimental Design
+  - CRD - ToothGrowth
+  - RCDB - WarpBreaks
+  - Latin Square - OrchardSprays
 - Univariate
   - Survival Analysis
   - Sample Size Determination
