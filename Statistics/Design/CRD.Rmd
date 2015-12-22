@@ -1,0 +1,40 @@
+---
+output: html_document
+---
+
+## **2 Two Way Factorial CRD**
+
+---
+
+#### Dataset
+The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice or ascorbic acid (a form of vitamin C and coded as VC).
+
+```{r a, comment=NA, fig.width=8, fig.height=5}
+
+data("ToothGrowth")
+head(ToothGrowth)
+summary(ToothGrowth)
+
+mdl = aov(len ~ supp*dose, data = ToothGrowth)
+
+summary(mdl)
+
+x = aggregate(x = ToothGrowth$len, 
+          by = list(ToothGrowth$supp, ToothGrowth$dose), 
+          FUN = mean)
+colnames(x) = c("supp", "dose", "len")
+
+
+plot.new(xlim = c(0, 3), ylim = c(0, 35))
+
+segments(x0 = .5, y0 = 10, x1 = .5, y1 = 15)
+segments()
+
+aggregate(x = ToothGrowth$len, 
+          by = list(ToothGrowth$supp, ToothGrowth$dose), 
+          FUN = sd)
+
+
+
+
+```
