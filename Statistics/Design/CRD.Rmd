@@ -2,15 +2,33 @@
 output: html_document
 ---
 
-## **2 Two Way Factorial CRD**
+## **Completely Random Design**
 
 ---
 
-#### Dataset
+#### **Experimental Design**
+
 The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice or ascorbic acid (a form of vitamin C and coded as VC).
 
-```{r a, comment=NA, fig.width=8, fig.height=5}
+- **Randomization**: CRD  
+- **Treatment Structure**: 2 x 3 Factorial Treatment, both Fixed
+
+---
+
+#### **Statistical Model**
+- **Model**: $y_{ijk} = \mu + \alpha_i + \beta_j + \alpha \beta_{ij} + e_{ijk}$  
+- **Fixed Effects**: $\alpha_2 = \beta_3 = \alpha \beta_{2j} = \alpha \beta_{i3} = 0$  
+- **Random Effects**: $e_{ijk} = N(0, \sigma^2_e)$  
+
+
+
+---
+
+```{r a, comment=NA, fig.width=8, fig.height=5, warning=FALSE}
+library(lawstat)
+library(lsmeans)
 library(plyr)
+library(reshape2)
 
 data("ToothGrowth")
 head(ToothGrowth)
@@ -20,11 +38,29 @@ summary(ToothGrowth)
 table(ToothGrowth$supp, ToothGrowth$dose)
 
 ## ANOVA model
-mdl = aov(len ~ supp * factor(dose), data = ToothGrowth)
+mdl = lm(len ~ supp * factor(dose), data = ToothGrowth)
+anova(mdl)
 
-summary(mdl)
+## Least Squares Means
+lsmeans(mdl, specs = c("supp", "dose"))
+
+## Normality of Residuals
+qqnorm(mdl$residuals); qqline(mdl$residuals); shapiro.test(mdl$residuals)
+
+## Equal Variance of Residuals
+ToothGrowth$residuals = mdl$residuals
+x = melt(ToothGrowth, id.vars = c("residuals", "len"), value.name = "factor")
+levene.test(x$residuals, x$factor)
+
+## Independence of Residuals
 
 ```
+
+#### **Are the necessary conditions for hypothesis testing present?**
+
+- **Normality**:
+- **Equal Variance**:
+- **Independence**:
 
 
 **Interaction plot (Code not shown)**
