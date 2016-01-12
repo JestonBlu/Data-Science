@@ -32,13 +32,15 @@ library(car)
 library(plyr)
 
 data("ToothGrowth")
-head(ToothGrowth); summary(ToothGrowth)
+
+## Data is numeric, but we need to force it to be a factor for the model
+ToothGrowth$dose.factor = as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
 
 ## Even observations per treatment group
 table(ToothGrowth$supp, ToothGrowth$dose)
 
 ## ANOVA model
-ToothGrowth$dose.factor = as.factor(ToothGrowth$dose)
 mdl = lm(len ~ supp * dose.factor, data = ToothGrowth)
 anova(mdl)
 
@@ -55,7 +57,7 @@ TukeyHSD(aov(mdl))
 #### **Are the necessary conditions for hypothesis testing present?**
 
 - **Normality**: Residuals appear normally distributed per the residual normal reference plot and shapiro-wilks test
-- **Equal Variance**: Brown-Forsythe-Levene test of confirms equal variance supported by the residual plot
+- **Equal Variance**: Brown-Forsythe-Levene test and residual plot supports equal variance
 - **Independence**: No correlation in the residuals per the Durbin Watson test and plots of variables against residuals
 
 **Conditions for hypothesis testing appears to be satisfied**

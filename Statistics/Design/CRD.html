@@ -92,21 +92,17 @@ library(car)
 library(plyr)
 
 data(&quot;ToothGrowth&quot;)
-head(ToothGrowth); summary(ToothGrowth)</code></pre>
-<pre><code>   len supp dose
-1  4.2   VC  0.5
-2 11.5   VC  0.5
-3  7.3   VC  0.5
-4  5.8   VC  0.5
-5  6.4   VC  0.5
-6 10.0   VC  0.5</code></pre>
-<pre><code>      len        supp         dose      
- Min.   : 4.20   OJ:30   Min.   :0.500  
- 1st Qu.:13.07   VC:30   1st Qu.:0.500  
- Median :19.25           Median :1.000  
- Mean   :18.81           Mean   :1.167  
- 3rd Qu.:25.27           3rd Qu.:2.000  
- Max.   :33.90           Max.   :2.000  </code></pre>
+
+## Data is numeric, but we need to force it to be a factor for the model
+ToothGrowth$dose.factor = as.factor(ToothGrowth$dose)
+summary(ToothGrowth)</code></pre>
+<pre><code>      len        supp         dose       dose.factor
+ Min.   : 4.20   OJ:30   Min.   :0.500   0.5:20     
+ 1st Qu.:13.07   VC:30   1st Qu.:0.500   1  :20     
+ Median :19.25           Median :1.000   2  :20     
+ Mean   :18.81           Mean   :1.167              
+ 3rd Qu.:25.27           3rd Qu.:2.000              
+ Max.   :33.90           Max.   :2.000              </code></pre>
 <pre class="r"><code>## Even observations per treatment group
 table(ToothGrowth$supp, ToothGrowth$dose)</code></pre>
 <pre><code>    
@@ -114,7 +110,6 @@ table(ToothGrowth$supp, ToothGrowth$dose)</code></pre>
   OJ  10 10 10
   VC  10 10 10</code></pre>
 <pre class="r"><code>## ANOVA model
-ToothGrowth$dose.factor = as.factor(ToothGrowth$dose)
 mdl = lm(len ~ supp * dose.factor, data = ToothGrowth)
 anova(mdl)</code></pre>
 <pre><code>Analysis of Variance Table
@@ -178,7 +173,7 @@ VC:2-OJ:2      0.08  -4.718124  4.8781238 1.0000000</code></pre>
 <h4><strong>Are the necessary conditions for hypothesis testing present?</strong></h4>
 <ul>
 <li><strong>Normality</strong>: Residuals appear normally distributed per the residual normal reference plot and shapiro-wilks test</li>
-<li><strong>Equal Variance</strong>: Brown-Forsythe-Levene test of confirms equal variance supported by the residual plot</li>
+<li><strong>Equal Variance</strong>: Brown-Forsythe-Levene test and residual plot supports equal variance</li>
 <li><strong>Independence</strong>: No correlation in the residuals per the Durbin Watson test and plots of variables against residuals</li>
 </ul>
 <p><strong>Conditions for hypothesis testing appears to be satisfied</strong></p>
@@ -208,7 +203,7 @@ plot(ToothGrowth$supp, mdl$residuals, xlab = &quot;Supp&quot;, ylab = &quot;Resi
 <pre class="r"><code>## Test for correlation in the residuals
 durbinWatsonTest(mdl)</code></pre>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437   0.538
+   1     -0.02932541      2.025437   0.598
  Alternative hypothesis: rho != 0</code></pre>
 <hr />
 </div>
