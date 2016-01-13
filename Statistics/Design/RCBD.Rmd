@@ -1,0 +1,98 @@
+---
+output: html_document
+---
+
+## **Random Complete Block Design**
+
+---
+
+#### **Experimental Design**
+
+An experiment was conducted to compare four different pre-planting treatments for soybeen seeds. A fifth treatment, consisting of not treating the seeds was used as a control. The experimental area consisted of four fields. There are notable differences in the fields. Each field was divided into five plots and one of the treatments was randomly assigned to a plot within each field.
+
+- **Randomization**: RCBD  
+- **Treatment Structure**: 1 Single Treatment with 5 levels
+- **Response**: The number of plants that failed to emerge out of 100 seeds planted per plot.
+
+---
+
+#### **Statistical Model**
+- **Model**: $y_{ij} = \mu + \alpha_i + \beta_j + e_{ij}$  
+- **Parameters**: $\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}$  
+- **Fixed Effects**: $\alpha_5 = \beta_1 = 0$
+- **Random Effects**: $e_{ij} = N(0, \sigma^2_e)$  
+
+---
+
+```{r a, echo=FALSE}
+library(knitr)
+library(reshape2)
+
+soy = data.frame(
+  Count = c(2, 5, 7, 11, 4, 10, 9, 8, 3, 6, 9, 10, 9, 3, 5, 5, 8, 11, 12, 13),
+  Field = rep(1:4, 5),
+  Treatment = c(rep("Avasan", 4), rep("Spergon", 4), rep("Semaesan", 4), 
+                rep("Fermate", 4), rep("Control", 4))
+)
+
+kable(dcast(formula = Treatment ~ Field, data = soy, value.var = "Count"), 
+      caption = "Soybeen Example", format.args = list(width = 40))
+
+
+```
+
+
+```{r b, comment=NA}
+## Make the control treatment the default level
+soy$Treatment = relevel(soy$Treatment, ref = "Control")
+
+## We only have one rep per treatment so there are not enough DF to measure
+## the interaction
+mdl = lm(Count ~ factor(Field) + Treatment, data = soy)
+anova(mdl)
+
+```
+
+---
+
+#### Comparison of means vs control
+
+Since we have a control variable we want to know if any of the treatment means are significantly lower than the control mean.
+
+```{r c, comment=NA, message=FALSE, warning=FALSE}
+library(multcomp)
+
+Dunnet = glht(mdl, linfct = mcp(Treatment = "Dunnet"), alternative = "less")
+summary(Dunnet)
+
+```
+
+We have significant evidence that only Avasan and Fermate are significantly lower than the control. Are they significantly different from each other?
+
+```{r d, comment=NA, message=FALSE, warning=FALSE}
+
+TukeyHSD(aov(mdl))
+
+```
+
+There is not significant evidence between the difference in means between any of the treatments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
