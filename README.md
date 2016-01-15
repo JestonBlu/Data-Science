@@ -10,9 +10,8 @@
   - Poisson
   - GLM
 - Experimental Design
-  - CRD - ToothGrowth
-  - RCDB - WarpBreaks
   - Latin Square - OrchardSprays
+  - Mixed Model
 - Univariate
   - Survival Analysis
   - Sample Size Determination
