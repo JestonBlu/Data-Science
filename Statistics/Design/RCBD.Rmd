@@ -24,20 +24,22 @@ An experiment was conducted to compare four different pre-planting treatments fo
 
 ---
 
-```{r a, echo=FALSE}
+```{r a, echo=FALSE, results='asis'}
 library(knitr)
 library(reshape2)
+library(pander)
 
 soy = data.frame(
-  Count = c(2, 5, 7, 11, 4, 10, 9, 8, 3, 6, 9, 10, 9, 3, 5, 5, 8, 11, 12, 13),
-  Field = rep(1:4, 5),
-  Treatment = c(rep("Avasan", 4), rep("Spergon", 4), rep("Semaesan", 4), 
-                rep("Fermate", 4), rep("Control", 4))
+  Treatment = c("Avasan", "Spergon", "Semaesan", "Fermate", "Control"),
+  Field.1 = c(2, 4, 3, 9, 8),
+  Field.2 = c(5, 10, 6, 3, 11),
+  Field.3 = c(7, 9, 9, 5, 12),
+  Field.4 = c(11, 8, 10, 5, 13)
 )
 
-kable(dcast(formula = Treatment ~ Field, data = soy, value.var = "Count"), 
-      caption = "Soybeen Example", format.args = list(width = 40))
+pandoc.table(soy, caption = "Soy Bean Data")
 
+soy = melt(soy, id.vars = "Treatment", variable.name = "Field", value.name = "Count")
 
 ```
 
@@ -46,9 +48,8 @@ kable(dcast(formula = Treatment ~ Field, data = soy, value.var = "Count"),
 ## Make the control treatment the default level
 soy$Treatment = relevel(soy$Treatment, ref = "Control")
 
-## We only have one rep per treatment so there are not enough DF to measure
-## the interaction
-mdl = lm(Count ~ factor(Field) + Treatment, data = soy)
+## We only have one rep per treatment so there are not enough DF to measure the interaction
+mdl = lm(Count ~ Field + Treatment, data = soy)
 anova(mdl)
 
 ```

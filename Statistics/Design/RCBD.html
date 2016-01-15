@@ -86,69 +86,75 @@ img {
 <li><strong>Random Effects</strong>: <span class="math inline">\(e_{ij} = N(0, \sigma^2_e)\)</span></li>
 </ul>
 <hr />
-<table>
-<caption>Soybeen Example</caption>
+<table style="width:72%;">
+<caption>Soy Bean Data</caption>
+<colgroup>
+<col width="16%"></col>
+<col width="13%"></col>
+<col width="13%"></col>
+<col width="13%"></col>
+<col width="13%"></col>
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Treatment</th>
-<th align="right">1</th>
-<th align="right">2</th>
-<th align="right">3</th>
-<th align="right">4</th>
+<th align="center">Treatment</th>
+<th align="center">Field.1</th>
+<th align="center">Field.2</th>
+<th align="center">Field.3</th>
+<th align="center">Field.4</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Avasan</td>
-<td align="right">2</td>
-<td align="right">5</td>
-<td align="right">7</td>
-<td align="right">11</td>
+<td align="center">Avasan</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">11</td>
 </tr>
 <tr class="even">
-<td align="left">Control</td>
-<td align="right">8</td>
-<td align="right">11</td>
-<td align="right">12</td>
-<td align="right">13</td>
+<td align="center">Spergon</td>
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">8</td>
 </tr>
 <tr class="odd">
-<td align="left">Fermate</td>
-<td align="right">9</td>
-<td align="right">3</td>
-<td align="right">5</td>
-<td align="right">5</td>
+<td align="center">Semaesan</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">10</td>
 </tr>
 <tr class="even">
-<td align="left">Semaesan</td>
-<td align="right">3</td>
-<td align="right">6</td>
-<td align="right">9</td>
-<td align="right">10</td>
+<td align="center">Fermate</td>
+<td align="center">9</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">5</td>
 </tr>
 <tr class="odd">
-<td align="left">Spergon</td>
-<td align="right">4</td>
-<td align="right">10</td>
-<td align="right">9</td>
-<td align="right">8</td>
+<td align="center">Control</td>
+<td align="center">8</td>
+<td align="center">11</td>
+<td align="center">12</td>
+<td align="center">13</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>## Make the control treatment the default level
 soy$Treatment = relevel(soy$Treatment, ref = &quot;Control&quot;)
 
-## We only have one rep per treatment so there are not enough DF to measure
-## the interaction
-mdl = lm(Count ~ factor(Field) + Treatment, data = soy)
+## We only have one rep per treatment so there are not enough DF to measure the interaction
+mdl = lm(Count ~ Field + Treatment, data = soy)
 anova(mdl)</code></pre>
 <pre><code>Analysis of Variance Table
 
 Response: Count
-              Df Sum Sq Mean Sq F value  Pr(&gt;F)  
-factor(Field)  3   49.8 16.6000  2.5971 0.10070  
-Treatment      4   72.5 18.1250  2.8357 0.07227 .
-Residuals     12   76.7  6.3917                  
+          Df Sum Sq Mean Sq F value  Pr(&gt;F)  
+Field      3   49.8 16.6000  2.5971 0.10070  
+Treatment  4   72.5 18.1250  2.8357 0.07227 .
+Residuals 12   76.7  6.3917                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <hr />
@@ -166,14 +172,14 @@ summary(Dunnet)</code></pre>
 Multiple Comparisons of Means: Dunnett Contrasts
 
 
-Fit: lm(formula = Count ~ factor(Field) + Treatment, data = soy)
+Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(&lt;t)  
-Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0327 *
-Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0154 *
-Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0669 .
-Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1311  
+Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0324 *
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0153 *
+Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0668 .
+Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1309  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- single-step method)</code></pre>
@@ -184,14 +190,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Fit: aov(formula = mdl)
 
-$`factor(Field)`
-    diff        lwr      upr     p adj
-2-1  1.8 -2.9471482 6.547148 0.6814523
-3-1  3.2 -1.5471482 7.947148 0.2406905
-4-1  4.2 -0.5471482 8.947148 0.0895218
-3-2  1.4 -3.3471482 6.147148 0.8173180
-4-2  2.4 -2.3471482 7.147148 0.4666374
-4-3  1.0 -3.7471482 5.747148 0.9219188
+$Field
+                diff        lwr      upr     p adj
+Field.2-Field.1  1.8 -2.9471482 6.547148 0.6814523
+Field.3-Field.1  3.2 -1.5471482 7.947148 0.2406905
+Field.4-Field.1  4.2 -0.5471482 8.947148 0.0895218
+Field.3-Field.2  1.4 -3.3471482 6.147148 0.8173180
+Field.4-Field.2  2.4 -2.3471482 7.147148 0.4666374
+Field.4-Field.3  1.0 -3.7471482 5.747148 0.9219188
 
 $Treatment
                   diff        lwr       upr     p adj
