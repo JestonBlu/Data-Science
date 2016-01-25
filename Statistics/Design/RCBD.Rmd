@@ -18,7 +18,7 @@ An experiment was conducted to compare four different pre-planting treatments fo
 
 #### **Statistical Model**
 - **Model**: $y_{ij} = \mu + \alpha_i + \beta_j + e_{ij}$  
-- **Parameters**: $\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}$  
+- **Treatments**: $\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}$  
 - **Fixed Effects**: $\alpha_5 = \beta_1 = 0$
 - **Random Effects**: $e_{ij} = N(0, \sigma^2_e)$  
 

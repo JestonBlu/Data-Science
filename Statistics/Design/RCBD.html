@@ -80,7 +80,7 @@ img {
 <ul>
 <li><strong>Model</strong>: <span class="math inline">\(y_{ij} = \mu + \alpha_i + \beta_j + e_{ij}\)</span><br />
 </li>
-<li><strong>Parameters</strong>: <span class="math inline">\(\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}\)</span><br />
+<li><strong>Treatments</strong>: <span class="math inline">\(\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}\)</span><br />
 </li>
 <li><strong>Fixed Effects</strong>: <span class="math inline">\(\alpha_5 = \beta_1 = 0\)</span></li>
 <li><strong>Random Effects</strong>: <span class="math inline">\(e_{ij} = N(0, \sigma^2_e)\)</span></li>
@@ -176,9 +176,9 @@ Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(&lt;t)  
-Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0324 *
-Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0153 *
-Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0668 .
+Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0327 *
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0156 *
+Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0669 .
 Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1309  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

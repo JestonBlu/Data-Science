@@ -17,7 +17,7 @@ The response is the length of odontoblasts (cells responsible for tooth growth) 
 
 #### **Statistical Model**
 - **Model**: $y_{ijk} = \mu + \alpha_i + \beta_j + \alpha \beta_{ij} + e_{ijk}$  
-- **Parameters**: $\alpha_i = \text{supp, } \beta_j = \text{dose}$  
+- **Treatments**: $\alpha_i = \text{supp, } \beta_j = \text{dose}$  
 - **Fixed Effects**: $\alpha_1 = \beta_1 = \alpha \beta_{1j} = \alpha \beta_{i1} = 0$  
 - **Random Effects**: $e_{ijk} = N(0, \sigma^2_e)$  
 

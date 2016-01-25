@@ -79,7 +79,7 @@ img {
 <ul>
 <li><strong>Model</strong>: <span class="math inline">\(y_{ijk} = \mu + \alpha_i + \beta_j + \alpha \beta_{ij} + e_{ijk}\)</span><br />
 </li>
-<li><strong>Parameters</strong>: <span class="math inline">\(\alpha_i = \text{supp, } \beta_j = \text{dose}\)</span><br />
+<li><strong>Treatments</strong>: <span class="math inline">\(\alpha_i = \text{supp, } \beta_j = \text{dose}\)</span><br />
 </li>
 <li><strong>Fixed Effects</strong>: <span class="math inline">\(\alpha_1 = \beta_1 = \alpha \beta_{1j} = \alpha \beta_{i1} = 0\)</span><br />
 </li>
@@ -203,7 +203,7 @@ plot(ToothGrowth$supp, mdl$residuals, xlab = &quot;Supp&quot;, ylab = &quot;Resi
 <pre class="r"><code>## Test for correlation in the residuals
 durbinWatsonTest(mdl)</code></pre>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437   0.598
+   1     -0.02932541      2.025437   0.588
  Alternative hypothesis: rho != 0</code></pre>
 <hr />
 </div>
