@@ -1,0 +1,44 @@
+---
+output: html_document
+---
+
+## **Mapping Census Data**
+
+---
+
+Number of people employed in the farming industry
+
+```{r a, warning=FALSE, message=FALSE}
+
+library(choroplethr)
+library(choroplethrMaps)
+library(ggplot2)
+
+employment = read.csv("census_2000_employment.csv")
+
+head(employment)
+
+farming = data.frame(
+  region = employment$STCOU,
+  value = employment$Farming
+)
+
+county_choropleth(farming, title = "2000 Census Farming Employment", legend = "Count")
+
+```
+
+Percentage of Farming employment by county
+
+```{r b, warning=FALSE, message=FALSE}
+
+employment$Total = rowSums(employment[, 2:10])
+
+farming = data.frame(
+  region = employment$STCOU,
+  value = employment$Farming / employment$Total
+)
+
+county_choropleth(farming, title = "2000 Census Farming Employment", legend = "Count")
+
+
+```
