@@ -2,8 +2,107 @@
 output: html_document
 ---
 
-## **Basic Support Vector Machine**
+## **Basic Support Vector Machine with LOO Cross Validation**
 
 ---
 
-##### **Background**
+Using the same data and accuracy calculation from the basic random forest example. Leave one out (LOO) cross validation creates a number of models equal to the number of observations in the dataset.  For each model, one of the observation is left out of the training set and a prediction is created for the observation that was left out.
+
+
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9}
+
+options(width = 100)
+
+## required packages
+library(e1071)
+
+## Training and Testing Data
+hof.train = read.csv("Data/HOF_tr.csv"); 
+hof.test = read.csv("Data/HOF_te.csv")
+
+hof = rbind(hof.train, hof.test)
+
+## create a training and testing set by randomly sampling from all of the data
+## using the same set as in the random forest example
+set.seed(1002)
+x = sample(nrow(hof), replace = FALSE)
+
+## remove unwanted columns
+hof = hof[, -c(2:4)]
+
+## lets train the model on about 90% of the data
+train = hof[x[1:900], ]
+test = hof[-x[1:900], ]
+
+head(train)
+summary(train)
+
+## build model and use LOO CV to calculate expected accuracy
+
+results = data.frame()
+
+for (i in 1:nrow(train)) {
+  
+  ## break the data up
+  itr.train = train[-i, ]
+  itr.test = train[i, ]
+  
+  ## relevel just in case (may not be needed)
+  itr.train$HOF = relevel(itr.train$HOF, ref = "N")
+  
+  ## train model
+  mdl = svm(HOF ~ ., data = itr.train, probability = TRUE)
+  x = predict(mdl, itr.test, probability = TRUE)
+  
+  ## compile the results and include the probability score
+  results = rbind(results,
+                  data.frame(
+                    trial = i,
+                    Prediction = x,
+                    Actual = itr.test[, "HOF"],
+                    Prob.N = attr(x, "probabilities")[, 1],
+                    Prob.Y = attr(x, "probabilities")[, 2]
+                  )
+  )
+}
+
+## accuracy calculation from the random forest example
+metric = function(confusion) {
+  sensitivity = confusion[4] / (confusion[2] + confusion[4])
+  specificity = confusion[1] / (confusion[1] + confusion[3])
+  score = (sensitivity + (3 * specificity)) / 4
+  return(score)
+}
+
+## confusion matrix and accuracy score
+(confusion = table(Prediction = results$Prediction, Actual = results$Actual))
+
+## accuracy score for training set
+metric(confusion)
+
+## compare the model on the testing set
+## retrain the model on the full dataset
+mdl = svm(HOF ~ ., data = train, probability = TRUE)
+x = predict(mdl, test, probability = TRUE)
+
+results.test = data.frame(
+  Prediction = x,
+  Actual = test$HOF,
+  Prob.N = attr(x, "probabilities")[, 1],
+  Prob.Y = attr(x, "probabilities")[, 2]
+)
+
+## accuracy calculation from the random forest example for the test set
+(confusion.test = table(Prediction = results.test$Prediction, Actual = results.test$Actual))
+
+## accuracy score for test set
+metric(confusion.test)
+
+## look at the probability prediction for all of CV results to see if we should lower the
+## probability threshold for predicing Y to HOF
+subset(results, Prediction != Actual)
+
+## it looks like there is not a common probability for the incorrect predictions, this may be
+## the best we can do in this case
+
+```
