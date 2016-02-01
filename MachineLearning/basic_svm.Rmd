@@ -1,0 +1,9 @@
+---
+output: html_document
+---
+
+## **Basic Support Vector Machine**
+
+---
+
+##### **Background**
