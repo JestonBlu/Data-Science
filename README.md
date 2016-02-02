@@ -21,8 +21,6 @@
 - Model Based
 
 ## **Machine Learning**
-- Random Forest
-- SVM
 - Linear Discriminant Analysis (multiple logistic regression)
 - K Nearest Neighbors
 
