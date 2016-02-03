@@ -62,7 +62,7 @@ choro$render()
 
 Build separate maps for the types of crops
 
-```{r d, warning=FALSE, message=FALSE, comment=NA, R.options=list(width=100), fig.width=9, fig.height=10}
+```{r d, warning=FALSE, message=FALSE, comment=NA, R.options=list(width=100), fig.width=9, fig.height=6}
 
 ## fill in NA with 0 to prevent NULL counties from standing out
 crops[is.na(crops)] = 0
@@ -80,20 +80,29 @@ states =  c("texas", "louisiana", "mississippi", "alabama", "georgia", "arkansas
             "tennessee", "south carolina", "florida", "oklahoma", "north carolina")
 
 ## create each graph object
-g1 = CountyChoropleth$new(corn); g1$title = "Corn"; g1$set_num_colors(1); g1$set_zoom(states)
-g2 = CountyChoropleth$new(wheat); g2$title = "Wheat"; g2$set_num_colors(1); g2$set_zoom(states)
-g3 = CountyChoropleth$new(cotton); g3$title = "Cotton"; g3$set_num_colors(1); g3$set_zoom(states)
-g4 = CountyChoropleth$new(peanuts); g4$title = "Peanuts"; g4$set_num_colors(1); g4$set_zoom(states)
-g5 = CountyChoropleth$new(peaches); g5$title = "Peaches"; g5$set_num_colors(1); g5$set_zoom(states)
-g6 = CountyChoropleth$new(oranges); g6$title = "Oranges"; g6$set_num_colors(1); g6$set_zoom(states)
+g1 = CountyChoropleth$new(corn); g1$title = "Corn % of Farmable Land"
+g1$set_num_colors(1); g1$set_zoom(states)
+g1$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
 
-## set colors that correspond to the crop
-g1$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "yellow"))
-g2$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "#F4A460"))
-g3$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "white"))
-g4$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "#D0B078"))
-g5$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "#FFCBA4"))
-g6$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "orange"))
+g2 = CountyChoropleth$new(wheat); g2$title = "Wheat % of Farmable Land"
+g2$set_num_colors(1); g2$set_zoom(states)
+g2$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
+
+g3 = CountyChoropleth$new(cotton); g3$title = "Cotton % of Farmable Land"
+g3$set_num_colors(1); g3$set_zoom(states)
+g3$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
+
+g4 = CountyChoropleth$new(peanuts); g4$title = "Peanuts % of Farmable Land"
+g4$set_num_colors(1); g4$set_zoom(states)
+g4$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
+
+g5 = CountyChoropleth$new(peaches); g5$title = "Peaches % of Farmable Land"
+g5$set_num_colors(1); g5$set_zoom(states)
+g5$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
+
+g6 = CountyChoropleth$new(oranges); g6$title = "Oranges % of Farmable Land"
+g6$set_num_colors(1); g6$set_zoom(states)
+g6$ggplot_scale = scale_fill_gradientn("%", colors = c("gray", "darkgreen"))
 
 ## render each object in order to call as a group
 g1 = g1$render(); g2 = g2$render(); g3 = g3$render()
