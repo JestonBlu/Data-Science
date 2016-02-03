@@ -85,6 +85,10 @@ plot(BoxCox(Air$month.avg, BoxCox.lambda(Air$month.avg)), ylab = "Passengers",
 ## Decompose average monthly passengers
 plot(decompose(Air$month.avg))
 
+## Decompose average monthly passenegers under Box Cox
+## Results better random error
+plot(decompose(BoxCox(Air$month.avg, BoxCox.lambda(Air$month.avg))), ylab = "Passengers")
+
 ```
 
 
