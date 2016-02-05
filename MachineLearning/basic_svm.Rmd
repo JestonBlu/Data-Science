@@ -2,21 +2,19 @@
 output: html_document
 ---
 
-## **Basic Support Vector Machine**
+## **Basic Support Vector Machine with Tuning**
 
 ---
 
 
-```{r a, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9}
-
-options(width = 100)
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9, R.options=list(width=100)}
 
 ## required packages
 library(e1071)
 
 ## Training and Testing Data
-hof.train = read.csv("MachineLearning/Data/HOF_tr.csv"); 
-hof.test = read.csv("MachineLearning/Data/HOF_te.csv")
+hof.train = read.csv("Data/HOF_tr.csv"); 
+hof.test = read.csv("Data/HOF_te.csv")
 
 hof = rbind(hof.train, hof.test)
 
@@ -42,19 +40,27 @@ summary(train)
                     gamma = seq(0, .5, .01))))
 
 ## darker colors are better models
-plot(tuneModel)
+plot(tuneModel, main = "Model Performance")
+
+## store best parameters
+cst = as.numeric(tuneModel$best.parameters[1])
+gma = as.numeric(tuneModel$best.parameters[2])
 
 ## do an indepth search of the darker grid
 (tuneModel = tune(svm, HOF ~ ., data = train, 
                   ranges = list(
-                    cost = seq(1.5, 3.5, .1), 
-                    gamma = seq(0, .07, .0025))))
+                    cost = seq(cst-1, cst+1, .01), 
+                    gamma = seq(0, gma+.1, .001))))
 
 ## darker colors are better models
-plot(tuneModel)
+plot(tuneModel, main = "Model Performance")
+
+## store best parameters
+cst = as.numeric(tuneModel$best.parameters[1])
+gma = as.numeric(tuneModel$best.parameters[2])
 
 ## build model based on the tuned parameters
-mdl = svm(HOF ~ ., data = train, probability = TRUE, cost = 3.4, gamma = .06)
+mdl = svm(HOF ~ ., data = train, probability = TRUE, cost = cst, gamma = gma)
 x = predict(mdl, test, probability = TRUE)
 
 ## compile results
@@ -82,11 +88,11 @@ metric(confusion)
 ## look at the probability prediction for all of CV results to see if we should lower the
 ## probability threshold for predicing Y to HOF
 subset(results, Prediction != Actual)
-
+min = min(subset(results, Prediction != Actual, "Prob.Y"))
 
 ## lower the threshold
 results$Prediction.new = "N"
-results$Prediction.new[results$Prob.Y >= .14] = "Y"
+results$Prediction.new[results$Prob.Y >= min] = "Y"
 
 ## confusion matrix and accuracy score
 (confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))
