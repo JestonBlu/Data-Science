@@ -8,8 +8,6 @@ output: html_document
 
 ```{r a, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9}
 
-options(width = 100)
-
 ## required packages
 library(caret)
 library(gbm)
@@ -38,12 +36,12 @@ summary(train)
 
 
 ## build model
-fitControl = trainControl(method = "repeatedCV", number = 4, repeats = 4)
+fitControl = trainControl(method = "repeatedCV", number = 5, repeats = 5)
 mdl = train(HOF ~ ., data = train, method = "gbm", trControl = fitControl,
             verbose = FALSE)
 
 ## Model Summary
-mdl
+mdl; plot(mdl)
 
 x = predict(mdl, test, type = "prob")
 
@@ -54,9 +52,16 @@ results = data.frame(
   Prob.Y = x[, 2]
 )
 
+## code 0/1 back to N/Y
+results$Actual = as.character(results$Actual)
+results$Actual[results$Actual == '0'] = 'N'
+results$Actual[results$Actual == '1'] = 'Y'
+results$Actual = factor(results$Actual)
+
 ## if probability of HOF is > .5 then score a Y
 results$Prediction = "N"
 results$Prediction[results$Prob.Y >= .5] = "Y"
+results$Prediction = factor(results$Prediction)
 
 ## accuracy calculation from the random forest example
 metric = function(confusion) {
