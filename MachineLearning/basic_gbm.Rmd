@@ -14,7 +14,7 @@ library(gbm)
 
 ## Training and Testing Data
 hof.train = read.csv("Data/HOF_tr.csv"); 
-hof.test = read.csv("Data/HOF_te.csv")
+hof.test = read.csv("MachineLearning/Data/HOF_te.csv")
 
 hof = rbind(hof.train, hof.test)
 hof$HOF = as.factor(as.numeric(hof$HOF) - 1)
@@ -76,5 +76,24 @@ metric = function(confusion) {
 
 ## accuracy score for training set
 metric(confusion)
+
+## look at the incorrect responses and see if we can lower the threshold with creating
+## false positives
+summary(results); subset(results, Actual != Prediction)
+
+min.pred = min(subset(results, Actual != Prediction, "Prob.Y"))
+
+## it looks like there is no danger of lowering the threshold
+results$Prediction.new = "N"
+results$Prediction.new[results$Prob.Y >= min.pred] = "Y"
+
+## confusion matrix and accuracy score
+(confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))
+
+## accuracy score for training set
+metric(confusion)
+
+## there are fewer incorrect answers, but the penalty for false positives are greater
+## than false negatives so the accuracy score is actually lower
 
 ```

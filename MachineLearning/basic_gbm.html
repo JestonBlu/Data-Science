@@ -211,6 +211,36 @@ Prediction   N   Y
 <pre class="r"><code>## accuracy score for training set
 metric(confusion)</code></pre>
 <pre><code>[1] 0.9861111</code></pre>
+<pre class="r"><code>## look at the incorrect responses and see if we can lower the threshold with creating
+## false positives
+summary(results); subset(results, Actual != Prediction)</code></pre>
+<pre><code> Actual      Prob.N             Prob.Y          Prediction
+ N:106   Min.   :0.002796   Min.   :0.0009377   N:108     
+ Y: 10   1st Qu.:0.999062   1st Qu.:0.0009377   Y:  8     
+         Median :0.999062   Median :0.0009377             
+         Mean   :0.930894   Mean   :0.0691063             
+         3rd Qu.:0.999062   3rd Qu.:0.0009377             
+         Max.   :0.999062   Max.   :0.9972039             </code></pre>
+<pre><code>   Actual    Prob.N    Prob.Y Prediction
+1       Y 0.8751948 0.1248052          N
+78      Y 0.8283995 0.1716005          N</code></pre>
+<pre class="r"><code>min.pred = min(subset(results, Actual != Prediction, &quot;Prob.Y&quot;))
+
+## it looks like there is no danger of lowering the threshold
+results$Prediction.new = &quot;N&quot;
+results$Prediction.new[results$Prob.Y &gt;= min.pred] = &quot;Y&quot;
+
+## confusion matrix and accuracy score
+(confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))</code></pre>
+<pre><code>          Actual
+Prediction   N   Y
+         N 105   0
+         Y   1  10</code></pre>
+<pre class="r"><code>## accuracy score for training set
+metric(confusion)</code></pre>
+<pre><code>[1] 0.9772727</code></pre>
+<pre class="r"><code>## there are fewer incorrect answers, but the penalty for false positives are greater
+## than false negatives so the accuracy score is actually lower</code></pre>
 </div>
 
 
