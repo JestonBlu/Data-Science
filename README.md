@@ -1,36 +1,64 @@
-# To Do:
+### Menu Development (Future and Current)
 
---------------------------------------------------------------------------------
-
-## **Statistics**
-- Multivariate
-  - Biplots
-  - Analysis of Proportions
-- Regression
-  - Poisson
-  - GLM
-- Experimental Design
-  - Latin Square - OrchardSprays
-  - Mixed Model
-- Univariate
-  - Survival Analysis
+#### **Statistics**
+- Basic Methods
+  - Continuous Distribution Fitting (MLE)
+  - Discrete Distribution Fitting (GOF)
+  - Hypothesis Testing and Power
   - Sample Size Determination
+  - Bootstrap Sampling for parameter estimation
+  - Survival Analysis
+- Categorical
+  - Contingency Tables
+  - Analysis of Proportion
+- Multivariate
+  - Eigen and Distance
+  - Principal Components
+  - Multidimensional Scaling
+  - Biplots
+- Experimental Design
+  - CRD (Tooth Growth)
+  - RCBD (Soy Beans)
+  - Latin Square (Orchard Spray)
+  - Mixed Models
 
-## **Clustering**
-- MDS
+#### **Regression**
+- Basic Matrix Regression
+- Basic Multivariate
+- Poisson Regression
+- Logistic Regression
+- General Linear Model (GLM)
+- Regression Tree (CART)
+- Lasso Regression
+- Ridge Regression
+
+#### **Clustering**
+- Rule Based
+  - KMeans
+  - Hierarchical
 - Model Based
+  - EM
 
-## **Machine Learning**
-- Linear Discriminant Analysis (multiple logistic regression)
-- K Nearest Neighbors
+#### **Machine Learning**
+- Basic Classification
+  - Neural Network
+  - Random Forest
+  - Support Vector Machine
+  - Gradient Boosting
+  - Bayesian Additive Regression Trees
 
-## **Forecasting**
+#### **Forecasting**
+- Graphical Methods
 
-## **Simulation**
+#### **Simulation**
+- Sales Simulation
 
-## **Visualization**
+#### **Visualization**
+- Static
+  - Choropleth Mapping
+- Interactive
+  - Forced Directed Network
 
-## **Other Items**
+#### **Other Items**
 - caret package
 - parallel processing in windows and linux
-- overfitting
