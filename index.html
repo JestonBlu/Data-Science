@@ -31,26 +31,49 @@
         </li>
         <!--Statistics -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistics <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistical Methods <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header"><b>Univariate Statistics</b></li>
+            <li class="dropdown-header"><b>Basic Methods</b></li>
             <li><a href="Statistics/Univariate/distributions.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Continuous Distribution Fitting</a></li>
             <li><a href="Statistics/Univariate/goodness_of_fit.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Discrete Distribution Fitting</a></li>
-            <li><a href="Statistics/Univariate/t_test.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     T-Test</a></li>
-            <li><a href="Statistics/Univariate/bootstrap.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Bootstrap Sampling</a></li>
+            <li><a href="Statistics/Univariate/t_test.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Hypothesis Testing and Power</a></li>
+            <!-- <li><a href="Statistics/BasicMethods/sample_size.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Sample Size Determination</a></li> -->
+            <li><a href="Statistics/Univariate/bootstrap.html" target="contentFrame" role="menuitem"><img class="icon-r" src="Web/img/rlogo.png"/>     Parameter Estimation by Bootstrap</a></li>
+            <!-- <li><a href="Statistics/BasicMethods/survival.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Survival Analysis</a></li> -->
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Multivariate Statistics</b></li>
+            <li class="dropdown-header"><b>Categorical</b></li>
+            <!-- <li><a href="Statistics/Categorical/contingency.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Contingency Tables</a></li> -->
+            <!-- <li><a href="Statistics/Categorical/proportion.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Analysis of Proportion</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header"><b>Multivariate</b></li>
             <li><a href="Statistics/Multivariate/eigen.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Eigen & Distance</a></li>
             <li><a href="Statistics/Multivariate/prin_comp.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Principal Components</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Regression Modeling</b></li>
-            <li><a href="Statistics/Regression/regression_basic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Regression</a></li>
-            <li><a href="Statistics/Regression/regression_multiple.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Multiple Regression</a></li>
+            <!-- <li><a href="Statistics/Multivariate/mds.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Multidimensional Scaling</a></li> -->
+            <!-- <li><a href="Statistics/Multivariate/biplot.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Biplots</a></li> -->
             <li role="separator" class="divider"></li>
             <li class="dropdown-header"><b>Experimental Design</b></li>
             <li><a href="Statistics/Design/CRD.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     CRD</a></li>
             <li><a href="Statistics/Design/RCBD.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     RCBD</a></li>
+            <!-- <li><a href="Statistics/Design/LatinSquare.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Latin Square</a></li> -->
+            <!-- <li><a href="Statistics/Design/Mixed.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Mixed Models</a></li> -->
           </ul>
+        </li>
+        <!-- Regression -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Regression <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li class="dropdown-header"><b>Basic</b></li>
+          <li><a href="Regression/regression_basic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Matrix Regression</a></li>
+          <li><a href="Regression/regression_multiple.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Multivariate Regression</a></li>
+          <!-- <li><a href="Regression/Poisson.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Poisson</a></li> -->
+          <!-- <li><a href="Regression/Logistic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Logistic</a></li> -->
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header"><b>Advanced</b></li>
+          <!-- <li><a href="Regression/glm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     General Linear Model (GLM)</a></li> -->
+          <!-- <li><a href="Regression/cart.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Regression Tree (CART)</a></li> -->
+          <!-- <li><a href="Regression/lasso.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Lasso</a></li> -->
+          <!-- <li><a href="Regression/ridge.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Ridge</a></li> -->
+        </ul>
         </li>
         <!-- Clustering -->
         <li class="dropdown">
@@ -61,6 +84,7 @@
             <li><a href="Clustering/kmeans.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Kmeans</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header"><b>Model Based</b></li>
+            <!-- <li><a href="Clustering/em.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     EM</a></li> -->
           </ul>
         </li>
         <!-- Machine learning -->
@@ -68,10 +92,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="dropdown-header"><b>Basic Classification</b></li>
-            <li><a href="MachineLearning/basic_nn.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Neural Net</a></li>
-            <li><a href="MachineLearning/basic_rf.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Random Forest</a></li>
-            <li><a href="MachineLearning/basic_svm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Support Vector Machine</a></li>
-            <li><a href="MachineLearning/basic_gbm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Gradient Boosting</a></li>
+            <li><a href="MachineLearning/basic_nn.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Neural Net</a></li>
+            <li><a href="MachineLearning/basic_rf.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Random Forest</a></li>
+            <li><a href="MachineLearning/basic_svm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Support Vector Machine</a></li>
+            <li><a href="MachineLearning/basic_gbm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Gradient Boosting</a></li>
+            <!-- <li><a href="MachineLearning/basic_bart.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Bayesian Additive Regression Tree</a></li> -->
             <li role="separator" class="divider"></li>
             <li class="dropdown-header"><b>Advanced</b></li>
           </ul>
