@@ -52,6 +52,8 @@
 
 #### **Simulation**
 - Sales Simulation
+- Bayesian Network
+- MCMC
 
 #### **Visualization**
 - Static
