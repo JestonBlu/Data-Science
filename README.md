@@ -31,6 +31,7 @@
 - Regression Tree (CART)
 - Lasso Regression
 - Ridge Regression
+- Compare BIC, AIC, LL
 
 #### **Clustering**
 - Rule Based
