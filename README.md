@@ -59,6 +59,7 @@
 #### **Visualization**
 - Static
   - Choropleth Mapping
+  - Self Organizing Maps
 - Interactive
   - Forced Directed Network
 
