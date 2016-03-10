@@ -11,6 +11,8 @@
 - Categorical
   - Contingency Tables
   - Analysis of Proportion
+  - Poisson Regression
+  - Logistic Regression
 - Multivariate
   - Eigen and Distance
   - Principal Components
@@ -25,13 +27,10 @@
 #### **Regression**
 - Basic Matrix Regression
 - Basic Multivariate
-- Poisson Regression
-- Logistic Regression
-- General Linear Model (GLM)
 - Regression Tree (CART)
 - Lasso Regression
 - Ridge Regression
-- Compare BIC, AIC, LL
+
 
 #### **Clustering**
 - Rule Based
@@ -54,6 +53,7 @@
 #### **Simulation**
 - Sales Simulation
 - Bayesian Network
+- Compare BIC, AIC, LL
 - MCMC
 
 #### **Visualization**
