@@ -27,9 +27,15 @@
 #### **Regression**
 - Basic Matrix Regression
 - Basic Multivariate
-- Regression Tree (CART)
-- Lasso Regression
-- Ridge Regression
+- Stepwise Regression
+- Stagewise Regression
+- Regression Tree
+- Penalized Regression
+  - Ridge Regression
+  - LASSO Regression
+  - Elastic Net
+  - LARS
+  - MARS
 
 
 #### **Clustering**
