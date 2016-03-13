@@ -55,6 +55,7 @@
 
 #### **Forecasting**
 - Graphical Methods
+- Varying Coefficients Model for Seasonal data
 
 #### **Simulation**
 - Sales Simulation
