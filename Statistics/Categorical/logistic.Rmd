@@ -1,0 +1,53 @@
+---
+  output: html_document
+---
+  
+## **Logistic Regression**
+  
+---
+  
+##### **Data Background**
+
+NAME: 	Prostate Cancer Study (PCS.DATA)
+SIZE:	380 observations, 9 variables
+
+SOURCE:	Hosmer and Lemeshow (2000) Applied Logistic Regression: Second Edition.  
+	These data are copyrighted by John Wiley & Sons Inc. and must be acknowledged 
+	and used accordingly.
+
+
+DESCRIPTIVE ABSTRACT:
+
+These data are described in Section 1.6.3 page 25, of the source text.
+
+
+LIST OF VARIABLES:
+
+1		Identification Code: 1 - 380  
+2		Tumor Penetration of Prostatic Capsule: 0 = No Penetration, 1 = Penetration  
+3		Age: Years  
+4		Race: 1= White, 2 = Black  
+5		Results of the Digital Rectal Exam: 1 = No Nodule, 2 = Unilobar Nodule (Left), 3 = Unilobar Nodule  (Right), 4 = Bilobar Nodule  
+6		Detection of Capsular Involvement in Rectal Exam: 1 = No, 2 = Yes  
+7		Prostatic Specific Antigen Value: mg/ml  
+8		Tumor Volume Obtained from Ultrasound: cm3		  
+9		Total Gleason Score: 0 - 10  
+
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=9, fig.height=7}
+
+library(popbio)
+
+dta = read.csv("data/pros.csv")
+
+head(dta)
+
+mdl = glm(CAPSULE ~ AGE + RACE + DPROS + DCAPS + PSA + VOL + GLEASON,
+          family = binomial(), data = dta)
+
+summary(mdl)
+
+logi.hist.plot(sqrt(dta$PSA), dta$CAPSULE, logi.mod = 1, boxp = FALSE, notch = FALSE,
+               main = "Logistic Regression plot for PSA",
+               xlab = "PSA")
+
+```

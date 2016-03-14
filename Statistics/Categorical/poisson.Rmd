@@ -1,0 +1,77 @@
+---
+output: html_document
+---
+
+## **Poisson Regression**
+
+---
+
+##### **Data Background**
+
+Name:  	A clinical Trial in the Trt. of Carcinoma of the Oropharynx (PHARYNX.DAT)
+SIZE:  	195 observations, 13 variables.
+
+SOURCE:  The Statistical Analysis of Failure Time Data, by JD Kalbfleisch
+         & RL Prentice, (1980),  Published by John Wiley & Sons 
+         http://www.umass.edu/statdata/statdata/data/pharynx.txt
+
+
+DESCRIPTIVE ABSTRACT:
+
+The .dat file gives the data for a part of a large clinical trial
+carried out by the Radiation Therapy Oncology Group in the United States. 
+The full study included patients with squamous carcinoma of 15 sites in 
+the mouth and throat, with 16 participating institutions, though only data 
+on three sites in the oropharynx reported by the six largest institutions 
+are considered here. Patients entering the study were randomly assigned to 
+one of two treatment groups, radiation therapy alone or radiation therapy 
+together with a chemotherapeutic agent.  One objective of the study was to 
+compare the two treatment policies with respect to patient survival.
+
+VARIABLE DEFINITIONS:
+
+- **CASE**: Case Number  
+- **INST**: Participating Institution  
+- **SEX**: 1=male, 2=female  
+- **TX**: Treatment: 1=standard, 2=test  
+- **GRADE**: 1=well differentiated, 2=moderately differentiated, 3=poorly differentiated,  9=missing  
+- **AGE**: In years at time of diagnosis  
+- **COND**: Condition: 1=no disability, 2=restricted work, 3=requires assistance with self care, 4=bed confined,  9=missing  
+- **SITE**: 1=faucial arch, 2=tonsillar fossa, 3=posterior pillar, 4=pharyngeal tongue, 5=posterior wall  
+- **T_STAGE**: 1=primary tumor measuring 2 cm or less in largest diameter, 2=primary tumor measuring 2 cm to 4 cm in largest diameter with minimal infiltration in depth, 3=primary tumor measuring more than 4 cm, 4=massive invasive tumor  
+- **N_STAGE**: 0=no clinical evidence of node metastases, 1=single positive node 3 cm or less in diameter, not fixed, 2=single positive node more than 3 cm in diameter, not fixed, 3=multiple positive nodes or fixed positive nodes   
+- **ENTRY_DT**: Date of study entry: Day of year and year, dddyy  
+- **STATUS**: 0=censored,  1=dead  
+- **TIME**: Survival time in days from day of diagnosis   
+
+```{r a, warning=FALSE, message=FALSE, comment=NA, fig.width=9, fig.height=8}
+options(width = 100)
+
+library(MASS)
+
+dta = read.csv("data/pharynx.csv")
+
+head(dta)
+
+## Poisson Regression Model for Survival Time
+mdl = glm(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+          family = poisson(), data = dta)
+
+## Negative Binomial Model for Survival Time
+mdl2 = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS, 
+              maxit = 100, data = dta)
+
+## Dispersion paramater > 0 so poisson is not appropriate, negative binomial is a better model
+par(mfrow = c(2,2))
+plot(mdl2)
+
+## Remove the outlier observation and retrain
+dta = dta[-159, ]
+
+mdl.nb = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS, 
+              maxit = 100, data = dta)
+
+summary(mdl.nb)
+plot(mdl.nb)
+
+```
