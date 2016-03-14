@@ -51,3 +51,5 @@ logi.hist.plot(sqrt(dta$PSA), dta$CAPSULE, logi.mod = 1, boxp = FALSE, notch = F
                xlab = "PSA")
 
 ```
+
+
