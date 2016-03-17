@@ -36,6 +36,7 @@ LIST OF VARIABLES:
 ```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=9, fig.height=7}
 
 library(popbio)
+library(Deducer)
 
 dta = read.csv("data/pros.csv")
 
@@ -49,6 +50,8 @@ summary(mdl)
 logi.hist.plot(sqrt(dta$PSA), dta$CAPSULE, logi.mod = 1, boxp = FALSE, notch = FALSE,
                main = "Logistic Regression plot for PSA",
                xlab = "PSA")
+
+rocplot(mdl)
 
 ```
 

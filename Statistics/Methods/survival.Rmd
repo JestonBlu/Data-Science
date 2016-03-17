@@ -1,0 +1,38 @@
+---
+output: html_document
+---
+
+## **Survival Analysis**
+
+---
+
+```{r a, comment=NA, fig.align='center'}
+options(width = 100)
+
+library(survival)
+
+summary(lung)
+
+mdl = survfit(Surv(time, status) ~ 1, data = lung)
+
+plot(mdl, conf.int = FALSE,
+     main="Kaplan-Meier Estimator of Survival Function",
+     xlab="Survival Time",
+     ylab="Survival Function")
+
+summary(mdl)
+
+mdl = survfit(Surv(time, status) ~ strata(sex), data = lung)
+
+summary(mdl)
+
+plot(mdl, conf.int = FALSE, col = c(2,4),
+     main="Survival Function",
+     xlab="Survival Time",
+     ylab="Survival Function")
+
+legend(800, 1, c("men", "women"), lty = c(1, 1), col = c(2, 4))
+
+
+summary(survreg(Surv(time, status) ~ ph.ecog + age + strata(sex), lung))
+```
