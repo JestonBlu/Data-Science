@@ -1,0 +1,173 @@
+---
+output: html_document
+---
+
+## **Ford Challenge**
+
+### Description
+The data for this challenge shows the results of a number of "trials", each one representing about 2 minutes of sequential data that are recorded every 100 ms during a driving session on the road or in a driving simulator.  The trials are samples from some 100 drivers of both genders, and of different ages and ethnic backgrounds. The files are structured as follows:
+
+The first column is the Trial ID - each period of around 2 minutes of sequential data has a unique trial ID. For instance, the first 1210 observations represent sequential observations every 100ms, and therefore all have the same trial ID
+The second column is the observation number - this is a sequentially increasing number within one trial ID
+The third column has a value X for each row where
+* X = 1     if the driver is alert
+* X = 0     if the driver is not alert
+The next 8 columns with headers P1, P2 , …….., P8  represent physiological data;
+The next 11 columns with headers E1, E2, …….., E11  represent environmental data;
+The next 11 columns with headers V1, V2, …….., V11  represent vehicular  data;
+
+The third column values are hidden in the test set ('fordTest.csv').
+
+The file 'example_submission.csv' is an example of a submission file - your submission files should be in exactly the same format, with only values in the last column ('Prediction') different. Predictions are expected to be real numbers between 0 and 1 inclusive.
+
+Note:  The actual names and measurement units of the physiological, environmental and vehicular data are not disclosed in this challenge. Models which use fewer physiological variables (columns with names starting with 'P') are of particular interest, therefore competitors are encouraged to consider models which require fewer of these variables.
+
+**Scoring Metric**: AUC
+
+### Data Exploration
+
+
+
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+library(plyr)
+library(ggplot2)
+library(scales)
+library(randomForest)
+library(pROC)
+library(gridExtra)
+library(e1071)
+
+fordTrain = read.csv("fordTrain.csv")
+fordTest = read.csv("fordTest.csv")
+
+
+alert = ddply(fordTrain, .(TrialID), summarise, 
+              obs = max(ObsNum)+1,
+              alert = sum(IsAlert),
+              pct = sum(IsAlert) /  max(ObsNum + 1))
+
+ggplot(alert) +
+  geom_point(aes(x = reorder(TrialID, pct), y = pct)) +
+  scale_x_discrete("Aggregated Drivers\n(ordered by % alert)") +
+  scale_y_continuous("% Alert", labels = percent) +
+  ggtitle("Pareto Chart of Driver Alertness") +
+  theme(axis.text.x = element_blank(),
+        axis.ticks = element_blank())
+
+
+
+```
+
+
+Aggregate the observations into averages. Determine the proportion of observations where the driver is paying attention more than 80%, or less than 20% of the time.
+
+```{r b, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+## 3 variables have no data, remove them
+train = data.frame(scale(fordTrain[, c(4:10, 12:28, 30, 32:33)]))
+train = cbind(fordTrain[, c(1, 3)], train)
+
+test = data.frame(scale(fordTest[, c(4:10, 12:28, 30, 32:33)]))
+test = cbind(fordTest[, c(1, 3)], test)
+
+train.agg = aggregate(. ~ TrialID, data = train, FUN = mean)
+
+nrow(train.agg[which(train.agg$IsAlert >= .8),]) ## 280
+nrow(train.agg[which(train.agg$IsAlert <= .2),]) ## 173
+
+train.agg = subset(train.agg, IsAlert >= .8 | IsAlert <= .2)
+train.agg$IsAlert[which(train.agg$IsAlert >= .8)] = 1
+train.agg$IsAlert[which(train.agg$IsAlert <= .2)] = 0
+
+train.agg$IsAlert = as.factor(train.agg$IsAlert)
+
+
+## aggregate test
+test.agg = aggregate(. ~ TrialID, data = test, FUN = mean)
+
+nrow(test.agg[which(test.agg$IsAlert >= .8),]) ## 67
+nrow(test.agg[which(test.agg$IsAlert <= .2),]) ## 12
+
+test.agg = subset(test.agg, IsAlert >= .8 | IsAlert <= .2)
+test.agg$IsAlert[which(test.agg$IsAlert >= .8)] = 1
+test.agg$IsAlert[which(test.agg$IsAlert <= .2)] = 0
+
+test.agg$IsAlert = as.factor(test.agg$IsAlert)
+
+```
+
+Model on Aggregated data
+
+```{r c, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+train.agg = train.agg[, -1]
+
+mdl.rf = randomForest(IsAlert ~ ., ntree = 100, data = train.agg)
+mdl.glm = glm(IsAlert ~ ., family = binomial(), data = train.agg)
+mdl.svm = svm(IsAlert ~ ., probability = TRUE, data = train.agg)
+
+pred.rf = predict(mdl.rf, train.agg, type = "prob")[, 2]
+pred.glm = fitted(mdl.glm)
+pred.svm = predict(mdl.svm, train.agg, probability = TRUE)
+pred.svm = attr(pred.svm, "probabilities")[, 1]
+
+auc.rf.train = roc(predictor = pred.rf, response = train.agg$IsAlert)
+auc.glm.train = roc(predictor = pred.glm, response = train.agg$IsAlert)
+auc.svm.train = roc(predictor = pred.svm, response = train.agg$IsAlert)
+
+
+## test agg
+pred.rf = predict(mdl.rf, test.agg, type = "prob")[, 2]
+pred.glm = predict(mdl.glm, test.agg, type = "response")
+pred.svm = predict(mdl.svm, test.agg, probability = TRUE)
+pred.svm = attr(pred.svm, "probabilities")[, 1]
+
+auc.rf.test = roc(predictor = pred.rf, response = test.agg$IsAlert)
+auc.glm.test = roc(predictor = pred.glm, response = test.agg$IsAlert)
+auc.svm.test = roc(predictor = pred.svm, response = test.agg$IsAlert)
+
+
+g.rf = ggplot() +
+  geom_path(aes(x = auc.rf.train$specificities, y = auc.rf.train$sensitivities, color = "Train")) +
+  geom_path(aes(x = auc.rf.test$specificities, y = auc.rf.test$sensitivities, color = "Test")) +
+  scale_color_discrete("Model") +
+  scale_x_reverse("1 - Specificity") +
+  scale_y_continuous("Sensitivity") +
+  ggtitle("Random Forest AUC")
+
+g.glm = ggplot() +
+  geom_path(aes(x = auc.glm.train$specificities, y = auc.glm.train$sensitivities, color = "Train")) +
+  geom_path(aes(x = auc.glm.test$specificities, y = auc.glm.test$sensitivities, color = "Test")) +
+  scale_color_discrete("Model") +
+  scale_x_reverse("1 - Specificity") +
+  scale_y_continuous("Sensitivity") +
+  ggtitle("Logistic Regression AUC")
+
+g.svm = ggplot() +
+  geom_path(aes(x = auc.svm.train$specificities, y = auc.svm.train$sensitivities, color = "Train")) +
+  geom_path(aes(x = auc.svm.test$specificities, y = auc.svm.test$sensitivities, color = "Test")) +
+  scale_color_discrete("Model") +
+  scale_x_reverse("1 - Specificity") +
+  scale_y_continuous("Sensitivity") +
+  ggtitle("Support Vector Machine AUC")
+
+grid.arrange(g.rf, g.glm, g.svm)
+
+```
+
+principal components
+
+```{r d, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+
+pr = prcomp(scale(train.agg[, 2:28]))
+pr = as.matrix(train.agg[, 2:28]) %*% pr$rotation
+
+```
+
+```{r e, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+
+```
+
