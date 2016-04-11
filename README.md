@@ -13,6 +13,7 @@
   - Analysis of Proportion
   - Poisson Regression
   - Logistic Regression
+  - Multinomial Logistic Regression
 - Multivariate
   - Eigen and Distance
   - Principal Components
