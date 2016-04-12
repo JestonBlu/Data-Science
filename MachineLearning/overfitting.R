@@ -47,8 +47,8 @@ dta = dta[6:500,]
 dta[] = lapply(dta, factor)
 
 
-train = dta[1:485, ]
-test = dta[486:495, ]
+train = dta[1:475, ]
+test = dta[476:495, ]
 
 
 
@@ -68,50 +68,18 @@ results.svm$Result = FALSE
 results.svm$Result[which(results.svm$actual == results.svm$predicted)] = TRUE
 
 
-
-library(nnet)
-mdl.nn = nnet(y ~ ., data = train, size = 5)
-
-tmp = predict(mdl.nn, test, type = "class")
-results.nn = data.frame(actual = as.numeric(test$y), predicted = as.numeric(tmp))
-results.nn$Result = FALSE
-results.nn$Result[which(results.nn$actual == results.nn$predicted)] = TRUE
-
-
-library(randomForest)
-mdl.rf = randomForest(y ~ ., ntree = 250, data = train)
-
-tmp = predict(mdl.rf, test)
-results.rf = data.frame(actual = as.numeric(test$y), predicted = as.numeric(tmp))
-results.rf$Result = FALSE
-results.rf$Result[which(results.rf$actual == results.rf$predicted)] = TRUE
-
-
-
 ## create results for training set
 train.results.svm = data.frame(actual = train$y, pred = predict(mdl.svm, train))
 train.results.svm$Result = FALSE
 train.results.svm$Result[train.results.svm$actual == train.results.svm$pred] = TRUE
 
-train.results.nn = data.frame(actual = train$y, pred = predict(mdl.nn, train, type = "class"))
-train.results.nn$Result = FALSE
-train.results.nn$Result[train.results.nn$actual == train.results.nn$pred] = TRUE
-
-train.results.rf = data.frame(actual = train$y, pred = mdl.rf$predicted)
-train.results.rf$Result = FALSE
-train.results.rf$Result[train.results.rf$actual == train.results.rf$pred] = TRUE
-
-
-
 
 
 results = list(
-  SVM.training = table(train.results.svm$Result)/485,
-  SVM.testing = table(results.svm$Result)/10,
-  NN.training = table(train.results.nn$Result)/485,
-  NN.testing = table(results.nn$Result)/10,
-  RF.training = table(train.results.rf$Result)/485,
-  RF.testing = table(results.rf$Result)/10
+  SVM.training = c(round(table(train.results.svm$Result)[[1]]/475, 3),
+                   round(table(train.results.svm$Result)[[2]]/475, 3)),
+  SVM.testing =  c(round(table(results.svm$Result)[[1]]/20, 3),
+                   round(table(results.svm$Result)[[2]]/20, 3))
 )
 
 library(pander)
