@@ -20,7 +20,7 @@ dta = c(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 
 
 dta = data.frame(y = dta)
 
-dta$x1 = 0; dta$x2 = 0; dta$x3 = 0; dta$x4 = 0; dta$x5 = 0
+dta$x1 = NA; dta$x2 = NA; dta$x3 = NA; dta$x4 = NA; dta$x5 = NA
 
 for (i in 2:500) {
   dta$x1[i] = dta$y[i-1]
@@ -42,28 +42,30 @@ for (i in 6:500) {
   dta$x5[i] = dta$y[i-5]
 }
 
+dta = dta[6:500,]
+
 dta[] = lapply(dta, factor)
 
 
-train = dta[1:400, ]
-test = dta[401:500, ]
+train = dta[1:485, ]
+test = dta[486:495, ]
 
 
 
 library(e1071)
 mdl.svm = tune(svm, y ~ ., data = train, 
                ranges = list(
-                 cost = seq(.1, 1, .1), 
+                 cost = seq(1, 20, 2), 
                  gamma = seq(0, 1, .1))
 )
 
-mdl.svm = svm(y ~ ., data = train, cost = 1, gamma = .2, probability = TRUE)
+mdl.svm = svm(y ~ ., data = train, cost = 3, gamma = .2, probability = TRUE)
 
 tmp = predict(mdl.svm, test, probability = TRUE)
 
 results.svm = data.frame(actual = test$y, predicted = tmp)
 results.svm$Result = FALSE
-results.svm$Result[results.svm$actual == results.svm$predicted] = TRUE
+results.svm$Result[which(results.svm$actual == results.svm$predicted)] = TRUE
 
 
 
@@ -73,17 +75,18 @@ mdl.nn = nnet(y ~ ., data = train, size = 5)
 tmp = predict(mdl.nn, test, type = "class")
 results.nn = data.frame(actual = as.numeric(test$y), predicted = as.numeric(tmp))
 results.nn$Result = FALSE
-results.nn$Result[results.nn$actual == results.nn$predicted] = TRUE
-
+results.nn$Result[which(results.nn$actual == results.nn$predicted)] = TRUE
 
 
 library(randomForest)
 mdl.rf = randomForest(y ~ ., ntree = 250, data = train)
 
-tmp = predict(mdl.rf,)
+tmp = predict(mdl.rf, test)
 results.rf = data.frame(actual = as.numeric(test$y), predicted = as.numeric(tmp))
 results.rf$Result = FALSE
-results.rf$Result[results.rf$actual == results.rf$predicted] = TRUE
+results.rf$Result[which(results.rf$actual == results.rf$predicted)] = TRUE
+
+
 
 ## create results for training set
 train.results.svm = data.frame(actual = train$y, pred = predict(mdl.svm, train))
@@ -103,12 +106,14 @@ train.results.rf$Result[train.results.rf$actual == train.results.rf$pred] = TRUE
 
 
 results = list(
-  SVM.training = table(train.results.svm$Result)/400,
-  SVM.testing = table(results.svm$Result)/100,
-  NN.training = table(train.results.nn$Result)/400,
-  NN.testing = table(results.nn$Result)/100,
-  RF.training = table(train.results.rf$Result)/400,
-  RF.testing = table(results.rf$Result)/100
+  SVM.training = table(train.results.svm$Result)/485,
+  SVM.testing = table(results.svm$Result)/10,
+  NN.training = table(train.results.nn$Result)/485,
+  NN.testing = table(results.nn$Result)/10,
+  RF.training = table(train.results.rf$Result)/485,
+  RF.testing = table(results.rf$Result)/10
 )
 
+library(pander)
 
+pandoc.table(results, split.tables = Inf)
