@@ -14,6 +14,7 @@
   - Poisson Regression
   - Logistic Regression
   - Multinomial Logistic Regression
+  - Log Linear Regression
 - Multivariate
   - Eigen and Distance
   - Principal Components
@@ -53,6 +54,8 @@
   - Support Vector Machine
   - Gradient Boosting
   - Bayesian Additive Regression Trees
+- Issues
+  - Overfitting Example
 
 #### **Forecasting**
 - Graphical Methods
