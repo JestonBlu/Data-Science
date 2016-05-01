@@ -15,6 +15,7 @@
   - Logistic Regression
   - Multinomial Logistic Regression
   - Log Linear Regression
+  - Symmetry / Quasi-Symmetry
 - Multivariate
   - Eigen and Distance
   - Principal Components
