@@ -16,6 +16,7 @@
   - Multinomial Logistic Regression
   - Log Linear Regression
   - Symmetry / Quasi-Symmetry
+  - Bradley-Terry Model
 - Multivariate
   - Eigen and Distance
   - Principal Components
