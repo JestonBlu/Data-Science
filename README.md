@@ -75,6 +75,8 @@
   - Self Organizing Maps
 - Interactive
   - Forced Directed Network
+- Animation
+  - 3D Animated Graph
 
 #### **Other Items**
 - caret package
