@@ -7,7 +7,7 @@ output: html_document
 This code requires that you have Image Magik installed in order to convert pictures into one animation
 
 
-```
+```r
 library(mvtnorm)
 library(rgl)
 
@@ -23,11 +23,10 @@ for (i in 1:90) {
   rgl.snapshot(filename=paste("animation/frame-",
                               sprintf("%03d", i), ".png", sep=""))
 }
-
 ```
 
 Additional code needs to be run from a terminal in the `animation` directory in order to compile the images into an animation
 
 `convert -delay 5 -loop 0 frame*.png animated.gif`
 
-![]("animated.gif")
+[Animation]("https://JestonBlu/DataScience/gh-pages/Visualization/plot3d/animated.gif")
