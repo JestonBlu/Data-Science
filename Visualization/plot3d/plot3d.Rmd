@@ -29,4 +29,4 @@ Additional code needs to be run from a terminal in the `animation` directory in 
 
 `convert -delay 5 -loop 0 frame*.png animated.gif`
 
-[Animation]("https://raw.githubusercontent.com/JestonBlu/DataScience/gh-pages/Visualization/plot3d/animated.gif")
+[Animation](animated.gif)
