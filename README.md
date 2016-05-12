@@ -80,4 +80,4 @@
 
 #### **Other Items**
 - caret package
-- parallel processing in windows and linux
+- parallel processing in windows and linux (doParallel, foreach)
