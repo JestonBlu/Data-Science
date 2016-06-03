@@ -1,0 +1,34 @@
+---
+output: html_document
+---
+
+## **Basic Time Series Models**
+
+---
+
+### Manually Generate Time Series Data
+
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.height=6, fig.width=9}
+
+n = 500
+w = rnorm(n, sd = .25)
+
+
+x.t = 0
+
+for (i in 2:n) {
+  x.t[i] = x.t[i-1] + w[i]
+}
+
+plot.ts(x.t)
+
+```
+
+
+### Generate Time Series
+
+```{r b, comment=NA, warning=FALSE, message=FALSE, fig.height=6, fig.width=9}
+
+
+
+```
