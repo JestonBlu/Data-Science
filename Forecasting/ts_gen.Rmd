@@ -1,0 +1,38 @@
+---
+output: html_document
+---
+
+## **Generate Time Series Data**
+
+---
+
+### **Random Walk**
+
+```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
+
+n = 200
+set.seed(1123)
+w = rnorm(n, sd = .25)
+
+
+x.t = 0
+
+for (i in 2:n) {
+  x.t[i] = x.t[i-1] + w[i]
+}
+
+plot.ts(x.t)
+
+
+ylab = "Generated Series"
+
+plot(arima.sim(n = 200, model = list(order = c(0, 0, 0))), 
+     main = "White Noise", ylab = ylab)
+
+
+plot(arima.sim(n = 200, model = list(order = c(1, 1, 0), ar = .1)))
+plot(arima.sim(n = 200, model = list(order = c(1, 1, 0), ar = .5)))
+plot(arima.sim(n = 200, model = list(order = c(1, 1, 0), ar = .9)))
+
+
+```
