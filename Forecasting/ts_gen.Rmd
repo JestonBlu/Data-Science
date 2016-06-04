@@ -10,18 +10,32 @@ output: html_document
 
 ```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
 
-n = 200
-set.seed(1123)
-w = rnorm(n, sd = .25)
+library(TTR)
 
-
+n = 1000
+w = rnorm(n, sd = 1)
 x.t = 0
 
 for (i in 2:n) {
   x.t[i] = x.t[i-1] + w[i]
 }
 
-plot.ts(x.t)
+plot.ts(x.t, main = "Random Walk")
+
+
+
+n = 1000
+w = rnorm(n, sd = 1)
+x.t = 0
+
+for (i in 2:n) {
+  x.t[i] = .1 + .9*x.t[i-1] + w[i]
+}
+
+plot.ts(x.t, main = "Stationary Time Series")
+lines(SMA(x.t, 100), col = "blue", lwd = 3)
+
+
 
 
 ylab = "Generated Series"
