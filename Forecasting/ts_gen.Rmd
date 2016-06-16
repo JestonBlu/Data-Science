@@ -46,7 +46,7 @@ for (i in 2:n) x.t[i] = 1 + .9 * x.t[i-1] + w[i]
 plot.ts(x.t, main = "AR(1) with Drift")
 lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
 
-for (i in 3:n) x.t[i] = 2 + .9*x.t[i-1] - .2*x.t[i-2] + w[i]
+for (i in 3:n) x.t[i] = 1 + .9*x.t[i-1] - .2*x.t[i-2] + w[i]
 
 plot.ts(x.t, main = "AR(2) with Drift")
 lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
@@ -68,12 +68,18 @@ plot(arima.sim(n = n, model = list(order = c(0, 0, 0))), main = "White Noise", y
 
 par(mfrow = c(2, 2))
 
-## AR(1) with differing Phi (correlation between observations) p(h) = phi^h
-for (i in c(-.9, .01, .7, .99)) {
-  plot(arima.sim(n = n, model = list(order = c(1, 0, 0), ar = i)), 
-       main = bquote(AR(1)~~~phi==.(i)), ylab = "")
+## AR(1) (correlation between observations) p(h) = phi^h
+for (i in c(-.9, .01, .7, .9)) {
+  plot(arima.sim(n = n, model = list(ar = i)), main = bquote(AR(1)~~~phi==.(i)), ylab = "")
 }
 
+
+
+## AR(2)
+plot(arima.sim(n = n, model = list(ar = c(-.9, -.8))), main = "AR(2)", ylab = "")
+plot(arima.sim(n = n, model = list(ar = c(.5, .4))), main = "AR(2)", ylab = "")
+plot(arima.sim(n = n, model = list(ar = c(.9, .5))), main = "AR(2)", ylab = "")
+plot(arima.sim(n = n, model = list(ar = c(.1, .1))), main = "AR(2)", ylab = "")
 
 
 ```
