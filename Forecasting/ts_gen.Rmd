@@ -10,7 +10,6 @@ output: html_document
 
 ```{r a, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
 
-library(TTR)
 library(forecast)
 
 ## Set parameters
@@ -25,36 +24,29 @@ par(mfrow = c(1,2))
 for (i in 2:n) x.t[i] = w[i]
 
 plot.ts(x.t, main = "White Noise")
-lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
 Acf(x.t, main = "ACF Plot")
 
 ## Random Walk, AR(1)
 for (i in 2:n) x.t[i] = x.t[i-1] + w[i]
 
 plot.ts(x.t, main = "Random Walk")
-lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
 
 ## Random Walk with Drift, AR(1)
 for (i in 2:n) x.t[i] = .2 + x.t[i-1] + w[i]
 
 plot.ts(x.t, main = "Random Walk with Drift")
-lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
 
 ## AR(p)
 for (i in 2:n) x.t[i] = 1 + .9 * x.t[i-1] + w[i]
 
 plot.ts(x.t, main = "AR(1) with Drift")
-lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
 
 for (i in 3:n) x.t[i] = 1 + .9*x.t[i-1] - .2*x.t[i-2] + w[i]
 
 plot.ts(x.t, main = "AR(2) with Drift")
-lines(SMA(x.t, 20), col = "blue", lwd = 2, lty = 2)
-
 
 ## graphical parameters
 par(mfrow = c(1,1))
-
 
 ```
 
