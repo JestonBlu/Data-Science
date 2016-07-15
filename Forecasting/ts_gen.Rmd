@@ -28,22 +28,18 @@ Acf(x.t, main = "ACF Plot")
 
 ## Random Walk, AR(1)
 for (i in 2:n) x.t[i] = x.t[i-1] + w[i]
+plot.ts(x.t, main = "AR(1) Random Walk")
 
-plot.ts(x.t, main = "Random Walk")
+## Random Walk, AR(2)
+for (i in 3:n) x.t[i] = .5*x.t[i-1] - .4*x.t[i-2] + w[i]
+plot.ts(x.t, main = "AR(2)")
 
-## Random Walk with Drift, AR(1)
-for (i in 2:n) x.t[i] = .2 + x.t[i-1] + w[i]
+## MA(1)
+for (i in 2:n) x.t[i] = w[i] + w[i-1]
+plot.ts(x.t, main = "MA(1)")
 
-plot.ts(x.t, main = "Random Walk with Drift")
-
-## AR(p)
-for (i in 2:n) x.t[i] = 1 + .9 * x.t[i-1] + w[i]
-
-plot.ts(x.t, main = "AR(1) with Drift")
-
-for (i in 3:n) x.t[i] = 1 + .9*x.t[i-1] - .2*x.t[i-2] + w[i]
-
-plot.ts(x.t, main = "AR(2) with Drift")
+for (i in 3:n) x.t[i] = w[i] + w[i-1] + w[i-2]
+plot.ts(x.t, main = "MA(2)")
 
 ## graphical parameters
 par(mfrow = c(1,1))
@@ -70,15 +66,15 @@ plot(arima.sim(n = n, model = list(order = c(2, 0, 0), ar = c(.2, .1))),
      main = "AR(2)", ylab = "")
 
 ## AR(2) with drift
-plot(arima.sim(n = n, model = list(order = c(2, 1, 0), ar = c(.2, .1), d = .9)), 
+plot(arima.sim(n = n, model = list(order = c(2, 0, 0), ar = c(.2, .1), d = 1.5)), 
      main = "AR(2) with drift", ylab = "")
 
 ## MA(3)
-plot(arima.sim(n = n, model = list(order = c(0, 0, 3), ma = c(.1, .8, .1))), 
+plot(arima.sim(n = n, model = list(order = c(0, 0, 3), ma = c(.3, .3, .3))), 
      main = "MA(3)", ylab = "")
 
 ## MA(3) with drift
-plot(arima.sim(n = n, model = list(order = c(0, 1, 3), ma = c(.1, .8, .1), d = .9)), 
+plot(arima.sim(n = n, model = list(order = c(0, 0, 3), ma = c(.1, .8, .1), d = 2)), 
      main = "MA(3) with drift", ylab = "")
 
 ## ARMA(2,3)
