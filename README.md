@@ -61,6 +61,7 @@
 
 #### **Forecasting**
 - Graphical Methods
+- Time Series Models
 - Linear Regression
 - ARIMA/SARIMA
 - Fractional ARIMA
