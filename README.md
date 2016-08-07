@@ -63,6 +63,7 @@
 - Graphical Methods
 - Time Series Models
 - Linear Regression
+- ARCH/GARCH
 - ARIMA/SARIMA
 - Fractional ARIMA
 - VAR
