@@ -61,7 +61,14 @@
 
 #### **Forecasting**
 - Graphical Methods
-- Varying Coefficients Model for Seasonal data
+- Time Series Models
+- Linear Regression
+- ARCH/GARCH
+- ARIMA/SARIMA
+- Fractional ARIMA
+- VAR
+- Examples
+  - Forecasting Unemployment
 
 #### **Simulation**
 - Sales Simulation
