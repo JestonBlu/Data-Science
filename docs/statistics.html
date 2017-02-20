@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="me.html">
+<link rel="prev" href="index.html">
 
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -87,6 +87,7 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -98,9 +99,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>My Stuff</a></li>
-<li class="chapter" data-level="" data-path="me.html"><a href="me.html"><i class="fa fa-check"></i>Me</a></li>
-<li class="chapter" data-level="" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i>Contingency Tables</a></li>
+Data Science and Statistics
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i>Statistics</a><ul>
+<li class="chapter" data-level="" data-path="statistics.html"><a href="statistics.html#categorical"><i class="fa fa-check"></i>Categorical</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="statistics.html"><a href="statistics.html#contingency-tables"><i class="fa fa-check"></i><b>0.0.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="statistics.html"><a href="statistics.html#logistic-regression"><i class="fa fa-check"></i>Logistic Regression</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -118,9 +125,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="contingency-tables" class="section level1 unnumbered">
-<h1>Contingency Tables</h1>
+<div id="statistics" class="section level1 unnumbered">
+<h1>Statistics</h1>
 <hr />
+<div id="categorical" class="section level2 unnumbered">
+<h2>Categorical</h2>
+<hr />
+<div id="contingency-tables" class="section level3">
+<h3><span class="header-section-number">0.0.1</span> Contingency Tables</h3>
 <table style="width:83%;">
 <caption>Data for applicant entrance for 6 departments</caption>
 <colgroup>
@@ -184,10 +196,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dta$OR =<span class="st"> </span><span class="kw">with</span>(dta, (Male.Yes *<span class="st"> </span>Female.No) /<span class="st"> </span>(Male.No *<span class="st"> </span>Female.Yes))
-dta$se =<span class="st"> </span><span class="kw">with</span>(dta, (<span class="kw">sqrt</span>(<span class="dv">1</span>/Male.Yes +<span class="st"> </span><span class="dv">1</span>/Female.No +<span class="st"> </span><span class="dv">1</span>/Male.No +<span class="st"> </span><span class="dv">1</span>/Female.Yes)))
-dta$Conf.lwr =<span class="st"> </span><span class="kw">with</span>(dta, OR -<span class="st"> </span>(<span class="fl">1.96</span> *<span class="st"> </span>se))
-dta$Conf.Upr =<span class="st"> </span><span class="kw">with</span>(dta, OR +<span class="st"> </span>(<span class="fl">1.96</span> *<span class="st"> </span>se))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dta<span class="op">$</span>OR =<span class="st"> </span><span class="kw">with</span>(dta, (Male.Yes <span class="op">*</span><span class="st"> </span>Female.No) <span class="op">/</span><span class="st"> </span>(Male.No <span class="op">*</span><span class="st"> </span>Female.Yes))
+dta<span class="op">$</span>se =<span class="st"> </span><span class="kw">with</span>(dta, (<span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>Male.Yes <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Male.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.Yes)))
+dta<span class="op">$</span>Conf.lwr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">-</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
+dta<span class="op">$</span>Conf.Upr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">+</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
 
 <span class="kw">pandoc.table</span>(dta, <span class="dt">split.tables =</span> <span class="ot">Inf</span>)</code></pre></div>
 <table>
@@ -284,17 +296,17 @@ dta$Conf.Upr =<span class="st"> </span><span class="kw">with</span>(dta, OR +<sp
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal =<span class="st"> </span><span class="kw">colSums</span>(dta[, <span class="dv">2</span>:<span class="dv">5</span>])
-OR =<span class="st"> </span>(marginal[<span class="dv">1</span>] *<span class="st"> </span>marginal[<span class="dv">4</span>]) /<span class="st"> </span>(marginal[<span class="dv">2</span>] *<span class="st"> </span>marginal[<span class="dv">3</span>])
-se =<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span>/marginal[<span class="dv">1</span>] +<span class="st"> </span><span class="dv">1</span>/marginal[<span class="dv">4</span>] +<span class="st"> </span><span class="dv">1</span>/marginal[<span class="dv">2</span>] +<span class="st"> </span><span class="dv">1</span>/marginal[<span class="dv">3</span>])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal =<span class="st"> </span><span class="kw">colSums</span>(dta[, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])
+OR =<span class="st"> </span>(marginal[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">4</span>]) <span class="op">/</span><span class="st"> </span>(marginal[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">3</span>])
+se =<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">3</span>])
 
 ## Confidence Interval for the Marginal OR
-OR +<span class="st"> </span><span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>) *<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>se</code></pre></div>
+OR <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se</code></pre></div>
 <pre><code>[1] 1.71585 1.96631</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DescTools)
 <span class="kw">library</span>(lawstat)
 
-dta =<span class="st"> </span><span class="kw">xtabs</span>(freq ~<span class="st"> </span>.,
+dta =<span class="st"> </span><span class="kw">xtabs</span>(freq <span class="op">~</span><span class="st"> </span>.,
             <span class="kw">cbind</span>(<span class="kw">expand.grid</span>(<span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>),
                               <span class="dt">Entrace =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),
                               <span class="dt">Department =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>)),
@@ -324,12 +336,79 @@ Estimate = 0.90470, Pooled Odd Ratio = 1.84110, Odd Ratio of level
 <p>Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.</p>
 
 </div>
+<div id="logistic-regression" class="section level3 unnumbered">
+<h3>Logistic Regression</h3>
+<hr />
+<p><strong>Data Background</strong></p>
+<p>NAME: Prostate Cancer Study (PCS.DATA) SIZE: 380 observations, 9 variables</p>
+<p>SOURCE: Hosmer and Lemeshow (2000) Applied Logistic Regression: Second Edition. These data are copyrighted by John Wiley &amp; Sons Inc. and must be acknowledged and used accordingly.</p>
+<p>DESCRIPTIVE ABSTRACT:</p>
+<p>These data are described in Section 1.6.3 page 25, of the source text.</p>
+<p>LIST OF VARIABLES:</p>
+<p>1 Identification Code: 1 - 380 2 Tumor Penetration of Prostatic Capsule: 0 = No Penetration, 1 = Penetration 3 Age: Years 4 Race: 1= White, 2 = Black 5 Results of the Digital Rectal Exam: 1 = No Nodule, 2 = Unilobar Nodule (Left), 3 = Unilobar Nodule (Right), 4 = Bilobar Nodule 6 Detection of Capsular Involvement in Rectal Exam: 1 = No, 2 = Yes 7 Prostatic Specific Antigen Value: mg/ml 8 Tumor Volume Obtained from Ultrasound: cm3 9 Total Gleason Score: 0 - 10</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(popbio)
+<span class="kw">library</span>(Deducer)
+
+dta =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Statistics/Categorical/data/pros.csv&quot;</span>)
+
+<span class="kw">head</span>(dta)</code></pre></div>
+<pre><code>  ID CAPSULE AGE RACE DPROS DCAPS  PSA  VOL GLEASON
+1  1       0  65    1     2     1  1.4  0.0       6
+2  2       0  72    1     3     2  6.7  0.0       7
+3  3       0  70    1     1     2  4.9  0.0       6
+4  4       0  76    2     2     1 51.2 20.0       7
+5  5       0  69    1     1     1 12.3 55.9       6
+6  6       1  71    1     3     2  3.3  0.0       8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdl =<span class="st"> </span><span class="kw">glm</span>(CAPSULE <span class="op">~</span><span class="st"> </span>AGE <span class="op">+</span><span class="st"> </span>RACE <span class="op">+</span><span class="st"> </span>DPROS <span class="op">+</span><span class="st"> </span>DCAPS <span class="op">+</span><span class="st"> </span>PSA <span class="op">+</span><span class="st"> </span>VOL <span class="op">+</span><span class="st"> </span>GLEASON,
+          <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">data =</span> dta)
+
+<span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = CAPSULE ~ AGE + RACE + DPROS + DCAPS + PSA + VOL + 
+    GLEASON, family = binomial(), data = dta)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.4058  -0.7772  -0.4416   0.9019   2.3771  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -6.915650   1.728754  -4.000 6.32e-05 ***
+AGE         -0.015825   0.019517  -0.811  0.41745    
+RACE        -0.695258   0.476106  -1.460  0.14421    
+DPROS        0.551597   0.136545   4.040 5.35e-05 ***
+DCAPS        0.479916   0.463728   1.035  0.30071    
+PSA          0.027196   0.009922   2.741  0.00613 ** 
+VOL         -0.010840   0.007753  -1.398  0.16204    
+GLEASON      0.972442   0.167259   5.814 6.10e-09 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 506.59  on 375  degrees of freedom
+Residual deviance: 377.31  on 368  degrees of freedom
+  (4 observations deleted due to missingness)
+AIC: 393.31
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logi.hist.plot</span>(<span class="kw">sqrt</span>(dta<span class="op">$</span>PSA), dta<span class="op">$</span>CAPSULE, <span class="dt">logi.mod =</span> <span class="dv">1</span>, <span class="dt">boxp =</span> <span class="ot">FALSE</span>, <span class="dt">notch =</span> <span class="ot">FALSE</span>,
+               <span class="dt">main =</span> <span class="st">&quot;Logistic Regression plot for PSA&quot;</span>,
+               <span class="dt">xlab =</span> <span class="st">&quot;PSA&quot;</span>)</code></pre></div>
+<p><img src="datascience_files/figure-html/lg01-1.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rocplot</span>(mdl)</code></pre></div>
+<p><img src="datascience_files/figure-html/lg01-2.png" width="864" /></p>
+
+</div>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="me.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

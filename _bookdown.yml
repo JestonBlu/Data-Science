@@ -6,4 +6,7 @@ output_dir: "docs"
 site: bookdown::gitbook
 github-repo: "jestonblu/datascience"
 description: "This is a minimal example"
-rmd_files: ["index.Rmd", "intro.Rmd", "Statistics/Categorical/contingency.Rmd"]
+rmd_files: [
+  "index.Rmd",
+  "Statistics/Categorical/contingency.Rmd", # Statistis Heahder
+  "Statistics/Categorical/logistic.Rmd"]

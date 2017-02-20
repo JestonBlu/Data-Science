@@ -1,8 +1,8 @@
-# Contingency Tables {-}
+# Statistics: Categorical {-}
 
----
+## Contingency Tables
 
-```{r a, comment=NA, echo=FALSE, results='asis'}
+```{r cn01, comment=NA, echo=FALSE, results='asis'}
 library(pander)
 
 dta = data.frame(
@@ -17,7 +17,7 @@ pandoc.table(dta, caption = "Data for applicant entrance for 6 departments")
 
 ```
 
-```{r b, comment=NA, results='asis'}
+```{r cn02, comment=NA, results='asis'}
 dta$OR = with(dta, (Male.Yes * Female.No) / (Male.No * Female.Yes))
 dta$se = with(dta, (sqrt(1/Male.Yes + 1/Female.No + 1/Male.No + 1/Female.Yes)))
 dta$Conf.lwr = with(dta, OR - (1.96 * se))
@@ -27,7 +27,7 @@ pandoc.table(dta, split.tables = Inf)
 
 ```
 
-```{r c, comment=NA}
+```{r cn03, comment=NA}
 
 marginal = colSums(dta[, 2:5])
 OR = (marginal[1] * marginal[4]) / (marginal[2] * marginal[3])
@@ -38,7 +38,7 @@ OR + c(-1, 1) * 1.96 * se
 
 ```
 
-```{r d, comment=NA, warning=FALSE, message=FALSE}
+```{r cn04, comment=NA, warning=FALSE, message=FALSE}
 library(DescTools)
 library(lawstat)
 
@@ -60,4 +60,3 @@ cmh.test(dta)
 ```
 
 Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.
-
