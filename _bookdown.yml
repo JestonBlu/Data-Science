@@ -1,0 +1,9 @@
+title: "Data Science Book"
+author: "JestonBlu"
+date: "`r Sys.Date()`"
+book_filename: "datascience"
+output_dir: "docs"
+site: bookdown::gitbook
+github-repo: "jestonblu/datascience"
+description: "This is a minimal example"
+rmd_files: ["index.Rmd", "intro.Rmd", "Statistics/Categorical/contingency.Rmd"]
