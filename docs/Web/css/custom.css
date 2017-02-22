@@ -1,0 +1,50 @@
+body {
+  overflow-y: hidden;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {}
+/* Landscape tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+/* Portrait tablets and small desktops */
+
+@media (min-width: 768px) and (max-width: 991px) {}
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 767px) {}
+/* Portrait phones and smaller */
+
+@media (max-width: 480px) {}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-image: none !important;
+  background-color: #555;
+}
+
+.my-responsive-table-wrapper {
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid #dddddd;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+}
+
+.icon-r {
+  width: 13px;
+  height: 13px;
+}
+
+.icon-js {
+  width: 15px;
+  height: 15px;
+  padding-bottom: 1px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
