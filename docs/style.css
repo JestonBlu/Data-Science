@@ -1,14 +1,50 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
+/*********************************************
+ * CUSTOM CSS
+ *********************************************/
+
+.reveal table {
+  border-width: 1px;
+  border-spacing: 2px;
+  border-style: none;
+  border-color: black;
+  border-collapse: collapse;
+  font-size: 0.7em;
+  white-space: nowrap;
 }
-p code {
-  white-space: inherit;
+
+.reveal table th {
+  border-width: 0px;
+  padding-left: 10px;
+  padding-right: 25px;
+  font-weight: bold;
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-color: gray;
+  text-align: center;
+  white-space: nowrap;
 }
-pre {
-  word-break: normal;
-  word-wrap: normal;
+
+.reveal table td {
+  border-width: 1px;
+  padding-left: 10px;
+  padding-right: 25px;
+  border-style: none;
+  border-color: gray;
+  white-space: nowrap;
 }
-pre code {
-  white-space: inherit;
+
+.small-code pre code {
+  font-size: 1em;
+}
+
+.note {
+  color: #a74646;
+  background: #d1d0cf;
+  border-radius: 25px;
+  width: 70%;
+  padding: 10px;
+}
+
+.MathJax {
+font-size: .5em;
 }

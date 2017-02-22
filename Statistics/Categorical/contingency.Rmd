@@ -1,9 +1,9 @@
 # Statistics: Categorical {-}
 
-## Contingency Tables
+## Contingency Tables {-}
 
 ```{r cn01, comment=NA, echo=FALSE, results='asis'}
-library(pander)
+library(knitr)
 
 dta = data.frame(
   Department = c(1, 2, 3, 4 ,5, 6),
@@ -13,7 +13,7 @@ dta = data.frame(
   Female.No = c(19, 8, 391, 244, 299, 317)
 )
 
-pandoc.table(dta, caption = "Data for applicant entrance for 6 departments")
+kable(dta, caption = "Data for applicant entrance for 6 departments")
 
 ```
 
@@ -23,7 +23,7 @@ dta$se = with(dta, (sqrt(1/Male.Yes + 1/Female.No + 1/Male.No + 1/Female.Yes)))
 dta$Conf.lwr = with(dta, OR - (1.96 * se))
 dta$Conf.Upr = with(dta, OR + (1.96 * se))
 
-pandoc.table(dta, split.tables = Inf)
+kable(dta, split.tables = Inf)
 
 ```
 
