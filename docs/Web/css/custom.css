@@ -3,7 +3,7 @@ body {
 }
 
 /* Large desktops and laptops */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) and (max-height: 800px) {}
 /* Landscape tablets and medium desktops */
 
 @media (min-width: 992px) and (max-width: 1199px) {}
@@ -47,4 +47,9 @@ body {
 .logo {
   width: 60px;
   height: 60px;
+}
+
+iframe {
+    min-height: 600px; /* or whatever */
+    max-height: 900px; /* or whatever */
 }
