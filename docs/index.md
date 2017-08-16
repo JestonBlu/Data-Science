@@ -1,15 +1,15 @@
 --- 
-title: "A Minimal Bookdown Book"
-author: "Sean Kross"
-date: "2016-12-09"
+title: "Data Science Tasks"
+author: "Joseph Blubaugh"
+date: "2017-08-15"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: seankross/bookdown-start
-url: 'http\://seankross.com/bookdown-start/'
-description: "Everything you need (and nothing more) to start a bookdown book."
+github-repo: jestonblu/datascience
+url: 'http\://github.com/jestonblu/datascience'
+description: "Data Science and Statistical Analysis I want to remember"
 ---
 
 # Preface {-}

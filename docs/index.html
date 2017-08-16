@@ -5,28 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A Minimal Bookdown Book</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="Everything you need (and nothing more) to start a bookdown book.">
-  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.4.3 and GitBook 2.6.7">
 
-  <meta property="og:title" content="A Minimal Bookdown Book" />
+  <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://seankross.com/bookdown-start/" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
   
-  <meta property="og:description" content="Everything you need (and nothing more) to start a bookdown book." />
-  <meta name="github-repo" content="seankross/bookdown-start" />
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Bookdown Book" />
+  <meta name="twitter:title" content="Data Science Tasks" />
   
-  <meta name="twitter:description" content="Everything you need (and nothing more) to start a bookdown book." />
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
   
 
-<meta name="author" content="Sean Kross">
+<meta name="author" content="Joseph Blubaugh">
 
-<meta name="date" content="2016-12-09">
 
+<meta name="date" content="2017-08-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 
 <link rel="next" href="introduction.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -57,127 +55,7 @@
 
 <body>
 
-<<<<<<< HEAD
-  <!-- Fixed navbar -->
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a class="navbar-brand" href="about_me.html" target="contentFrame">Data Science</a>
-        </li>
-        <!--Statistics -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Statistical Methods <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header"><b>Basic Methods</b></li>
-            <li><a href="Statistics/Methods/distributions.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Continuous Distribution Fitting</a></li>
-            <li><a href="Statistics/Methods/goodness_of_fit.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Discrete Distribution Fitting</a></li>
-            <li><a href="Statistics/Methods/t_test.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Hypothesis Testing and Power</a></li>
-            <li><a href="Statistics/Methods/sample_size.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Sample Size and Power</a></li>
-            <li><a href="Statistics/Methods/bootstrap.html" target="contentFrame" role="menuitem"><img class="icon-r" src="Web/img/rlogo.png"/>     Parameter Estimation by Bootstrap</a></li>
-            <li><a href="Statistics/Methods/survival.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Survival Analysis</a></li>
-            <
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Categorical</b></li>
-            <li><a href="Statistics/Categorical/contingency.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Contingency Tables</a></li>
-            <!-- <li><a href="Statistics/Categorical/proportion.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Analysis of Proportion</a></li> -->
-            <li><a href="Statistics/Categorical/poisson.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Poisson Regression</a></li>
-            <li><a href="Statistics/Categorical/logistic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Logistic Regression</a></li>
-            <li><a href="Statistics/Categorical/mutinom_logistic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Multinomial Logistic Regression</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Multivariate</b></li>
-            <li><a href="Statistics/Multivariate/eigen.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Eigen & Distance</a></li>
-            <li><a href="Statistics/Multivariate/prin_comp.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Principal Components</a></li>
-            <!-- <li><a href="Statistics/Multivariate/mds.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Multidimensional Scaling</a></li> -->
-            <!-- <li><a href="Statistics/Multivariate/biplot.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Biplots</a></li> -->
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Experimental Design</b></li>
-            <li><a href="Statistics/Design/CRD.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     CRD</a></li>
-            <li><a href="Statistics/Design/RCBD.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     RCBD</a></li>
-            <!-- <li><a href="Statistics/Design/LatinSquare.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Latin Square</a></li> -->
-            <!-- <li><a href="Statistics/Design/Mixed.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Mixed Models</a></li> -->
-          </ul>
-        </li>
-        <!-- Regression -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Regression <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Basic</b></li>
-            <li><a href="Regression/regression_basic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Matrix Regression</a></li>
-            <li><a href="Regression/regression_multiple.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Basic Multivariate Regression</a></li>
-            <!-- <li><a href="Regression/Poisson.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Poisson</a></li> -->
-            <!-- <li><a href="Regression/Logistic.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Logistic</a></li> -->
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Advanced</b></li>
-            <!-- <li><a href="Regression/glm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     General Linear Model (GLM)</a></li> -->
-            <!-- <li><a href="Regression/cart.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Regression Tree (CART)</a></li> -->
-            <!-- <li><a href="Regression/lasso.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Lasso</a></li> -->
-            <!-- <li><a href="Regression/ridge.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Ridge</a></li> -->
-          </ul>
-        </li>
-        <!-- Clustering -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Clustering <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Rule Based</b></li>
-            <li><a href="Clustering/hierarchical.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Hierarchical</a></li>
-            <li><a href="Clustering/kmeans.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Kmeans</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Model Based</b></li>
-            <!-- <li><a href="Clustering/em.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     EM</a></li> -->
-          </ul>
-        </li>
-        <!-- Machine learning -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Machine Learning <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Basic Classification</b></li>
-            <li><a href="MachineLearning/basic_nn.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Neural Net</a></li>
-            <li><a href="MachineLearning/basic_rf.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Random Forest</a></li>
-            <li><a href="MachineLearning/basic_svm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Support Vector Machine</a></li>
-            <li><a href="MachineLearning/basic_gbm.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Gradient Boosting</a></li>
-            <!-- <li><a href="MachineLearning/basic_bart.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Bayesian Additive Regression Tree</a></li> -->
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Issues</b></li>
-            <li><a href="MachineLearning/overfitting.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Overfitting</a></li>
-          </ul>
-        </li>
-        <!-- Forecasting -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Forecasting <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Methods</b></li>
-            <li><a href="Forecasting/graphical.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Graphical Methods</a></li>
-            <li><a href="Forecasting/ts_gen.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Generating Time Series</a></li>
-          </ul>
-        </li>
-        <!-- Simulation -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Simulation <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Basic</b></li>
-            <li><a href="Simulation/boot_bjsales.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Simple Bootstrap</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Advanced</b></li>
-          </ul>
-        </li>
-        <!-- Visualization -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Visualization <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"><b>Static</b></li>
-            <li><a href="Visualization/maps/maps.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Choropleth Mapping</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Interactive</b></li>
-            <li><a href="Visualization/force_network/index.html" target="contentFrame"><img class="icon-r" src="Web/img/jslogo.png"/>     Force Directed Network</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header"><b>Animation</b></li>
-            <li><a href="Visualization/plot3d/plot3d.html" target="contentFrame"><img class="icon-r" src="Web/img/rlogo.png"/>     Plot 3d Animation</a></li>
-          </ul>
-        </li>
-      </ul>
-=======
+
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
@@ -197,53 +75,28 @@
 </ul>
 
       </nav>
->>>>>>> bookdown
     </div>
 
     <div class="book-body">
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Bookdown Book</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
           </h1>
         </div>
 
         <div class="page-wrapper" tabindex="-1" role="main">
           <div class="page-inner">
 
-<<<<<<< HEAD
-    <div id="container-fluid">
-      <!--<div id="page-content-wrapper"> -->
-      <div class="embed-responsive embed-responsive-16by9" style="overflow:auto;-webkit-overflow-scrolling:touch;">
-        <iframe class="iframe" name="contentFrame" src="about_me.html"></iframe>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Javascript -------------------------------------------->
-  <!-- jQuery -->
-  <script src="Web/js/jquery.js"></script>
-  <!-- Bootstrap -->
-  <script src="Web/js/bootstrap.min.js"></script>
-  <!-- Menu Toggle Script -->
-  <script type="text/javascript">
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
-=======
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">A Minimal Bookdown Book</h1>
-<h4 class="author"><em>Sean Kross</em></h4>
-<h4 class="date"><em>2016-12-09</em></h4>
+<h1 class="title">Data Science Tasks</h1>
+<h4 class="author"><em>Joseph Blubaugh</em></h4>
+<h4 class="date"><em>2017-08-15</em></h4>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <p>This is the very first part of the book.</p>
-
 
 </div>
             </section>
@@ -252,8 +105,9 @@
         </div>
       </div>
 
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -262,9 +116,10 @@
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -290,7 +145,6 @@ gitbook.start({
 });
 </script>
 
->>>>>>> bookdown
 </body>
 
 </html>
