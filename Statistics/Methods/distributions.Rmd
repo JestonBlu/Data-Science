@@ -1,5 +1,7 @@
 ---
-output: html_document
+output: 
+  html_document: 
+    css: ~/Projects/datascience/docs/Web/css/bootstrap.min.css
 ---
 
 ## **Continuous Distribution Fitting**
