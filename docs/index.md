@@ -1,7 +1,7 @@
 --- 
 title: "A Minimal Bookdown Book"
 author: "Sean Kross"
-date: "`r Sys.Date()`"
+date: "2016-12-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
