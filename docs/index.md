@@ -1,7 +1,7 @@
 --- 
 title: "Data Science Tasks"
 author: "Joseph Blubaugh"
-date: "2017-08-15"
+date: "2017-08-16"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
