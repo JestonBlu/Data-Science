@@ -2,8 +2,8 @@
 
 This is the first real chapter.
 
-# Intro 2
+## Intro 2
 
-## Sub chapter
+### Sub chapter
 
-# Intro 3
+## Intro 3
