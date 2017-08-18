@@ -5,7 +5,6 @@
   * Formal Tests for Distribution Fit
   * Maximum Likelihood calculation
 
-
 ### Normal Distribution {-}
 
 ```{r a1, comment=NA, fig.width=8, fig.height=7, warning=FALSE, message=FALSE}
@@ -66,8 +65,6 @@ plot(ecdf(x2), main = "Empiracle CDF")
 
 ```
 
----
-
 ### Calculating the MLE manually {-}
 
 ```{r a5, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
@@ -98,6 +95,5 @@ abline(h = mle, v = mle.beta, lty = 2)
 ## QQplot for assessing distribution fit visually
 qqplot(qexp(ppoints(10), rate = 1/mle.beta), X, xlab = "QQ", main = "QQ Plot")
 qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta))
-
 
 ```

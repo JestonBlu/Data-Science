@@ -5,7 +5,6 @@
   * Formal Tests for Distribution Fit
   * Maximum Likelihood calculation
 
-
 ### Normal Distribution {-}
 
 
@@ -119,8 +118,6 @@ plot(ecdf(x2), main = "Empiracle CDF")
 ```
 
 <img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" />
-
----
 
 ### Calculating the MLE manually {-}
 
