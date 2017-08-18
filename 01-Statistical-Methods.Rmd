@@ -1,11 +1,10 @@
 # Statistical Methods {-}
 
 ## Continuous Distribution Fitting {-}
-
-##### Techniques Used {-}
   * Assessing Distributions Visually
   * Formal Tests for Distribution Fit
   * Maximum Likelihood calculation
+
 
 ### Normal Distribution {-}
 
