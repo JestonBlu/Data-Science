@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -67,11 +104,12 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#intro-2"><i class="fa fa-check"></i>Intro 2</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#sub-chapter"><i class="fa fa-check"></i>Sub chapter</a></li>
+<li><a href="statistical-methods.html#statistical-methods"><strong>Statistical Methods</strong></a><ul>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Continuous Distribution Fitting</a><ul>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#normal-distribution"><i class="fa fa-check"></i>Normal Distribution</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-squared-distribution"><i class="fa fa-check"></i>Chi-squared Distribution</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#calculating-the-mle-manually"><i class="fa fa-check"></i>Calculating the MLE manually</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#intro-3"><i class="fa fa-check"></i>Intro 3</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 <li class="divider"></li>
@@ -95,17 +133,123 @@
 
             <section class="normal" id="section-">
 <div id="statistical-methods" class="section level1 unnumbered">
-<h1>Statistical Methods</h1>
-<p>This is the first real chapter.</p>
-<div id="intro-2" class="section level2 unnumbered">
-<h2>Intro 2</h2>
-<div id="sub-chapter" class="section level3 unnumbered">
-<h3>Sub chapter</h3>
-</div>
-</div>
-<div id="intro-3" class="section level2 unnumbered">
-<h2>Intro 3</h2>
+<h1><strong>Statistical Methods</strong></h1>
+<div id="continuous-distribution-fitting" class="section level2 unnumbered">
+<h2>Continuous Distribution Fitting</h2>
+<ul>
+<li><strong>Techniques Used</strong></li>
+<li>Assessing Distributions Visually</li>
+<li>Formal Tests for Distribution Fit</li>
+<li>Maximum Likelihood</li>
+</ul>
+<div id="normal-distribution" class="section level3 unnumbered">
+<h3>Normal Distribution</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nortest)
+<span class="kw">library</span>(MASS)
 
+## Draw some random data
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>)
+
+## Distribution plots
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+<span class="kw">qqnorm</span>(x1)
+<span class="kw">qqline</span>(x1)
+<span class="kw">boxplot</span>(x1, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)
+<span class="kw">hist</span>(x1, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(x1))
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(x1), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a1-1.png" width="768" /></p>
+<p>QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.</p>
+<p>Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
+<span class="kw">shapiro.test</span>(x1)     ## Shapiro-Wilk Test</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  x1
+W = 0.95643, p-value = 0.4753</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ad.test</span>(x1)          ## Anderson Darling Test</code></pre></div>
+<pre><code>
+    Anderson-Darling normality test
+
+data:  x1
+A = 0.27523, p-value = 0.6216</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ks.test</span>(x1, <span class="st">&#39;pnorm&#39;</span>) ## Kolmogorov-Smirnoff Test</code></pre></div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  x1
+D = 0.13528, p-value = 0.8109
+alternative hypothesis: two-sided</code></pre>
+</div>
+<div id="chi-squared-distribution" class="section level3 unnumbered">
+<h3>Chi-squared Distribution</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Draw some random data
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+x2 =<span class="st"> </span><span class="kw">rchisq</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dv">2</span>)
+
+## Estimate the DF parameter by maximum likelihood
+<span class="kw">fitdistr</span>(<span class="dt">x =</span> x2, dchisq, <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">df =</span> <span class="dv">2</span>))</code></pre></div>
+<pre><code>      df    
+  1.8140625 
+ (0.3244201)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Input the estimate from MLE
+<span class="kw">ks.test</span>(<span class="dt">x =</span> x2, <span class="dt">y =</span> pchisq, <span class="dt">df =</span> <span class="fl">1.8140625</span>)</code></pre></div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  x2
+D = 0.15608, p-value = 0.6584
+alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Distribution plots
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+<span class="kw">qqplot</span>(<span class="kw">qchisq</span>(<span class="kw">ppoints</span>(<span class="dv">20</span>), <span class="dt">df =</span> <span class="fl">1.8140625</span>), x2, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
+<span class="kw">qqline</span>(x2, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qchisq</span>(p, <span class="dt">df =</span> <span class="fl">1.8140625</span>))
+<span class="kw">boxplot</span>(x2, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)
+<span class="kw">hist</span>(x2, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(x2))
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(x2), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" /></p>
+<hr />
+</div>
+<div id="calculating-the-mle-manually" class="section level3 unnumbered">
+<h3>Calculating the MLE manually</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate data from the exponential distribution with mean = 1/5
+<span class="kw">set.seed</span>(<span class="dv">1000</span>)
+X =<span class="st"> </span><span class="kw">rexp</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">rate =</span> <span class="dv">5</span>)
+
+## sample size and range of betas to test
+n =<span class="st"> </span><span class="dv">20</span>; beta =<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, .<span class="dv">5</span>, <span class="dt">by =</span> .<span class="dv">01</span>)
+
+## Liklihood function
+Likelihood =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>beta)<span class="op">^</span>n <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">1</span><span class="op">/</span>beta <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(X))
+
+## Maximum Likelihood
+(<span class="dt">mle =</span> <span class="kw">max</span>(Likelihood))</code></pre></div>
+<pre><code>[1] 276565.8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mle.beta =</span> beta[<span class="kw">which</span>(Likelihood <span class="op">==</span><span class="st"> </span>mle)])</code></pre></div>
+<pre><code>[1] 0.2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Statistical test for how well the specified distribution fits the data
+<span class="kw">ks.test</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="st">&quot;pexp&quot;</span>, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta)</code></pre></div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  X
+D = 0.1475, p-value = 0.7232
+alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+
+## Plot the maximum likelihood
+<span class="kw">plot</span>(<span class="dt">x =</span> beta, <span class="dt">y =</span> Likelihood, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Maximum Likelihood&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> mle, <span class="dt">v =</span> mle.beta, <span class="dt">lty =</span> <span class="dv">2</span>)
+
+## QQplot for assessing distribution fit visually
+<span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
+<span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a5-1.png" width="768" /></p>
+
+</div>
 </div>
 </div>
             </section>

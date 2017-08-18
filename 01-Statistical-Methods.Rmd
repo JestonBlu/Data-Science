@@ -1,9 +1,101 @@
-# Statistical Methods {-}
+# **Statistical Methods** {-}
 
-This is the first real chapter.
+## Continuous Distribution Fitting {-}
 
-## Intro 2 {-}
+* **Techniques Used**
+  * Assessing Distributions Visually
+  * Formal Tests for Distribution Fit
+  * Maximum Likelihood
 
-### Sub chapter {-}
+### Normal Distribution {-}
 
-## Intro 3 {-}
+```{r a1, comment=NA, fig.width=8, fig.height=7, warning=FALSE, message=FALSE}
+library(nortest)
+library(MASS)
+
+## Draw some random data
+set.seed(10)
+x1 = rnorm(20)
+
+## Distribution plots
+par(mfrow = c(2, 2))
+qqnorm(x1)
+qqline(x1)
+boxplot(x1, main = "Boxplot")
+hist(x1, freq = FALSE, main = "Histogram with Density Curve")
+lines(density(x1))
+plot(ecdf(x1), main = "Empiracle CDF")
+
+```
+
+QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.
+
+Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.
+
+```{r a2, comment=NA, warning=FALSE, message=FALSE}
+## Are the data from a normal distribution?
+shapiro.test(x1)     ## Shapiro-Wilk Test
+ad.test(x1)          ## Anderson Darling Test
+ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
+
+```
+
+### Chi-squared Distribution {-}
+
+```{r a3, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=7}
+## Draw some random data
+set.seed(10)
+x2 = rchisq(n = 20, 2)
+
+## Estimate the DF parameter by maximum likelihood
+fitdistr(x = x2, dchisq, start = list(df = 2))
+
+## Input the estimate from MLE
+ks.test(x = x2, y = pchisq, df = 1.8140625)
+
+## Distribution plots
+par(mfrow = c(2, 2))
+qqplot(qchisq(ppoints(20), df = 1.8140625), x2, main = "QQ Plot")
+qqline(x2, distribution = function(p) qchisq(p, df = 1.8140625))
+boxplot(x2, main = "Boxplot")
+hist(x2, freq = FALSE, main = "Histogram with Density Curve")
+lines(density(x2))
+plot(ecdf(x2), main = "Empiracle CDF")
+
+```
+
+---
+
+### Calculating the MLE manually {-}
+
+```{r a5, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+## Generate data from the exponential distribution with mean = 1/5
+set.seed(1000)
+X = rexp(n = 20, rate = 5)
+
+## sample size and range of betas to test
+n = 20; beta = seq(.01, .5, by = .01)
+
+## Liklihood function
+Likelihood = (1/beta)^n * exp(-1/beta * sum(X))
+
+## Maximum Likelihood
+(mle = max(Likelihood))
+(mle.beta = beta[which(Likelihood == mle)])
+
+## Statistical test for how well the specified distribution fits the data
+ks.test(x = X, y = "pexp", rate = 1/mle.beta)
+
+par(mfrow = c(1, 2))
+
+## Plot the maximum likelihood
+plot(x = beta, y = Likelihood, type = "l", main = "Maximum Likelihood", lwd = 2)
+abline(h = mle, v = mle.beta, lty = 2)
+
+## QQplot for assessing distribution fit visually
+qqplot(qexp(ppoints(10), rate = 1/mle.beta), X, xlab = "QQ", main = "QQ Plot")
+qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta))
+
+
+```
