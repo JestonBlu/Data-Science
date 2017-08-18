@@ -1,11 +1,11 @@
-# **Statistical Methods** {-}
+# Statistical Methods {-}
 
 ## Continuous Distribution Fitting {-}
 
-* **Techniques Used**
+##### Techniques Used {-}
   * Assessing Distributions Visually
   * Formal Tests for Distribution Fit
-  * Maximum Likelihood
+  * Maximum Likelihood calculation
 
 ### Normal Distribution {-}
 
@@ -37,7 +37,8 @@ Formal tests all agree that the data are from the normal distribution. Shapiro W
 
 ```r
 ## Are the data from a normal distribution?
-shapiro.test(x1)     ## Shapiro-Wilk Test
+## Shapiro-Wilk Test
+shapiro.test(x1)
 ```
 
 ```
@@ -49,7 +50,8 @@ W = 0.95643, p-value = 0.4753
 ```
 
 ```r
-ad.test(x1)          ## Anderson Darling Test
+## Anderson Darling Test
+ad.test(x1)
 ```
 
 ```
@@ -61,7 +63,8 @@ A = 0.27523, p-value = 0.6216
 ```
 
 ```r
-ks.test(x1, 'pnorm') ## Kolmogorov-Smirnoff Test
+ ## Kolmogorov-Smirnoff Test
+ks.test(x1, 'pnorm')
 ```
 
 ```

@@ -22,10 +22,8 @@
   <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
   
 
-<meta name="author" content="Joseph Blubaugh">
 
 
-<meta name="date" content="2017-08-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -103,18 +101,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Data Science Tasks</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li><a href="statistical-methods.html#statistical-methods"><strong>Statistical Methods</strong></a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Continuous Distribution Fitting</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a><ul>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#normal-distribution"><i class="fa fa-check"></i>Normal Distribution</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-squared-distribution"><i class="fa fa-check"></i>Chi-squared Distribution</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#calculating-the-mle-manually"><i class="fa fa-check"></i>Calculating the MLE manually</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -133,15 +128,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="statistical-methods" class="section level1 unnumbered">
-<h1><strong>Statistical Methods</strong></h1>
+<h1>Statistical Methods</h1>
 <div id="continuous-distribution-fitting" class="section level2 unnumbered">
 <h2>Continuous Distribution Fitting</h2>
+<div id="techniques-used" class="section level5 unnumbered">
+<h5>Techniques Used</h5>
 <ul>
-<li><strong>Techniques Used</strong></li>
 <li>Assessing Distributions Visually</li>
 <li>Formal Tests for Distribution Fit</li>
-<li>Maximum Likelihood</li>
+<li>Maximum Likelihood calculation</li>
 </ul>
+</div>
 <div id="normal-distribution" class="section level3 unnumbered">
 <h3>Normal Distribution</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nortest)
@@ -163,19 +160,22 @@ x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</
 <p>QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.</p>
 <p>Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
-<span class="kw">shapiro.test</span>(x1)     ## Shapiro-Wilk Test</code></pre></div>
+## Shapiro-Wilk Test
+<span class="kw">shapiro.test</span>(x1)</code></pre></div>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  x1
 W = 0.95643, p-value = 0.4753</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ad.test</span>(x1)          ## Anderson Darling Test</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Anderson Darling Test
+<span class="kw">ad.test</span>(x1)</code></pre></div>
 <pre><code>
     Anderson-Darling normality test
 
 data:  x1
 A = 0.27523, p-value = 0.6216</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ks.test</span>(x1, <span class="st">&#39;pnorm&#39;</span>) ## Kolmogorov-Smirnoff Test</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ## Kolmogorov-Smirnoff Test
+<span class="kw">ks.test</span>(x1, <span class="st">&#39;pnorm&#39;</span>)</code></pre></div>
 <pre><code>
     One-sample Kolmogorov-Smirnov test
 
