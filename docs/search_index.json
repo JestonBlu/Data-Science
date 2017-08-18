@@ -1,5 +1,5 @@
 [
-["index.html", "Data Science Tasks Preface", " Data Science Tasks Joseph Blubaugh 2017-08-17 Preface This is the very first part of the book. "],
-["introduction.html", "Chapter 1 Introduction 1.1 Intro 2 1.2 Intro 3", " Chapter 1 Introduction This is the first real chapter. 1.1 Intro 2 1.1.1 Sub chapter 1.2 Intro 3 "],
-["diving-in.html", "Chapter 2 Diving In", " Chapter 2 Diving In Now let’s talk details. "]
+["index.html", "Data Science Tasks Welcome", " Data Science Tasks Joseph Blubaugh 2017-08-17 Welcome This website is a progress and intended to be a personal reference for data science related tasks. It consists of reproducible programming examples for various analytic and visualization techniques. In the sidebar menu, an icon next to each item identifies the source language used to create each example. All code is available here "],
+["statistical-methods.html", "Statistical Methods Intro 2 Intro 3", " Statistical Methods This is the first real chapter. Intro 2 Sub chapter Intro 3 "],
+["regression-methods.html", "Regression Methods", " Regression Methods Now let’s talk details. "]
 ]
