@@ -177,6 +177,8 @@ qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta))
 
 <img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" />
 
+---
+
 ## Discrete Distribution Fitting {-}
 *  Fitting a Binomial model
 *  Chi-squared goodness of fit test
