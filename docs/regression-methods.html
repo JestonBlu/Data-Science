@@ -103,12 +103,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#normal-distribution"><i class="fa fa-check"></i>Normal Distribution</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-squared-distribution"><i class="fa fa-check"></i>Chi-squared Distribution</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#calculating-the-mle-manually"><i class="fa fa-check"></i>Calculating the MLE manually</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distribution-fitting"><i class="fa fa-check"></i>Discrete Distribution Fitting</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -178,6 +175,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

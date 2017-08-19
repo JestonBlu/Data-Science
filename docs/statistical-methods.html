@@ -103,12 +103,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#normal-distribution"><i class="fa fa-check"></i>Normal Distribution</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-squared-distribution"><i class="fa fa-check"></i>Chi-squared Distribution</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#calculating-the-mle-manually"><i class="fa fa-check"></i>Calculating the MLE manually</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distribution-fitting"><i class="fa fa-check"></i>Discrete Distribution Fitting</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -137,8 +134,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Formal Tests for Distribution Fit</li>
 <li>Maximum Likelihood calculation</li>
 </ul>
-<div id="normal-distribution" class="section level3 unnumbered">
-<h3>Normal Distribution</h3>
+<p><strong>Normal Distribution</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nortest)
 <span class="kw">library</span>(MASS)
 
@@ -154,7 +150,7 @@ x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</
 <span class="kw">hist</span>(x1, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(x1))
 <span class="kw">plot</span>(<span class="kw">ecdf</span>(x1), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a1-1.png" width="768" /></p>
+<p><img src="01-Statistical-Methods_files/figure-html/a0-1.png" width="768" /></p>
 <p>QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.</p>
 <p>Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
@@ -180,9 +176,7 @@ A = 0.27523, p-value = 0.6216</code></pre>
 data:  x1
 D = 0.13528, p-value = 0.8109
 alternative hypothesis: two-sided</code></pre>
-</div>
-<div id="chi-squared-distribution" class="section level3 unnumbered">
-<h3>Chi-squared Distribution</h3>
+<p><strong>Chi-squared Distribution</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Draw some random data
 <span class="kw">set.seed</span>(<span class="dv">10</span>)
 x2 =<span class="st"> </span><span class="kw">rchisq</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dv">2</span>)
@@ -208,10 +202,8 @@ alternative hypothesis: two-sided</code></pre>
 <span class="kw">hist</span>(x2, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(x2))
 <span class="kw">plot</span>(<span class="kw">ecdf</span>(x2), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" /></p>
-</div>
-<div id="calculating-the-mle-manually" class="section level3 unnumbered">
-<h3>Calculating the MLE manually</h3>
+<p><img src="01-Statistical-Methods_files/figure-html/a2-1.png" width="768" /></p>
+<p><strong>Calculating the MLE manually</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate data from the exponential distribution with mean = 1/5
 <span class="kw">set.seed</span>(<span class="dv">1000</span>)
 X =<span class="st"> </span><span class="kw">rexp</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">rate =</span> <span class="dv">5</span>)
@@ -244,8 +236,7 @@ alternative hypothesis: two-sided</code></pre>
 ## QQplot for assessing distribution fit visually
 <span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
 <span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a5-1.png" width="768" /></p>
-</div>
+<p><img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" /></p>
 </div>
 <div id="discrete-distribution-fitting" class="section level2 unnumbered">
 <h2>Discrete Distribution Fitting</h2>
@@ -270,8 +261,9 @@ alternative hypothesis: two-sided</code></pre>
 5        4     4
 6        5     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Number of diseased children (d) and the total number of children (c)
-(<span class="dt">d =</span> <span class="kw">sum</span>(<span class="kw">apply</span>(<span class="dt">X =</span> dta, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(p) dta<span class="op">$</span>Diseased <span class="op">*</span><span class="st"> </span>dta<span class="op">$</span>Count)[,<span class="dv">1</span>])); (<span class="dt">c =</span> <span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(dta<span class="op">$</span>Count))</code></pre></div>
+(<span class="dt">d =</span> <span class="kw">sum</span>(<span class="kw">apply</span>(<span class="dt">X =</span> dta, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(p) dta<span class="op">$</span>Diseased <span class="op">*</span><span class="st"> </span>dta<span class="op">$</span>Count)[,<span class="dv">1</span>]))</code></pre></div>
 <pre><code>[1] 135</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">c =</span> <span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(dta<span class="op">$</span>Count))</code></pre></div>
 <pre><code>[1] 500</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MLE
 (<span class="dt">mle =</span> d <span class="op">/</span><span class="st"> </span>c)</code></pre></div>
@@ -331,7 +323,7 @@ dta</code></pre></div>
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Model&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Count, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Exp.Diseased, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/src-1.png" width="768" /></p>
+<p><img src="01-Statistical-Methods_files/figure-html/a4-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(dta)</code></pre></div>
 <table>
 <thead>
@@ -389,6 +381,136 @@ mle <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability that a couple will have at least 1 child with the disease?
 <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> .<span class="dv">27</span>)</code></pre></div>
 <pre><code>[1] 0.7926928</code></pre>
+</div>
+<div id="hypothesis-testing" class="section level2 unnumbered">
+<h2>Hypothesis Testing</h2>
+<ul>
+<li>Shapiro Wilks</li>
+<li>One Sample T-Test</li>
+<li>Calculating Power</li>
+<li>Hypothesis Testing</li>
+<li>Sample Size Determination</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Data sample on chick weights
+<span class="kw">data</span>(chickwts)
+<span class="kw">head</span>(chickwts)</code></pre></div>
+<pre><code>  weight      feed
+1    179 horsebean
+2    160 horsebean
+3    136 horsebean
+4    227 horsebean
+5    217 horsebean
+6    168 horsebean</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Normal reference plot for height
+<span class="kw">qqnorm</span>(chickwts<span class="op">$</span>weight)
+<span class="kw">qqline</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a5-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
+<span class="kw">shapiro.test</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  chickwts$weight
+W = 0.97674, p-value = 0.2101</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<pre><code>[1] 261.3099</code></pre>
+<p>How does the sample mean compare to a hypothesis test that the true mean is &lt; 260? What is the power of the test?</p>
+<p><span class="math display">\[H_0: \mu \ge 260, H_a: \mu \lt 260\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Population</th>
+<th align="center">Fail to Reject</th>
+<th align="center">Reject <span class="math inline">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_0\)</span> is True</td>
+<td align="center">Correct</td>
+<td align="center">Type I Error</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(H_a\)</span> is True</td>
+<td align="center">Type II Error</td>
+<td align="center">Correct</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability of a Type I error if we say the true mean is less than 250?
+<span class="kw">t.test</span>(chickwts<span class="op">$</span>weight, <span class="dt">mu =</span> <span class="dv">250</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  chickwts$weight
+t = 1.2206, df = 70, p-value = 0.8868
+alternative hypothesis: true mean is less than 250
+95 percent confidence interval:
+     -Inf 276.7549
+sample estimates:
+mean of x 
+ 261.3099 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify the t statistic and p-value
+(<span class="dt">ts =</span> (<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">250</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">length</span>(chickwts<span class="op">$</span>weight))))</code></pre></div>
+<pre><code>[1] 1.220623</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(ts, <span class="dt">df =</span> <span class="dv">70</span>)</code></pre></div>
+<pre><code>[1] 0.8868377</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability of a Type I error if we say the true mean is &gt; 245?
+<span class="kw">t.test</span>(chickwts<span class="op">$</span>weight, <span class="dt">mu =</span> <span class="dv">245</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  chickwts$weight
+t = 1.7603, df = 70, p-value = 0.04137
+alternative hypothesis: true mean is greater than 245
+95 percent confidence interval:
+ 245.8648      Inf
+sample estimates:
+mean of x 
+ 261.3099 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify the t statistic and p-value
+(<span class="dt">ts =</span> (<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">length</span>(chickwts<span class="op">$</span>weight))))</code></pre></div>
+<pre><code>[1] 1.760251</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(ts, <span class="dt">df =</span> <span class="dv">70</span>)</code></pre></div>
+<pre><code>[1] 0.04136678</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## We have rejected the null hypothesis and said under an alpha of .05 there is enough evidence
+## to suppor that the true mean of Chick Weights is &gt; 245
+
+## What is the power of our test?
+<span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="kw">length</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">delta =</span> <span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>),
+             <span class="dt">sd =</span> <span class="kw">sd</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">sig.level =</span> .<span class="dv">05</span>,
+             <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>,
+             <span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>, <span class="dt">strict =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>
+     One-sample t test power calculation 
+
+              n = 71
+          delta = 16.30986
+             sd = 78.0737
+      sig.level = 0.05
+          power = 0.5391727
+    alternative = one.sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What sample size would we need to have a power of .8?
+<span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>),
+             <span class="dt">sd =</span> <span class="kw">sd</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">sig.level =</span> .<span class="dv">05</span>,
+             <span class="dt">power =</span> .<span class="dv">8</span>,
+             <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>,
+             <span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>, <span class="dt">strict =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>
+     One-sample t test power calculation 
+
+              n = 143.0323
+          delta = 16.30986
+             sd = 78.0737
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify manually
+(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight)<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">95</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">8</span>))<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>)<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>[1] 141.6698</code></pre>
 
 </div>
 </div>
@@ -438,6 +560,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
