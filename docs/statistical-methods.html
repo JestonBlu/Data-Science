@@ -108,6 +108,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-squared-distribution"><i class="fa fa-check"></i>Chi-squared Distribution</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#calculating-the-mle-manually"><i class="fa fa-check"></i>Calculating the MLE manually</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distribution-fitting"><i class="fa fa-check"></i>Discrete Distribution Fitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -244,8 +245,151 @@ alternative hypothesis: two-sided</code></pre>
 <span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
 <span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</code></pre></div>
 <p><img src="01-Statistical-Methods_files/figure-html/a5-1.png" width="768" /></p>
-
 </div>
+</div>
+<div id="discrete-distribution-fitting" class="section level2 unnumbered">
+<h2>Discrete Distribution Fitting</h2>
+<ul>
+<li>Fitting a Binomial model</li>
+<li>Chi-squared goodness of fit test</li>
+<li>Producing a markdown table</li>
+</ul>
+<p>A rare but fatal disease of genetic origin occurring chiefly in infants and children is under investigation. An experiment was conducted on a 100 couples who are both carriers of the disease and have 5 children. A researcher recorded the number of children having the disease for each couple.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+
+## Dataset
+(<span class="dt">dta =</span> <span class="kw">data.frame</span>(
+  <span class="dt">Diseased =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),
+  <span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">1</span>)
+))</code></pre></div>
+<pre><code>  Diseased Count
+1        0    21
+2        1    42
+3        2    24
+4        3     8
+5        4     4
+6        5     1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Number of diseased children (d) and the total number of children (c)
+(<span class="dt">d =</span> <span class="kw">sum</span>(<span class="kw">apply</span>(<span class="dt">X =</span> dta, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(p) dta<span class="op">$</span>Diseased <span class="op">*</span><span class="st"> </span>dta<span class="op">$</span>Count)[,<span class="dv">1</span>])); (<span class="dt">c =</span> <span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(dta<span class="op">$</span>Count))</code></pre></div>
+<pre><code>[1] 135</code></pre>
+<pre><code>[1] 500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MLE
+(<span class="dt">mle =</span> d <span class="op">/</span><span class="st"> </span>c)</code></pre></div>
+<pre><code>[1] 0.27</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate the expected probabilities and expected diseased children
+dta<span class="op">$</span>Exp.Prob =<span class="st"> </span><span class="kw">round</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> mle), <span class="dv">4</span>)
+dta<span class="op">$</span>Exp.Diseased =<span class="st"> </span><span class="kw">with</span>(dta, <span class="kw">sum</span>(Count) <span class="op">*</span><span class="st"> </span>Exp.Prob)
+
+dta</code></pre></div>
+<pre><code>  Diseased Count Exp.Prob Exp.Diseased
+1        0    21   0.2073        20.73
+2        1    42   0.3834        38.34
+3        2    24   0.2836        28.36
+4        3     8   0.1049        10.49
+5        4     4   0.0194         1.94
+6        5     1   0.0014         0.14</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Chi-square test requirements:
+##  1) all Exp must be &gt; 1
+##  2) at most 20% of Exp may be less than 5
+##
+## So we need to combine counts 4 and 5 and meet these requirements
+
+dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] =<span class="st"> </span>dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>dta[<span class="dv">6</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]
+dta =<span class="st"> </span>dta[<span class="op">-</span><span class="dv">6</span>, ]
+dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">as.character</span>(dta<span class="op">$</span>Diseased)
+dta<span class="op">$</span>Diseased[<span class="dv">5</span>] =<span class="st"> &#39;4 or 5&#39;</span>
+
+## Compute the Chi-Squared Statistic
+dta<span class="op">$</span>X.<span class="dv">2</span> =<span class="st"> </span><span class="kw">round</span>(<span class="kw">with</span>(dta, (Count <span class="op">-</span><span class="st"> </span>Exp.Diseased)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>Exp.Diseased), <span class="dv">4</span>)
+dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">factor</span>(dta<span class="op">$</span>Diseased)
+dta</code></pre></div>
+<pre><code>  Diseased Count Exp.Prob Exp.Diseased    X.2
+1        0    21   0.2073        20.73 0.0035
+2        1    42   0.3834        38.34 0.3494
+3        2    24   0.2836        28.36 0.6703
+4        3     8   0.1049        10.49 0.5910
+5   4 or 5     5   0.0208         2.08 4.0992</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Compute the test statistic pvalue
+(<span class="dt">TS =</span> <span class="kw">sum</span>(dta<span class="op">$</span>X.<span class="dv">2</span>)); <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(TS, <span class="dt">df =</span> <span class="dv">4</span>)</code></pre></div>
+<pre><code>[1] 5.7134</code></pre>
+<pre><code>[1] 0.2215985</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Based on the table below we conclude the binomial model is a good fit for the data
+##
+## Assessment of Chi-squared GOF P-value
+##  •       p-value &gt; .25 ⇒ Excellent fit
+##  • .15 ≤ p−value &lt; .25 ⇒ Good fit
+##  • .05 ≤ p−value &lt; .15 ⇒ Moderately Good fit
+##  • .01 ≤ p−value &lt; .05 ⇒ Poor fit
+##  •       p-value &lt; .01 ⇒ Unacceptable fit
+##
+## Plot of the data vs model and create a markdown table from the data frame
+<span class="kw">plot</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> <span class="ot">NULL</span>, <span class="dt">xlab =</span> <span class="st">&quot;Diseased Children per Couple&quot;</span>,
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>), <span class="dt">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,
+     <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Binomial Model vs Data&quot;</span>)
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">labels =</span> dta<span class="op">$</span>Diseased, <span class="dt">at =</span> dta<span class="op">$</span>Diseased)
+<span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>), <span class="dt">at =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>))
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Model&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
+<span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Count, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
+<span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Exp.Diseased, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/src-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(dta)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Diseased</th>
+<th align="right">Count</th>
+<th align="right">Exp.Prob</th>
+<th align="right">Exp.Diseased</th>
+<th align="right">X.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">21</td>
+<td align="right">0.2073</td>
+<td align="right">20.73</td>
+<td align="right">0.0035</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">42</td>
+<td align="right">0.3834</td>
+<td align="right">38.34</td>
+<td align="right">0.3494</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">24</td>
+<td align="right">0.2836</td>
+<td align="right">28.36</td>
+<td align="right">0.6703</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">8</td>
+<td align="right">0.1049</td>
+<td align="right">10.49</td>
+<td align="right">0.5910</td>
+</tr>
+<tr class="odd">
+<td align="left">4 or 5</td>
+<td align="right">5</td>
+<td align="right">0.0208</td>
+<td align="right">2.08</td>
+<td align="right">4.0992</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Some Conclusions
+## Since N is large we can use asymptotic confidence intervals
+## A 95% confidence interval for whether a child will have the disease
+mle <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(.<span class="dv">27</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">27</span>))<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)</code></pre></div>
+<pre><code>[1] 0.1829839 0.3570161</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability that a couple will have at least 1 child with the disease?
+<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> .<span class="dv">27</span>)</code></pre></div>
+<pre><code>[1] 0.7926928</code></pre>
+
 </div>
 </div>
             </section>
