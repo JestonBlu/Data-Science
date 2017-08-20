@@ -103,8 +103,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distribution-fitting"><i class="fa fa-check"></i>Continuous Distribution Fitting</a></li>
-<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distribution-fitting"><i class="fa fa-check"></i>Discrete Distribution Fitting</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#fitting-distributions"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
@@ -127,8 +129,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="statistical-methods" class="section level1 unnumbered">
 <h1>Statistical Methods</h1>
-<div id="continuous-distribution-fitting" class="section level2 unnumbered">
-<h2>Continuous Distribution Fitting</h2>
+<div id="fitting-distributions" class="section level2 unnumbered">
+<h2>Fitting Distributions</h2>
+<div id="continuous-distributions" class="section level3 unnumbered">
+<h3>Continuous Distributions</h3>
 <ul>
 <li>Assessing Distributions Visually</li>
 <li>Formal Tests for Distribution Fit</li>
@@ -239,8 +243,8 @@ alternative hypothesis: two-sided</code></pre>
 <p><img src="01-Statistical-Methods_files/figure-html/a3-1.png" width="768" /></p>
 <hr />
 </div>
-<div id="discrete-distribution-fitting" class="section level2 unnumbered">
-<h2>Discrete Distribution Fitting</h2>
+<div id="discrete-distributions" class="section level3 unnumbered">
+<h3>Discrete Distributions</h3>
 <ul>
 <li>Fitting a Binomial model</li>
 <li>Chi-squared goodness of fit test</li>
@@ -382,6 +386,7 @@ mle <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability that a couple will have at least 1 child with the disease?
 <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> .<span class="dv">27</span>)</code></pre></div>
 <pre><code>[1] 0.7926928</code></pre>
+</div>
 </div>
 <div id="hypothesis-testing" class="section level2 unnumbered">
 <h2>Hypothesis Testing</h2>

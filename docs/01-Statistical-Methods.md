@@ -1,6 +1,8 @@
 # Statistical Methods {-}
 
-## Continuous Distribution Fitting {-}
+## Fitting Distributions {-}
+
+### Continuous Distributions {-}
   * Assessing Distributions Visually
   * Formal Tests for Distribution Fit
   * Maximum Likelihood calculation
@@ -179,7 +181,7 @@ qqline(X, distribution = function(p) qexp(p, rate = 1/mle.beta))
 
 ---
 
-## Discrete Distribution Fitting {-}
+### Discrete Distributions {-}
 *  Fitting a Binomial model
 *  Chi-squared goodness of fit test
 *  Producing a markdown table
