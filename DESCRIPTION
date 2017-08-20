@@ -1,8 +1,5 @@
-Package: placeholder
+Package: book
 Title: Does not matter.
 Version: 0.0.1
-Imports:
-  nortest
-  MASS
-  knitr
+Imports: nortest, MASS, knitr
 Remotes: rstudio/bookdown
