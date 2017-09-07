@@ -108,6 +108,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#parameter-estimation"><i class="fa fa-check"></i>Parameter Estimation</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -517,6 +518,45 @@ mean of x
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify manually
 (<span class="kw">sd</span>(chickwts<span class="op">$</span>weight)<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">95</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">8</span>))<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>)<span class="op">^</span><span class="dv">2</span></code></pre></div>
 <pre><code>[1] 141.6698</code></pre>
+</div>
+<div id="parameter-estimation" class="section level2 unnumbered">
+<h2>Parameter Estimation</h2>
+<ul>
+<li>Bootstrap Sampling</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Create a mixed Distribution
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+y1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">2</span>); y2 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">1</span>); y3 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">2</span>)
+Y =<span class="st"> </span><span class="kw">c</span>(y1, y2, y3)
+
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(Y)
+<span class="kw">plot</span>(<span class="kw">density</span>(Y))</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a7-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Is Y part of a normal distribution?
+<span class="kw">shapiro.test</span>(Y)</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  Y
+W = 0.90712, p-value = 0.0126</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Bootstrap simulation to estimate the mean
+X =<span class="st"> </span><span class="kw">c</span>()
+
+## Draw 10k random samples from Y and calculate the mean
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>) {
+  x =<span class="st"> </span><span class="kw">sample</span>(Y, <span class="kw">length</span>(Y), <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+  mu.x =<span class="st"> </span><span class="kw">mean</span>(x)
+  X =<span class="st"> </span><span class="kw">c</span>(X, mu.x)
+}
+
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
+## Draw a histogram of the bootstrap samples for the sample means
+<span class="kw">hist</span>(X, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram of X_Bar&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a7-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is a 95% confidence interval for mu?
+<span class="kw">sort</span>(X)[<span class="kw">c</span>(<span class="dv">250</span>, <span class="dv">9750</span>)]</code></pre></div>
+<pre><code>[1] 12.72430 15.58161</code></pre>
 
 </div>
 </div>
