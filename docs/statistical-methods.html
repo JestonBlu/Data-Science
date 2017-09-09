@@ -109,6 +109,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#parameter-estimation"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#sample-size-and-power"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -557,7 +563,125 @@ X =<span class="st"> </span><span class="kw">c</span>()
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is a 95% confidence interval for mu?
 <span class="kw">sort</span>(X)[<span class="kw">c</span>(<span class="dv">250</span>, <span class="dv">9750</span>)]</code></pre></div>
 <pre><code>[1] 12.72430 15.58161</code></pre>
+</div>
+<div id="sample-size-and-power" class="section level2 unnumbered">
+<h2>Sample Size and Power</h2>
+<hr />
+<div id="proportions" class="section level3 unnumbered">
+<h3>Proportions</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pwr)
 
+## Univariate Proportion
+<span class="kw">pwr.p.test</span>(<span class="dt">h =</span> .<span class="dv">25</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>
+     proportion power calculation for binomial distribution (arcsine transformation) 
+
+              h = 0.25
+              n = 98.92092
+      sig.level = 0.05
+          power = 0.8
+    alternative = greater</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Two Proportions (equal n)
+<span class="kw">pwr.2p.test</span>(<span class="dt">h =</span> .<span class="dv">25</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>
+     Difference of proportion power calculation for binomial distribution (arcsine transformation) 
+
+              h = 0.25
+              n = 197.8418
+      sig.level = 0.05
+          power = 0.8
+    alternative = greater
+
+NOTE: same sample sizes</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Two Proportions (different n)
+<span class="kw">pwr.2p2n.test</span>(<span class="dt">h =</span> .<span class="dv">25</span>, <span class="dt">n1 =</span> <span class="dv">100</span>, <span class="dt">n2 =</span> <span class="dv">120</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>
+     difference of proportion power calculation for binomial distribution (arcsine transformation) 
+
+              h = 0.25
+             n1 = 100
+             n2 = 120
+      sig.level = 0.05
+          power = 0.5798535
+    alternative = greater
+
+NOTE: different sample sizes</code></pre>
+</div>
+<div id="t-test" class="section level3 unnumbered">
+<h3>T-test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Equal n
+<span class="kw">pwr.t.test</span>(<span class="dt">d =</span> .<span class="dv">5</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>, <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>)</code></pre></div>
+<pre><code>
+     One-sample t test power calculation 
+
+              n = 33.36713
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pwr.t.test</span>(<span class="dt">d =</span> .<span class="dv">5</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>, <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>)</code></pre></div>
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 63.76561
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pwr.t.test</span>(<span class="dt">d =</span> .<span class="dv">5</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>, <span class="dt">type =</span> <span class="st">&quot;paired&quot;</span>)</code></pre></div>
+<pre><code>
+     Paired t test power calculation 
+
+              n = 33.36713
+              d = 0.5
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number of *pairs*</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Different n
+<span class="kw">pwr.t2n.test</span>(<span class="dt">n1 =</span> <span class="dv">10</span>, <span class="dt">n2 =</span> <span class="dv">15</span>, <span class="dt">d =</span> <span class="dv">1</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>)</code></pre></div>
+<pre><code>
+     t test power calculation 
+
+             n1 = 10
+             n2 = 15
+              d = 1
+      sig.level = 0.05
+          power = 0.6503918
+    alternative = two.sided</code></pre>
+</div>
+<div id="chi-square" class="section level3 unnumbered">
+<h3>Chi-square</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pwr.chisq.test</span>(<span class="dt">w =</span> .<span class="dv">25</span>, <span class="dt">df =</span> <span class="dv">4</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>, <span class="dt">power =</span> .<span class="dv">8</span>)</code></pre></div>
+<pre><code>
+     Chi squared power calculation 
+
+              w = 0.25
+              N = 190.9646
+             df = 4
+      sig.level = 0.05
+          power = 0.8
+
+NOTE: N is the number of observations</code></pre>
+</div>
+<div id="anova" class="section level3 unnumbered">
+<h3>ANOVA</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pwr.anova.test</span>(<span class="dt">k =</span> <span class="dv">5</span>, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">f =</span> .<span class="dv">5</span>, <span class="dt">sig.level =</span> .<span class="dv">05</span>)</code></pre></div>
+<pre><code>
+     Balanced one-way analysis of variance power calculation 
+
+              k = 5
+              n = 10
+              f = 0.5
+      sig.level = 0.05
+          power = 0.7730915
+
+NOTE: n is number in each group</code></pre>
+
+</div>
 </div>
 </div>
             </section>
