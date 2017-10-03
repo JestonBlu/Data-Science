@@ -779,30 +779,36 @@ NOTE: n is number in each group
 
 
 ```r
-options(width = 100)
-
 library(survival)
 
 summary(lung)
 ```
 
 ```
-      inst            time            status           age             sex           ph.ecog      
- Min.   : 1.00   Min.   :   5.0   Min.   :1.000   Min.   :39.00   Min.   :1.000   Min.   :0.0000  
- 1st Qu.: 3.00   1st Qu.: 166.8   1st Qu.:1.000   1st Qu.:56.00   1st Qu.:1.000   1st Qu.:0.0000  
- Median :11.00   Median : 255.5   Median :2.000   Median :63.00   Median :1.000   Median :1.0000  
- Mean   :11.09   Mean   : 305.2   Mean   :1.724   Mean   :62.45   Mean   :1.395   Mean   :0.9515  
- 3rd Qu.:16.00   3rd Qu.: 396.5   3rd Qu.:2.000   3rd Qu.:69.00   3rd Qu.:2.000   3rd Qu.:1.0000  
- Max.   :33.00   Max.   :1022.0   Max.   :2.000   Max.   :82.00   Max.   :2.000   Max.   :3.0000  
- NA's   :1                                                                        NA's   :1       
-    ph.karno        pat.karno         meal.cal         wt.loss       
- Min.   : 50.00   Min.   : 30.00   Min.   :  96.0   Min.   :-24.000  
- 1st Qu.: 75.00   1st Qu.: 70.00   1st Qu.: 635.0   1st Qu.:  0.000  
- Median : 80.00   Median : 80.00   Median : 975.0   Median :  7.000  
- Mean   : 81.94   Mean   : 79.96   Mean   : 928.8   Mean   :  9.832  
- 3rd Qu.: 90.00   3rd Qu.: 90.00   3rd Qu.:1150.0   3rd Qu.: 15.750  
- Max.   :100.00   Max.   :100.00   Max.   :2600.0   Max.   : 68.000  
- NA's   :1        NA's   :3        NA's   :47       NA's   :14       
+      inst            time            status           age       
+ Min.   : 1.00   Min.   :   5.0   Min.   :1.000   Min.   :39.00  
+ 1st Qu.: 3.00   1st Qu.: 166.8   1st Qu.:1.000   1st Qu.:56.00  
+ Median :11.00   Median : 255.5   Median :2.000   Median :63.00  
+ Mean   :11.09   Mean   : 305.2   Mean   :1.724   Mean   :62.45  
+ 3rd Qu.:16.00   3rd Qu.: 396.5   3rd Qu.:2.000   3rd Qu.:69.00  
+ Max.   :33.00   Max.   :1022.0   Max.   :2.000   Max.   :82.00  
+ NA's   :1                                                       
+      sex           ph.ecog          ph.karno        pat.karno     
+ Min.   :1.000   Min.   :0.0000   Min.   : 50.00   Min.   : 30.00  
+ 1st Qu.:1.000   1st Qu.:0.0000   1st Qu.: 75.00   1st Qu.: 70.00  
+ Median :1.000   Median :1.0000   Median : 80.00   Median : 80.00  
+ Mean   :1.395   Mean   :0.9515   Mean   : 81.94   Mean   : 79.96  
+ 3rd Qu.:2.000   3rd Qu.:1.0000   3rd Qu.: 90.00   3rd Qu.: 90.00  
+ Max.   :2.000   Max.   :3.0000   Max.   :100.00   Max.   :100.00  
+                 NA's   :1        NA's   :1        NA's   :3       
+    meal.cal         wt.loss       
+ Min.   :  96.0   Min.   :-24.000  
+ 1st Qu.: 635.0   1st Qu.:  0.000  
+ Median : 975.0   Median :  7.000  
+ Mean   : 928.8   Mean   :  9.832  
+ 3rd Qu.:1150.0   3rd Qu.: 15.750  
+ Max.   :2600.0   Max.   : 68.000  
+ NA's   :47       NA's   :14       
 ```
 
 ```r
@@ -1497,3 +1503,393 @@ Spergon-Semaesan  0.75  -4.948139 6.4481388 0.9926478
 ```
 
 There is not significant evidence between the difference in means between any of the treatments.
+
+## Contingency Tables {-}
+
+
+Table: (\#tab:a20)Data for applicant entrance for 6 departments
+
+ Department   Male.Yes   Male.No   Female.Yes   Female.No
+-----------  ---------  --------  -----------  ----------
+          1        512       313           89          19
+          2        353       207           17           8
+          3        120       205          202         391
+          4        138       279          131         244
+          5         53       138           94         299
+          6         22       351           24         317
+
+
+```r
+dta$OR = with(dta, (Male.Yes * Female.No) / (Male.No * Female.Yes))
+dta$se = with(dta, (sqrt(1/Male.Yes + 1/Female.No + 1/Male.No + 1/Female.Yes)))
+dta$Conf.lwr = with(dta, OR - (1.96 * se))
+dta$Conf.Upr = with(dta, OR + (1.96 * se))
+
+kable(dta, split.tables = Inf)
+```
+
+
+
+ Department   Male.Yes   Male.No   Female.Yes   Female.No          OR          se     Conf.lwr    Conf.Upr
+-----------  ---------  --------  -----------  ----------  ----------  ----------  -----------  ----------
+          1        512       313           89          19   0.3492120   0.2627081   -0.1656958   0.8641199
+          2        353       207           17           8   0.8025007   0.4375926   -0.0551808   1.6601823
+          3        120       205          202         391   1.1330596   0.1439424    0.8509325   1.4151868
+          4        138       279          131         244   0.9212838   0.1502084    0.6268753   1.2156922
+          5         53       138           94         299   1.2216312   0.2002426    0.8291558   1.6141066
+          6         22       351           24         317   0.8278727   0.3051635    0.2297522   1.4259933
+
+
+```r
+marginal = colSums(dta[, 2:5])
+OR = (marginal[1] * marginal[4]) / (marginal[2] * marginal[3])
+se = sqrt(1/marginal[1] + 1/marginal[4] + 1/marginal[2] + 1/marginal[3])
+
+## Confidence Interval for the Marginal OR
+OR + c(-1, 1) * 1.96 * se
+```
+
+```
+[1] 1.71585 1.96631
+```
+
+
+```r
+library(DescTools)
+library(lawstat)
+
+dta = xtabs(freq ~ .,
+            cbind(expand.grid(Gender = c("Male", "Female"),
+                              Entrace = c("Yes", "No"),
+                              Department = c("1", "2", "3", "4", "5", "6")),
+                  freq =  c(512, 89, 313, 19, 353, 17, 207, 8, 120, 202, 205, 391,
+                            138, 131, 279, 244, 53, 94, 138, 299, 22, 24, 351, 317)
+                  )
+            )
+
+## Ho: OR = 1, Ha: OR > 1
+BreslowDayTest(dta, OR = 1)
+```
+
+```
+
+	Breslow-Day test on Homogeneity of Odds Ratios
+
+data:  dta
+X-squared = 19.938, df = 5, p-value = 0.001283
+```
+
+```r
+## Ho: OR_1 = OR_2 = OR_3 = OR_4 = OR_5 = OR_6, Ha: At least one set of OR are not equal
+cmh.test(dta)
+```
+
+```
+
+	Cochran-Mantel-Haenszel Chi-square Test
+
+data:  dta
+CMH statistic = 1.52460, df = 1.00000, p-value = 0.21692, MH
+Estimate = 0.90470, Pooled Odd Ratio = 1.84110, Odd Ratio of level
+1 = 0.34921, Odd Ratio of level 2 = 0.80250, Odd Ratio of level 3
+= 1.13310, Odd Ratio of level 4 = 0.92128, Odd Ratio of level 5 =
+1.22160, Odd Ratio of level 6 = 0.82787
+```
+
+Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.
+
+
+## Principal Components {-}
+
+---
+
+
+```r
+## Generate some data
+library(mvtnorm)
+
+mu = rep(10, 6)
+cov = matrix(nrow = 6, byrow = TRUE,
+  c(1, 0, 1, 0, 1, 1,
+    0, 2, 1, 2, 1, 1,
+    1, 1, 2, 1, 1, 0,
+    0, 2, 1, 3, 2, 1,
+    1, 1, 1, 2, 4, 1,
+    1, 1, 0, 1, 1, 10)
+  )
+
+set.seed(1000)
+X = rmvnorm(100, mu, cov)
+
+colnames(X) = paste("x", 1:6, sep = "")
+
+## How do the data correlate?
+round(cor(X), 3)
+```
+
+```
+       x1     x2     x3    x4     x5     x6
+x1  1.000 -0.100  0.671 0.013  0.544  0.162
+x2 -0.100  1.000  0.464 0.816  0.314  0.179
+x3  0.671  0.464  1.000 0.507  0.462 -0.160
+x4  0.013  0.816  0.507 1.000  0.582  0.051
+x5  0.544  0.314  0.462 0.582  1.000 -0.044
+x6  0.162  0.179 -0.160 0.051 -0.044  1.000
+```
+
+```r
+pairs(X)
+```
+
+<img src="01-Statistical-Methods_files/figure-html/a24-1.png" width="768" />
+
+```r
+summary(X)
+```
+
+```
+       x1               x2               x3               x4        
+ Min.   : 8.200   Min.   : 6.259   Min.   : 7.135   Min.   : 6.210  
+ 1st Qu.: 9.313   1st Qu.: 9.209   1st Qu.: 9.045   1st Qu.: 8.927  
+ Median : 9.828   Median :10.253   Median :10.169   Median :10.089  
+ Mean   : 9.975   Mean   :10.109   Mean   :10.087   Mean   :10.084  
+ 3rd Qu.:10.614   3rd Qu.:11.006   3rd Qu.:11.007   3rd Qu.:11.262  
+ Max.   :12.297   Max.   :13.834   Max.   :13.563   Max.   :14.018  
+       x5               x6        
+ Min.   : 6.399   Min.   : 3.260  
+ 1st Qu.: 8.421   1st Qu.: 8.009  
+ Median :10.153   Median : 9.771  
+ Mean   : 9.941   Mean   : 9.869  
+ 3rd Qu.:11.230   3rd Qu.:11.926  
+ Max.   :14.687   Max.   :16.130  
+```
+
+```r
+## Build the principal components. We do not need to standardize the data
+## since all of the variables are roughly the same scale.
+(pr = prcomp(X))
+```
+
+```
+Standard deviations (1, .., p=6):
+[1] 3.017891e+00 2.563572e+00 1.517959e+00 1.123358e+00 5.274371e-01
+[6] 1.472533e-08
+
+Rotation (n x k) = (6 x 6):
+           PC1         PC2         PC3         PC4         PC5         PC6
+x1  0.04204824  0.13561610 -0.43777882 -0.40016623 -0.02461578 -0.79211803
+x2  0.10306755  0.37620383  0.53544098 -0.09946666  0.71557069 -0.19802951
+x3 -0.06111086  0.35286917 -0.07161650 -0.78263310 -0.09490671  0.49507377
+x4  0.05321194  0.56786999  0.42326271  0.16724994 -0.65448653 -0.19802951
+x5 -0.01790754  0.62553452 -0.57601203  0.43473997  0.21995796  0.19802951
+x6  0.99031424 -0.04233845 -0.07471658 -0.02207772 -0.04014029  0.09901475
+```
+
+```r
+## Principal components rotation matrix is actually the same as the eigen vectors
+eigen(cov(X))$vectors
+```
+
+```
+            [,1]        [,2]        [,3]        [,4]        [,5]
+[1,]  0.04204824  0.13561610  0.43777882  0.40016623  0.02461578
+[2,]  0.10306755  0.37620383 -0.53544098  0.09946666 -0.71557069
+[3,] -0.06111086  0.35286917  0.07161650  0.78263310  0.09490671
+[4,]  0.05321194  0.56786999 -0.42326271 -0.16724994  0.65448653
+[5,] -0.01790754  0.62553452  0.57601203 -0.43473997 -0.21995796
+[6,]  0.99031424 -0.04233845  0.07471658  0.02207772  0.04014029
+            [,6]
+[1,]  0.79211803
+[2,]  0.19802951
+[3,] -0.49507377
+[4,]  0.19802951
+[5,] -0.19802951
+[6,] -0.09901475
+```
+
+```r
+## Build the principal components from the coefficients
+X.pca = X %*% pr$rotation
+
+## The variance of the principal components is equal to the eigen values
+eigen(cov(X))$values
+```
+
+```
+[1]  9.107665e+00  6.571900e+00  2.304199e+00  1.261933e+00  2.781899e-01
+[6] -5.334563e-16
+```
+
+```r
+diag(var(X.pca))
+```
+
+```
+         PC1          PC2          PC3          PC4          PC5 
+9.107665e+00 6.571900e+00 2.304199e+00 1.261933e+00 2.781899e-01 
+         PC6 
+2.168355e-16 
+```
+
+```r
+## PCA Summary
+## The first two PCA account for 80% of all variation in the data
+summary(pr)
+```
+
+```
+Importance of components:
+                          PC1    PC2    PC3     PC4     PC5       PC6
+Standard deviation     3.0179 2.5636 1.5180 1.12336 0.52744 1.473e-08
+Proportion of Variance 0.4665 0.3366 0.1180 0.06464 0.01425 0.000e+00
+Cumulative Proportion  0.4665 0.8031 0.9211 0.98575 1.00000 1.000e+00
+```
+
+```r
+X.pca = data.frame(X.pca)
+
+## plot of the first two PCA
+plot(X.pca$PC1, X.pca$PC2)
+```
+
+<img src="01-Statistical-Methods_files/figure-html/a24-2.png" width="768" />
+
+## Eigen Values and Statistical Distance {-}
+
+
+```r
+## Eigen values and vectors are used to describe a positie definate covariance matrix.
+(Cov = matrix(c(1, 0, 0, 2), nrow = 2))
+```
+
+```
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    2
+```
+
+```r
+eig = eigen(Cov)
+
+## eigen values
+(lambda = eig$values)
+```
+
+```
+[1] 2 1
+```
+
+```r
+## eigen vectors
+(ee = eig$vectors)
+```
+
+```
+     [,1] [,2]
+[1,]    0   -1
+[2,]    1    0
+```
+
+```r
+## Spectural decompsotion allows you to reconstruct a matrix using only the eigen
+## values and vectors
+lambda[1] * ee[,1] %*% t(ee[,1]) + lambda[2] * ee[,2] %*% t(ee[,2])
+```
+
+```
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    2
+```
+
+```r
+## Straight line distance (Euclidean) vs Statistical Distance
+## Straight line distance to the origin using point(1, 1)
+sqrt((1 - 0)^2 + (1 - 0)^2)
+```
+
+```
+[1] 1.414214
+```
+
+```r
+# Statistical Distance to the origin
+sqrt((1 -  0)^2/1 + (1 - 0)^2/5)
+```
+
+```
+[1] 1.095445
+```
+
+```r
+## Generating Multivariate Normal Data
+library(mvtnorm)
+
+## set up parameters, 2 means use the covariance matrix from earlier
+mu = c(10, 20)
+
+## generate a large dataset
+set.seed(1000)
+X = rmvnorm(1000, mu, Cov)
+
+## Correlation of X, should be close to 0
+cor(X)
+```
+
+```
+           [,1]       [,2]
+[1,]  1.0000000 -0.0217756
+[2,] -0.0217756  1.0000000
+```
+
+```r
+## Calculate the distance between each point and the means
+distance = c()
+for (i in 1:nrow(X)) {
+  x = t(X[i, ] - colMeans(X)) %*% solve(cov(X)) %*% (X[i, ] - colMeans(X))
+  distance = c(distance, x)
+}
+## distances
+head(distance)
+```
+
+```
+[1] 1.7095871 0.4531800 0.7819858 0.7832673 1.9309843 1.3017149
+```
+
+```r
+## What is the distance that captures 95% of all points generated from the distribution?
+(critical.value = qchisq(.95, 2))
+```
+
+```
+[1] 5.991465
+```
+
+```r
+## What is the proportion of points that fall within this distance?
+## As n increases the proportion should converge on 5%
+length(which((distance - critical.value) > 0))/length(distance)
+```
+
+```
+[1] 0.051
+```
+
+```r
+## plot a 95% confidence ellipse for the generated data
+library(plotrix)
+plot(x = c(7,13), y = c(15,24), type = "n",
+  xlab = expression(x[1]), ylab = expression(x[2]),
+  main = "95% Confidence Ellipsoid")
+points(X[, 1], X[, 2])
+abline(h = 20, v = 10, lty = 2, lwd = 2, col = "red")
+draw.ellipse(10, 20,
+  sqrt(critical.value * lambda[1]),
+  sqrt(critical.value * lambda[2]),
+  ## convert radians to degrees
+  angle = acos(abs(ee[1,1])) * 57.2957795,
+  border = 1, lwd = 2)
+```
+
+<img src="01-Statistical-Methods_files/figure-html/a25-1.png" width="672" />

@@ -120,6 +120,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#contingency-tables"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#principal-components"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#eigen-values-and-statistical-distance"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
 </ul>
@@ -689,27 +692,33 @@ NOTE: n is number in each group</code></pre>
 </div>
 <div id="survival-analysis" class="section level2 unnumbered">
 <h2><strong>Survival Analysis</strong></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">width =</span> <span class="dv">100</span>)
-
-<span class="kw">library</span>(survival)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(survival)
 
 <span class="kw">summary</span>(lung)</code></pre></div>
-<pre><code>      inst            time            status           age             sex           ph.ecog      
- Min.   : 1.00   Min.   :   5.0   Min.   :1.000   Min.   :39.00   Min.   :1.000   Min.   :0.0000  
- 1st Qu.: 3.00   1st Qu.: 166.8   1st Qu.:1.000   1st Qu.:56.00   1st Qu.:1.000   1st Qu.:0.0000  
- Median :11.00   Median : 255.5   Median :2.000   Median :63.00   Median :1.000   Median :1.0000  
- Mean   :11.09   Mean   : 305.2   Mean   :1.724   Mean   :62.45   Mean   :1.395   Mean   :0.9515  
- 3rd Qu.:16.00   3rd Qu.: 396.5   3rd Qu.:2.000   3rd Qu.:69.00   3rd Qu.:2.000   3rd Qu.:1.0000  
- Max.   :33.00   Max.   :1022.0   Max.   :2.000   Max.   :82.00   Max.   :2.000   Max.   :3.0000  
- NA&#39;s   :1                                                                        NA&#39;s   :1       
-    ph.karno        pat.karno         meal.cal         wt.loss       
- Min.   : 50.00   Min.   : 30.00   Min.   :  96.0   Min.   :-24.000  
- 1st Qu.: 75.00   1st Qu.: 70.00   1st Qu.: 635.0   1st Qu.:  0.000  
- Median : 80.00   Median : 80.00   Median : 975.0   Median :  7.000  
- Mean   : 81.94   Mean   : 79.96   Mean   : 928.8   Mean   :  9.832  
- 3rd Qu.: 90.00   3rd Qu.: 90.00   3rd Qu.:1150.0   3rd Qu.: 15.750  
- Max.   :100.00   Max.   :100.00   Max.   :2600.0   Max.   : 68.000  
- NA&#39;s   :1        NA&#39;s   :3        NA&#39;s   :47       NA&#39;s   :14       </code></pre>
+<pre><code>      inst            time            status           age       
+ Min.   : 1.00   Min.   :   5.0   Min.   :1.000   Min.   :39.00  
+ 1st Qu.: 3.00   1st Qu.: 166.8   1st Qu.:1.000   1st Qu.:56.00  
+ Median :11.00   Median : 255.5   Median :2.000   Median :63.00  
+ Mean   :11.09   Mean   : 305.2   Mean   :1.724   Mean   :62.45  
+ 3rd Qu.:16.00   3rd Qu.: 396.5   3rd Qu.:2.000   3rd Qu.:69.00  
+ Max.   :33.00   Max.   :1022.0   Max.   :2.000   Max.   :82.00  
+ NA&#39;s   :1                                                       
+      sex           ph.ecog          ph.karno        pat.karno     
+ Min.   :1.000   Min.   :0.0000   Min.   : 50.00   Min.   : 30.00  
+ 1st Qu.:1.000   1st Qu.:0.0000   1st Qu.: 75.00   1st Qu.: 70.00  
+ Median :1.000   Median :1.0000   Median : 80.00   Median : 80.00  
+ Mean   :1.395   Mean   :0.9515   Mean   : 81.94   Mean   : 79.96  
+ 3rd Qu.:2.000   3rd Qu.:1.0000   3rd Qu.: 90.00   3rd Qu.: 90.00  
+ Max.   :2.000   Max.   :3.0000   Max.   :100.00   Max.   :100.00  
+                 NA&#39;s   :1        NA&#39;s   :1        NA&#39;s   :3       
+    meal.cal         wt.loss       
+ Min.   :  96.0   Min.   :-24.000  
+ 1st Qu.: 635.0   1st Qu.:  0.000  
+ Median : 975.0   Median :  7.000  
+ Mean   : 928.8   Mean   :  9.832  
+ 3rd Qu.:1150.0   3rd Qu.: 15.750  
+ Max.   :2600.0   Max.   : 68.000  
+ NA&#39;s   :47       NA&#39;s   :14       </code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdl =<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(time, status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> lung)
 
 <span class="kw">plot</span>(mdl, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>,
@@ -1331,9 +1340,375 @@ Semaesan-Fermate  1.50  -4.198139 7.1981388 0.9131542
 Spergon-Fermate   2.25  -3.448139 7.9481388 0.7194742
 Spergon-Semaesan  0.75  -4.948139 6.4481388 0.9926478</code></pre>
 <p>There is not significant evidence between the difference in means between any of the treatments.</p>
+</div>
+</div>
+</div>
+<div id="contingency-tables" class="section level2 unnumbered">
+<h2>Contingency Tables</h2>
+<table>
+<caption><span id="tab:a20">Table 1: </span>Data for applicant entrance for 6 departments</caption>
+<thead>
+<tr class="header">
+<th align="right">Department</th>
+<th align="right">Male.Yes</th>
+<th align="right">Male.No</th>
+<th align="right">Female.Yes</th>
+<th align="right">Female.No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">512</td>
+<td align="right">313</td>
+<td align="right">89</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">353</td>
+<td align="right">207</td>
+<td align="right">17</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">120</td>
+<td align="right">205</td>
+<td align="right">202</td>
+<td align="right">391</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">138</td>
+<td align="right">279</td>
+<td align="right">131</td>
+<td align="right">244</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">53</td>
+<td align="right">138</td>
+<td align="right">94</td>
+<td align="right">299</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">22</td>
+<td align="right">351</td>
+<td align="right">24</td>
+<td align="right">317</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dta<span class="op">$</span>OR =<span class="st"> </span><span class="kw">with</span>(dta, (Male.Yes <span class="op">*</span><span class="st"> </span>Female.No) <span class="op">/</span><span class="st"> </span>(Male.No <span class="op">*</span><span class="st"> </span>Female.Yes))
+dta<span class="op">$</span>se =<span class="st"> </span><span class="kw">with</span>(dta, (<span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>Male.Yes <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Male.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.Yes)))
+dta<span class="op">$</span>Conf.lwr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">-</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
+dta<span class="op">$</span>Conf.Upr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">+</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
 
+<span class="kw">kable</span>(dta, <span class="dt">split.tables =</span> <span class="ot">Inf</span>)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Department</th>
+<th align="right">Male.Yes</th>
+<th align="right">Male.No</th>
+<th align="right">Female.Yes</th>
+<th align="right">Female.No</th>
+<th align="right">OR</th>
+<th align="right">se</th>
+<th align="right">Conf.lwr</th>
+<th align="right">Conf.Upr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">512</td>
+<td align="right">313</td>
+<td align="right">89</td>
+<td align="right">19</td>
+<td align="right">0.3492120</td>
+<td align="right">0.2627081</td>
+<td align="right">-0.1656958</td>
+<td align="right">0.8641199</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">353</td>
+<td align="right">207</td>
+<td align="right">17</td>
+<td align="right">8</td>
+<td align="right">0.8025007</td>
+<td align="right">0.4375926</td>
+<td align="right">-0.0551808</td>
+<td align="right">1.6601823</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">120</td>
+<td align="right">205</td>
+<td align="right">202</td>
+<td align="right">391</td>
+<td align="right">1.1330596</td>
+<td align="right">0.1439424</td>
+<td align="right">0.8509325</td>
+<td align="right">1.4151868</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">138</td>
+<td align="right">279</td>
+<td align="right">131</td>
+<td align="right">244</td>
+<td align="right">0.9212838</td>
+<td align="right">0.1502084</td>
+<td align="right">0.6268753</td>
+<td align="right">1.2156922</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">53</td>
+<td align="right">138</td>
+<td align="right">94</td>
+<td align="right">299</td>
+<td align="right">1.2216312</td>
+<td align="right">0.2002426</td>
+<td align="right">0.8291558</td>
+<td align="right">1.6141066</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">22</td>
+<td align="right">351</td>
+<td align="right">24</td>
+<td align="right">317</td>
+<td align="right">0.8278727</td>
+<td align="right">0.3051635</td>
+<td align="right">0.2297522</td>
+<td align="right">1.4259933</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal =<span class="st"> </span><span class="kw">colSums</span>(dta[, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])
+OR =<span class="st"> </span>(marginal[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">4</span>]) <span class="op">/</span><span class="st"> </span>(marginal[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">3</span>])
+se =<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">3</span>])
+
+## Confidence Interval for the Marginal OR
+OR <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se</code></pre></div>
+<pre><code>[1] 1.71585 1.96631</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DescTools)
+<span class="kw">library</span>(lawstat)
+
+dta =<span class="st"> </span><span class="kw">xtabs</span>(freq <span class="op">~</span><span class="st"> </span>.,
+            <span class="kw">cbind</span>(<span class="kw">expand.grid</span>(<span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>),
+                              <span class="dt">Entrace =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),
+                              <span class="dt">Department =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>)),
+                  <span class="dt">freq =</span>  <span class="kw">c</span>(<span class="dv">512</span>, <span class="dv">89</span>, <span class="dv">313</span>, <span class="dv">19</span>, <span class="dv">353</span>, <span class="dv">17</span>, <span class="dv">207</span>, <span class="dv">8</span>, <span class="dv">120</span>, <span class="dv">202</span>, <span class="dv">205</span>, <span class="dv">391</span>,
+                            <span class="dv">138</span>, <span class="dv">131</span>, <span class="dv">279</span>, <span class="dv">244</span>, <span class="dv">53</span>, <span class="dv">94</span>, <span class="dv">138</span>, <span class="dv">299</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">351</span>, <span class="dv">317</span>)
+                  )
+            )
+
+## Ho: OR = 1, Ha: OR &gt; 1
+<span class="kw">BreslowDayTest</span>(dta, <span class="dt">OR =</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>
+    Breslow-Day test on Homogeneity of Odds Ratios
+
+data:  dta
+X-squared = 19.938, df = 5, p-value = 0.001283</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Ho: OR_1 = OR_2 = OR_3 = OR_4 = OR_5 = OR_6, Ha: At least one set of OR are not equal
+<span class="kw">cmh.test</span>(dta)</code></pre></div>
+<pre><code>
+    Cochran-Mantel-Haenszel Chi-square Test
+
+data:  dta
+CMH statistic = 1.52460, df = 1.00000, p-value = 0.21692, MH
+Estimate = 0.90470, Pooled Odd Ratio = 1.84110, Odd Ratio of level
+1 = 0.34921, Odd Ratio of level 2 = 0.80250, Odd Ratio of level 3
+= 1.13310, Odd Ratio of level 4 = 0.92128, Odd Ratio of level 5 =
+1.22160, Odd Ratio of level 6 = 0.82787</code></pre>
+<p>Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.</p>
 </div>
+<div id="principal-components" class="section level2 unnumbered">
+<h2>Principal Components</h2>
+<hr />
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate some data
+<span class="kw">library</span>(mvtnorm)
+
+mu =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">10</span>, <span class="dv">6</span>)
+cov =<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">nrow =</span> <span class="dv">6</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>,
+  <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,
+    <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>,
+    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,
+    <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>,
+    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>,
+    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>)
+  )
+
+<span class="kw">set.seed</span>(<span class="dv">1000</span>)
+X =<span class="st"> </span><span class="kw">rmvnorm</span>(<span class="dv">100</span>, mu, cov)
+
+<span class="kw">colnames</span>(X) =<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+
+## How do the data correlate?
+<span class="kw">round</span>(<span class="kw">cor</span>(X), <span class="dv">3</span>)</code></pre></div>
+<pre><code>       x1     x2     x3    x4     x5     x6
+x1  1.000 -0.100  0.671 0.013  0.544  0.162
+x2 -0.100  1.000  0.464 0.816  0.314  0.179
+x3  0.671  0.464  1.000 0.507  0.462 -0.160
+x4  0.013  0.816  0.507 1.000  0.582  0.051
+x5  0.544  0.314  0.462 0.582  1.000 -0.044
+x6  0.162  0.179 -0.160 0.051 -0.044  1.000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(X)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a24-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(X)</code></pre></div>
+<pre><code>       x1               x2               x3               x4        
+ Min.   : 8.200   Min.   : 6.259   Min.   : 7.135   Min.   : 6.210  
+ 1st Qu.: 9.313   1st Qu.: 9.209   1st Qu.: 9.045   1st Qu.: 8.927  
+ Median : 9.828   Median :10.253   Median :10.169   Median :10.089  
+ Mean   : 9.975   Mean   :10.109   Mean   :10.087   Mean   :10.084  
+ 3rd Qu.:10.614   3rd Qu.:11.006   3rd Qu.:11.007   3rd Qu.:11.262  
+ Max.   :12.297   Max.   :13.834   Max.   :13.563   Max.   :14.018  
+       x5               x6        
+ Min.   : 6.399   Min.   : 3.260  
+ 1st Qu.: 8.421   1st Qu.: 8.009  
+ Median :10.153   Median : 9.771  
+ Mean   : 9.941   Mean   : 9.869  
+ 3rd Qu.:11.230   3rd Qu.:11.926  
+ Max.   :14.687   Max.   :16.130  </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Build the principal components. We do not need to standardize the data
+## since all of the variables are roughly the same scale.
+(<span class="dt">pr =</span> <span class="kw">prcomp</span>(X))</code></pre></div>
+<pre><code>Standard deviations (1, .., p=6):
+[1] 3.017891e+00 2.563572e+00 1.517959e+00 1.123358e+00 5.274371e-01
+[6] 1.472533e-08
+
+Rotation (n x k) = (6 x 6):
+           PC1         PC2         PC3         PC4         PC5         PC6
+x1  0.04204824  0.13561610 -0.43777882 -0.40016623 -0.02461578 -0.79211803
+x2  0.10306755  0.37620383  0.53544098 -0.09946666  0.71557069 -0.19802951
+x3 -0.06111086  0.35286917 -0.07161650 -0.78263310 -0.09490671  0.49507377
+x4  0.05321194  0.56786999  0.42326271  0.16724994 -0.65448653 -0.19802951
+x5 -0.01790754  0.62553452 -0.57601203  0.43473997  0.21995796  0.19802951
+x6  0.99031424 -0.04233845 -0.07471658 -0.02207772 -0.04014029  0.09901475</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Principal components rotation matrix is actually the same as the eigen vectors
+<span class="kw">eigen</span>(<span class="kw">cov</span>(X))<span class="op">$</span>vectors</code></pre></div>
+<pre><code>            [,1]        [,2]        [,3]        [,4]        [,5]
+[1,]  0.04204824  0.13561610  0.43777882  0.40016623  0.02461578
+[2,]  0.10306755  0.37620383 -0.53544098  0.09946666 -0.71557069
+[3,] -0.06111086  0.35286917  0.07161650  0.78263310  0.09490671
+[4,]  0.05321194  0.56786999 -0.42326271 -0.16724994  0.65448653
+[5,] -0.01790754  0.62553452  0.57601203 -0.43473997 -0.21995796
+[6,]  0.99031424 -0.04233845  0.07471658  0.02207772  0.04014029
+            [,6]
+[1,]  0.79211803
+[2,]  0.19802951
+[3,] -0.49507377
+[4,]  0.19802951
+[5,] -0.19802951
+[6,] -0.09901475</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Build the principal components from the coefficients
+X.pca =<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>pr<span class="op">$</span>rotation
+
+## The variance of the principal components is equal to the eigen values
+<span class="kw">eigen</span>(<span class="kw">cov</span>(X))<span class="op">$</span>values</code></pre></div>
+<pre><code>[1]  9.107665e+00  6.571900e+00  2.304199e+00  1.261933e+00  2.781899e-01
+[6] -5.334563e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">var</span>(X.pca))</code></pre></div>
+<pre><code>         PC1          PC2          PC3          PC4          PC5 
+9.107665e+00 6.571900e+00 2.304199e+00 1.261933e+00 2.781899e-01 
+         PC6 
+2.168355e-16 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## PCA Summary
+## The first two PCA account for 80% of all variation in the data
+<span class="kw">summary</span>(pr)</code></pre></div>
+<pre><code>Importance of components:
+                          PC1    PC2    PC3     PC4     PC5       PC6
+Standard deviation     3.0179 2.5636 1.5180 1.12336 0.52744 1.473e-08
+Proportion of Variance 0.4665 0.3366 0.1180 0.06464 0.01425 0.000e+00
+Cumulative Proportion  0.4665 0.8031 0.9211 0.98575 1.00000 1.000e+00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X.pca =<span class="st"> </span><span class="kw">data.frame</span>(X.pca)
+
+## plot of the first two PCA
+<span class="kw">plot</span>(X.pca<span class="op">$</span>PC1, X.pca<span class="op">$</span>PC2)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a24-2.png" width="768" /></p>
 </div>
+<div id="eigen-values-and-statistical-distance" class="section level2 unnumbered">
+<h2>Eigen Values and Statistical Distance</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Eigen values and vectors are used to describe a positie definate covariance matrix.
+(<span class="dt">Cov =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>))</code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eig =<span class="st"> </span><span class="kw">eigen</span>(Cov)
+
+## eigen values
+(<span class="dt">lambda =</span> eig<span class="op">$</span>values)</code></pre></div>
+<pre><code>[1] 2 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## eigen vectors
+(<span class="dt">ee =</span> eig<span class="op">$</span>vectors)</code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]    0   -1
+[2,]    1    0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Spectural decompsotion allows you to reconstruct a matrix using only the eigen
+## values and vectors
+lambda[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">1</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span>lambda[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">2</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">2</span>])</code></pre></div>
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Straight line distance (Euclidean) vs Statistical Distance
+## Straight line distance to the origin using point(1, 1)
+<span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] 1.414214</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Statistical Distance to the origin</span>
+<span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span>)</code></pre></div>
+<pre><code>[1] 1.095445</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generating Multivariate Normal Data
+<span class="kw">library</span>(mvtnorm)
+
+## set up parameters, 2 means use the covariance matrix from earlier
+mu =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)
+
+## generate a large dataset
+<span class="kw">set.seed</span>(<span class="dv">1000</span>)
+X =<span class="st"> </span><span class="kw">rmvnorm</span>(<span class="dv">1000</span>, mu, Cov)
+
+## Correlation of X, should be close to 0
+<span class="kw">cor</span>(X)</code></pre></div>
+<pre><code>           [,1]       [,2]
+[1,]  1.0000000 -0.0217756
+[2,] -0.0217756  1.0000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate the distance between each point and the means
+distance =<span class="st"> </span><span class="kw">c</span>()
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(X)) {
+  x =<span class="st"> </span><span class="kw">t</span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X)) <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(X)) <span class="op">%*%</span><span class="st"> </span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X))
+  distance =<span class="st"> </span><span class="kw">c</span>(distance, x)
+}
+## distances
+<span class="kw">head</span>(distance)</code></pre></div>
+<pre><code>[1] 1.7095871 0.4531800 0.7819858 0.7832673 1.9309843 1.3017149</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the distance that captures 95% of all points generated from the distribution?
+(<span class="dt">critical.value =</span> <span class="kw">qchisq</span>(.<span class="dv">95</span>, <span class="dv">2</span>))</code></pre></div>
+<pre><code>[1] 5.991465</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the proportion of points that fall within this distance?
+## As n increases the proportion should converge on 5%
+<span class="kw">length</span>(<span class="kw">which</span>((distance <span class="op">-</span><span class="st"> </span>critical.value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))<span class="op">/</span><span class="kw">length</span>(distance)</code></pre></div>
+<pre><code>[1] 0.051</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot a 95% confidence ellipse for the generated data
+<span class="kw">library</span>(plotrix)
+<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">13</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">24</span>), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,
+  <span class="dt">xlab =</span> <span class="kw">expression</span>(x[<span class="dv">1</span>]), <span class="dt">ylab =</span> <span class="kw">expression</span>(x[<span class="dv">2</span>]),
+  <span class="dt">main =</span> <span class="st">&quot;95% Confidence Ellipsoid&quot;</span>)
+<span class="kw">points</span>(X[, <span class="dv">1</span>], X[, <span class="dv">2</span>])
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">20</span>, <span class="dt">v =</span> <span class="dv">10</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">draw.ellipse</span>(<span class="dv">10</span>, <span class="dv">20</span>,
+  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">1</span>]),
+  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">2</span>]),
+  ## convert radians to degrees
+  <span class="dt">angle =</span> <span class="kw">acos</span>(<span class="kw">abs</span>(ee[<span class="dv">1</span>,<span class="dv">1</span>])) <span class="op">*</span><span class="st"> </span><span class="fl">57.2957795</span>,
+  <span class="dt">border =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a25-1.png" width="672" /></p>
+
 </div>
 </div>
             </section>

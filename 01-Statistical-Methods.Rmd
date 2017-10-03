@@ -340,7 +340,6 @@ pwr.anova.test(k = 5, n = 10, f = .5, sig.level = .05)
 
 
 ```{r a12, comment=NA, fig.align='center'}
-options(width = 100)
 
 library(survival)
 
@@ -527,7 +526,7 @@ soy = melt(soy, id.vars = "Treatment", variable.name = "Field", value.name = "Co
 ```
 
 
-```{r b, comment=NA}
+```{r a17, comment=NA}
 ## Make the control treatment the default level
 soy$Treatment = relevel(soy$Treatment, ref = "Control")
 
@@ -543,7 +542,7 @@ anova(mdl)
 
 Since we have a control variable we want to know if any of the treatment means are significantly lower than the control mean.
 
-```{r c, comment=NA, message=FALSE, warning=FALSE}
+```{r a18, comment=NA, message=FALSE, warning=FALSE}
 library(multcomp)
 
 Dunnet = glht(mdl, linfct = mcp(Treatment = "Dunnet"), alternative = "less")
@@ -553,10 +552,197 @@ summary(Dunnet)
 
 We have significant evidence that only Avasan and Fermate are significantly lower than the control. Are they significantly different from each other?
 
-```{r d, comment=NA, message=FALSE, warning=FALSE}
+```{r a19, comment=NA, message=FALSE, warning=FALSE}
 
 TukeyHSD(aov(mdl))
 
 ```
 
 There is not significant evidence between the difference in means between any of the treatments.
+
+## Contingency Tables {-}
+
+```{r a20, comment=NA, echo=FALSE, results='asis'}
+library(knitr)
+
+dta = data.frame(
+  Department = c(1, 2, 3, 4 ,5, 6),
+  Male.Yes = c(512, 353, 120, 138, 53, 22),
+  Male.No = c(313, 207, 205, 279, 138, 351),
+  Female.Yes = c(89, 17, 202, 131, 94, 24),
+  Female.No = c(19, 8, 391, 244, 299, 317)
+)
+
+kable(dta, caption = "Data for applicant entrance for 6 departments")
+
+```
+
+```{r a21, comment=NA, results='asis'}
+dta$OR = with(dta, (Male.Yes * Female.No) / (Male.No * Female.Yes))
+dta$se = with(dta, (sqrt(1/Male.Yes + 1/Female.No + 1/Male.No + 1/Female.Yes)))
+dta$Conf.lwr = with(dta, OR - (1.96 * se))
+dta$Conf.Upr = with(dta, OR + (1.96 * se))
+
+kable(dta, split.tables = Inf)
+
+```
+
+```{r a22, comment=NA}
+
+marginal = colSums(dta[, 2:5])
+OR = (marginal[1] * marginal[4]) / (marginal[2] * marginal[3])
+se = sqrt(1/marginal[1] + 1/marginal[4] + 1/marginal[2] + 1/marginal[3])
+
+## Confidence Interval for the Marginal OR
+OR + c(-1, 1) * 1.96 * se
+
+```
+
+```{r a23, comment=NA, warning=FALSE, message=FALSE}
+library(DescTools)
+library(lawstat)
+
+dta = xtabs(freq ~ .,
+            cbind(expand.grid(Gender = c("Male", "Female"),
+                              Entrace = c("Yes", "No"),
+                              Department = c("1", "2", "3", "4", "5", "6")),
+                  freq =  c(512, 89, 313, 19, 353, 17, 207, 8, 120, 202, 205, 391,
+                            138, 131, 279, 244, 53, 94, 138, 299, 22, 24, 351, 317)
+                  )
+            )
+
+## Ho: OR = 1, Ha: OR > 1
+BreslowDayTest(dta, OR = 1)
+
+## Ho: OR_1 = OR_2 = OR_3 = OR_4 = OR_5 = OR_6, Ha: At least one set of OR are not equal
+cmh.test(dta)
+
+```
+
+Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.
+
+
+## Principal Components {-}
+
+---
+
+```{r a24, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+## Generate some data
+library(mvtnorm)
+
+mu = rep(10, 6)
+cov = matrix(nrow = 6, byrow = TRUE,
+  c(1, 0, 1, 0, 1, 1,
+    0, 2, 1, 2, 1, 1,
+    1, 1, 2, 1, 1, 0,
+    0, 2, 1, 3, 2, 1,
+    1, 1, 1, 2, 4, 1,
+    1, 1, 0, 1, 1, 10)
+  )
+
+set.seed(1000)
+X = rmvnorm(100, mu, cov)
+
+colnames(X) = paste("x", 1:6, sep = "")
+
+## How do the data correlate?
+round(cor(X), 3)
+pairs(X)
+
+summary(X)
+
+## Build the principal components. We do not need to standardize the data
+## since all of the variables are roughly the same scale.
+(pr = prcomp(X))
+
+## Principal components rotation matrix is actually the same as the eigen vectors
+eigen(cov(X))$vectors
+
+## Build the principal components from the coefficients
+X.pca = X %*% pr$rotation
+
+## The variance of the principal components is equal to the eigen values
+eigen(cov(X))$values
+diag(var(X.pca))
+
+## PCA Summary
+## The first two PCA account for 80% of all variation in the data
+summary(pr)
+
+X.pca = data.frame(X.pca)
+
+## plot of the first two PCA
+plot(X.pca$PC1, X.pca$PC2)
+
+```
+
+## Eigen Values and Statistical Distance {-}
+
+```{r a25, warning=FALSE, message=FALSE, comment=NA}
+## Eigen values and vectors are used to describe a positie definate covariance matrix.
+(Cov = matrix(c(1, 0, 0, 2), nrow = 2))
+eig = eigen(Cov)
+
+## eigen values
+(lambda = eig$values)
+
+## eigen vectors
+(ee = eig$vectors)
+
+## Spectural decompsotion allows you to reconstruct a matrix using only the eigen
+## values and vectors
+lambda[1] * ee[,1] %*% t(ee[,1]) + lambda[2] * ee[,2] %*% t(ee[,2])
+
+## Straight line distance (Euclidean) vs Statistical Distance
+## Straight line distance to the origin using point(1, 1)
+sqrt((1 - 0)^2 + (1 - 0)^2)
+
+# Statistical Distance to the origin
+sqrt((1 -  0)^2/1 + (1 - 0)^2/5)
+
+## Generating Multivariate Normal Data
+library(mvtnorm)
+
+## set up parameters, 2 means use the covariance matrix from earlier
+mu = c(10, 20)
+
+## generate a large dataset
+set.seed(1000)
+X = rmvnorm(1000, mu, Cov)
+
+## Correlation of X, should be close to 0
+cor(X)
+
+## Calculate the distance between each point and the means
+distance = c()
+for (i in 1:nrow(X)) {
+  x = t(X[i, ] - colMeans(X)) %*% solve(cov(X)) %*% (X[i, ] - colMeans(X))
+  distance = c(distance, x)
+}
+## distances
+head(distance)
+
+## What is the distance that captures 95% of all points generated from the distribution?
+(critical.value = qchisq(.95, 2))
+
+## What is the proportion of points that fall within this distance?
+## As n increases the proportion should converge on 5%
+length(which((distance - critical.value) > 0))/length(distance)
+
+
+## plot a 95% confidence ellipse for the generated data
+library(plotrix)
+plot(x = c(7,13), y = c(15,24), type = "n",
+  xlab = expression(x[1]), ylab = expression(x[2]),
+  main = "95% Confidence Ellipsoid")
+points(X[, 1], X[, 2])
+abline(h = 20, v = 10, lty = 2, lwd = 2, col = "red")
+draw.ellipse(10, 20,
+  sqrt(critical.value * lambda[1]),
+  sqrt(critical.value * lambda[2]),
+  ## convert radians to degrees
+  angle = acos(abs(ee[1,1])) * 57.2957795,
+  border = 1, lwd = 2)
+
+```

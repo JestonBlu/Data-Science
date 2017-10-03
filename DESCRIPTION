@@ -1,5 +1,5 @@
 Package: book
 Title: Does not matter.
 Version: 0.0.1
-Imports: nortest, MASS, knitr, bookdown, pwr, survival, lsmeans, reshape2, plyr, car, knitr, pander, multcomp
+Imports: nortest, MASS, knitr, bookdown, pwr, survival, lsmeans, reshape2, plyr, car, knitr, pander, multcomp, lawstat, plotrix, mvtnorm, DescTools
 Remotes: rstudio/bookdown
