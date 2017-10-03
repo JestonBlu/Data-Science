@@ -1,4 +1,226 @@
 # Regression Methods {-}
 
 
-Minor tweak
+## Matrix Regression {-}
+
+
+```{r a1, comment=NA}
+
+library(mvtnorm)
+
+## Covariance matrix for random data
+A = matrix(c(3, 1.5, 1.5, 3), nrow = 2)
+
+## number of observations to generate
+n = 10
+
+## Generate data
+set.seed(1123)
+(dta = rmvnorm(n = n, mean = c(10, 20), sigma = A))
+
+## Create Y vector from random data
+(Y = dta[, 1])
+
+## Create design matrix
+(X = as.matrix(data.frame("b" = rep(1, n), "x" = dta[, 2])))
+
+## Beta
+B = solve(t(X) %*% X) %*% t(X)
+
+## Solve coefficients
+(B %*% Y)
+
+## Verify results
+(mdl = lm(dta[,1] ~ dta[,2]))
+
+## Hat Matrix
+## Projected onto Y will give you Y-hat
+## Diagonals of Hat Matrix are leverage
+H = X %*% B
+diag(H)
+
+## Sum of squares X
+SXX = sum((dta[, 2] - colMeans(dta)[2])^2)
+
+## calculate leverage manually
+## values greater than 4/n are considered high leverage
+## for multiple regression Hii > 2 + (p + 1)/n are considered high leverage
+1/n + (dta[, 2] - colMeans(dta)[2])^2 / SXX
+
+## verify results
+hatvalues(mdl)
+
+## Project Hat Matrix on to Y to get Y-hat
+H %*% Y
+
+## Verify results
+predict(mdl, data.frame(dta))
+
+## MSE of estimate
+(mse = sqrt(diag(anova(mdl)[[3]][2] * solve(t(X) %*% X))))
+
+## 95% confidence interval for X
+mdl$coefficients[1] + c(-1, 1) * mse[1] * qt(1 - .05/2, df = n - 2)
+mdl$coefficients[2] + c(-1, 1) * mse[2] * qt(1 - .05/2, df = n - 2)
+
+## Check confidence interval
+confint(mdl)
+
+## Calculate R^2
+## SST is also SYY
+SST = sum((dta[, 1] - colMeans(dta)[1])^2)
+SSReg = sum((predict(mdl, data.frame(dta)) - colMeans(dta)[1])^2)
+
+## R^2
+SSReg / SST
+
+## Adjusted R^2
+1 - (sum(mdl$residuals^2)/(n - 2))/(SST/(n - 1))
+
+summary(mdl)
+
+
+```
+
+## Multiple Regression {-}
+
+```{r a2, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
+
+# library(car)
+# library(alr3)
+#
+# defects = read.delim("data/defects.txt")
+# attach(defects)
+# head(defects)
+#
+# ## The response variable does not appear to be normal when using a histogram and the
+# ## qqplot shows that there is more probabilty in the tail than you would expect in
+# ## normally distributed data.
+# par(mfrow = c(1,2))
+# hist(Defective); qqnorm(Defective); qqline(Defective)
+#
+# ## Are the predictor variables independent?
+# pairs(defects[, 2:5])
+#
+# ## It looks like there is a lot of correlation between the predictor variables
+# ## which means they are not independent. This is fine for prediction, but we
+# ## cant perform hypothesis tests.
+#
+# ## Train the model
+# mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
+# summary(mdl); anova(mdl)
+#
+# ## Do the errors follow a normal distribution?
+# shapiro.test(mdl$residuals)
+#
+# ## Look at some standard model diagnostics
+# par(mfrow = c(2,2))
+# plot(mdl)
+#
+# ## Test for hidden correlation, VIF > 5 is considered highly correlated
+# vif(mdl)
+#
+# ## None of the variables show as being statistically significant most likely
+# ## because of the high correlation
+#
+# ## Marginal model plots show how well the model mean is fits the data.
+# mmps(mdl, Temperature ~ .)
+#
+# ## Added variable plots show the additional variance explained by adding a variable
+# ## after all other variables have been added to the model.
+# avPlots(mdl)
+
+```
+
+## Logistic Regression {-}
+
+```{r a3, comment=NA, warning=FALSE, message=FALSE, fig.width=9, fig.height=7}
+
+library(popbio)
+library(Deducer)
+
+dta = read.csv("data/pros.csv")
+
+head(dta)
+
+mdl = glm(CAPSULE ~ AGE + RACE + DPROS + DCAPS + PSA + VOL + GLEASON,
+          family = binomial(), data = dta)
+
+summary(mdl)
+
+logi.hist.plot(sqrt(dta$PSA), dta$CAPSULE, logi.mod = 1, boxp = FALSE, notch = FALSE,
+               main = "Logistic Regression plot for PSA",
+               xlab = "PSA")
+
+rocplot(mdl)
+
+```
+
+## Multinomial Logistic Regression {-}
+
+
+```{r a4, comment=NA, message=FALSE, warning=FALSE, fig.width=10, fig.height=7}
+
+library(nnet)
+library(devtools)
+library(lattice)
+
+## Using the iris dataset
+summary(iris)
+
+## Build a multinomial logistic model from the nnet package
+mdl = multinom(Species ~ ., data = iris)
+
+summary(mdl)
+
+## Prediction based on Sepal and Petal values
+sample = data.frame(Sepal.Length = 5.5,
+                    Sepal.Width = 3,
+                    Petal.Length = 2.5,
+                    Petal.Width = 2)
+
+round(predict(mdl, sample, type = "probs"))
+
+## Scatterplot Matrix
+splom(iris[, 1:4], col = 1:3,
+      panel = function(x, y, i, j, groups, ...) {
+        panel.points(x, y, col = iris$Species)
+        panel.points(sample[1, j], sample[1, i], col = 'blue', pch = 16)
+      }, auto.key = TRUE)
+
+```
+
+## Poisson Regression {-}
+
+
+```{r a5, warning=FALSE, message=FALSE, comment=NA, fig.width=9, fig.height=8}
+options(width = 100)
+
+library(MASS)
+
+dta = read.csv("data/pharynx.csv")
+
+head(dta)
+
+## Poisson Regression Model for Survival Time
+mdl = glm(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+          family = poisson(), data = dta)
+
+## Negative Binomial Model for Survival Time
+mdl2 = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+              maxit = 100, data = dta)
+
+## Dispersion paramater > 0 so poisson is not appropriate, negative binomial is a better model
+par(mfrow = c(2,2))
+plot(mdl2)
+
+## Remove the outlier observation and retrain
+dta = dta[-159, ]
+
+mdl.nb = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+              maxit = 100, data = dta)
+
+summary(mdl.nb)
+plot(mdl.nb)
+
+```

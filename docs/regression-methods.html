@@ -124,7 +124,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#principal-components"><i class="fa fa-check"></i>Principal Components</a></li>
 <li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html#eigen-values-and-statistical-distance"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html#matrix-regression"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html#multiple-regression"><i class="fa fa-check"></i>Multiple Regression</a></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html#logistic-regression"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html#multinomial-logistic-regression"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html#poisson-regression"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -144,8 +150,396 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="regression-methods" class="section level1 unnumbered">
 <h1>Regression Methods</h1>
-<p>Minor tweak</p>
+<div id="matrix-regression" class="section level2 unnumbered">
+<h2>Matrix Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mvtnorm)
 
+## Covariance matrix for random data
+A =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="dv">3</span>), <span class="dt">nrow =</span> <span class="dv">2</span>)
+
+## number of observations to generate
+n =<span class="st"> </span><span class="dv">10</span>
+
+## Generate data
+<span class="kw">set.seed</span>(<span class="dv">1123</span>)
+(<span class="dt">dta =</span> <span class="kw">rmvnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>), <span class="dt">sigma =</span> A))</code></pre></div>
+<pre><code>           [,1]     [,2]
+ [1,] 11.675350 22.16815
+ [2,] 11.164364 18.89734
+ [3,] 12.400876 20.94524
+ [4,] 10.357397 21.56407
+ [5,] 10.109067 18.25317
+ [6,] 10.444637 19.84917
+ [7,] 10.451464 21.36056
+ [8,]  8.763568 19.40245
+ [9,]  8.923162 22.68341
+[10,]  7.600346 18.09957</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Create Y vector from random data
+(<span class="dt">Y =</span> dta[, <span class="dv">1</span>])</code></pre></div>
+<pre><code> [1] 11.675350 11.164364 12.400876 10.357397 10.109067 10.444637 10.451464
+ [8]  8.763568  8.923162  7.600346</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Create design matrix
+(<span class="dt">X =</span> <span class="kw">as.matrix</span>(<span class="kw">data.frame</span>(<span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n), <span class="st">&quot;x&quot;</span> =<span class="st"> </span>dta[, <span class="dv">2</span>])))</code></pre></div>
+<pre><code>      b        x
+ [1,] 1 22.16815
+ [2,] 1 18.89734
+ [3,] 1 20.94524
+ [4,] 1 21.56407
+ [5,] 1 18.25317
+ [6,] 1 19.84917
+ [7,] 1 21.36056
+ [8,] 1 19.40245
+ [9,] 1 22.68341
+[10,] 1 18.09957</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Beta
+B =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X)
+
+## Solve coefficients
+(B <span class="op">%*%</span><span class="st"> </span>Y)</code></pre></div>
+<pre><code>       [,1]
+b 4.0586986
+x 0.3016549</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify results
+(<span class="dt">mdl =</span> <span class="kw">lm</span>(dta[,<span class="dv">1</span>] <span class="op">~</span><span class="st"> </span>dta[,<span class="dv">2</span>]))</code></pre></div>
+<pre><code>
+Call:
+lm(formula = dta[, 1] ~ dta[, 2])
+
+Coefficients:
+(Intercept)     dta[, 2]  
+     4.0587       0.3017  </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Hat Matrix
+## Projected onto Y will give you Y-hat
+## Diagonals of Hat Matrix are leverage
+H =<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>B
+<span class="kw">diag</span>(H)</code></pre></div>
+<pre><code> [1] 0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377
+ [8] 0.1348034 0.3292979 0.3032130</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Sum of squares X
+SXX =<span class="st"> </span><span class="kw">sum</span>((dta[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>)
+
+## calculate leverage manually
+## values greater than 4/n are considered high leverage
+## for multiple regression Hii &gt; 2 + (p + 1)/n are considered high leverage
+<span class="dv">1</span><span class="op">/</span>n <span class="op">+</span><span class="st"> </span>(dta[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>SXX</code></pre></div>
+<pre><code> [1] 0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377
+ [8] 0.1348034 0.3292979 0.3032130</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## verify results
+<span class="kw">hatvalues</span>(mdl)</code></pre></div>
+<pre><code>        1         2         3         4         5         6         7 
+0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377 
+        8         9        10 
+0.1348034 0.3292979 0.3032130 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Project Hat Matrix on to Y to get Y-hat
+H <span class="op">%*%</span><span class="st"> </span>Y</code></pre></div>
+<pre><code>           [,1]
+ [1,] 10.745830
+ [2,]  9.759172
+ [3,] 10.376933
+ [4,] 10.563605
+ [5,]  9.564856
+ [6,] 10.046298
+ [7,] 10.502215
+ [8,]  9.911541
+ [9,] 10.901259
+[10,]  9.518521</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify results
+<span class="kw">predict</span>(mdl, <span class="kw">data.frame</span>(dta))</code></pre></div>
+<pre><code>        1         2         3         4         5         6         7 
+10.745830  9.759172 10.376933 10.563605  9.564856 10.046298 10.502215 
+        8         9        10 
+ 9.911541 10.901259  9.518521 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MSE of estimate
+(<span class="dt">mse =</span> <span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">anova</span>(mdl)[[<span class="dv">3</span>]][<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X))))</code></pre></div>
+<pre><code>      b       x 
+5.90855 0.28989 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 95% confidence interval for X
+mdl<span class="op">$</span>coefficients[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>mse[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">05</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">df =</span> n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] -9.566442 17.683839</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdl<span class="op">$</span>coefficients[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>mse[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">05</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">df =</span> n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] -0.3668327  0.9701424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Check confidence interval
+<span class="kw">confint</span>(mdl)</code></pre></div>
+<pre><code>                 2.5 %     97.5 %
+(Intercept) -9.5664418 17.6838390
+dta[, 2]    -0.3668327  0.9701424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate R^2
+## SST is also SYY
+SST =<span class="st"> </span><span class="kw">sum</span>((dta[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)
+SSReg =<span class="st"> </span><span class="kw">sum</span>((<span class="kw">predict</span>(mdl, <span class="kw">data.frame</span>(dta)) <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)
+
+## R^2
+SSReg <span class="op">/</span><span class="st"> </span>SST</code></pre></div>
+<pre><code>[1] 0.1192158</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Adjusted R^2
+<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="kw">sum</span>(mdl<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>))<span class="op">/</span>(SST<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</code></pre></div>
+<pre><code>[1] 0.009117763</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = dta[, 1] ~ dta[, 2])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.9781 -0.9125  0.1738  0.8332  2.0239 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   4.0587     5.9085   0.687    0.512
+dta[, 2]      0.3017     0.2899   1.041    0.328
+
+Residual standard error: 1.429 on 8 degrees of freedom
+Multiple R-squared:  0.1192,    Adjusted R-squared:  0.009118 
+F-statistic: 1.083 on 1 and 8 DF,  p-value: 0.3285</code></pre>
+</div>
+<div id="multiple-regression" class="section level2 unnumbered">
+<h2>Multiple Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># library(car)</span>
+<span class="co"># library(alr3)</span>
+<span class="co">#</span>
+<span class="co"># defects = read.delim(&quot;data/defects.txt&quot;)</span>
+<span class="co"># attach(defects)</span>
+<span class="co"># head(defects)</span>
+<span class="co">#</span>
+<span class="co"># ## The response variable does not appear to be normal when using a histogram and the</span>
+<span class="co"># ## qqplot shows that there is more probabilty in the tail than you would expect in</span>
+<span class="co"># ## normally distributed data.</span>
+<span class="co"># par(mfrow = c(1,2))</span>
+<span class="co"># hist(Defective); qqnorm(Defective); qqline(Defective)</span>
+<span class="co">#</span>
+<span class="co"># ## Are the predictor variables independent?</span>
+<span class="co"># pairs(defects[, 2:5])</span>
+<span class="co">#</span>
+<span class="co"># ## It looks like there is a lot of correlation between the predictor variables</span>
+<span class="co"># ## which means they are not independent. This is fine for prediction, but we</span>
+<span class="co"># ## cant perform hypothesis tests.</span>
+<span class="co">#</span>
+<span class="co"># ## Train the model</span>
+<span class="co"># mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)</span>
+<span class="co"># summary(mdl); anova(mdl)</span>
+<span class="co">#</span>
+<span class="co"># ## Do the errors follow a normal distribution?</span>
+<span class="co"># shapiro.test(mdl$residuals)</span>
+<span class="co">#</span>
+<span class="co"># ## Look at some standard model diagnostics</span>
+<span class="co"># par(mfrow = c(2,2))</span>
+<span class="co"># plot(mdl)</span>
+<span class="co">#</span>
+<span class="co"># ## Test for hidden correlation, VIF &gt; 5 is considered highly correlated</span>
+<span class="co"># vif(mdl)</span>
+<span class="co">#</span>
+<span class="co"># ## None of the variables show as being statistically significant most likely</span>
+<span class="co"># ## because of the high correlation</span>
+<span class="co">#</span>
+<span class="co"># ## Marginal model plots show how well the model mean is fits the data.</span>
+<span class="co"># mmps(mdl, Temperature ~ .)</span>
+<span class="co">#</span>
+<span class="co"># ## Added variable plots show the additional variance explained by adding a variable</span>
+<span class="co"># ## after all other variables have been added to the model.</span>
+<span class="co"># avPlots(mdl)</span></code></pre></div>
+</div>
+<div id="logistic-regression" class="section level2 unnumbered">
+<h2>Logistic Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(popbio)
+<span class="kw">library</span>(Deducer)
+
+dta =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/pros.csv&quot;</span>)
+
+<span class="kw">head</span>(dta)</code></pre></div>
+<pre><code>  ID CAPSULE AGE RACE DPROS DCAPS  PSA  VOL GLEASON
+1  1       0  65    1     2     1  1.4  0.0       6
+2  2       0  72    1     3     2  6.7  0.0       7
+3  3       0  70    1     1     2  4.9  0.0       6
+4  4       0  76    2     2     1 51.2 20.0       7
+5  5       0  69    1     1     1 12.3 55.9       6
+6  6       1  71    1     3     2  3.3  0.0       8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdl =<span class="st"> </span><span class="kw">glm</span>(CAPSULE <span class="op">~</span><span class="st"> </span>AGE <span class="op">+</span><span class="st"> </span>RACE <span class="op">+</span><span class="st"> </span>DPROS <span class="op">+</span><span class="st"> </span>DCAPS <span class="op">+</span><span class="st"> </span>PSA <span class="op">+</span><span class="st"> </span>VOL <span class="op">+</span><span class="st"> </span>GLEASON,
+          <span class="dt">family =</span> <span class="kw">binomial</span>(), <span class="dt">data =</span> dta)
+
+<span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>
+Call:
+glm(formula = CAPSULE ~ AGE + RACE + DPROS + DCAPS + PSA + VOL + 
+    GLEASON, family = binomial(), data = dta)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.4058  -0.7772  -0.4416   0.9019   2.3771  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -6.915650   1.728754  -4.000 6.32e-05 ***
+AGE         -0.015825   0.019517  -0.811  0.41745    
+RACE        -0.695258   0.476106  -1.460  0.14421    
+DPROS        0.551597   0.136545   4.040 5.35e-05 ***
+DCAPS        0.479916   0.463728   1.035  0.30071    
+PSA          0.027196   0.009922   2.741  0.00613 ** 
+VOL         -0.010840   0.007753  -1.398  0.16204    
+GLEASON      0.972442   0.167259   5.814 6.10e-09 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 506.59  on 375  degrees of freedom
+Residual deviance: 377.31  on 368  degrees of freedom
+  (4 observations deleted due to missingness)
+AIC: 393.31
+
+Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logi.hist.plot</span>(<span class="kw">sqrt</span>(dta<span class="op">$</span>PSA), dta<span class="op">$</span>CAPSULE, <span class="dt">logi.mod =</span> <span class="dv">1</span>, <span class="dt">boxp =</span> <span class="ot">FALSE</span>, <span class="dt">notch =</span> <span class="ot">FALSE</span>,
+               <span class="dt">main =</span> <span class="st">&quot;Logistic Regression plot for PSA&quot;</span>,
+               <span class="dt">xlab =</span> <span class="st">&quot;PSA&quot;</span>)</code></pre></div>
+<p><img src="02-Regression_files/figure-html/a3-1.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rocplot</span>(mdl)</code></pre></div>
+<p><img src="02-Regression_files/figure-html/a3-2.png" width="864" /></p>
+</div>
+<div id="multinomial-logistic-regression" class="section level2 unnumbered">
+<h2>Multinomial Logistic Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nnet)
+<span class="kw">library</span>(devtools)
+<span class="kw">library</span>(lattice)
+
+## Using the iris dataset
+<span class="kw">summary</span>(iris)</code></pre></div>
+<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Build a multinomial logistic model from the nnet package
+mdl =<span class="st"> </span><span class="kw">multinom</span>(Species <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> iris)</code></pre></div>
+<pre><code># weights:  18 (10 variable)
+initial  value 164.791843 
+iter  10 value 16.177348
+iter  20 value 7.111438
+iter  30 value 6.182999
+iter  40 value 5.984028
+iter  50 value 5.961278
+iter  60 value 5.954900
+iter  70 value 5.951851
+iter  80 value 5.950343
+iter  90 value 5.949904
+iter 100 value 5.949867
+final  value 5.949867 
+stopped after 100 iterations</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>Call:
+multinom(formula = Species ~ ., data = iris)
+
+Coefficients:
+           (Intercept) Sepal.Length Sepal.Width Petal.Length Petal.Width
+versicolor    18.69037    -5.458424   -8.707401     14.24477   -3.097684
+virginica    -23.83628    -7.923634  -15.370769     23.65978   15.135301
+
+Std. Errors:
+           (Intercept) Sepal.Length Sepal.Width Petal.Length Petal.Width
+versicolor    34.97116     89.89215    157.0415     60.19170    45.48852
+virginica     35.76649     89.91153    157.1196     60.46753    45.93406
+
+Residual Deviance: 11.89973 
+AIC: 31.89973 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Prediction based on Sepal and Petal values
+sample =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="fl">5.5</span>,
+                    <span class="dt">Sepal.Width =</span> <span class="dv">3</span>,
+                    <span class="dt">Petal.Length =</span> <span class="fl">2.5</span>,
+                    <span class="dt">Petal.Width =</span> <span class="dv">2</span>)
+
+<span class="kw">round</span>(<span class="kw">predict</span>(mdl, sample, <span class="dt">type =</span> <span class="st">&quot;probs&quot;</span>))</code></pre></div>
+<pre><code>    setosa versicolor  virginica 
+         1          0          0 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Scatterplot Matrix
+<span class="kw">splom</span>(iris[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,
+      <span class="dt">panel =</span> <span class="cf">function</span>(x, y, i, j, groups, ...) {
+        <span class="kw">panel.points</span>(x, y, <span class="dt">col =</span> iris<span class="op">$</span>Species)
+        <span class="kw">panel.points</span>(sample[<span class="dv">1</span>, j], sample[<span class="dv">1</span>, i], <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>)
+      }, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="02-Regression_files/figure-html/a4-1.png" width="960" /></p>
+</div>
+<div id="poisson-regression" class="section level2 unnumbered">
+<h2>Poisson Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">width =</span> <span class="dv">100</span>)
+
+<span class="kw">library</span>(MASS)
+
+dta =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/pharynx.csv&quot;</span>)
+
+<span class="kw">head</span>(dta)</code></pre></div>
+<pre><code>  CASE INST SEX TX GRADE AGE COND SITE T_STAGE N_STAGE ENTRY_DT STATUS TIME
+1    1    2   2  1     1  51    1    2       3       1     2468      1  631
+2    2    2   1  2     1  65    1    4       2       3     2968      1  270
+3    3    2   1  1     2  64    2    1       3       3     3368      1  327
+4    4    2   1  1     1  73    1    1       4       0     5768      1  243
+5    5    5   1  2     2  64    1    1       4       3     9568      1  916
+6    6    4   1  2     1  61    1    2       3       0    10668      0 1823</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Poisson Regression Model for Survival Time
+mdl =<span class="st"> </span><span class="kw">glm</span>(TIME <span class="op">~</span><span class="st"> </span>SEX <span class="op">+</span><span class="st"> </span>TX <span class="op">+</span><span class="st"> </span>AGE <span class="op">+</span><span class="st"> </span>COND <span class="op">+</span><span class="st"> </span>SITE <span class="op">+</span><span class="st"> </span>T_STAGE <span class="op">+</span><span class="st"> </span>N_STAGE <span class="op">+</span><span class="st"> </span>STATUS,
+          <span class="dt">family =</span> <span class="kw">poisson</span>(), <span class="dt">data =</span> dta)
+
+## Negative Binomial Model for Survival Time
+mdl2 =<span class="st"> </span><span class="kw">glm.nb</span>(TIME <span class="op">~</span><span class="st"> </span>SEX <span class="op">+</span><span class="st"> </span>TX <span class="op">+</span><span class="st"> </span>AGE <span class="op">+</span><span class="st"> </span>COND <span class="op">+</span><span class="st"> </span>SITE <span class="op">+</span><span class="st"> </span>T_STAGE <span class="op">+</span><span class="st"> </span>N_STAGE <span class="op">+</span><span class="st"> </span>STATUS,
+              <span class="dt">maxit =</span> <span class="dv">100</span>, <span class="dt">data =</span> dta)
+
+## Dispersion paramater &gt; 0 so poisson is not appropriate, negative binomial is a better model
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(mdl2)</code></pre></div>
+<p><img src="02-Regression_files/figure-html/a5-1.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Remove the outlier observation and retrain
+dta =<span class="st"> </span>dta[<span class="op">-</span><span class="dv">159</span>, ]
+
+mdl.nb =<span class="st"> </span><span class="kw">glm.nb</span>(TIME <span class="op">~</span><span class="st"> </span>SEX <span class="op">+</span><span class="st"> </span>TX <span class="op">+</span><span class="st"> </span>AGE <span class="op">+</span><span class="st"> </span>COND <span class="op">+</span><span class="st"> </span>SITE <span class="op">+</span><span class="st"> </span>T_STAGE <span class="op">+</span><span class="st"> </span>N_STAGE <span class="op">+</span><span class="st"> </span>STATUS,
+              <span class="dt">maxit =</span> <span class="dv">100</span>, <span class="dt">data =</span> dta)
+
+<span class="kw">summary</span>(mdl.nb)</code></pre></div>
+<pre><code>
+Call:
+glm.nb(formula = TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + 
+    N_STAGE + STATUS, data = dta, maxit = 100, init.theta = 3.121080189, 
+    link = log)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.3855  -0.8138  -0.2142   0.4034   2.2540  
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  7.646448   0.369792  20.678   &lt;2e-16 ***
+SEX          0.142239   0.098324   1.447   0.1480    
+TX          -0.140805   0.082706  -1.702   0.0887 .  
+AGE          0.006148   0.003802   1.617   0.1059    
+COND        -0.510610   0.076821  -6.647    3e-11 ***
+SITE        -0.006501   0.034988  -0.186   0.8526    
+T_STAGE     -0.119522   0.053337  -2.241   0.0250 *  
+N_STAGE     -0.058860   0.036701  -1.604   0.1088    
+STATUS      -0.886395   0.094450  -9.385   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for Negative Binomial(3.1211) family taken to be 1)
+
+    Null deviance: 385.38  on 193  degrees of freedom
+Residual deviance: 205.16  on 185  degrees of freedom
+AIC: 2704.2
+
+Number of Fisher Scoring iterations: 1
+
+              Theta:  3.121 
+          Std. Err.:  0.306 
+
+ 2 x log-likelihood:  -2684.213 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mdl.nb)</code></pre></div>
+<p><img src="02-Regression_files/figure-html/a5-2.png" width="864" /></p>
+
+</div>
 </div>
             </section>
 
