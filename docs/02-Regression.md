@@ -246,55 +246,6 @@ Multiple R-squared:  0.1192,	Adjusted R-squared:  0.009118
 F-statistic: 1.083 on 1 and 8 DF,  p-value: 0.3285
 ```
 
-## Multiple Regression {-}
-
-
-```r
-# library(car)
-# library(alr3)
-#
-# defects = read.delim("data/defects.txt")
-# attach(defects)
-# head(defects)
-#
-# ## The response variable does not appear to be normal when using a histogram and the
-# ## qqplot shows that there is more probabilty in the tail than you would expect in
-# ## normally distributed data.
-# par(mfrow = c(1,2))
-# hist(Defective); qqnorm(Defective); qqline(Defective)
-#
-# ## Are the predictor variables independent?
-# pairs(defects[, 2:5])
-#
-# ## It looks like there is a lot of correlation between the predictor variables
-# ## which means they are not independent. This is fine for prediction, but we
-# ## cant perform hypothesis tests.
-#
-# ## Train the model
-# mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
-# summary(mdl); anova(mdl)
-#
-# ## Do the errors follow a normal distribution?
-# shapiro.test(mdl$residuals)
-#
-# ## Look at some standard model diagnostics
-# par(mfrow = c(2,2))
-# plot(mdl)
-#
-# ## Test for hidden correlation, VIF > 5 is considered highly correlated
-# vif(mdl)
-#
-# ## None of the variables show as being statistically significant most likely
-# ## because of the high correlation
-#
-# ## Marginal model plots show how well the model mean is fits the data.
-# mmps(mdl, Temperature ~ .)
-#
-# ## Added variable plots show the additional variance explained by adding a variable
-# ## after all other variables have been added to the model.
-# avPlots(mdl)
-```
-
 ## Logistic Regression {-}
 
 
@@ -476,8 +427,6 @@ splom(iris[, 1:4], col = 1:3,
 
 
 ```r
-options(width = 100)
-
 library(MASS)
 
 dta = read.csv("data/pharynx.csv")
@@ -486,13 +435,20 @@ head(dta)
 ```
 
 ```
-  CASE INST SEX TX GRADE AGE COND SITE T_STAGE N_STAGE ENTRY_DT STATUS TIME
-1    1    2   2  1     1  51    1    2       3       1     2468      1  631
-2    2    2   1  2     1  65    1    4       2       3     2968      1  270
-3    3    2   1  1     2  64    2    1       3       3     3368      1  327
-4    4    2   1  1     1  73    1    1       4       0     5768      1  243
-5    5    5   1  2     2  64    1    1       4       3     9568      1  916
-6    6    4   1  2     1  61    1    2       3       0    10668      0 1823
+  CASE INST SEX TX GRADE AGE COND SITE T_STAGE N_STAGE ENTRY_DT STATUS
+1    1    2   2  1     1  51    1    2       3       1     2468      1
+2    2    2   1  2     1  65    1    4       2       3     2968      1
+3    3    2   1  1     2  64    2    1       3       3     3368      1
+4    4    2   1  1     1  73    1    1       4       0     5768      1
+5    5    5   1  2     2  64    1    1       4       3     9568      1
+6    6    4   1  2     1  61    1    2       3       0    10668      0
+  TIME
+1  631
+2  270
+3  327
+4  243
+5  916
+6 1823
 ```
 
 ```r

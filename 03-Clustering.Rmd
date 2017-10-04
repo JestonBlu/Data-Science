@@ -1,0 +1,91 @@
+# Clustering Methods {-}
+
+
+## Kmeans Clustering {-}
+
+```{r a1, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=7}
+
+## The famous iris dataset
+data(iris)
+flower = iris
+
+head(flower)
+summary(flower)
+
+## Kmeans requires you to predetermine the number of clusters
+mdl = kmeans(flower[, 1:4], centers = 3)
+flower$cluster = mdl$cluster
+
+## plot kmeans for a few of the variable combinations
+par(mfrow = c(2, 2))
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$Species), main = "Actual")
+plot(x = flower$Sepal.Length, y = flower$Sepal.Width, col = factor(flower$cluster), main = "Model")
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$Species), main = "Actual")
+plot(x = flower$Petal.Length, y = flower$Petal.Width, col = factor(flower$cluster), main = "Model")
+
+## Try using principal components to draw one picture that catures all of the variance
+pc = prcomp(flower[, 1:4], cor = TRUE)
+summary(pc)
+
+## The first 2 principal components explains 97% of all variation
+flower.pc = as.data.frame(as.matrix(flower[, 1:4]) %*% pc$rotation)
+flower.pc$cluster = flower$cluster
+flower.pc$species = flower$Species
+
+## How well did the model do?
+par(mfrow = c(2, 1))
+plot(flower.pc$PC1, flower.pc$PC2, col = factor(flower.pc$cluster), main = "Model")
+plot(flower.pc$PC1, flower.pc$PC2, col = factor(flower.pc$species), main = "Actual")
+
+
+```
+
+
+## Hierarchical Clustering {-}
+
+```{r a2, warning=FALSE, message=FALSE, comment=NA, fig.width=8, fig.height=7}
+
+library(cluster)
+
+## Hierarchical clustering using the mtcars dataset
+##
+## Data description from R:
+## The data was extracted from the 1974 Motor Trend US magazine, and comprises
+## fuel consumption and 10 aspects of automobile design and performance for
+## 32 automobiles (1973-74 models).
+##
+
+## Since the attributes have different scales we need to standardize them
+cars.dist = dist(scale(mtcars, center = TRUE, scale = TRUE))
+
+## Clustering by rows (cars)
+## Method Average, average distance between all points in a cluster
+plot(hclust(cars.dist, method = "average"), xlab = "", ylab ="Distance")
+
+## Method Single, shortest distance between each cluster
+plot(hclust(cars.dist, method = "single"), xlab = "", ylab ="Distance")
+
+## Method Complete, longest distance between each cluster
+plot(hclust(cars.dist, method = "complete"), xlab = "", ylab ="Distance")
+
+## Method Ward, minimizes the loss of exmplained variance
+plot(hclust(cars.dist, method = "ward.D"), xlab = "", ylab ="Distance")
+
+## Attribute Descriptions:
+##
+## mpg	 Miles/(US) gallon
+## cyl	 Number of cylinders
+## disp	 Displacement (cu.in.)
+## hp	 Gross horsepower
+## drat	 Rear axle ratio
+## wt	 Weight (lb/1000)
+## qsec	 1/4 mile time
+## vs	 V/S
+## am	 Transmission (0 = automatic, 1 = manual)
+## gear	 Number of forward gears
+## carb	 Number of carburetors
+
+## Data and Summary
+mtcars; summary(mtcars)
+
+```

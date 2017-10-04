@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="06-Simulation.html">
 
-<link rel="next" href="01-Statistical-Methods.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -169,21 +169,113 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Data Science Tasks</h1>
-</div>
-<div id="intro" class="section level1 unnumbered">
-<h1>Intro</h1>
-<p>This website is a work in progress and intended to be a personal reference for data science related tasks. It consists of reproducible programming examples for various analytic and visualization techniques. All code is available <a href="https://github.com/JestonBlu/DataScience">here</a>.</p>
+<div id="visualization" class="section level1 unnumbered">
+<h1>Visualization</h1>
+<div id="building-maps-with-choropleth-and-ggplot" class="section level2 unnumbered">
+<h2>Building Maps with choropleth and ggplot</h2>
+<p>Data: Census 2000, number of jobs by industry by county</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(choroplethr)
+<span class="kw">library</span>(choroplethrMaps)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(gridExtra)
 
+employment =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/census_2000_employment.csv&quot;</span>)
+crops =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/econ_census_2012_farming.csv&quot;</span>)
+
+<span class="kw">head</span>(employment)</code></pre></div>
+<pre><code>       Areaname STCOU Farming Mining Construction Manufacturing Trans_Pub_Util Wholesale   Retail
+1 UNITED STATES     0 3113000 784200      9446300      19114800        8244400   7584100 27222300
+2       ALABAMA  1000   56061   9933       156673        370962         116071    105963   406340
+3   Autauga, AL  1001     463      0         1542          2207            493         0     3892
+4   Baldwin, AL  1003    1403    198         5943          6156           2449      2148    16184
+5   Barbour, AL  1005     579     91          457          5344            764       292     2068
+6      Bibb, AL  1007     208      0          842          1033            310       101      793
+   Finance
+1 13193800
+2   147909
+3     1017
+4     6779
+5      570
+6      245</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">farming =<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">region =</span> employment<span class="op">$</span>STCOU,
+  <span class="dt">value =</span> employment<span class="op">$</span>Farming
+  )
+
+<span class="kw">county_choropleth</span>(farming, <span class="dt">title =</span> <span class="st">&quot;Farming Employment&quot;</span>, <span class="dt">legend =</span> <span class="st">&quot;Jobs&quot;</span>)</code></pre></div>
+<p><img src="07-Visualization_files/figure-html/a1-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">choro =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(farming)
+choro<span class="op">$</span>title =<span class="st"> &quot;Southern Farmers&quot;</span>
+choro<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>)
+choro<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;Jobs Count&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;#F6EAE1&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+choro<span class="op">$</span><span class="kw">set_zoom</span>(<span class="kw">c</span>(<span class="st">&quot;texas&quot;</span>, <span class="st">&quot;louisiana&quot;</span>, <span class="st">&quot;mississippi&quot;</span>, <span class="st">&quot;alabama&quot;</span>, <span class="st">&quot;georgia&quot;</span>, <span class="st">&quot;arkansas&quot;</span>,
+                 <span class="st">&quot;tennessee&quot;</span>, <span class="st">&quot;south carolina&quot;</span>, <span class="st">&quot;florida&quot;</span>, <span class="st">&quot;oklahoma&quot;</span>, <span class="st">&quot;north carolina&quot;</span>))
+choro<span class="op">$</span><span class="kw">render</span>()</code></pre></div>
+<p><img src="07-Visualization_files/figure-html/a1-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Also without the gradient
+choro =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(farming)
+choro<span class="op">$</span>title =<span class="st"> &quot;Southern Farmers&quot;</span>
+choro<span class="op">$</span>legend =<span class="st"> &quot;Jobs Count&quot;</span>
+choro<span class="op">$</span><span class="kw">set_zoom</span>(<span class="kw">c</span>(<span class="st">&quot;texas&quot;</span>, <span class="st">&quot;louisiana&quot;</span>, <span class="st">&quot;mississippi&quot;</span>, <span class="st">&quot;alabama&quot;</span>, <span class="st">&quot;georgia&quot;</span>, <span class="st">&quot;arkansas&quot;</span>,
+                 <span class="st">&quot;tennessee&quot;</span>, <span class="st">&quot;south carolina&quot;</span>, <span class="st">&quot;florida&quot;</span>, <span class="st">&quot;oklahoma&quot;</span>, <span class="st">&quot;north carolina&quot;</span>))
+choro<span class="op">$</span><span class="kw">render</span>()</code></pre></div>
+<p><img src="07-Visualization_files/figure-html/a1-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## fill in NA with 0 to prevent NULL counties from standing out
+crops[<span class="kw">is.na</span>(crops)] =<span class="st"> </span><span class="dv">0</span>
+
+## create the individual data sets
+corn =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Corn)
+wheat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Wheat)
+cotton =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Cotton)
+peanuts =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Peanuts)
+peaches =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Peaches)
+oranges =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">region =</span> crops<span class="op">$</span>FIPS, <span class="dt">value =</span> crops<span class="op">$</span>Oranges)
+
+## list of states we want on the map
+states =<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;texas&quot;</span>, <span class="st">&quot;louisiana&quot;</span>, <span class="st">&quot;mississippi&quot;</span>, <span class="st">&quot;alabama&quot;</span>, <span class="st">&quot;georgia&quot;</span>, <span class="st">&quot;arkansas&quot;</span>,
+            <span class="st">&quot;tennessee&quot;</span>, <span class="st">&quot;south carolina&quot;</span>, <span class="st">&quot;florida&quot;</span>, <span class="st">&quot;oklahoma&quot;</span>, <span class="st">&quot;north carolina&quot;</span>)
+
+## create each graph object
+g1 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(corn); g1<span class="op">$</span>title =<span class="st"> &quot;Corn % of Farmable Land&quot;</span>
+g1<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g1<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g1<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+g2 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(wheat); g2<span class="op">$</span>title =<span class="st"> &quot;Wheat % of Farmable Land&quot;</span>
+g2<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g2<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g2<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+g3 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(cotton); g3<span class="op">$</span>title =<span class="st"> &quot;Cotton % of Farmable Land&quot;</span>
+g3<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g3<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g3<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+g4 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(peanuts); g4<span class="op">$</span>title =<span class="st"> &quot;Peanuts % of Farmable Land&quot;</span>
+g4<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g4<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g4<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+g5 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(peaches); g5<span class="op">$</span>title =<span class="st"> &quot;Peaches % of Farmable Land&quot;</span>
+g5<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g5<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g5<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+g6 =<span class="st"> </span>CountyChoropleth<span class="op">$</span><span class="kw">new</span>(oranges); g6<span class="op">$</span>title =<span class="st"> &quot;Oranges % of Farmable Land&quot;</span>
+g6<span class="op">$</span><span class="kw">set_num_colors</span>(<span class="dv">1</span>); g6<span class="op">$</span><span class="kw">set_zoom</span>(states)
+g6<span class="op">$</span>ggplot_scale =<span class="st"> </span><span class="kw">scale_fill_gradientn</span>(<span class="st">&quot;%&quot;</span>, <span class="dt">colors =</span> <span class="kw">c</span>(<span class="st">&quot;gray&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>))
+
+## render each object in order to call as a group
+g1 =<span class="st"> </span>g1<span class="op">$</span><span class="kw">render</span>(); g2 =<span class="st"> </span>g2<span class="op">$</span><span class="kw">render</span>(); g3 =<span class="st"> </span>g3<span class="op">$</span><span class="kw">render</span>()
+g4 =<span class="st"> </span>g4<span class="op">$</span><span class="kw">render</span>(); g5 =<span class="st"> </span>g5<span class="op">$</span><span class="kw">render</span>(); g6 =<span class="st"> </span>g6<span class="op">$</span><span class="kw">render</span>()
+
+<span class="kw">grid.arrange</span>(g1, g2, g3, g4, g5, g6, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="07-Visualization_files/figure-html/a1-4.png" width="672" /></p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="06-Simulation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="01-Statistical-Methods.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

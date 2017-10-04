@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science Tasks" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
+  
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science Tasks" />
+  
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="05-Machine-Learning.html">
+<link rel="next" href="07-Visualization.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Tasks</a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#fitting-distributions"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#parameter-estimation"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#sample-size-and-power"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
+<li><a href="01-Statistical-Methods.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#experimental-design"><i class="fa fa-check"></i>Experimental Design</a><ul>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#contingency-tables"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#principal-components"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="01-Statistical-Methods.html"><a href="01-Statistical-Methods.html#eigen-values-and-statistical-distance"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="02-Regression.html"><a href="02-Regression.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="02-Regression.html"><a href="02-Regression.html#matrix-regression"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="02-Regression.html"><a href="02-Regression.html#logistic-regression"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="02-Regression.html"><a href="02-Regression.html#multinomial-logistic-regression"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="02-Regression.html"><a href="02-Regression.html#poisson-regression"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="03-Clustering.html"><a href="03-Clustering.html"><i class="fa fa-check"></i>Clustering Methods</a><ul>
+<li class="chapter" data-level="" data-path="03-Clustering.html"><a href="03-Clustering.html#kmeans-clustering"><i class="fa fa-check"></i>Kmeans Clustering</a></li>
+<li class="chapter" data-level="" data-path="03-Clustering.html"><a href="03-Clustering.html#hierarchical-clustering"><i class="fa fa-check"></i>Hierarchical Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="04-Forecasting.html"><a href="04-Forecasting.html"><i class="fa fa-check"></i>Forecasting</a><ul>
+<li class="chapter" data-level="" data-path="04-Forecasting.html"><a href="04-Forecasting.html#basic-graphical-methods-for-time-series"><i class="fa fa-check"></i>Basic Graphical Methods for Time Series</a></li>
+<li class="chapter" data-level="" data-path="04-Forecasting.html"><a href="04-Forecasting.html#generate-time-series-data"><i class="fa fa-check"></i>Generate Time Series Data</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="04-Forecasting.html"><a href="04-Forecasting.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
+<li class="chapter" data-level="" data-path="04-Forecasting.html"><a href="04-Forecasting.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="05-Machine-Learning.html"><a href="05-Machine-Learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
+<li class="chapter" data-level="" data-path="05-Machine-Learning.html"><a href="05-Machine-Learning.html#basic-random-forest"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="" data-path="05-Machine-Learning.html"><a href="05-Machine-Learning.html#gradient-boosting"><i class="fa fa-check"></i>Gradient Boosting</a></li>
+<li class="chapter" data-level="" data-path="05-Machine-Learning.html"><a href="05-Machine-Learning.html#ensemble-model"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="" data-path="05-Machine-Learning.html"><a href="05-Machine-Learning.html#overfitting"><i class="fa fa-check"></i>Overfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="06-Simulation.html"><a href="06-Simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
+<li class="chapter" data-level="" data-path="06-Simulation.html"><a href="06-Simulation.html#bootstrap-simulation"><i class="fa fa-check"></i>Bootstrap Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="07-Visualization.html"><a href="07-Visualization.html"><i class="fa fa-check"></i>Visualization</a><ul>
+<li class="chapter" data-level="" data-path="07-Visualization.html"><a href="07-Visualization.html#building-maps-with-choropleth-and-ggplot"><i class="fa fa-check"></i>Building Maps with choropleth and ggplot</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="simulation" class="section level1 unnumbered">
+<h1>Simulation</h1>
+<div id="bootstrap-simulation" class="section level2 unnumbered">
+<h2>Bootstrap Simulation</h2>
+<p>This script creates a function for running a simple bootstrap simulation from a given input. In this example I am using the data set BJsales from R. Bootstrap simulations work by pulling a series of random samples from the past and stringing them together to produce a possible future outcome.</p>
+<p>You can specify how many <code>months.back</code> you want the simulation to pull samples from and how many <code>months.forward</code> you want the simulation to produce. If you want to use recent history make <code>months.back</code> a small number. If you want to project your simulation far out into the future, make <code>months.forward</code> a larger number. Specify the number of simulations (<code>trials</code>).</p>
+<p>The function produces 2 plots. The first plot shows the original data as well as each individual simulated <code>trial</code>. The second plot is a distribution of the return or total percent change from the last historical value and the last <code>months.forward</code> value for each simulation.</p>
+<p>The <code>alpha</code> parameter controls how transparent the lines are in the first graph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(reshape2)
+<span class="kw">library</span>(scales)
+<span class="kw">library</span>(grid)
+<span class="kw">library</span>(gridExtra)
+
+<span class="kw">data</span>(<span class="st">&quot;BJsales&quot;</span>)
+
+boot.plot =<span class="st"> </span><span class="cf">function</span>(dt, trials, <span class="dt">months.back =</span> <span class="dv">24</span>, <span class="dt">months.forward =</span> <span class="dv">12</span>, <span class="dt">alph =</span> .<span class="dv">1</span>) {
+
+  ## calculate the change history
+  lookup =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="kw">diff</span>(dt) <span class="op">/</span><span class="st"> </span>dt)
+
+  ## run run simulation by picking random percent changes from history
+  ## repeat for the number of trials
+  sims =<span class="st"> </span><span class="kw">data.frame</span>()
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>trials) {
+
+    sims =
+<span class="st">      </span><span class="kw">rbind</span>(sims,
+            <span class="kw">matrix</span>(
+              <span class="kw">sample</span>(lookup, <span class="dt">size =</span> months.forward , <span class="dt">replace =</span> <span class="ot">TRUE</span>),
+              <span class="dt">nrow =</span> <span class="dv">1</span>)
+      )
+  }
+
+  time =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">151</span>, <span class="dv">151</span> <span class="op">+</span><span class="st"> </span>months.forward <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+
+  <span class="kw">colnames</span>(sims) =<span class="st"> </span>time
+
+  sims[<span class="kw">is.na</span>(sims)] =<span class="st"> </span><span class="dv">1</span>
+
+  last.price =<span class="st"> </span>dt[<span class="kw">length</span>(dt)]
+
+  <span class="co"># calculate the price change from the last known price</span>
+  p.chg =<span class="st"> </span><span class="kw">data.frame</span>(sims[, <span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>last.price)
+
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>months.forward) {p.chg =<span class="st"> </span><span class="kw">cbind</span>(p.chg, p.chg[, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>sims[, i])}
+  <span class="kw">colnames</span>(p.chg) =<span class="st"> </span>time
+
+  <span class="co"># calculate the cumulative percent change</span>
+  cuml.new =<span class="st"> </span>sims[,] <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+  cuml =<span class="st"> </span><span class="kw">data.frame</span>(cuml.new[, <span class="dv">1</span>])
+
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>months.forward) {cuml =<span class="st"> </span><span class="kw">cbind</span>(cuml, cuml[, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>cuml.new[, i])}
+  <span class="kw">colnames</span>(cuml) =<span class="st"> </span>time
+
+  cuml.chg =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Price Change&quot;</span> =<span class="st"> </span>cuml[, <span class="kw">length</span>(cuml)])
+
+  cuml<span class="op">$</span>trial =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cuml)
+  cuml =<span class="st"> </span><span class="kw">melt</span>(cuml, <span class="dt">id.vars =</span> <span class="st">&quot;trial&quot;</span>)
+
+  dt =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(dt), <span class="dt">dt =</span> dt)
+
+  ## create graphics
+  plot.price =<span class="st"> </span><span class="kw">dcast</span>(dt, . <span class="op">~</span><span class="st"> </span>time)
+  plot.price2 =<span class="st"> </span><span class="kw">cbind</span>(plot.price, p.chg)
+  plot.price2<span class="op">$</span>trial =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(plot.price2)
+  plot.price2 =<span class="st"> </span>plot.price2[,<span class="op">-</span><span class="dv">1</span>]
+  plot.price2 =<span class="st"> </span><span class="kw">melt</span>(plot.price2, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;trial&quot;</span>))
+
+
+  cuml =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;cuml.1qrt&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">2</span>],
+                    <span class="st">&quot;cuml.3qrt&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">4</span>],
+                    <span class="st">&quot;iqr.15&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">4</span>] <span class="op">-</span>
+<span class="st">                      </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>,
+                    <span class="st">&quot;med&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">3</span>])
+
+
+  x1 =<span class="st"> </span><span class="kw">ggplot</span>(cuml.chg) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.1qrt, <span class="dt">xmax =</span> cuml.3qrt, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.1qrt <span class="op">-</span><span class="st"> </span>iqr.<span class="dv">15</span>, <span class="dt">xmax =</span> cuml.1qrt,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.3qrt, <span class="dt">xmax =</span> cuml.3qrt <span class="op">+</span><span class="st"> </span>iqr.<span class="dv">15</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.3qrt <span class="op">+</span><span class="st"> </span>iqr.<span class="dv">15</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">xmax =</span> cuml.1qrt <span class="op">-</span><span class="st"> </span>iqr.<span class="dv">15</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Price.Change), <span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="dt">binwidth =</span> .<span class="dv">005</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,
+             <span class="dt">alpha =</span> .<span class="dv">15</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distibution of Simulated Changes&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;&quot;</span>, <span class="dt">labels =</span> percent, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span>.<span class="dv">5</span>, .<span class="dv">5</span>, .<span class="dv">05</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>),
+          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">0</span>),
+          <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>())
+
+  plot.price2<span class="op">$</span>variable =<span class="st"> </span><span class="kw">as.numeric</span>(plot.price2<span class="op">$</span>variable)
+
+  x3 =<span class="st"> </span><span class="kw">ggplot</span>(plot.price2, <span class="kw">aes</span>(<span class="dt">x =</span> variable, <span class="dt">y =</span> value, <span class="dt">group =</span> trial)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> alph, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;Time&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="st">&quot;Sales&quot;</span>, <span class="dt">labels =</span> dollar) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Time Series with Bootstrap Simulation&quot;</span>)
+
+
+  <span class="kw">return</span>(<span class="kw">grid.arrange</span>(x3, x1, <span class="dt">nrow =</span> <span class="dv">2</span>))
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boot.plot</span>(BJsales, <span class="dt">trials =</span> <span class="dv">100</span>, <span class="dt">months.back =</span> <span class="dv">12</span>, <span class="dt">months.forward =</span> <span class="dv">12</span>, <span class="dt">alph =</span> .<span class="dv">01</span>)</code></pre></div>
+<pre><code>## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
+## `geom_histogram()` instead.</code></pre>
+<pre><code>## Warning: Ignoring unknown parameters: se</code></pre>
+<p><img src="06-Simulation_files/figure-html/plots-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boot.plot</span>(BJsales, <span class="dt">trials =</span> <span class="dv">500</span>, <span class="dt">months.back =</span> <span class="dv">24</span>, <span class="dt">months.forward =</span> <span class="dv">24</span>, <span class="dt">alph =</span> .<span class="dv">005</span>)</code></pre></div>
+<pre><code>## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
+## `geom_histogram()` instead.
+
+## Warning: Ignoring unknown parameters: se</code></pre>
+<p><img src="06-Simulation_files/figure-html/plots-2.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boot.plot</span>(BJsales, <span class="dt">trials =</span> <span class="dv">1500</span>, <span class="dt">months.back =</span> <span class="dv">36</span>, <span class="dt">months.forward =</span> <span class="dv">36</span>, <span class="dt">alph =</span> .<span class="dv">005</span>)</code></pre></div>
+<pre><code>## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
+## `geom_histogram()` instead.
+
+## Warning: Ignoring unknown parameters: se</code></pre>
+<p><img src="06-Simulation_files/figure-html/plots-3.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">boot.plot =<span class="st"> </span><span class="cf">function</span>(dt, trials, <span class="dt">months.back =</span> <span class="dv">24</span>, <span class="dt">months.forward =</span> <span class="dv">12</span>, <span class="dt">alph =</span> .<span class="dv">1</span>) {
+
+  ## calculate the change history
+  lookup =<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="kw">diff</span>(dt) <span class="op">/</span><span class="st"> </span>dt)
+
+  ## run run simulation by picking random percent changes from history
+  ## repeat for the number of trials
+  sims =<span class="st"> </span><span class="kw">data.frame</span>()
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>trials) {
+
+    sims =
+<span class="st">      </span><span class="kw">rbind</span>(sims,
+            <span class="kw">matrix</span>(
+              <span class="kw">sample</span>(lookup, <span class="dt">size =</span> months.forward , <span class="dt">replace =</span> <span class="ot">TRUE</span>),
+              <span class="dt">nrow =</span> <span class="dv">1</span>)
+      )
+  }
+
+  time =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">151</span>, <span class="dv">151</span> <span class="op">+</span><span class="st"> </span>months.forward <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+
+  <span class="kw">colnames</span>(sims) =<span class="st"> </span>time
+
+  sims[<span class="kw">is.na</span>(sims)] =<span class="st"> </span><span class="dv">1</span>
+
+  last.price =<span class="st"> </span>dt[<span class="kw">length</span>(dt)]
+
+  <span class="co"># calculate the price change from the last known price</span>
+  p.chg =<span class="st"> </span><span class="kw">data.frame</span>(sims[, <span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>last.price)
+
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>months.forward) {p.chg =<span class="st"> </span><span class="kw">cbind</span>(p.chg, p.chg[, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>sims[, i])}
+  <span class="kw">colnames</span>(p.chg) =<span class="st"> </span>time
+
+  <span class="co"># calculate the cumulative percent change</span>
+  cuml.new =<span class="st"> </span>sims[,] <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+  cuml =<span class="st"> </span><span class="kw">data.frame</span>(cuml.new[, <span class="dv">1</span>])
+
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>months.forward) {cuml =<span class="st"> </span><span class="kw">cbind</span>(cuml, cuml[, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>cuml.new[, i])}
+  <span class="kw">colnames</span>(cuml) =<span class="st"> </span>time
+
+  cuml.chg =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;Price Change&quot;</span> =<span class="st"> </span>cuml[, <span class="kw">length</span>(cuml)])
+
+  cuml<span class="op">$</span>trial =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(cuml)
+  cuml =<span class="st"> </span><span class="kw">melt</span>(cuml, <span class="dt">id.vars =</span> <span class="st">&quot;trial&quot;</span>)
+
+  dt =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(dt), <span class="dt">dt =</span> dt)
+
+  ## create graphics
+  plot.price =<span class="st"> </span><span class="kw">dcast</span>(dt, . <span class="op">~</span><span class="st"> </span>time)
+  plot.price2 =<span class="st"> </span><span class="kw">cbind</span>(plot.price, p.chg)
+  plot.price2<span class="op">$</span>trial =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(plot.price2)
+  plot.price2 =<span class="st"> </span>plot.price2[,<span class="op">-</span><span class="dv">1</span>]
+  plot.price2 =<span class="st"> </span><span class="kw">melt</span>(plot.price2, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">&quot;trial&quot;</span>))
+
+
+  cuml =<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;cuml.1qrt&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">2</span>],
+                    <span class="st">&quot;cuml.3qrt&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">4</span>],
+                    <span class="st">&quot;iqr.15&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">4</span>] <span class="op">-</span>
+<span class="st">                      </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>,
+                    <span class="st">&quot;med&quot;</span> =<span class="st"> </span><span class="kw">quantile</span>(cuml.chg<span class="op">$</span>Price.Change)[<span class="dv">3</span>])
+
+
+  x1 =<span class="st"> </span><span class="kw">ggplot</span>(cuml.chg) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.1qrt, <span class="dt">xmax =</span> cuml.3qrt, <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.1qrt <span class="op">-</span><span class="st"> </span>iqr.<span class="dv">15</span>, <span class="dt">xmax =</span> cuml.1qrt,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.3qrt, <span class="dt">xmax =</span> cuml.3qrt <span class="op">+</span><span class="st"> </span>iqr.<span class="dv">15</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> cuml.3qrt <span class="op">+</span><span class="st"> </span>iqr.<span class="dv">15</span>, <span class="dt">xmax =</span> <span class="ot">Inf</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">xmax =</span> cuml.1qrt <span class="op">-</span><span class="st"> </span>iqr.<span class="dv">15</span>,  <span class="dt">ymin =</span> <span class="op">-</span><span class="ot">Inf</span>, <span class="dt">ymax =</span> <span class="ot">Inf</span>), <span class="dt">data =</span> cuml,
+              <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Price.Change), <span class="dt">stat =</span> <span class="st">&quot;bin&quot;</span>, <span class="dt">binwidth =</span> .<span class="dv">005</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,
+             <span class="dt">alpha =</span> .<span class="dv">15</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Distibution of Simulated Changes&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;&quot;</span>, <span class="dt">labels =</span> percent, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="op">-</span>.<span class="dv">5</span>, .<span class="dv">5</span>, .<span class="dv">05</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>),
+          <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">0</span>),
+          <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>())
+
+  plot.price2<span class="op">$</span>variable =<span class="st"> </span><span class="kw">as.numeric</span>(plot.price2<span class="op">$</span>variable)
+
+  x3 =<span class="st"> </span><span class="kw">ggplot</span>(plot.price2, <span class="kw">aes</span>(<span class="dt">x =</span> variable, <span class="dt">y =</span> value, <span class="dt">group =</span> trial)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> alph, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="st">&quot;Time&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="st">&quot;Sales&quot;</span>, <span class="dt">labels =</span> dollar) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">&quot;Time Series with Bootstrap Simulation&quot;</span>)
+
+
+  <span class="kw">return</span>(<span class="kw">grid.arrange</span>(x3, x1, <span class="dt">nrow =</span> <span class="dv">2</span>))
+}</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="05-Machine-Learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="07-Visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

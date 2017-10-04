@@ -82,56 +82,6 @@ summary(mdl)
 
 ```
 
-## Multiple Regression {-}
-
-```{r a2, comment=NA, warning=FALSE, message=FALSE, fig.width=8, fig.height=5}
-
-# library(car)
-# library(alr3)
-#
-# defects = read.delim("data/defects.txt")
-# attach(defects)
-# head(defects)
-#
-# ## The response variable does not appear to be normal when using a histogram and the
-# ## qqplot shows that there is more probabilty in the tail than you would expect in
-# ## normally distributed data.
-# par(mfrow = c(1,2))
-# hist(Defective); qqnorm(Defective); qqline(Defective)
-#
-# ## Are the predictor variables independent?
-# pairs(defects[, 2:5])
-#
-# ## It looks like there is a lot of correlation between the predictor variables
-# ## which means they are not independent. This is fine for prediction, but we
-# ## cant perform hypothesis tests.
-#
-# ## Train the model
-# mdl = lm(Defective ~ Rate + Density + Temperature, data = defects)
-# summary(mdl); anova(mdl)
-#
-# ## Do the errors follow a normal distribution?
-# shapiro.test(mdl$residuals)
-#
-# ## Look at some standard model diagnostics
-# par(mfrow = c(2,2))
-# plot(mdl)
-#
-# ## Test for hidden correlation, VIF > 5 is considered highly correlated
-# vif(mdl)
-#
-# ## None of the variables show as being statistically significant most likely
-# ## because of the high correlation
-#
-# ## Marginal model plots show how well the model mean is fits the data.
-# mmps(mdl, Temperature ~ .)
-#
-# ## Added variable plots show the additional variance explained by adding a variable
-# ## after all other variables have been added to the model.
-# avPlots(mdl)
-
-```
-
 ## Logistic Regression {-}
 
 ```{r a3, comment=NA, warning=FALSE, message=FALSE, fig.width=9, fig.height=7}
@@ -194,7 +144,6 @@ splom(iris[, 1:4], col = 1:3,
 
 
 ```{r a5, warning=FALSE, message=FALSE, comment=NA, fig.width=9, fig.height=8}
-options(width = 100)
 
 library(MASS)
 
