@@ -3,6 +3,7 @@ bookdown::gitbook:
   split_by: rmd
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">Data Science Tasks</a></li>
+    search: yes
