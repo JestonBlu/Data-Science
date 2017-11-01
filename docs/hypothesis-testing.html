@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science Tasks" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
+  
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science Tasks" />
+  
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="fitting-distributions.html">
+<link rel="next" href="parameter-estimation.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Tasks</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="parameter-estimation.html"><a href="parameter-estimation.html"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
+<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="principal-components.html"><a href="principal-components.html"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="eigen-values-and-statistical-distance.html"><a href="eigen-values-and-statistical-distance.html"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="matrix-regression.html"><a href="matrix-regression.html"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="multinomial-logistic-regression.html"><a href="multinomial-logistic-regression.html"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="poisson-regression.html"><a href="poisson-regression.html"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="clustering-methods.html"><a href="clustering-methods.html"><i class="fa fa-check"></i>Clustering Methods</a><ul>
+<li class="chapter" data-level="" data-path="kmeans-clustering.html"><a href="kmeans-clustering.html"><i class="fa fa-check"></i>Kmeans Clustering</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i>Hierarchical Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i>Forecasting</a><ul>
+<li class="chapter" data-level="" data-path="basic-graphical-methods-for-time-series.html"><a href="basic-graphical-methods-for-time-series.html"><i class="fa fa-check"></i>Basic Graphical Methods for Time Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html"><i class="fa fa-check"></i>Generate Time Series Data</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
+<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
+<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
+<li class="chapter" data-level="" data-path="bootstrap-simulation.html"><a href="bootstrap-simulation.html"><i class="fa fa-check"></i>Bootstrap Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualization</a><ul>
+<li class="chapter" data-level="" data-path="building-maps-with-choropleth-and-ggplot.html"><a href="building-maps-with-choropleth-and-ggplot.html"><i class="fa fa-check"></i>Building Maps with choropleth and ggplot</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing" class="section level2 unnumbered">
+<h2>Hypothesis Testing</h2>
+<ul>
+<li>Shapiro Wilks</li>
+<li>One Sample T-Test</li>
+<li>Calculating Power</li>
+<li>Hypothesis Testing</li>
+<li>Sample Size Determination</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Data sample on chick weights
+<span class="kw">data</span>(chickwts)
+<span class="kw">head</span>(chickwts)</code></pre></div>
+<pre><code>  weight      feed
+1    179 horsebean
+2    160 horsebean
+3    136 horsebean
+4    227 horsebean
+5    217 horsebean
+6    168 horsebean</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Normal reference plot for height
+<span class="kw">qqnorm</span>(chickwts<span class="op">$</span>weight)
+<span class="kw">qqline</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a5-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
+<span class="kw">shapiro.test</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  chickwts$weight
+W = 0.97674, p-value = 0.2101</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(chickwts<span class="op">$</span>weight)</code></pre></div>
+<pre><code>[1] 261.3099</code></pre>
+<p>How does the sample mean compare to a hypothesis test that the true mean is &lt; 260? What is the power of the test?</p>
+<p><span class="math display">\[H_0: \mu \ge 260, H_a: \mu \lt 260\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Population</th>
+<th align="center">Fail to Reject</th>
+<th align="center">Reject <span class="math inline">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_0\)</span> is True</td>
+<td align="center">Correct</td>
+<td align="center">Type I Error</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(H_a\)</span> is True</td>
+<td align="center">Type II Error</td>
+<td align="center">Correct</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability of a Type I error if we say the true mean is less than 250?
+<span class="kw">t.test</span>(chickwts<span class="op">$</span>weight, <span class="dt">mu =</span> <span class="dv">250</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  chickwts$weight
+t = 1.2206, df = 70, p-value = 0.8868
+alternative hypothesis: true mean is less than 250
+95 percent confidence interval:
+     -Inf 276.7549
+sample estimates:
+mean of x 
+ 261.3099 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify the t statistic and p-value
+(<span class="dt">ts =</span> (<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">250</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">length</span>(chickwts<span class="op">$</span>weight))))</code></pre></div>
+<pre><code>[1] 1.220623</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(ts, <span class="dt">df =</span> <span class="dv">70</span>)</code></pre></div>
+<pre><code>[1] 0.8868377</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability of a Type I error if we say the true mean is &gt; 245?
+<span class="kw">t.test</span>(chickwts<span class="op">$</span>weight, <span class="dt">mu =</span> <span class="dv">245</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  chickwts$weight
+t = 1.7603, df = 70, p-value = 0.04137
+alternative hypothesis: true mean is greater than 245
+95 percent confidence interval:
+ 245.8648      Inf
+sample estimates:
+mean of x 
+ 261.3099 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify the t statistic and p-value
+(<span class="dt">ts =</span> (<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>) <span class="op">/</span><span class="st"> </span>(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">length</span>(chickwts<span class="op">$</span>weight))))</code></pre></div>
+<pre><code>[1] 1.760251</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(ts, <span class="dt">df =</span> <span class="dv">70</span>)</code></pre></div>
+<pre><code>[1] 0.04136678</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## We have rejected the null hypothesis and said under an alpha of .05 there is enough evidence
+## to suppor that the true mean of Chick Weights is &gt; 245
+
+## What is the power of our test?
+<span class="kw">power.t.test</span>(<span class="dt">n =</span> <span class="kw">length</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">delta =</span> <span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>),
+             <span class="dt">sd =</span> <span class="kw">sd</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">sig.level =</span> .<span class="dv">05</span>,
+             <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>,
+             <span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>, <span class="dt">strict =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>
+     One-sample t test power calculation 
+
+              n = 71
+          delta = 16.30986
+             sd = 78.0737
+      sig.level = 0.05
+          power = 0.5391727
+    alternative = one.sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What sample size would we need to have a power of .8?
+<span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>),
+             <span class="dt">sd =</span> <span class="kw">sd</span>(chickwts<span class="op">$</span>weight),
+             <span class="dt">sig.level =</span> .<span class="dv">05</span>,
+             <span class="dt">power =</span> .<span class="dv">8</span>,
+             <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>,
+             <span class="dt">alternative =</span> <span class="st">&quot;one.sided&quot;</span>, <span class="dt">strict =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>
+     One-sample t test power calculation 
+
+              n = 143.0323
+          delta = 16.30986
+             sd = 78.0737
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify manually
+(<span class="kw">sd</span>(chickwts<span class="op">$</span>weight)<span class="op">^</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">95</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">8</span>))<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(<span class="kw">mean</span>(chickwts<span class="op">$</span>weight) <span class="op">-</span><span class="st"> </span><span class="dv">245</span>)<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>[1] 141.6698</code></pre>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fitting-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="parameter-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+<!-- </html> -->

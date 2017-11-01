@@ -1,5 +1,5 @@
 Package: book
 Title: Does not matter.
 Version: 0.0.1
-Imports: nortest, MASS, knitr, bookdown, pwr, survival, lsmeans, reshape2, plyr, car, knitr, pander, multcomp, lawstat, plotrix, mvtnorm, DescTools, car, alr3, popbio, Deducer, nnet, devtools, lattice, cluster, forecast, lubridate, ggplot2, gridExtra, neuralnet, randomForest, e1071, gbm, caret, scales, grid, choroplethr, choroplethrMaps, tigris, udunits2, units, sf, rgdal
+Imports: nortest, MASS, knitr, bookdown, pwr, survival, lsmeans, reshape2, plyr, car, knitr, pander, multcomp, lawstat, plotrix, mvtnorm, DescTools, car, alr3, popbio, Deducer, nnet, devtools, lattice, cluster, forecast, lubridate, ggplot2, gridExtra, neuralnet, randomForest, e1071, gbm, caret, scales, grid
 Remotes: rstudio/bookdown

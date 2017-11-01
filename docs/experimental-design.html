@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science Tasks" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
+  
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science Tasks" />
+  
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="survival-analysis.html">
+<link rel="next" href="contingency-tables.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Tasks</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="parameter-estimation.html"><a href="parameter-estimation.html"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
+<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="principal-components.html"><a href="principal-components.html"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="eigen-values-and-statistical-distance.html"><a href="eigen-values-and-statistical-distance.html"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="matrix-regression.html"><a href="matrix-regression.html"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="multinomial-logistic-regression.html"><a href="multinomial-logistic-regression.html"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="poisson-regression.html"><a href="poisson-regression.html"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="clustering-methods.html"><a href="clustering-methods.html"><i class="fa fa-check"></i>Clustering Methods</a><ul>
+<li class="chapter" data-level="" data-path="kmeans-clustering.html"><a href="kmeans-clustering.html"><i class="fa fa-check"></i>Kmeans Clustering</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i>Hierarchical Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i>Forecasting</a><ul>
+<li class="chapter" data-level="" data-path="basic-graphical-methods-for-time-series.html"><a href="basic-graphical-methods-for-time-series.html"><i class="fa fa-check"></i>Basic Graphical Methods for Time Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html"><i class="fa fa-check"></i>Generate Time Series Data</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
+<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
+<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
+<li class="chapter" data-level="" data-path="bootstrap-simulation.html"><a href="bootstrap-simulation.html"><i class="fa fa-check"></i>Bootstrap Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualization</a><ul>
+<li class="chapter" data-level="" data-path="building-maps-with-choropleth-and-ggplot.html"><a href="building-maps-with-choropleth-and-ggplot.html"><i class="fa fa-check"></i>Building Maps with choropleth and ggplot</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="experimental-design" class="section level2 unnumbered">
+<h2>Experimental Design</h2>
+<div id="completely-random-design" class="section level3 unnumbered">
+<h3>Completely Random Design</h3>
+<p>The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC).</p>
+<ul>
+<li><p>Treatment Structure: 2 x 3 Factorial Treatment, both Fixed</p></li>
+<li>Model: <span class="math inline">\(y_{ijk} = \mu + \alpha_i + \beta_j + \alpha \beta_{ij} + e_{ijk}\)</span></li>
+<li>Treatments: <span class="math inline">\(\alpha_i = \text{supp, } \beta_j = \text{dose}\)</span></li>
+<li>Fixed Effects: <span class="math inline">\(\alpha_1 = \beta_1 = \alpha \beta_{1j} = \alpha \beta_{i1} = 0\)</span></li>
+<li><p>Random Effects: <span class="math inline">\(e_{ijk} = N(0, \sigma^2_e)\)</span></p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lsmeans)
+<span class="kw">library</span>(reshape2)
+<span class="kw">library</span>(car)
+<span class="kw">library</span>(plyr)
+
+<span class="kw">data</span>(<span class="st">&quot;ToothGrowth&quot;</span>)
+
+## Data is numeric, but we need to force it to be a factor for the model
+ToothGrowth<span class="op">$</span>dose.factor =<span class="st"> </span><span class="kw">as.factor</span>(ToothGrowth<span class="op">$</span>dose)
+<span class="kw">summary</span>(ToothGrowth)</code></pre></div>
+<pre><code>      len        supp         dose       dose.factor
+ Min.   : 4.20   OJ:30   Min.   :0.500   0.5:20     
+ 1st Qu.:13.07   VC:30   1st Qu.:0.500   1  :20     
+ Median :19.25           Median :1.000   2  :20     
+ Mean   :18.81           Mean   :1.167              
+ 3rd Qu.:25.27           3rd Qu.:2.000              
+ Max.   :33.90           Max.   :2.000              </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Even observations per treatment group
+<span class="kw">table</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>dose)</code></pre></div>
+<pre><code>    
+     0.5  1  2
+  OJ  10 10 10
+  VC  10 10 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## ANOVA model
+mdl =<span class="st"> </span><span class="kw">lm</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">*</span><span class="st"> </span>dose.factor, <span class="dt">data =</span> ToothGrowth)
+<span class="kw">anova</span>(mdl)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: len
+                 Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+supp              1  205.35  205.35  15.572 0.0002312 ***
+dose.factor       2 2426.43 1213.22  92.000 &lt; 2.2e-16 ***
+supp:dose.factor  2  108.32   54.16   4.107 0.0218603 *  
+Residuals        54  712.11   13.19                      
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Least Squares Means
+<span class="kw">lsmeans</span>(mdl, <span class="dt">specs =</span> <span class="kw">c</span>(<span class="st">&quot;supp&quot;</span>, <span class="st">&quot;dose.factor&quot;</span>))</code></pre></div>
+<pre><code> supp dose.factor lsmean       SE df  lower.CL upper.CL
+ OJ   0.5          13.23 1.148353 54 10.927691 15.53231
+ VC   0.5           7.98 1.148353 54  5.677691 10.28231
+ OJ   1            22.70 1.148353 54 20.397691 25.00231
+ VC   1            16.77 1.148353 54 14.467691 19.07231
+ OJ   2            26.06 1.148353 54 23.757691 28.36231
+ VC   2            26.14 1.148353 54 23.837691 28.44231
+
+Confidence level used: 0.95 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Differences in Means
+<span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(mdl))</code></pre></div>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = mdl)
+
+$supp
+      diff       lwr       upr     p adj
+VC-OJ -3.7 -5.579828 -1.820172 0.0002312
+
+$dose.factor
+        diff       lwr       upr   p adj
+1-0.5  9.130  6.362488 11.897512 0.0e+00
+2-0.5 15.495 12.727488 18.262512 0.0e+00
+2-1    6.365  3.597488  9.132512 2.7e-06
+
+$`supp:dose.factor`
+               diff        lwr        upr     p adj
+VC:0.5-OJ:0.5 -5.25 -10.048124 -0.4518762 0.0242521
+OJ:1-OJ:0.5    9.47   4.671876 14.2681238 0.0000046
+VC:1-OJ:0.5    3.54  -1.258124  8.3381238 0.2640208
+OJ:2-OJ:0.5   12.83   8.031876 17.6281238 0.0000000
+VC:2-OJ:0.5   12.91   8.111876 17.7081238 0.0000000
+OJ:1-VC:0.5   14.72   9.921876 19.5181238 0.0000000
+VC:1-VC:0.5    8.79   3.991876 13.5881238 0.0000210
+OJ:2-VC:0.5   18.08  13.281876 22.8781238 0.0000000
+VC:2-VC:0.5   18.16  13.361876 22.9581238 0.0000000
+VC:1-OJ:1     -5.93 -10.728124 -1.1318762 0.0073930
+OJ:2-OJ:1      3.36  -1.438124  8.1581238 0.3187361
+VC:2-OJ:1      3.44  -1.358124  8.2381238 0.2936430
+OJ:2-VC:1      9.29   4.491876 14.0881238 0.0000069
+VC:2-VC:1      9.37   4.571876 14.1681238 0.0000058
+VC:2-OJ:2      0.08  -4.718124  4.8781238 1.0000000</code></pre>
+<p>Are the necessary conditions for hypothesis testing present?</p>
+<ul>
+<li>Normality: Residuals appear normally distributed per the residual normal reference plot and shapiro-wilks test</li>
+<li>Equal Variance: Brown-Forsythe-Levene test and residual plot supports equal variance</li>
+<li>Independence: No correlation in the residuals per the Durbin Watson test and plots of variables against residuals</li>
+</ul>
+<p>Conditions for hypothesis testing appears to be satisfied</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Normality of Residuals
+<span class="kw">shapiro.test</span>(mdl<span class="op">$</span>residuals); <span class="kw">qqnorm</span>(mdl<span class="op">$</span>residuals); <span class="kw">qqline</span>(mdl<span class="op">$</span>residuals)</code></pre></div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  mdl$residuals
+W = 0.98499, p-value = 0.6694</code></pre>
+<p><img src="01-Statistical-Methods_files/figure-html/a14-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Equal Variance of Residuals
+<span class="kw">leveneTest</span>(mdl)</code></pre></div>
+<pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  5  1.7086 0.1484
+      54               </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mdl<span class="op">$</span>fitted.values, <span class="dt">y =</span> (mdl<span class="op">$</span>residual <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(mdl<span class="op">$</span>residuals))<span class="op">/</span><span class="kw">sd</span>(mdl<span class="op">$</span>residuals),
+     <span class="dt">xlab =</span> <span class="st">&quot;Fitted Values&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Standardized Residuals&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Equal Variance Residual Plot&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a14-2.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Independence of Residuals
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(ToothGrowth<span class="op">$</span>dose, mdl<span class="op">$</span>residuals, <span class="dt">xlab =</span> <span class="st">&quot;Dose&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)
+<span class="kw">plot</span>(ToothGrowth<span class="op">$</span>supp, mdl<span class="op">$</span>residuals, <span class="dt">xlab =</span> <span class="st">&quot;Supp&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</code></pre></div>
+<p><img src="01-Statistical-Methods_files/figure-html/a14-3.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Test for correlation in the residuals
+<span class="kw">durbinWatsonTest</span>(mdl)</code></pre></div>
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1     -0.02932541      2.025437   0.522
+ Alternative hypothesis: rho != 0</code></pre>
+<ul>
+<li>Group doses so that each dose is not statistically different than any other dose in the group:
+<ul>
+<li>The interaction between dose and supp are significant so we need to assess the differences in dose per each level of supp.</li>
+<li>OJ: {.5}, {1, 2}</li>
+<li>VC: {.5}, {1}, {2}</li>
+</ul></li>
+<li>Group supps so that each supp is not statistically different than any other supp in the group:
+<ul>
+<li>The interaction is significant so we need to assess the supps at each level of dose</li>
+<li>.5: {OJ}, {VC}</li>
+<li>1: {OJ}, {VC}</li>
+<li>2: {OJ, VC}</li>
+</ul></li>
+</ul>
+<p><img src="01-Statistical-Methods_files/figure-html/a15-1.png" width="768" /></p>
+</div>
+<div id="random-complete-block-design" class="section level3 unnumbered">
+<h3>Random Complete Block Design</h3>
+<p>An experiment was conducted to compare four different pre-planting treatments for soybeen seeds. A fifth treatment, consisting of not treating the seeds was used as a control. The experimental area consisted of four fields. There are notable differences in the fields. Each field was divided into five plots and one of the treatments was randomly assigned to a plot within each field.</p>
+<ul>
+<li>Treatment Structure: 1 Single Treatment with 5 levels</li>
+<li><p>Response: The number of plants that failed to emerge out of 100 seeds planted per plot.</p></li>
+<li>Model: <span class="math inline">\(y_{ij} = \mu + \alpha_i + \beta_j + e_{ij}\)</span></li>
+<li>Treatments: <span class="math inline">\(\alpha_i = \text{Seed, } \beta_j = \text{Field, } \alpha_5 = \text{Control}\)</span></li>
+<li>Fixed Effects: <span class="math inline">\(\alpha_5 = \beta_1 = 0\)</span></li>
+<li><p>Random Effects: <span class="math inline">\(e_{ij} = N(0, \sigma^2_e)\)</span></p></li>
+</ul>
+<hr />
+<table style="width:72%;">
+<caption>Soy Bean Data</caption>
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Treatment</th>
+<th align="center">Field.1</th>
+<th align="center">Field.2</th>
+<th align="center">Field.3</th>
+<th align="center">Field.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Avasan</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td align="center">Spergon</td>
+<td align="center">4</td>
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">Semaesan</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">9</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">Fermate</td>
+<td align="center">9</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">Control</td>
+<td align="center">8</td>
+<td align="center">11</td>
+<td align="center">12</td>
+<td align="center">13</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Make the control treatment the default level
+soy<span class="op">$</span>Treatment =<span class="st"> </span><span class="kw">relevel</span>(soy<span class="op">$</span>Treatment, <span class="dt">ref =</span> <span class="st">&quot;Control&quot;</span>)
+
+## We only have one rep per treatment so there are not enough DF to measure the interaction
+mdl =<span class="st"> </span><span class="kw">lm</span>(Count <span class="op">~</span><span class="st"> </span>Field <span class="op">+</span><span class="st"> </span>Treatment, <span class="dt">data =</span> soy)
+<span class="kw">anova</span>(mdl)</code></pre></div>
+<pre><code>Analysis of Variance Table
+
+Response: Count
+          Df Sum Sq Mean Sq F value  Pr(&gt;F)  
+Field      3   49.8 16.6000  2.5971 0.10070  
+Treatment  4   72.5 18.1250  2.8357 0.07227 .
+Residuals 12   76.7  6.3917                  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<hr />
+<div id="comparison-of-means-vs-control" class="section level4">
+<h4><span class="header-section-number">0.0.0.1</span> Comparison of means vs control</h4>
+<p>Since we have a control variable we want to know if any of the treatment means are significantly lower than the control mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(multcomp)
+
+Dunnet =<span class="st"> </span><span class="kw">glht</span>(mdl, <span class="dt">linfct =</span> <span class="kw">mcp</span>(<span class="dt">Treatment =</span> <span class="st">&quot;Dunnet&quot;</span>), <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)
+<span class="kw">summary</span>(Dunnet)</code></pre></div>
+<pre><code>
+     Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Dunnett Contrasts
+
+
+Fit: lm(formula = Count ~ Field + Treatment, data = soy)
+
+Linear Hypotheses:
+                        Estimate Std. Error t value Pr(&lt;t)  
+Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0327 *
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0153 *
+Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0668 .
+Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1312  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+(Adjusted p values reported -- single-step method)</code></pre>
+<p>We have significant evidence that only Avasan and Fermate are significantly lower than the control. Are they significantly different from each other?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(mdl))</code></pre></div>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = mdl)
+
+$Field
+                diff        lwr      upr     p adj
+Field.2-Field.1  1.8 -2.9471482 6.547148 0.6814523
+Field.3-Field.1  3.2 -1.5471482 7.947148 0.2406905
+Field.4-Field.1  4.2 -0.5471482 8.947148 0.0895218
+Field.3-Field.2  1.4 -3.3471482 6.147148 0.8173180
+Field.4-Field.2  2.4 -2.3471482 7.147148 0.4666374
+Field.4-Field.3  1.0 -3.7471482 5.747148 0.9219188
+
+$Treatment
+                  diff        lwr       upr     p adj
+Avasan-Control   -4.75 -10.448139 0.9481388 0.1206718
+Fermate-Control  -5.50 -11.198139 0.1981388 0.0603205
+Semaesan-Control -4.00  -9.698139 1.6981388 0.2305921
+Spergon-Control  -3.25  -8.948139 2.4481388 0.4074833
+Fermate-Avasan   -0.75  -6.448139 4.9481388 0.9926478
+Semaesan-Avasan   0.75  -4.948139 6.4481388 0.9926478
+Spergon-Avasan    1.50  -4.198139 7.1981388 0.9131542
+Semaesan-Fermate  1.50  -4.198139 7.1981388 0.9131542
+Spergon-Fermate   2.25  -3.448139 7.9481388 0.7194742
+Spergon-Semaesan  0.75  -4.948139 6.4481388 0.9926478</code></pre>
+<p>There is not significant evidence between the difference in means between any of the treatments.</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="survival-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="contingency-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+<!-- </html> -->

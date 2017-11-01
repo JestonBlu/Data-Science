@@ -1,5 +1,5 @@
 book_filename: "Data Science Tasks"
-chapter_name: "Chapter "
+chapter_name: ""
 repo: https://github.com/jestonblu/datascience
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]

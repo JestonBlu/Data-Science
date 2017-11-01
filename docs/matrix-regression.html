@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science Tasks" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
+  
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science Tasks" />
+  
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="regression-methods.html">
+<link rel="next" href="logistic-regression.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Tasks</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="parameter-estimation.html"><a href="parameter-estimation.html"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
+<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="principal-components.html"><a href="principal-components.html"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="eigen-values-and-statistical-distance.html"><a href="eigen-values-and-statistical-distance.html"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="matrix-regression.html"><a href="matrix-regression.html"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="multinomial-logistic-regression.html"><a href="multinomial-logistic-regression.html"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="poisson-regression.html"><a href="poisson-regression.html"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="clustering-methods.html"><a href="clustering-methods.html"><i class="fa fa-check"></i>Clustering Methods</a><ul>
+<li class="chapter" data-level="" data-path="kmeans-clustering.html"><a href="kmeans-clustering.html"><i class="fa fa-check"></i>Kmeans Clustering</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i>Hierarchical Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i>Forecasting</a><ul>
+<li class="chapter" data-level="" data-path="basic-graphical-methods-for-time-series.html"><a href="basic-graphical-methods-for-time-series.html"><i class="fa fa-check"></i>Basic Graphical Methods for Time Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html"><i class="fa fa-check"></i>Generate Time Series Data</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
+<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
+<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
+<li class="chapter" data-level="" data-path="bootstrap-simulation.html"><a href="bootstrap-simulation.html"><i class="fa fa-check"></i>Bootstrap Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualization</a><ul>
+<li class="chapter" data-level="" data-path="building-maps-with-choropleth-and-ggplot.html"><a href="building-maps-with-choropleth-and-ggplot.html"><i class="fa fa-check"></i>Building Maps with choropleth and ggplot</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="matrix-regression" class="section level2 unnumbered">
+<h2>Matrix Regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(mvtnorm)
+
+## Covariance matrix for random data
+A =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="fl">1.5</span>, <span class="fl">1.5</span>, <span class="dv">3</span>), <span class="dt">nrow =</span> <span class="dv">2</span>)
+
+## number of observations to generate
+n =<span class="st"> </span><span class="dv">10</span>
+
+## Generate data
+<span class="kw">set.seed</span>(<span class="dv">1123</span>)
+(<span class="dt">dta =</span> <span class="kw">rmvnorm</span>(<span class="dt">n =</span> n, <span class="dt">mean =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>), <span class="dt">sigma =</span> A))</code></pre></div>
+<pre><code>           [,1]     [,2]
+ [1,] 11.675350 22.16815
+ [2,] 11.164364 18.89734
+ [3,] 12.400876 20.94524
+ [4,] 10.357397 21.56407
+ [5,] 10.109067 18.25317
+ [6,] 10.444637 19.84917
+ [7,] 10.451464 21.36056
+ [8,]  8.763568 19.40245
+ [9,]  8.923162 22.68341
+[10,]  7.600346 18.09957</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Create Y vector from random data
+(<span class="dt">Y =</span> dta[, <span class="dv">1</span>])</code></pre></div>
+<pre><code> [1] 11.675350 11.164364 12.400876 10.357397 10.109067 10.444637 10.451464
+ [8]  8.763568  8.923162  7.600346</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Create design matrix
+(<span class="dt">X =</span> <span class="kw">as.matrix</span>(<span class="kw">data.frame</span>(<span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, n), <span class="st">&quot;x&quot;</span> =<span class="st"> </span>dta[, <span class="dv">2</span>])))</code></pre></div>
+<pre><code>      b        x
+ [1,] 1 22.16815
+ [2,] 1 18.89734
+ [3,] 1 20.94524
+ [4,] 1 21.56407
+ [5,] 1 18.25317
+ [6,] 1 19.84917
+ [7,] 1 21.36056
+ [8,] 1 19.40245
+ [9,] 1 22.68341
+[10,] 1 18.09957</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Beta
+B =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(X)
+
+## Solve coefficients
+(B <span class="op">%*%</span><span class="st"> </span>Y)</code></pre></div>
+<pre><code>       [,1]
+b 4.0586986
+x 0.3016549</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify results
+(<span class="dt">mdl =</span> <span class="kw">lm</span>(dta[,<span class="dv">1</span>] <span class="op">~</span><span class="st"> </span>dta[,<span class="dv">2</span>]))</code></pre></div>
+<pre><code>
+Call:
+lm(formula = dta[, 1] ~ dta[, 2])
+
+Coefficients:
+(Intercept)     dta[, 2]  
+     4.0587       0.3017  </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Hat Matrix
+## Projected onto Y will give you Y-hat
+## Diagonals of Hat Matrix are leverage
+H =<span class="st"> </span>X <span class="op">%*%</span><span class="st"> </span>B
+<span class="kw">diag</span>(H)</code></pre></div>
+<pre><code> [1] 0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377
+ [8] 0.1348034 0.3292979 0.3032130</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Sum of squares X
+SXX =<span class="st"> </span><span class="kw">sum</span>((dta[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>)
+
+## calculate leverage manually
+## values greater than 4/n are considered high leverage
+## for multiple regression Hii &gt; 2 + (p + 1)/n are considered high leverage
+<span class="dv">1</span><span class="op">/</span>n <span class="op">+</span><span class="st"> </span>(dta[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>SXX</code></pre></div>
+<pre><code> [1] 0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377
+ [8] 0.1348034 0.3292979 0.3032130</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## verify results
+<span class="kw">hatvalues</span>(mdl)</code></pre></div>
+<pre><code>        1         2         3         4         5         6         7 
+0.2401398 0.1835194 0.1159607 0.1634227 0.2760978 0.1092077 0.1443377 
+        8         9        10 
+0.1348034 0.3292979 0.3032130 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Project Hat Matrix on to Y to get Y-hat
+H <span class="op">%*%</span><span class="st"> </span>Y</code></pre></div>
+<pre><code>           [,1]
+ [1,] 10.745830
+ [2,]  9.759172
+ [3,] 10.376933
+ [4,] 10.563605
+ [5,]  9.564856
+ [6,] 10.046298
+ [7,] 10.502215
+ [8,]  9.911541
+ [9,] 10.901259
+[10,]  9.518521</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Verify results
+<span class="kw">predict</span>(mdl, <span class="kw">data.frame</span>(dta))</code></pre></div>
+<pre><code>        1         2         3         4         5         6         7 
+10.745830  9.759172 10.376933 10.563605  9.564856 10.046298 10.502215 
+        8         9        10 
+ 9.911541 10.901259  9.518521 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MSE of estimate
+(<span class="dt">mse =</span> <span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">anova</span>(mdl)[[<span class="dv">3</span>]][<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X) <span class="op">%*%</span><span class="st"> </span>X))))</code></pre></div>
+<pre><code>      b       x 
+5.90855 0.28989 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 95% confidence interval for X
+mdl<span class="op">$</span>coefficients[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>mse[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">05</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">df =</span> n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] -9.566442 17.683839</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdl<span class="op">$</span>coefficients[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>mse[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">05</span><span class="op">/</span><span class="dv">2</span>, <span class="dt">df =</span> n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>[1] -0.3668327  0.9701424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Check confidence interval
+<span class="kw">confint</span>(mdl)</code></pre></div>
+<pre><code>                 2.5 %     97.5 %
+(Intercept) -9.5664418 17.6838390
+dta[, 2]    -0.3668327  0.9701424</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate R^2
+## SST is also SYY
+SST =<span class="st"> </span><span class="kw">sum</span>((dta[, <span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)
+SSReg =<span class="st"> </span><span class="kw">sum</span>((<span class="kw">predict</span>(mdl, <span class="kw">data.frame</span>(dta)) <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(dta)[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)
+
+## R^2
+SSReg <span class="op">/</span><span class="st"> </span>SST</code></pre></div>
+<pre><code>[1] 0.1192158</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Adjusted R^2
+<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(<span class="kw">sum</span>(mdl<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>))<span class="op">/</span>(SST<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</code></pre></div>
+<pre><code>[1] 0.009117763</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>
+Call:
+lm(formula = dta[, 1] ~ dta[, 2])
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.9781 -0.9125  0.1738  0.8332  2.0239 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   4.0587     5.9085   0.687    0.512
+dta[, 2]      0.3017     0.2899   1.041    0.328
+
+Residual standard error: 1.429 on 8 degrees of freedom
+Multiple R-squared:  0.1192,    Adjusted R-squared:  0.009118 
+F-statistic: 1.083 on 1 and 8 DF,  p-value: 0.3285</code></pre>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="logistic-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+<!-- </html> -->

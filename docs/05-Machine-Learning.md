@@ -669,19 +669,19 @@ Stochastic Gradient Boosting
 
 No pre-processing
 Resampling: Cross-Validated (5 fold, repeated 5 times) 
-Summary of sample sizes: 720, 721, 719, 720, 720, 720, ... 
+Summary of sample sizes: 720, 720, 720, 719, 721, 720, ... 
 Resampling results across tuning parameters:
 
   interaction.depth  n.trees  Accuracy   Kappa    
-  1                   50      0.9826764  0.7663030
-  1                  100      0.9828986  0.7750536
-  1                  150      0.9826788  0.7761948
-  2                   50      0.9835603  0.7752180
-  2                  100      0.9833406  0.7791355
-  2                  150      0.9826727  0.7703613
-  3                   50      0.9831184  0.7699114
-  3                  100      0.9831171  0.7729111
-  3                  150      0.9833394  0.7789173
+  1                   50      0.9842196  0.7910195
+  1                  100      0.9839986  0.7934159
+  1                  150      0.9835517  0.7899395
+  2                   50      0.9859986  0.8179582
+  2                  100      0.9846653  0.8038399
+  2                  150      0.9840035  0.7949731
+  3                   50      0.9833307  0.7767886
+  3                  100      0.9824443  0.7725392
+  3                  150      0.9831146  0.7844066
 
 Tuning parameter 'shrinkage' was held constant at a value of 0.1
 
@@ -729,8 +729,8 @@ metric = function(confusion) {
 ```
           Actual
 Prediction   N   Y
-         N 106   4
-         Y   0   6
+         N 106   2
+         Y   0   8
 ```
 
 ```r
@@ -739,7 +739,7 @@ metric(confusion)
 ```
 
 ```
-[1] 0.9727273
+[1] 0.9861111
 ```
 
 ```r
@@ -750,20 +750,18 @@ summary(results); subset(results, Actual != Prediction)
 
 ```
  Actual      Prob.N             Prob.Y         Prediction
- N:106   Min.   :0.006085   Min.   :0.000995   N:110     
- Y: 10   1st Qu.:0.998981   1st Qu.:0.001019   Y:  6     
-         Median :0.998981   Median :0.001019             
-         Mean   :0.932913   Mean   :0.067087             
-         3rd Qu.:0.998981   3rd Qu.:0.001019             
-         Max.   :0.999005   Max.   :0.993915             
+ N:106   Min.   :0.001712   Min.   :0.001282   N:108     
+ Y: 10   1st Qu.:0.998683   1st Qu.:0.001317   Y:  8     
+         Median :0.998683   Median :0.001317             
+         Mean   :0.935894   Mean   :0.064106             
+         3rd Qu.:0.998683   3rd Qu.:0.001317             
+         Max.   :0.998718   Max.   :0.998288             
 ```
 
 ```
-   Actual    Prob.N    Prob.Y Prediction
-1       Y 0.8317815 0.1682185          N
-3       Y 0.5878968 0.4121032          N
-77      Y 0.5756887 0.4243113          N
-78      Y 0.6324244 0.3675756          N
+   Actual    Prob.N     Prob.Y Prediction
+1       Y 0.9691392 0.03086077          N
+78      Y 0.7711650 0.22883501          N
 ```
 
 ```r
@@ -780,8 +778,8 @@ results$Prediction.new[results$Prob.Y >= min.pred] = "Y"
 ```
           Actual
 Prediction   N   Y
-         N 105   0
-         Y   1  10
+         N 102   0
+         Y   4  10
 ```
 
 ```r
@@ -790,7 +788,7 @@ metric(confusion)
 ```
 
 ```
-[1] 0.9772727
+[1] 0.9285714
 ```
 
 ```r
@@ -1159,6 +1157,6 @@ pandoc.table(results, split.tables = Inf)
 -----------------------------------------------------------------
  Train.Incorrect   Train.Correct   Test.Incorrect   Test.Correct 
 ----------------- --------------- ---------------- --------------
-      0.147            0.853            0.8             0.2      
+      0.147            0.853            0.9             0.1      
 -----------------------------------------------------------------
 ```
