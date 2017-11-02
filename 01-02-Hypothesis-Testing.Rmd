@@ -1,0 +1,71 @@
+## Hypothesis Testing {-}
+  * Shapiro Wilks
+  * One Sample T-Test
+  * Calculating Power
+  * Hypothesis Testing
+  * Sample Size Determination
+
+
+```{r a5, comment=NA, fig.width=8, fig.height=5}
+
+## Data sample on chick weights
+data(chickwts)
+head(chickwts)
+
+## Normal reference plot for height
+qqnorm(chickwts$weight)
+qqline(chickwts$weight)
+
+## Are the data from a normal distribution?
+shapiro.test(chickwts$weight)
+mean(chickwts$weight)
+
+```
+
+How does the sample mean compare to a hypothesis test that the true mean is < 260? What is the power of the test?
+
+$$H_0: \mu \ge 260, H_a: \mu \lt 260$$
+
+|  Population   | Fail to Reject | Reject $H_0$ |
+|:-------------:|:--------------:|:------------:|
+| $H_0$ is True |    Correct     | Type I Error |
+| $H_a$ is True | Type II Error  |   Correct    |
+
+```{r a6, comment=NA, warning=FALSE, message=FALSE}
+
+## What is the probability of a Type I error if we say the true mean is less than 250?
+t.test(chickwts$weight, mu = 250, alternative = "less")
+
+## Verify the t statistic and p-value
+(ts = (mean(chickwts$weight) - 250) / (sd(chickwts$weight) / sqrt(length(chickwts$weight))))
+pt(ts, df = 70)
+
+## What is the probability of a Type I error if we say the true mean is > 245?
+t.test(chickwts$weight, mu = 245, alternative = "greater")
+
+## Verify the t statistic and p-value
+(ts = (mean(chickwts$weight) - 245) / (sd(chickwts$weight) / sqrt(length(chickwts$weight))))
+1 - pt(ts, df = 70)
+
+## We have rejected the null hypothesis and said under an alpha of .05 there is enough evidence
+## to suppor that the true mean of Chick Weights is > 245
+
+## What is the power of our test?
+power.t.test(n = length(chickwts$weight),
+             delta = abs(mean(chickwts$weight) - 245),
+             sd = sd(chickwts$weight),
+             sig.level = .05,
+             type = "one.sample",
+             alternative = "one.sided", strict = TRUE)
+
+## What sample size would we need to have a power of .8?
+power.t.test(delta = abs(mean(chickwts$weight) - 245),
+             sd = sd(chickwts$weight),
+             sig.level = .05,
+             power = .8,
+             type = "one.sample",
+             alternative = "one.sided", strict = TRUE)
+
+## Verify manually
+(sd(chickwts$weight)^2 * (qnorm(p = .95) + qnorm(p = .8))^2) / abs(mean(chickwts$weight) - 245)^2
+```

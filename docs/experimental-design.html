@@ -115,7 +115,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
 </ul></li>
-<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="survival-analysis.html"><a href="survival-analysis.html"><i class="fa fa-check"></i>Survival Analysis</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
@@ -277,7 +277,7 @@ VC:2-OJ:2      0.08  -4.718124  4.8781238 1.0000000</code></pre>
 
 data:  mdl$residuals
 W = 0.98499, p-value = 0.6694</code></pre>
-<p><img src="01-Statistical-Methods_files/figure-html/a14-1.png" width="768" /></p>
+<p><img src="01-06-Experimental-Design_files/figure-html/a14-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Equal Variance of Residuals
 <span class="kw">leveneTest</span>(mdl)</code></pre></div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
@@ -287,16 +287,16 @@ group  5  1.7086 0.1484
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> mdl<span class="op">$</span>fitted.values, <span class="dt">y =</span> (mdl<span class="op">$</span>residual <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(mdl<span class="op">$</span>residuals))<span class="op">/</span><span class="kw">sd</span>(mdl<span class="op">$</span>residuals),
      <span class="dt">xlab =</span> <span class="st">&quot;Fitted Values&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Standardized Residuals&quot;</span>,
      <span class="dt">main =</span> <span class="st">&quot;Equal Variance Residual Plot&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a14-2.png" width="768" /></p>
+<p><img src="01-06-Experimental-Design_files/figure-html/a14-2.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Independence of Residuals
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(ToothGrowth<span class="op">$</span>dose, mdl<span class="op">$</span>residuals, <span class="dt">xlab =</span> <span class="st">&quot;Dose&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)
 <span class="kw">plot</span>(ToothGrowth<span class="op">$</span>supp, mdl<span class="op">$</span>residuals, <span class="dt">xlab =</span> <span class="st">&quot;Supp&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a14-3.png" width="768" /></p>
+<p><img src="01-06-Experimental-Design_files/figure-html/a14-3.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Test for correlation in the residuals
 <span class="kw">durbinWatsonTest</span>(mdl)</code></pre></div>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437   0.522
+   1     -0.02932541      2.025437   0.568
  Alternative hypothesis: rho != 0</code></pre>
 <ul>
 <li>Group doses so that each dose is not statistically different than any other dose in the group:
@@ -313,7 +313,7 @@ group  5  1.7086 0.1484
 <li>2: {OJ, VC}</li>
 </ul></li>
 </ul>
-<p><img src="01-Statistical-Methods_files/figure-html/a15-1.png" width="768" /></p>
+<p><img src="01-06-Experimental-Design_files/figure-html/a15-1.png" width="768" /></p>
 </div>
 <div id="random-complete-block-design" class="section level3 unnumbered">
 <h3>Random Complete Block Design</h3>
@@ -417,9 +417,9 @@ Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(&lt;t)  
 Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0327 *
-Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0153 *
-Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0668 .
-Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1312  
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0155 *
+Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0669 .
+Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1308  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>
@@ -452,6 +452,7 @@ Semaesan-Fermate  1.50  -4.198139 7.1981388 0.9131542
 Spergon-Fermate   2.25  -3.448139 7.9481388 0.7194742
 Spergon-Semaesan  0.75  -4.948139 6.4481388 0.9926478</code></pre>
 <p>There is not significant evidence between the difference in means between any of the treatments.</p>
+
 </div>
 </div>
 </div>

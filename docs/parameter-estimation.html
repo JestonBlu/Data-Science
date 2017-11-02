@@ -115,7 +115,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
 </ul></li>
-<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="survival-analysis.html"><a href="survival-analysis.html"><i class="fa fa-check"></i>Survival Analysis</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
@@ -183,7 +183,7 @@ Y =<span class="st"> </span><span class="kw">c</span>(y1, y2, y3)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(Y)
 <span class="kw">plot</span>(<span class="kw">density</span>(Y))</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a7-1.png" width="672" /></p>
+<p><img src="01-03-Parameter-Estimation_files/figure-html/a7-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Is Y part of a normal distribution?
 <span class="kw">shapiro.test</span>(Y)</code></pre></div>
 <pre><code>
@@ -204,10 +204,11 @@ X =<span class="st"> </span><span class="kw">c</span>()
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
 ## Draw a histogram of the bootstrap samples for the sample means
 <span class="kw">hist</span>(X, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram of X_Bar&quot;</span>)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a7-2.png" width="672" /></p>
+<p><img src="01-03-Parameter-Estimation_files/figure-html/a7-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is a 95% confidence interval for mu?
 <span class="kw">sort</span>(X)[<span class="kw">c</span>(<span class="dv">250</span>, <span class="dv">9750</span>)]</code></pre></div>
 <pre><code>[1] 12.72430 15.58161</code></pre>
+
 </div>
             </section>
 

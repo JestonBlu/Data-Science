@@ -115,7 +115,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
 <li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
 </ul></li>
-<li><a href="survival-analysis.html#survival-analysis"><strong>Survival Analysis</strong></a></li>
+<li class="chapter" data-level="" data-path="survival-analysis.html"><a href="survival-analysis.html"><i class="fa fa-check"></i>Survival Analysis</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
 <li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
@@ -172,7 +172,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="principal-components" class="section level2 unnumbered">
 <h2>Principal Components</h2>
-<hr />
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate some data
 <span class="kw">library</span>(mvtnorm)
 
@@ -201,7 +200,7 @@ x4  0.013  0.816  0.507 1.000  0.582  0.051
 x5  0.544  0.314  0.462 0.582  1.000 -0.044
 x6  0.162  0.179 -0.160 0.051 -0.044  1.000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(X)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a24-1.png" width="768" /></p>
+<p><img src="01-08-Principle-Components_files/figure-html/a24-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(X)</code></pre></div>
 <pre><code>       x1               x2               x3               x4        
  Min.   : 8.200   Min.   : 6.259   Min.   : 7.135   Min.   : 6.210  
@@ -272,7 +271,8 @@ Cumulative Proportion  0.4665 0.8031 0.9211 0.98575 1.00000 1.000e+00</code></pr
 
 ## plot of the first two PCA
 <span class="kw">plot</span>(X.pca<span class="op">$</span>PC1, X.pca<span class="op">$</span>PC2)</code></pre></div>
-<p><img src="01-Statistical-Methods_files/figure-html/a24-2.png" width="768" /></p>
+<p><img src="01-08-Principle-Components_files/figure-html/a24-2.png" width="768" /></p>
+
 </div>
             </section>
 

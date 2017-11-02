@@ -1,0 +1,60 @@
+## Contingency Tables {-}
+
+```{r a20, comment=NA, echo=FALSE, results='asis'}
+library(knitr)
+
+dta = data.frame(
+  Department = c(1, 2, 3, 4 ,5, 6),
+  Male.Yes = c(512, 353, 120, 138, 53, 22),
+  Male.No = c(313, 207, 205, 279, 138, 351),
+  Female.Yes = c(89, 17, 202, 131, 94, 24),
+  Female.No = c(19, 8, 391, 244, 299, 317)
+)
+
+kable(dta, caption = "Data for applicant entrance for 6 departments")
+
+```
+
+```{r a21, comment=NA, results='asis'}
+dta$OR = with(dta, (Male.Yes * Female.No) / (Male.No * Female.Yes))
+dta$se = with(dta, (sqrt(1/Male.Yes + 1/Female.No + 1/Male.No + 1/Female.Yes)))
+dta$Conf.lwr = with(dta, OR - (1.96 * se))
+dta$Conf.Upr = with(dta, OR + (1.96 * se))
+
+kable(dta, split.tables = Inf)
+
+```
+
+```{r a22, comment=NA}
+
+marginal = colSums(dta[, 2:5])
+OR = (marginal[1] * marginal[4]) / (marginal[2] * marginal[3])
+se = sqrt(1/marginal[1] + 1/marginal[4] + 1/marginal[2] + 1/marginal[3])
+
+## Confidence Interval for the Marginal OR
+OR + c(-1, 1) * 1.96 * se
+
+```
+
+```{r a23, comment=NA, warning=FALSE, message=FALSE}
+library(DescTools)
+library(lawstat)
+
+dta = xtabs(freq ~ .,
+            cbind(expand.grid(Gender = c("Male", "Female"),
+                              Entrace = c("Yes", "No"),
+                              Department = c("1", "2", "3", "4", "5", "6")),
+                  freq =  c(512, 89, 313, 19, 353, 17, 207, 8, 120, 202, 205, 391,
+                            138, 131, 279, 244, 53, 94, 138, 299, 22, 24, 351, 317)
+                  )
+            )
+
+## Ho: OR = 1, Ha: OR > 1
+BreslowDayTest(dta, OR = 1)
+
+## Ho: OR_1 = OR_2 = OR_3 = OR_4 = OR_5 = OR_6, Ha: At least one set of OR are not equal
+cmh.test(dta)
+
+```
+
+Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.
