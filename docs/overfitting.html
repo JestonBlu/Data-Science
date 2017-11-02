@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ensemble-model.html">
+<link rel="prev" href="0-2-support-vector-machines.html">
 <link rel="next" href="simulation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -248,7 +249,7 @@ mdl.svm =<span class="st"> </span><span class="kw">tune</span>(svm, y <span clas
 )
 
 <span class="kw">plot</span>(mdl.svm)</code></pre></div>
-<p><img src="05-Machine-Learning_files/figure-html/f1-1.png" width="768" /></p>
+<p><img src="05-05-ML-Overfitting_files/figure-html/f1-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">best.cost =<span class="st"> </span>mdl.svm<span class="op">$</span>best.parameters[<span class="dv">1</span>]
 best.gamma =<span class="st"> </span>mdl.svm<span class="op">$</span>best.parameters[<span class="dv">2</span>]
 
@@ -283,7 +284,7 @@ results =<span class="st"> </span><span class="kw">list</span>(
 -----------------------------------------------------------------
  Train.Incorrect   Train.Correct   Test.Incorrect   Test.Correct 
 ----------------- --------------- ---------------- --------------
-      0.147            0.853            0.9             0.1      
+      0.008            0.992            0.85            0.15     
 -----------------------------------------------------------------</code></pre>
 
 </div>
@@ -293,7 +294,7 @@ results =<span class="st"> </span><span class="kw">list</span>(
           </div>
         </div>
       </div>
-<a href="ensemble-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="0-2-support-vector-machines.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="simulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

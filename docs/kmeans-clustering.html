@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -209,7 +210,7 @@ flower<span class="op">$</span>cluster =<span class="st"> </span>mdl<span class=
 <span class="kw">plot</span>(<span class="dt">x =</span> flower<span class="op">$</span>Sepal.Length, <span class="dt">y =</span> flower<span class="op">$</span>Sepal.Width, <span class="dt">col =</span> <span class="kw">factor</span>(flower<span class="op">$</span>cluster), <span class="dt">main =</span> <span class="st">&quot;Model&quot;</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> flower<span class="op">$</span>Petal.Length, <span class="dt">y =</span> flower<span class="op">$</span>Petal.Width, <span class="dt">col =</span> <span class="kw">factor</span>(flower<span class="op">$</span>Species), <span class="dt">main =</span> <span class="st">&quot;Actual&quot;</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> flower<span class="op">$</span>Petal.Length, <span class="dt">y =</span> flower<span class="op">$</span>Petal.Width, <span class="dt">col =</span> <span class="kw">factor</span>(flower<span class="op">$</span>cluster), <span class="dt">main =</span> <span class="st">&quot;Model&quot;</span>)</code></pre></div>
-<p><img src="03-Clustering_files/figure-html/a1-1.png" width="768" /></p>
+<p><img src="03-01-Kmeans-Clustering_files/figure-html/a1-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Try using principal components to draw one picture that catures all of the variance
 pc =<span class="st"> </span><span class="kw">prcomp</span>(flower[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">cor =</span> <span class="ot">TRUE</span>)
 <span class="kw">summary</span>(pc)</code></pre></div>
@@ -227,7 +228,8 @@ flower.pc<span class="op">$</span>species =<span class="st"> </span>flower<span 
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))
 <span class="kw">plot</span>(flower.pc<span class="op">$</span>PC1, flower.pc<span class="op">$</span>PC2, <span class="dt">col =</span> <span class="kw">factor</span>(flower.pc<span class="op">$</span>cluster), <span class="dt">main =</span> <span class="st">&quot;Model&quot;</span>)
 <span class="kw">plot</span>(flower.pc<span class="op">$</span>PC1, flower.pc<span class="op">$</span>PC2, <span class="dt">col =</span> <span class="kw">factor</span>(flower.pc<span class="op">$</span>species), <span class="dt">main =</span> <span class="st">&quot;Actual&quot;</span>)</code></pre></div>
-<p><img src="03-Clustering_files/figure-html/a1-2.png" width="768" /></p>
+<p><img src="03-01-Kmeans-Clustering_files/figure-html/a1-2.png" width="768" /></p>
+
 </div>
             </section>
 

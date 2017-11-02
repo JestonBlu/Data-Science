@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Science Tasks</title>
+  <meta name="description" content="Data Science and Statistical Analysis I want to remember">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Science Tasks" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://github.com/jestonblu/datascience" />
+  
+  <meta property="og:description" content="Data Science and Statistical Analysis I want to remember" />
+  <meta name="github-repo" content="jestonblu/datascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Science Tasks" />
+  
+  <meta name="twitter:description" content="Data Science and Statistical Analysis I want to remember" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="gradient-boosting.html">
+<link rel="next" href="overfitting.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Science Tasks</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="" data-path="statistical-methods.html"><a href="statistical-methods.html"><i class="fa fa-check"></i>Statistical Methods</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html"><i class="fa fa-check"></i>Fitting Distributions</a><ul>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#continuous-distributions"><i class="fa fa-check"></i>Continuous Distributions</a></li>
+<li class="chapter" data-level="" data-path="fitting-distributions.html"><a href="fitting-distributions.html#discrete-distributions"><i class="fa fa-check"></i>Discrete Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
+<li class="chapter" data-level="" data-path="parameter-estimation.html"><a href="parameter-estimation.html"><i class="fa fa-check"></i>Parameter Estimation</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html"><i class="fa fa-check"></i>Sample Size and Power</a><ul>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#proportions"><i class="fa fa-check"></i>Proportions</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#chi-square"><i class="fa fa-check"></i>Chi-square</a></li>
+<li class="chapter" data-level="" data-path="sample-size-and-power.html"><a href="sample-size-and-power.html#anova"><i class="fa fa-check"></i>ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="survival-analysis.html"><a href="survival-analysis.html"><i class="fa fa-check"></i>Survival Analysis</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i>Experimental Design</a><ul>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#completely-random-design"><i class="fa fa-check"></i>Completely Random Design</a></li>
+<li class="chapter" data-level="" data-path="experimental-design.html"><a href="experimental-design.html#random-complete-block-design"><i class="fa fa-check"></i>Random Complete Block Design</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="contingency-tables.html"><a href="contingency-tables.html"><i class="fa fa-check"></i>Contingency Tables</a></li>
+<li class="chapter" data-level="" data-path="principal-components.html"><a href="principal-components.html"><i class="fa fa-check"></i>Principal Components</a></li>
+<li class="chapter" data-level="" data-path="eigen-values-and-statistical-distance.html"><a href="eigen-values-and-statistical-distance.html"><i class="fa fa-check"></i>Eigen Values and Statistical Distance</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="regression-methods.html"><a href="regression-methods.html"><i class="fa fa-check"></i>Regression Methods</a><ul>
+<li class="chapter" data-level="" data-path="matrix-regression.html"><a href="matrix-regression.html"><i class="fa fa-check"></i>Matrix Regression</a></li>
+<li class="chapter" data-level="" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i>Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="multinomial-logistic-regression.html"><a href="multinomial-logistic-regression.html"><i class="fa fa-check"></i>Multinomial Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="poisson-regression.html"><a href="poisson-regression.html"><i class="fa fa-check"></i>Poisson Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="clustering-methods.html"><a href="clustering-methods.html"><i class="fa fa-check"></i>Clustering Methods</a><ul>
+<li class="chapter" data-level="" data-path="kmeans-clustering.html"><a href="kmeans-clustering.html"><i class="fa fa-check"></i>Kmeans Clustering</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-clustering.html"><a href="hierarchical-clustering.html"><i class="fa fa-check"></i>Hierarchical Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i>Forecasting</a><ul>
+<li class="chapter" data-level="" data-path="basic-graphical-methods-for-time-series.html"><a href="basic-graphical-methods-for-time-series.html"><i class="fa fa-check"></i>Basic Graphical Methods for Time Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html"><i class="fa fa-check"></i>Generate Time Series Data</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
+<li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
+<li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
+<li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
+<li class="chapter" data-level="" data-path="bootstrap-simulation.html"><a href="bootstrap-simulation.html"><i class="fa fa-check"></i>Bootstrap Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i>Visualization</a><ul>
+<li class="chapter" data-level="" data-path="building-maps-with-choropleth-and-ggplot.html"><a href="building-maps-with-choropleth-and-ggplot.html"><i class="fa fa-check"></i>Building Maps with choropleth and ggplot</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Tasks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="support-vector-machines" class="section level2">
+<h2><span class="header-section-number">0.2</span> Support Vector Machines</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#</span>
+<span class="co"># ## required packages</span>
+<span class="co"># library(e1071)</span>
+<span class="co">#</span>
+<span class="co"># ## Training and Testing Data</span>
+<span class="co"># hof.train = read.csv(&quot;data/HOF_tr.csv&quot;);</span>
+<span class="co"># hof.test = read.csv(&quot;data/HOF_te.csv&quot;)</span>
+<span class="co">#</span>
+<span class="co"># hof = rbind(hof.train, hof.test)</span>
+<span class="co">#</span>
+<span class="co"># ## create a training and testing set by randomly sampling from all of the data</span>
+<span class="co"># ## using the same set as in the random forest example</span>
+<span class="co"># set.seed(1002)</span>
+<span class="co"># x = sample(nrow(hof), replace = FALSE)</span>
+<span class="co">#</span>
+<span class="co"># ## remove unwanted columns</span>
+<span class="co"># hof = hof[, -c(2:4)]</span>
+<span class="co">#</span>
+<span class="co"># ## lets train the model on about 90% of the data</span>
+<span class="co"># train = hof[x[1:900], ]</span>
+<span class="co"># test = hof[-x[1:900], ]</span>
+<span class="co">#</span>
+<span class="co"># head(train)</span>
+<span class="co"># summary(train)</span>
+<span class="co">#</span>
+<span class="co"># ## train the model</span>
+<span class="co"># (tuneModel = tune(svm, HOF ~ ., data = train,</span>
+<span class="co">#                   ranges = list(</span>
+<span class="co">#                     cost = seq(.1, 5, .25),</span>
+<span class="co">#                     gamma = seq(0, .5, .01))))</span>
+<span class="co">#</span>
+<span class="co"># ## darker colors are better models</span>
+<span class="co"># plot(tuneModel, main = &quot;Model Performance&quot;)</span>
+<span class="co">#</span>
+<span class="co"># ## store best parameters</span>
+<span class="co"># cst = as.numeric(tuneModel$best.parameters[1])</span>
+<span class="co"># gma = as.numeric(tuneModel$best.parameters[2])</span>
+<span class="co">#</span>
+<span class="co"># ## do an indepth search of the darker grid</span>
+<span class="co"># (tuneModel = tune(svm, HOF ~ ., data = train,</span>
+<span class="co">#                   ranges = list(</span>
+<span class="co">#                     cost = seq(cst-1, cst+1, .01),</span>
+<span class="co">#                     gamma = seq(0, gma+.1, .001))))</span>
+<span class="co">#</span>
+<span class="co"># ## darker colors are better models</span>
+<span class="co"># plot(tuneModel, main = &quot;Model Performance&quot;)</span>
+<span class="co">#</span>
+<span class="co"># ## store best parameters</span>
+<span class="co"># cst = as.numeric(tuneModel$best.parameters[1])</span>
+<span class="co"># gma = as.numeric(tuneModel$best.parameters[2])</span>
+<span class="co">#</span>
+<span class="co"># ## build model based on the tuned parameters</span>
+<span class="co"># mdl = svm(HOF ~ ., data = train, probability = TRUE, cost = cst, gamma = gma)</span>
+<span class="co"># x = predict(mdl, test, probability = TRUE)</span>
+<span class="co">#</span>
+<span class="co"># ## compile results</span>
+<span class="co"># results = data.frame(</span>
+<span class="co">#   Prediction = x,</span>
+<span class="co">#   Actual = test$HOF,</span>
+<span class="co">#   Prob.N = attr(x, &quot;probabilities&quot;)[, 1],</span>
+<span class="co">#   Prob.Y = attr(x, &quot;probabilities&quot;)[, 2]</span>
+<span class="co"># )</span>
+<span class="co">#</span>
+<span class="co"># ## accuracy calculation from the random forest example</span>
+<span class="co"># metric = function(confusion) {</span>
+<span class="co">#   sensitivity = confusion[4] / (confusion[2] + confusion[4])</span>
+<span class="co">#   specificity = confusion[1] / (confusion[1] + confusion[3])</span>
+<span class="co">#   score = (sensitivity + (3 * specificity)) / 4</span>
+<span class="co">#   return(score)</span>
+<span class="co"># }</span>
+<span class="co">#</span>
+<span class="co"># ## confusion matrix and accuracy score</span>
+<span class="co"># (confusion = table(Prediction = results$Prediction, Actual = results$Actual))</span>
+<span class="co">#</span>
+<span class="co"># ## accuracy score for training set</span>
+<span class="co"># metric(confusion)</span>
+<span class="co">#</span>
+<span class="co"># ## look at the probability prediction for all of CV results to see if we should lower the</span>
+<span class="co"># ## probability threshold for predicing Y to HOF</span>
+<span class="co"># subset(results, Prediction != Actual)</span>
+<span class="co"># min = min(subset(results, Prediction != Actual, &quot;Prob.Y&quot;))</span>
+<span class="co">#</span>
+<span class="co"># ## lower the threshold</span>
+<span class="co"># results$Prediction.new = &quot;N&quot;</span>
+<span class="co"># results$Prediction.new[results$Prob.Y &gt;= min] = &quot;Y&quot;</span>
+<span class="co">#</span>
+<span class="co"># ## confusion matrix and accuracy score</span>
+<span class="co"># (confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))</span>
+<span class="co">#</span>
+<span class="co"># ## accuracy score for training set</span>
+<span class="co"># metric(confusion)</span></code></pre></div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gradient-boosting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="overfitting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+<!-- </html> -->

@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -179,16 +180,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 ## Plot of Air Passengers with increasing variance
 <span class="kw">plot</span>(AirPassengers, <span class="dt">main =</span> <span class="st">&quot;Air Passengers 1949 to 1961&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a1-1.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a1-1.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Seasonal plot by year
 <span class="kw">seasonplot</span>(AirPassengers, <span class="dt">s =</span> <span class="dv">12</span>, <span class="dt">main =</span> <span class="st">&quot;Seasonal Plot&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>, <span class="dt">year.labels =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">12</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a1-2.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a1-2.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Seasonal subseries plot
 <span class="kw">monthplot</span>(AirPassengers, <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Seasonal Deviation&quot;</span>, <span class="dt">labels =</span> month.abb)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a1-3.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a1-3.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Autocorrelation
 <span class="kw">acf</span>(AirPassengers, <span class="dt">main =</span> <span class="st">&quot;Autocorrelation&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a1-4.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a1-4.png" width="864" /></p>
 <div id="simple-forecasting-methods" class="section level4 unnumbered">
 <h4>Simple Forecasting Methods</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Average Method
@@ -211,7 +212,7 @@ method.rwf =<span class="st"> </span><span class="kw">rwf</span>(AirPassengers, 
 <span class="kw">lines</span>(method.rwf<span class="op">$</span>mean, <span class="dt">col =</span> <span class="dv">5</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),
        <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Average&quot;</span>, <span class="st">&quot;Naive&quot;</span>, <span class="st">&quot;Seasonal Naive&quot;</span>, <span class="st">&quot;Random Walk&quot;</span>))</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a2-1.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a2-1.png" width="864" /></p>
 </div>
 <div id="stabalizing-variance" class="section level4 unnumbered">
 <h4>Stabalizing Variance</h4>
@@ -233,14 +234,15 @@ Air<span class="op">$</span>month.avg =<span class="st"> </span><span class="kw"
 <span class="kw">plot</span>(<span class="kw">BoxCox</span>(Air<span class="op">$</span>Passengers, lambda), <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Air Passengers (BCT)&quot;</span>)
 <span class="kw">plot</span>(<span class="kw">BoxCox</span>(Air<span class="op">$</span>month.avg, <span class="kw">BoxCox.lambda</span>(Air<span class="op">$</span>month.avg)), <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>,
      <span class="dt">main =</span> <span class="st">&quot;Passengers Per Month (BCT)&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a3-1.png" width="864" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a3-1.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Decompose average monthly passengers
 <span class="kw">plot</span>(<span class="kw">decompose</span>(Air<span class="op">$</span>month.avg))</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a4-1.png" width="960" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a4-1.png" width="960" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Decompose average monthly passenegers under Box Cox
 ## Results better random error
 <span class="kw">plot</span>(<span class="kw">decompose</span>(<span class="kw">BoxCox</span>(Air<span class="op">$</span>month.avg, <span class="kw">BoxCox.lambda</span>(Air<span class="op">$</span>month.avg))), <span class="dt">ylab =</span> <span class="st">&quot;Passengers&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/a4-2.png" width="960" /></p>
+<p><img src="04-01-Forecasting-Basic-Methods_files/figure-html/a4-2.png" width="960" /></p>
+
 </div>
 </div>
             </section>

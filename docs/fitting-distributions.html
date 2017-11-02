@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -195,7 +196,7 @@ x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</
 <span class="kw">hist</span>(x1, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(x1))
 <span class="kw">plot</span>(<span class="kw">ecdf</span>(x1), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
-<p><img src="01-01-Distributions_files/figure-html/a0-1.png" width="768" /></p>
+<p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a0-1.png" width="768" /></p>
 <p>QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.</p>
 <p>Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
@@ -247,7 +248,7 @@ alternative hypothesis: two-sided</code></pre>
 <span class="kw">hist</span>(x2, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(x2))
 <span class="kw">plot</span>(<span class="kw">ecdf</span>(x2), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
-<p><img src="01-01-Distributions_files/figure-html/a2-1.png" width="768" /></p>
+<p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a2-1.png" width="768" /></p>
 <p><strong>Calculating the MLE manually</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate data from the exponential distribution with mean = 1/5
 <span class="kw">set.seed</span>(<span class="dv">1000</span>)
@@ -281,7 +282,7 @@ alternative hypothesis: two-sided</code></pre>
 ## QQplot for assessing distribution fit visually
 <span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
 <span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</code></pre></div>
-<p><img src="01-01-Distributions_files/figure-html/a3-1.png" width="768" /></p>
+<p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a3-1.png" width="768" /></p>
 <hr />
 </div>
 <div id="discrete-distributions" class="section level3 unnumbered">
@@ -369,7 +370,7 @@ dta</code></pre></div>
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Model&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Count, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Exp.Diseased, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre></div>
-<p><img src="01-01-Distributions_files/figure-html/a4-1.png" width="768" /></p>
+<p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a4-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(dta)</code></pre></div>
 <table>
 <thead>

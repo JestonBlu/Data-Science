@@ -142,9 +142,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="" data-path="basic-random-forest.html"><a href="basic-random-forest.html"><i class="fa fa-check"></i>Basic Random Forest</a></li>
+<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="" data-path="ensemble-model.html"><a href="ensemble-model.html"><i class="fa fa-check"></i>Ensemble Model</a></li>
+<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -189,7 +190,7 @@ x.t =<span class="st"> </span><span class="dv">0</span>
 
 <span class="kw">plot.ts</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;White Noise&quot;</span>)
 <span class="kw">Acf</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;ACF Plot&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b1-1.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b1-1.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Random Walk, AR(1)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n) x.t[i] =<span class="st"> </span>x.t[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>w[i]
 <span class="kw">plot.ts</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;AR(1) Random Walk&quot;</span>)
@@ -197,14 +198,14 @@ x.t =<span class="st"> </span><span class="dv">0</span>
 ## Random Walk, AR(2)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span>n) x.t[i] =<span class="st"> </span>.<span class="dv">5</span><span class="op">*</span>x.t[i<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>.<span class="dv">4</span><span class="op">*</span>x.t[i<span class="op">-</span><span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>w[i]
 <span class="kw">plot.ts</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;AR(2)&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b1-2.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b1-2.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MA(1)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>n) x.t[i] =<span class="st"> </span>w[i] <span class="op">+</span><span class="st"> </span>w[i<span class="op">-</span><span class="dv">1</span>]
 <span class="kw">plot.ts</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;MA(1)&quot;</span>)
 
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span>n) x.t[i] =<span class="st"> </span>w[i] <span class="op">+</span><span class="st"> </span>w[i<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>w[i<span class="op">-</span><span class="dv">2</span>]
 <span class="kw">plot.ts</span>(x.t, <span class="dt">main =</span> <span class="st">&quot;MA(2)&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b1-3.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b1-3.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## graphical parameters
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
 </div>
@@ -212,14 +213,14 @@ x.t =<span class="st"> </span><span class="dv">0</span>
 <h3>Auto Generated Series</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generated Time Series
 <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))), <span class="dt">main =</span> <span class="st">&quot;White Noise&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b2-1.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b2-1.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
 
 ## AR(1) (correlation between observations) p(h) = phi^h
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="op">-</span>.<span class="dv">9</span>, .<span class="dv">01</span>, .<span class="dv">7</span>, .<span class="dv">9</span>)) {
   <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">ar =</span> i)), <span class="dt">main =</span> <span class="kw">bquote</span>(<span class="kw">AR</span>(<span class="dv">1</span>)<span class="op">~</span><span class="er">~~</span>phi<span class="op">==</span>.(i)), <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
 }</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b2-2.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b2-2.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## AR(2)
 <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">ar =</span> <span class="kw">c</span>(.<span class="dv">2</span>, .<span class="dv">1</span>))),
      <span class="dt">main =</span> <span class="st">&quot;AR(2)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
@@ -235,7 +236,7 @@ x.t =<span class="st"> </span><span class="dv">0</span>
 ## MA(3) with drift
 <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ma =</span> <span class="kw">c</span>(.<span class="dv">1</span>, .<span class="dv">8</span>, .<span class="dv">1</span>), <span class="dt">d =</span> <span class="dv">2</span>)),
      <span class="dt">main =</span> <span class="st">&quot;MA(3) with drift&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b2-3.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b2-3.png" width="864" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## ARMA(2,3)
 <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="dt">ar =</span> <span class="kw">c</span>(.<span class="dv">4</span>, .<span class="dv">2</span>), <span class="dt">ma =</span> <span class="kw">c</span>(.<span class="dv">1</span>, .<span class="dv">8</span>, .<span class="dv">1</span>))),
      <span class="dt">main =</span> <span class="st">&quot;ARMA(2,3)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
@@ -243,7 +244,7 @@ x.t =<span class="st"> </span><span class="dv">0</span>
 ## ARIMA(2,1,3)
 <span class="kw">plot</span>(<span class="kw">arima.sim</span>(<span class="dt">n =</span> n, <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">ar =</span> <span class="kw">c</span>(.<span class="dv">4</span>, .<span class="dv">2</span>), <span class="dt">ma =</span> <span class="kw">c</span>(.<span class="dv">1</span>, .<span class="dv">8</span>, .<span class="dv">1</span>))),
      <span class="dt">main =</span> <span class="st">&quot;ARIMA(2,1,3)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p><img src="04-Forecasting_files/figure-html/b2-4.png" width="864" /></p>
+<p><img src="04-02-Forecasting-Generating-TS_files/figure-html/b2-4.png" width="864" /></p>
 
 </div>
 </div>
