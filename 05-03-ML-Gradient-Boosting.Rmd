@@ -1,0 +1,93 @@
+## Gradient Boosting {-}
+
+```{r d1, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9}
+
+## required packages
+library(caret)
+library(gbm)
+
+## Training and Testing Data
+hof.train = read.csv("data/HOF_tr.csv");
+hof.test = read.csv("data/HOF_te.csv")
+
+hof = rbind(hof.train, hof.test)
+hof$HOF = as.factor(as.numeric(hof$HOF) - 1)
+
+## create a training and testing set by randomly sampling from all of the data
+## using the same set as in the random forest example
+set.seed(1002)
+x = sample(nrow(hof), replace = FALSE)
+
+## remove unwanted columns
+hof = hof[, -c(2:4)]
+
+## lets train the model on about 90% of the data
+train = hof[x[1:900], ]
+test = hof[-x[1:900], ]
+
+head(train)
+summary(train)
+
+
+## build model
+fitControl = trainControl(method = "repeatedCV", number = 5, repeats = 5)
+mdl = train(HOF ~ ., data = train, method = "gbm", trControl = fitControl,
+            verbose = FALSE)
+
+## Model Summary
+mdl; plot(mdl)
+
+x = predict(mdl, test, type = "prob")
+
+## compile results
+results = data.frame(
+  Actual = test$HOF,
+  Prob.N = x[, 1],
+  Prob.Y = x[, 2]
+)
+
+## code 0/1 back to N/Y
+results$Actual = as.character(results$Actual)
+results$Actual[results$Actual == '0'] = 'N'
+results$Actual[results$Actual == '1'] = 'Y'
+results$Actual = factor(results$Actual)
+
+## if probability of HOF is > .5 then score a Y
+results$Prediction = "N"
+results$Prediction[results$Prob.Y >= .5] = "Y"
+results$Prediction = factor(results$Prediction)
+
+## accuracy calculation from the random forest example
+metric = function(confusion) {
+  sensitivity = confusion[4] / (confusion[2] + confusion[4])
+  specificity = confusion[1] / (confusion[1] + confusion[3])
+  score = (sensitivity + (3 * specificity)) / 4
+  return(score)
+}
+
+## confusion matrix and accuracy score
+(confusion = table(Prediction = results$Prediction, Actual = results$Actual))
+
+## accuracy score for training set
+metric(confusion)
+
+## look at the incorrect responses and see if we can lower the threshold with creating
+## false positives
+summary(results); subset(results, Actual != Prediction)
+
+min.pred = min(subset(results, Actual != Prediction, "Prob.Y"))
+
+## it looks like there is no danger of lowering the threshold
+results$Prediction.new = "N"
+results$Prediction.new[results$Prob.Y >= min.pred] = "Y"
+
+## confusion matrix and accuracy score
+(confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))
+
+## accuracy score for training set
+metric(confusion)
+
+## there are fewer incorrect answers, but the penalty for false positives are greater
+## than false negatives so the accuracy score is actually lower
+
+```

@@ -1,0 +1,33 @@
+## Poisson Regression {-}
+
+
+```{r a5, warning=FALSE, message=FALSE, comment=NA, fig.width=9, fig.height=8}
+
+library(MASS)
+
+dta = read.csv("data/pharynx.csv")
+
+head(dta)
+
+## Poisson Regression Model for Survival Time
+mdl = glm(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+          family = poisson(), data = dta)
+
+## Negative Binomial Model for Survival Time
+mdl2 = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+              maxit = 100, data = dta)
+
+## Dispersion paramater > 0 so poisson is not appropriate, negative binomial is a better model
+par(mfrow = c(2,2))
+plot(mdl2)
+
+## Remove the outlier observation and retrain
+dta = dta[-159, ]
+
+mdl.nb = glm.nb(TIME ~ SEX + TX + AGE + COND + SITE + T_STAGE + N_STAGE + STATUS,
+              maxit = 100, data = dta)
+
+summary(mdl.nb)
+plot(mdl.nb)
+
+```

@@ -1,0 +1,23 @@
+## Logistic Regression {-}
+
+```{r a3, comment=NA, warning=FALSE, message=FALSE, fig.width=9, fig.height=7}
+
+library(popbio)
+library(Deducer)
+
+dta = read.csv("data/pros.csv")
+
+head(dta)
+
+mdl = glm(CAPSULE ~ AGE + RACE + DPROS + DCAPS + PSA + VOL + GLEASON,
+          family = binomial(), data = dta)
+
+summary(mdl)
+
+logi.hist.plot(sqrt(dta$PSA), dta$CAPSULE, logi.mod = 1, boxp = FALSE, notch = FALSE,
+               main = "Logistic Regression plot for PSA",
+               xlab = "PSA")
+
+rocplot(mdl)
+
+```

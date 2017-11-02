@@ -1,0 +1,80 @@
+# Regression Methods {-}
+
+## Matrix Regression {-}
+
+
+```{r a1, comment=NA}
+
+library(mvtnorm)
+
+## Covariance matrix for random data
+A = matrix(c(3, 1.5, 1.5, 3), nrow = 2)
+
+## number of observations to generate
+n = 10
+
+## Generate data
+set.seed(1123)
+(dta = rmvnorm(n = n, mean = c(10, 20), sigma = A))
+
+## Create Y vector from random data
+(Y = dta[, 1])
+
+## Create design matrix
+(X = as.matrix(data.frame("b" = rep(1, n), "x" = dta[, 2])))
+
+## Beta
+B = solve(t(X) %*% X) %*% t(X)
+
+## Solve coefficients
+(B %*% Y)
+
+## Verify results
+(mdl = lm(dta[,1] ~ dta[,2]))
+
+## Hat Matrix
+## Projected onto Y will give you Y-hat
+## Diagonals of Hat Matrix are leverage
+H = X %*% B
+diag(H)
+
+## Sum of squares X
+SXX = sum((dta[, 2] - colMeans(dta)[2])^2)
+
+## calculate leverage manually
+## values greater than 4/n are considered high leverage
+## for multiple regression Hii > 2 + (p + 1)/n are considered high leverage
+1/n + (dta[, 2] - colMeans(dta)[2])^2 / SXX
+
+## verify results
+hatvalues(mdl)
+
+## Project Hat Matrix on to Y to get Y-hat
+H %*% Y
+
+## Verify results
+predict(mdl, data.frame(dta))
+
+## MSE of estimate
+(mse = sqrt(diag(anova(mdl)[[3]][2] * solve(t(X) %*% X))))
+
+## 95% confidence interval for X
+mdl$coefficients[1] + c(-1, 1) * mse[1] * qt(1 - .05/2, df = n - 2)
+mdl$coefficients[2] + c(-1, 1) * mse[2] * qt(1 - .05/2, df = n - 2)
+
+## Check confidence interval
+confint(mdl)
+
+## Calculate R^2
+## SST is also SYY
+SST = sum((dta[, 1] - colMeans(dta)[1])^2)
+SSReg = sum((predict(mdl, data.frame(dta)) - colMeans(dta)[1])^2)
+
+## R^2
+SSReg / SST
+
+## Adjusted R^2
+1 - (sum(mdl$residuals^2)/(n - 2))/(SST/(n - 1))
+
+summary(mdl)
+```
