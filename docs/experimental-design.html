@@ -140,6 +140,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
 <li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="arima-modeling.html"><a href="arima-modeling.html"><i class="fa fa-check"></i>ARIMA Modeling</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
 <li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
@@ -297,7 +298,7 @@ group  5  1.7086 0.1484
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Test for correlation in the residuals
 <span class="kw">durbinWatsonTest</span>(mdl)</code></pre></div>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437   0.596
+   1     -0.02932541      2.025437   0.552
  Alternative hypothesis: rho != 0</code></pre>
 <ul>
 <li>Group doses so that each dose is not statistically different than any other dose in the group:
@@ -417,10 +418,10 @@ Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(&lt;t)  
-Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0323 *
-Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0156 *
+Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0327 *
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0154 *
 Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0669 .
-Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1312  
+Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1309  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>

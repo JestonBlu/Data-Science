@@ -140,6 +140,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="0.0.1" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#manually-generated-series"><i class="fa fa-check"></i><b>0.0.1</b> Manually Generated Series</a></li>
 <li class="chapter" data-level="" data-path="generate-time-series-data.html"><a href="generate-time-series-data.html#auto-generated-series"><i class="fa fa-check"></i>Auto Generated Series</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="arima-modeling.html"><a href="arima-modeling.html"><i class="fa fa-check"></i>ARIMA Modeling</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
 <li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
@@ -277,11 +278,11 @@ estimate<span class="op">$</span>actual =<span class="st"> </span>hof.test<span 
 (<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</code></pre></div>
 <pre><code>       actual
 predict   N   Y
-      N 320   1
-      Y   3  15</code></pre>
+      N 322   2
+      Y   1  14</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Final Accuracy Measure
 (<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</code></pre></div>
-<pre><code>[1] 0.9559969</code></pre>
+<pre><code>[1] 0.9787037</code></pre>
 <p>The random forest method is fairly robust to overfitting because it reserves some of the training data to use as test data which is called Out of Bag (OOB error). Because of this internal mechanism we could probably ues a larger portion of the overall data to train. The next sections tests this to see if accuracy is improved.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hof =<span class="st"> </span><span class="kw">rbind</span>(hof.train, hof.test)
 

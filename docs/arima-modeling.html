@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="experimental-design.html">
-<link rel="next" href="principal-components.html">
+<link rel="prev" href="generate-time-series-data.html">
+<link rel="next" href="machine-learning.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -172,200 +172,80 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="contingency-tables" class="section level2 unnumbered">
-<h2>Contingency Tables</h2>
-<table>
-<caption><span id="tab:a20">Table 1: </span>Data for applicant entrance for 6 departments</caption>
-<thead>
-<tr class="header">
-<th align="right">Department</th>
-<th align="right">Male.Yes</th>
-<th align="right">Male.No</th>
-<th align="right">Female.Yes</th>
-<th align="right">Female.No</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">512</td>
-<td align="right">313</td>
-<td align="right">89</td>
-<td align="right">19</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">353</td>
-<td align="right">207</td>
-<td align="right">17</td>
-<td align="right">8</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">120</td>
-<td align="right">205</td>
-<td align="right">202</td>
-<td align="right">391</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">138</td>
-<td align="right">279</td>
-<td align="right">131</td>
-<td align="right">244</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">53</td>
-<td align="right">138</td>
-<td align="right">94</td>
-<td align="right">299</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">22</td>
-<td align="right">351</td>
-<td align="right">24</td>
-<td align="right">317</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dta<span class="op">$</span>OR =<span class="st"> </span><span class="kw">with</span>(dta, (Male.Yes <span class="op">*</span><span class="st"> </span>Female.No) <span class="op">/</span><span class="st"> </span>(Male.No <span class="op">*</span><span class="st"> </span>Female.Yes))
-dta<span class="op">$</span>se =<span class="st"> </span><span class="kw">with</span>(dta, (<span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>Male.Yes <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Male.No <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>Female.Yes)))
-dta<span class="op">$</span>Conf.lwr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">-</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
-dta<span class="op">$</span>Conf.Upr =<span class="st"> </span><span class="kw">with</span>(dta, OR <span class="op">+</span><span class="st"> </span>(<span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se))
+<div id="arima-modeling" class="section level2 unnumbered">
+<h2>ARIMA Modeling</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forecast)
 
-<span class="kw">kable</span>(dta, <span class="dt">split.tables =</span> <span class="ot">Inf</span>)</code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Department</th>
-<th align="right">Male.Yes</th>
-<th align="right">Male.No</th>
-<th align="right">Female.Yes</th>
-<th align="right">Female.No</th>
-<th align="right">OR</th>
-<th align="right">se</th>
-<th align="right">Conf.lwr</th>
-<th align="right">Conf.Upr</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">512</td>
-<td align="right">313</td>
-<td align="right">89</td>
-<td align="right">19</td>
-<td align="right">0.3492120</td>
-<td align="right">0.2627081</td>
-<td align="right">-0.1656958</td>
-<td align="right">0.8641199</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">353</td>
-<td align="right">207</td>
-<td align="right">17</td>
-<td align="right">8</td>
-<td align="right">0.8025007</td>
-<td align="right">0.4375926</td>
-<td align="right">-0.0551808</td>
-<td align="right">1.6601823</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">120</td>
-<td align="right">205</td>
-<td align="right">202</td>
-<td align="right">391</td>
-<td align="right">1.1330596</td>
-<td align="right">0.1439424</td>
-<td align="right">0.8509325</td>
-<td align="right">1.4151868</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">138</td>
-<td align="right">279</td>
-<td align="right">131</td>
-<td align="right">244</td>
-<td align="right">0.9212838</td>
-<td align="right">0.1502084</td>
-<td align="right">0.6268753</td>
-<td align="right">1.2156922</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">53</td>
-<td align="right">138</td>
-<td align="right">94</td>
-<td align="right">299</td>
-<td align="right">1.2216312</td>
-<td align="right">0.2002426</td>
-<td align="right">0.8291558</td>
-<td align="right">1.6141066</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="right">22</td>
-<td align="right">351</td>
-<td align="right">24</td>
-<td align="right">317</td>
-<td align="right">0.8278727</td>
-<td align="right">0.3051635</td>
-<td align="right">0.2297522</td>
-<td align="right">1.4259933</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal =<span class="st"> </span><span class="kw">colSums</span>(dta[, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])
-OR =<span class="st"> </span>(marginal[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">4</span>]) <span class="op">/</span><span class="st"> </span>(marginal[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>marginal[<span class="dv">3</span>])
-se =<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>marginal[<span class="dv">3</span>])
+<span class="co"># Generated Time Series</span>
+<span class="kw">set.seed</span>(<span class="dv">1</span>)
+x  =<span class="st"> </span><span class="dv">100</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,
+  <span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
 
-## Confidence Interval for the Marginal OR
-OR <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se</code></pre></div>
-<pre><code>[1] 1.71585 1.96631</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DescTools)
-<span class="kw">library</span>(lawstat)
+<span class="co"># Plot the series</span>
+<span class="kw">plot</span>(x, <span class="dt">main =</span> <span class="st">&quot;Simulated ARIMA(1,1,1)&quot;</span>)</code></pre></div>
+<p><img src="04-03-Forecast-ARIMA_files/figure-html/a1-1.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Check if there is auto correlation, there is</span>
+<span class="kw">Acf</span>(x, <span class="dt">main =</span> <span class="st">&quot;ACF&quot;</span>); <span class="kw">Pacf</span>(x, <span class="dt">main =</span> <span class="st">&quot;PACF&quot;</span>)</code></pre></div>
+<p><img src="04-03-Forecast-ARIMA_files/figure-html/a1-2.png" width="864" /><img src="04-03-Forecast-ARIMA_files/figure-html/a1-3.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># How many differences does it take for the data to be stationary?</span>
+<span class="co"># 1</span>
+<span class="kw">plot</span>(<span class="kw">diff</span>(x), <span class="dt">main =</span> <span class="st">&quot;First Order Difference&quot;</span>)</code></pre></div>
+<p><img src="04-03-Forecast-ARIMA_files/figure-html/a1-4.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Check the Acf/Pacf with differences</span>
+<span class="kw">Acf</span>(<span class="kw">diff</span>(x), <span class="dt">main =</span> <span class="st">&quot;ACF 1 diff&quot;</span>)  <span class="co"># One significant spike, suggests MA(1)</span></code></pre></div>
+<p><img src="04-03-Forecast-ARIMA_files/figure-html/a1-5.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Pacf</span>(<span class="kw">diff</span>(x), <span class="dt">main =</span> <span class="st">&quot;PACF 1 diff&quot;</span>) <span class="co"># One significant spike, indicates AR(1)</span></code></pre></div>
+<p><img src="04-03-Forecast-ARIMA_files/figure-html/a1-6.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Suggested model ARIMA(1,1,1)</span>
+mdl1 =<span class="st"> </span><span class="kw">arima</span>(x, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))
 
-dta =<span class="st"> </span><span class="kw">xtabs</span>(freq <span class="op">~</span><span class="st"> </span>.,
-            <span class="kw">cbind</span>(<span class="kw">expand.grid</span>(<span class="dt">Gender =</span> <span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>),
-                              <span class="dt">Entrace =</span> <span class="kw">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),
-                              <span class="dt">Department =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>)),
-                  <span class="dt">freq =</span>  <span class="kw">c</span>(<span class="dv">512</span>, <span class="dv">89</span>, <span class="dv">313</span>, <span class="dv">19</span>, <span class="dv">353</span>, <span class="dv">17</span>, <span class="dv">207</span>, <span class="dv">8</span>, <span class="dv">120</span>, <span class="dv">202</span>, <span class="dv">205</span>, <span class="dv">391</span>,
-                            <span class="dv">138</span>, <span class="dv">131</span>, <span class="dv">279</span>, <span class="dv">244</span>, <span class="dv">53</span>, <span class="dv">94</span>, <span class="dv">138</span>, <span class="dv">299</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">351</span>, <span class="dv">317</span>)
-                  )
-            )
-
-## Ho: OR = 1, Ha: OR &gt; 1
-<span class="kw">BreslowDayTest</span>(dta, <span class="dt">OR =</span> <span class="dv">1</span>)</code></pre></div>
+<span class="co"># How do the ARMA terms compare with the terms used in the sim?</span>
+<span class="co"># AR1: .18 vs .1 in the sim</span>
+<span class="co"># MA1: .14 vs .2 in the sim</span>
+<span class="kw">summary</span>(mdl1)</code></pre></div>
 <pre><code>
-    Breslow-Day test on Homogeneity of Odds Ratios
+Call:
+arima(x = x, order = c(1, 1, 1))
 
-data:  dta
-X-squared = 19.938, df = 5, p-value = 0.001283</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Ho: OR_1 = OR_2 = OR_3 = OR_4 = OR_5 = OR_6, Ha: At least one set of OR are not equal
-<span class="kw">cmh.test</span>(dta)</code></pre></div>
-<pre><code>
-    Cochran-Mantel-Haenszel Chi-square Test
+Coefficients:
+         ar1     ma1
+      0.1838  0.1449
+s.e.  0.2544  0.2499
 
-data:  dta
-CMH statistic = 1.52460, df = 1.00000, p-value = 0.21692, MH
-Estimate = 0.90470, Pooled Odd Ratio = 1.84110, Odd Ratio of level
-1 = 0.34921, Odd Ratio of level 2 = 0.80250, Odd Ratio of level 3
-= 1.13310, Odd Ratio of level 4 = 0.92128, Odd Ratio of level 5 =
-1.22160, Odd Ratio of level 6 = 0.82787</code></pre>
-<p>Based on the Breslow Day test we reject the null hypothesis that the odds ratios are equal to 1. The CMH test fails to reject that gender and entrance are independent.</p>
+sigma^2 estimated as 0.7854:  log likelihood = -129.87,  aic = 265.74
+
+Training set error measures:
+                     ME      RMSE       MAE        MPE      MAPE     MASE
+Training set 0.07980263 0.8818683 0.6973907 0.07372578 0.6471377 0.936633
+                     ACF1
+Training set -0.005918057</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What does the forecast package auto.arima function suggest?</span>
+(<span class="dt">mdl2 =</span> <span class="kw">auto.arima</span>(x)) <span class="co"># No AR term</span></code></pre></div>
+<pre><code>Series: x 
+ARIMA(0,1,1) 
+
+Coefficients:
+         ma1
+      0.3043
+s.e.  0.0882
+
+sigma^2 estimated as 0.7972:  log likelihood=-130.1
+AIC=264.2   AICc=264.32   BIC=269.41</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># How does the manual model compare with the auto.arima model?</span>
+<span class="kw">AIC</span>(mdl1, mdl2)</code></pre></div>
+<pre><code>     df      AIC
+mdl1  3 265.7356
+mdl2  2 264.1965</code></pre>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="experimental-design.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="principal-components.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="generate-time-series-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="machine-learning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

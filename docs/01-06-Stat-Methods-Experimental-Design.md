@@ -183,7 +183,7 @@ durbinWatsonTest(mdl)
 
 ```
  lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437   0.596
+   1     -0.02932541      2.025437   0.552
  Alternative hypothesis: rho != 0
 ```
 
@@ -280,10 +280,10 @@ Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(<t)  
-Avasan - Control >= 0     -4.750      1.788  -2.657 0.0323 *
-Fermate - Control >= 0    -5.500      1.788  -3.077 0.0156 *
+Avasan - Control >= 0     -4.750      1.788  -2.657 0.0327 *
+Fermate - Control >= 0    -5.500      1.788  -3.077 0.0154 *
 Semaesan - Control >= 0   -4.000      1.788  -2.238 0.0669 .
-Spergon - Control >= 0    -3.250      1.788  -1.818 0.1312  
+Spergon - Control >= 0    -3.250      1.788  -1.818 0.1309  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 (Adjusted p values reported -- single-step method)

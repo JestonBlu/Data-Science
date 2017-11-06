@@ -1,0 +1,41 @@
+
+## ARIMA Modeling {-}
+
+```{r a1, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
+
+library(forecast)
+
+# Generated Time Series
+set.seed(1)
+x  = 100 + arima.sim(n = 100,
+  model = list(order = c(1, 1, 1), ar = .1, ma = .2))
+
+# Plot the series
+plot(x, main = "Simulated ARIMA(1,1,1)")
+
+# Check if there is auto correlation, there is
+Acf(x, main = "ACF"); Pacf(x, main = "PACF")
+
+# How many differences does it take for the data to be stationary?
+# 1
+plot(diff(x), main = "First Order Difference")
+
+# Check the Acf/Pacf with differences
+Acf(diff(x), main = "ACF 1 diff")  # One significant spike, suggests MA(1)
+Pacf(diff(x), main = "PACF 1 diff") # One significant spike, indicates AR(1)
+
+# Suggested model ARIMA(1,1,1)
+mdl1 = arima(x, c(1,1,1))
+
+# How do the ARMA terms compare with the terms used in the sim?
+# AR1: .18 vs .1 in the sim
+# MA1: .14 vs .2 in the sim
+summary(mdl1)
+
+# What does the forecast package auto.arima function suggest?
+(mdl2 = auto.arima(x)) # No AR term
+
+# How does the manual model compare with the auto.arima model?
+AIC(mdl1, mdl2)
+
+```
