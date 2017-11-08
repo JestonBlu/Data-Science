@@ -90,11 +90,11 @@ Call:
                      Number of trees: 1000
 No. of variables tried at each split: 4
 
-        OOB estimate of  error rate: 1.48%
+        OOB estimate of  error rate: 1.62%
 Confusion matrix:
     N  Y class.error
-N 641  3 0.004658385
-Y   7 26 0.212121212
+N 640  4  0.00621118
+Y   7 26  0.21212121
 ```
 
 ```r
@@ -133,8 +133,8 @@ estimate$actual = hof.test$HOF
 ```
        actual
 predict   N   Y
-      N 322   2
-      Y   1  14
+      N 321   2
+      Y   2  14
 ```
 
 ```r
@@ -143,7 +143,7 @@ predict   N   Y
 ```
 
 ```
-[1] 0.9787037
+[1] 0.964106
 ```
 
 The random forest method is fairly robust to overfitting because it reserves some of the training data to use as test data which is called Out of Bag (OOB error). Because of this internal mechanism we could probably ues a larger portion of the overall data to train. The next sections tests this to see if accuracy is improved.

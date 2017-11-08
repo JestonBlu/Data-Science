@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="poisson-regression.html">
-<link rel="next" href="kmeans-clustering.html">
+<link rel="prev" href="arima-modeling.html">
+<link rel="next" href="machine-learning.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -173,16 +173,143 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="clustering-methods" class="section level1 unnumbered">
-<h1>Clustering Methods</h1> 
+<div id="var-modeling" class="section level2 unnumbered">
+<h2>VAR Modeling</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(vars)
+
+<span class="co"># Generated Time Series</span>
+x1  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
+x2  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
+x3  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
+x4  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
+
+<span class="co"># Combine into a multivariate time series</span>
+x =<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, x3, x4)
+
+<span class="co"># Create a variable auto-regression modle</span>
+mdl =<span class="st"> </span><span class="kw">VAR</span>(x)
+
+<span class="co"># Model summary</span>
+<span class="kw">summary</span>(mdl)</code></pre></div>
+<pre><code>
+VAR Estimation Results:
+========================= 
+Endogenous variables: x1, x2, x3, x4 
+Deterministic variables: const 
+Sample size: 100 
+Log Likelihood: -562.528 
+Roots of the characteristic polynomial:
+0.9677 0.9395 0.9395 0.8534
+Call:
+VAR(y = x)
+
+
+Estimation results for equation x1: 
+=================================== 
+x1 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
+
+       Estimate Std. Error t value Pr(&gt;|t|)    
+x1.l1  0.959497   0.045008  21.319   &lt;2e-16 ***
+x2.l1  0.052164   0.051326   1.016   0.3120    
+x3.l1 -0.004411   0.043049  -0.102   0.9186    
+x4.l1 -0.059537   0.035148  -1.694   0.0936 .  
+const  0.419126   1.136497   0.369   0.7131    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Residual standard error: 1.146 on 95 degrees of freedom
+Multiple R-Squared: 0.8525, Adjusted R-squared: 0.8463 
+F-statistic: 137.3 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+
+
+Estimation results for equation x2: 
+=================================== 
+x2 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
+
+       Estimate Std. Error t value Pr(&gt;|t|)    
+x1.l1  0.043039   0.038719   1.112   0.2691    
+x2.l1  0.914072   0.044155  20.702   &lt;2e-16 ***
+x3.l1 -0.055735   0.037034  -1.505   0.1357    
+x4.l1 -0.003661   0.030237  -0.121   0.9039    
+const  1.733010   0.977712   1.773   0.0795 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Residual standard error: 0.9857 on 95 degrees of freedom
+Multiple R-Squared: 0.9293, Adjusted R-squared: 0.9263 
+F-statistic: 312.1 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+
+
+Estimation results for equation x3: 
+=================================== 
+x3 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
+
+      Estimate Std. Error t value Pr(&gt;|t|)    
+x1.l1 -0.01793    0.03876  -0.462   0.6448    
+x2.l1 -0.05733    0.04420  -1.297   0.1978    
+x3.l1  0.92205    0.03708  24.869   &lt;2e-16 ***
+x4.l1 -0.01357    0.03027  -0.448   0.6549    
+const  2.41643    0.97881   2.469   0.0153 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Residual standard error: 0.9868 on 95 degrees of freedom
+Multiple R-Squared: 0.942,  Adjusted R-squared: 0.9396 
+F-statistic: 385.8 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+
+
+Estimation results for equation x4: 
+=================================== 
+x4 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
+
+        Estimate Std. Error t value Pr(&gt;|t|)    
+x1.l1  0.1434568  0.0383801   3.738 0.000317 ***
+x2.l1  0.1387279  0.0437678   3.170 0.002054 ** 
+x3.l1  0.0002962  0.0367097   0.008 0.993579    
+x4.l1  0.8980475  0.0299720  29.963  &lt; 2e-16 ***
+const -2.4737956  0.9691464  -2.553 0.012287 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+
+Residual standard error: 0.9771 on 95 degrees of freedom
+Multiple R-Squared: 0.9701, Adjusted R-squared: 0.9688 
+F-statistic: 769.9 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+
+
+
+Covariance matrix of residuals:
+         x1      x2       x3       x4
+x1  1.31282 -0.1843 -0.02528  0.06478
+x2 -0.18425  0.9716 -0.15628  0.03490
+x3 -0.02528 -0.1563  0.97379 -0.07605
+x4  0.06478  0.0349 -0.07605  0.95466
+
+Correlation matrix of residuals:
+         x1       x2       x3       x4
+x1  1.00000 -0.16314 -0.02236  0.05786
+x2 -0.16314  1.00000 -0.16067  0.03624
+x3 -0.02236 -0.16067  1.00000 -0.07887
+x4  0.05786  0.03624 -0.07887  1.00000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot model</span>
+<span class="kw">plot</span>(mdl)</code></pre></div>
+<p><img src="04-04-Forecast-VAR_files/figure-html/a1-1.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-2.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-3.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-4.png" width="864" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot forecast</span>
+<span class="kw">plot</span>(<span class="kw">predict</span>(mdl, <span class="dt">h =</span> <span class="dv">12</span>))</code></pre></div>
+<p><img src="04-04-Forecast-VAR_files/figure-html/a1-5.png" width="864" /></p>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="poisson-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="kmeans-clustering.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="arima-modeling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="machine-learning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

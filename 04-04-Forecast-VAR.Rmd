@@ -1,0 +1,29 @@
+
+## VAR Modeling {-}
+
+```{r a1, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
+
+library(vars)
+
+# Generated Time Series
+x1  = 10 + arima.sim(n = 100,model = list(order = c(1, 1, 1), ar = .1, ma = .2))
+x2  = 10 + arima.sim(n = 100,model = list(order = c(1, 1, 1), ar = .1, ma = .2))
+x3  = 10 + arima.sim(n = 100,model = list(order = c(1, 1, 1), ar = .1, ma = .2))
+x4  = 10 + arima.sim(n = 100,model = list(order = c(1, 1, 1), ar = .1, ma = .2))
+
+# Combine into a multivariate time series
+x = data.frame(x1, x2, x3, x4)
+
+# Create a variable auto-regression modle
+mdl = VAR(x)
+
+# Model summary
+summary(mdl)
+
+# Plot model
+plot(mdl)
+
+# Plot forecast
+plot(predict(mdl, h = 12))
+
+```
