@@ -1,4 +1,4 @@
-## Support Vector Machines
+## Support Vector Machines {-}
 
 ```{r c1, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9, R.options=list(width=100)}
 #

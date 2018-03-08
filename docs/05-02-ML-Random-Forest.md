@@ -133,8 +133,8 @@ estimate$actual = hof.test$HOF
 ```
        actual
 predict   N   Y
-      N 323   1
-      Y   0  15
+      N 322   1
+      Y   1  15
 ```
 
 ```r
@@ -143,7 +143,7 @@ predict   N   Y
 ```
 
 ```
-[1] 0.9976852
+[1] 0.982053
 ```
 
 The random forest method is fairly robust to overfitting because it reserves some of the training data to use as test data which is called Out of Bag (OOB error). Because of this internal mechanism we could probably ues a larger portion of the overall data to train. The next sections tests this to see if accuracy is improved.

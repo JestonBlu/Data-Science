@@ -1,6 +1,6 @@
 # Machine Learning {-}
 
-## Neural Network
+## Neural Network {-}
 
 
 ```r

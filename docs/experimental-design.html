@@ -172,10 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="var-modeling.html"><a href="var-modeling.html"><i class="fa fa-check"></i>VAR Modeling</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i>Machine Learning</a><ul>
-<li class="chapter" data-level="0.1" data-path="0-1-neural-network.html"><a href="0-1-neural-network.html"><i class="fa fa-check"></i><b>0.1</b> Neural Network</a></li>
+<li class="chapter" data-level="" data-path="neural-network.html"><a href="neural-network.html"><i class="fa fa-check"></i>Neural Network</a></li>
 <li class="chapter" data-level="" data-path="random-forest.html"><a href="random-forest.html"><i class="fa fa-check"></i>Random Forest</a></li>
 <li class="chapter" data-level="" data-path="gradient-boosting.html"><a href="gradient-boosting.html"><i class="fa fa-check"></i>Gradient Boosting</a></li>
-<li class="chapter" data-level="0.2" data-path="0-2-support-vector-machines.html"><a href="0-2-support-vector-machines.html"><i class="fa fa-check"></i><b>0.2</b> Support Vector Machines</a></li>
+<li class="chapter" data-level="" data-path="support-vector-machines.html"><a href="support-vector-machines.html"><i class="fa fa-check"></i>Support Vector Machines</a></li>
 <li class="chapter" data-level="" data-path="overfitting.html"><a href="overfitting.html"><i class="fa fa-check"></i>Overfitting</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="simulation.html"><a href="simulation.html"><i class="fa fa-check"></i>Simulation</a><ul>
@@ -327,7 +327,7 @@ group  5  1.7086 0.1484
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">## Test for correlation in the residuals</a>
 <a class="sourceLine" id="cb116-2" data-line-number="2"><span class="kw">durbinWatsonTest</span>(mdl)</a></code></pre></div>
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.02932541      2.025437    0.55
+   1     -0.02932541      2.025437   0.586
  Alternative hypothesis: rho != 0</code></pre>
 <ul>
 <li>Group doses so that each dose is not statistically different than any other dose in the group:
@@ -447,10 +447,10 @@ Fit: lm(formula = Count ~ Field + Treatment, data = soy)
 
 Linear Hypotheses:
                         Estimate Std. Error t value Pr(&lt;t)  
-Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0324 *
-Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0155 *
+Avasan - Control &gt;= 0     -4.750      1.788  -2.657 0.0325 *
+Fermate - Control &gt;= 0    -5.500      1.788  -3.077 0.0158 *
 Semaesan - Control &gt;= 0   -4.000      1.788  -2.238 0.0668 .
-Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1311  
+Spergon - Control &gt;= 0    -3.250      1.788  -1.818 0.1307  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 (Adjusted p values reported -- single-step method)</code></pre>

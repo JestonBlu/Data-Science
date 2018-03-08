@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="bootstrap-simulation.html">
-<link rel="next" href="building-maps-with-choropleth-and-ggplot.html">
+<link rel="prev" href="gradient-boosting.html">
+<link rel="next" href="overfitting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -201,16 +201,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="visualization" class="section level1 unnumbered">
-<h1>Visualization</h1> 
+<div id="support-vector-machines" class="section level2 unnumbered">
+<h2>Support Vector Machines</h2>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-2" data-line-number="2"><span class="co"># ## required packages</span></a>
+<a class="sourceLine" id="cb319-3" data-line-number="3"><span class="co"># library(e1071)</span></a>
+<a class="sourceLine" id="cb319-4" data-line-number="4"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-5" data-line-number="5"><span class="co"># ## Training and Testing Data</span></a>
+<a class="sourceLine" id="cb319-6" data-line-number="6"><span class="co"># hof.train = read.csv(&quot;data/HOF_tr.csv&quot;);</span></a>
+<a class="sourceLine" id="cb319-7" data-line-number="7"><span class="co"># hof.test = read.csv(&quot;data/HOF_te.csv&quot;)</span></a>
+<a class="sourceLine" id="cb319-8" data-line-number="8"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-9" data-line-number="9"><span class="co"># hof = rbind(hof.train, hof.test)</span></a>
+<a class="sourceLine" id="cb319-10" data-line-number="10"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-11" data-line-number="11"><span class="co"># ## create a training and testing set by randomly sampling from all of the data</span></a>
+<a class="sourceLine" id="cb319-12" data-line-number="12"><span class="co"># ## using the same set as in the random forest example</span></a>
+<a class="sourceLine" id="cb319-13" data-line-number="13"><span class="co"># set.seed(1002)</span></a>
+<a class="sourceLine" id="cb319-14" data-line-number="14"><span class="co"># x = sample(nrow(hof), replace = FALSE)</span></a>
+<a class="sourceLine" id="cb319-15" data-line-number="15"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-16" data-line-number="16"><span class="co"># ## remove unwanted columns</span></a>
+<a class="sourceLine" id="cb319-17" data-line-number="17"><span class="co"># hof = hof[, -c(2:4)]</span></a>
+<a class="sourceLine" id="cb319-18" data-line-number="18"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-19" data-line-number="19"><span class="co"># ## lets train the model on about 90% of the data</span></a>
+<a class="sourceLine" id="cb319-20" data-line-number="20"><span class="co"># train = hof[x[1:900], ]</span></a>
+<a class="sourceLine" id="cb319-21" data-line-number="21"><span class="co"># test = hof[-x[1:900], ]</span></a>
+<a class="sourceLine" id="cb319-22" data-line-number="22"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-23" data-line-number="23"><span class="co"># head(train)</span></a>
+<a class="sourceLine" id="cb319-24" data-line-number="24"><span class="co"># summary(train)</span></a>
+<a class="sourceLine" id="cb319-25" data-line-number="25"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-26" data-line-number="26"><span class="co"># ## train the model</span></a>
+<a class="sourceLine" id="cb319-27" data-line-number="27"><span class="co"># (tuneModel = tune(svm, HOF ~ ., data = train,</span></a>
+<a class="sourceLine" id="cb319-28" data-line-number="28"><span class="co">#                   ranges = list(</span></a>
+<a class="sourceLine" id="cb319-29" data-line-number="29"><span class="co">#                     cost = seq(.1, 5, .25),</span></a>
+<a class="sourceLine" id="cb319-30" data-line-number="30"><span class="co">#                     gamma = seq(0, .5, .01))))</span></a>
+<a class="sourceLine" id="cb319-31" data-line-number="31"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-32" data-line-number="32"><span class="co"># ## darker colors are better models</span></a>
+<a class="sourceLine" id="cb319-33" data-line-number="33"><span class="co"># plot(tuneModel, main = &quot;Model Performance&quot;)</span></a>
+<a class="sourceLine" id="cb319-34" data-line-number="34"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-35" data-line-number="35"><span class="co"># ## store best parameters</span></a>
+<a class="sourceLine" id="cb319-36" data-line-number="36"><span class="co"># cst = as.numeric(tuneModel$best.parameters[1])</span></a>
+<a class="sourceLine" id="cb319-37" data-line-number="37"><span class="co"># gma = as.numeric(tuneModel$best.parameters[2])</span></a>
+<a class="sourceLine" id="cb319-38" data-line-number="38"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-39" data-line-number="39"><span class="co"># ## do an indepth search of the darker grid</span></a>
+<a class="sourceLine" id="cb319-40" data-line-number="40"><span class="co"># (tuneModel = tune(svm, HOF ~ ., data = train,</span></a>
+<a class="sourceLine" id="cb319-41" data-line-number="41"><span class="co">#                   ranges = list(</span></a>
+<a class="sourceLine" id="cb319-42" data-line-number="42"><span class="co">#                     cost = seq(cst-1, cst+1, .01),</span></a>
+<a class="sourceLine" id="cb319-43" data-line-number="43"><span class="co">#                     gamma = seq(0, gma+.1, .001))))</span></a>
+<a class="sourceLine" id="cb319-44" data-line-number="44"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-45" data-line-number="45"><span class="co"># ## darker colors are better models</span></a>
+<a class="sourceLine" id="cb319-46" data-line-number="46"><span class="co"># plot(tuneModel, main = &quot;Model Performance&quot;)</span></a>
+<a class="sourceLine" id="cb319-47" data-line-number="47"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-48" data-line-number="48"><span class="co"># ## store best parameters</span></a>
+<a class="sourceLine" id="cb319-49" data-line-number="49"><span class="co"># cst = as.numeric(tuneModel$best.parameters[1])</span></a>
+<a class="sourceLine" id="cb319-50" data-line-number="50"><span class="co"># gma = as.numeric(tuneModel$best.parameters[2])</span></a>
+<a class="sourceLine" id="cb319-51" data-line-number="51"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-52" data-line-number="52"><span class="co"># ## build model based on the tuned parameters</span></a>
+<a class="sourceLine" id="cb319-53" data-line-number="53"><span class="co"># mdl = svm(HOF ~ ., data = train, probability = TRUE, cost = cst, gamma = gma)</span></a>
+<a class="sourceLine" id="cb319-54" data-line-number="54"><span class="co"># x = predict(mdl, test, probability = TRUE)</span></a>
+<a class="sourceLine" id="cb319-55" data-line-number="55"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-56" data-line-number="56"><span class="co"># ## compile results</span></a>
+<a class="sourceLine" id="cb319-57" data-line-number="57"><span class="co"># results = data.frame(</span></a>
+<a class="sourceLine" id="cb319-58" data-line-number="58"><span class="co">#   Prediction = x,</span></a>
+<a class="sourceLine" id="cb319-59" data-line-number="59"><span class="co">#   Actual = test$HOF,</span></a>
+<a class="sourceLine" id="cb319-60" data-line-number="60"><span class="co">#   Prob.N = attr(x, &quot;probabilities&quot;)[, 1],</span></a>
+<a class="sourceLine" id="cb319-61" data-line-number="61"><span class="co">#   Prob.Y = attr(x, &quot;probabilities&quot;)[, 2]</span></a>
+<a class="sourceLine" id="cb319-62" data-line-number="62"><span class="co"># )</span></a>
+<a class="sourceLine" id="cb319-63" data-line-number="63"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-64" data-line-number="64"><span class="co"># ## accuracy calculation from the random forest example</span></a>
+<a class="sourceLine" id="cb319-65" data-line-number="65"><span class="co"># metric = function(confusion) {</span></a>
+<a class="sourceLine" id="cb319-66" data-line-number="66"><span class="co">#   sensitivity = confusion[4] / (confusion[2] + confusion[4])</span></a>
+<a class="sourceLine" id="cb319-67" data-line-number="67"><span class="co">#   specificity = confusion[1] / (confusion[1] + confusion[3])</span></a>
+<a class="sourceLine" id="cb319-68" data-line-number="68"><span class="co">#   score = (sensitivity + (3 * specificity)) / 4</span></a>
+<a class="sourceLine" id="cb319-69" data-line-number="69"><span class="co">#   return(score)</span></a>
+<a class="sourceLine" id="cb319-70" data-line-number="70"><span class="co"># }</span></a>
+<a class="sourceLine" id="cb319-71" data-line-number="71"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-72" data-line-number="72"><span class="co"># ## confusion matrix and accuracy score</span></a>
+<a class="sourceLine" id="cb319-73" data-line-number="73"><span class="co"># (confusion = table(Prediction = results$Prediction, Actual = results$Actual))</span></a>
+<a class="sourceLine" id="cb319-74" data-line-number="74"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-75" data-line-number="75"><span class="co"># ## accuracy score for training set</span></a>
+<a class="sourceLine" id="cb319-76" data-line-number="76"><span class="co"># metric(confusion)</span></a>
+<a class="sourceLine" id="cb319-77" data-line-number="77"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-78" data-line-number="78"><span class="co"># ## look at the probability prediction for all of CV results to see if we should lower the</span></a>
+<a class="sourceLine" id="cb319-79" data-line-number="79"><span class="co"># ## probability threshold for predicing Y to HOF</span></a>
+<a class="sourceLine" id="cb319-80" data-line-number="80"><span class="co"># subset(results, Prediction != Actual)</span></a>
+<a class="sourceLine" id="cb319-81" data-line-number="81"><span class="co"># min = min(subset(results, Prediction != Actual, &quot;Prob.Y&quot;))</span></a>
+<a class="sourceLine" id="cb319-82" data-line-number="82"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-83" data-line-number="83"><span class="co"># ## lower the threshold</span></a>
+<a class="sourceLine" id="cb319-84" data-line-number="84"><span class="co"># results$Prediction.new = &quot;N&quot;</span></a>
+<a class="sourceLine" id="cb319-85" data-line-number="85"><span class="co"># results$Prediction.new[results$Prob.Y &gt;= min] = &quot;Y&quot;</span></a>
+<a class="sourceLine" id="cb319-86" data-line-number="86"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-87" data-line-number="87"><span class="co"># ## confusion matrix and accuracy score</span></a>
+<a class="sourceLine" id="cb319-88" data-line-number="88"><span class="co"># (confusion = table(Prediction = results$Prediction.new, Actual = results$Actual))</span></a>
+<a class="sourceLine" id="cb319-89" data-line-number="89"><span class="co">#</span></a>
+<a class="sourceLine" id="cb319-90" data-line-number="90"><span class="co"># ## accuracy score for training set</span></a>
+<a class="sourceLine" id="cb319-91" data-line-number="91"><span class="co"># metric(confusion)</span></a></code></pre></div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bootstrap-simulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="building-maps-with-choropleth-and-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gradient-boosting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="overfitting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

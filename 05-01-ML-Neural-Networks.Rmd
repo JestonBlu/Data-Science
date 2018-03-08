@@ -1,6 +1,6 @@
 # Machine Learning {-}
 
-## Neural Network
+## Neural Network {-}
 
 ```{r a1, comment=NA, warning=FALSE, message=FALSE, fig.height=5, fig.width=9}
 
