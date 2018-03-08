@@ -93,7 +93,7 @@ boot.plot = function(dt, trials, months.back = 24, months.forward = 12, alph = .
               fill = "red", color = "gray", alpha = .1) +
     geom_rect(aes(xmin = -Inf, xmax = cuml.1qrt - iqr.15,  ymin = -Inf, ymax = Inf), data = cuml,
               fill = "red", color = "gray", alpha = .1) +
-    geom_bar(aes(x = Price.Change), stat = "bin", binwidth = .005, fill = "white", color = "black",
+    geom_histogram(aes(x = Price.Change), stat = "bin", binwidth = .005, fill = "white", color = "black",
              alpha = .15) +
     ggtitle("Distibution of Simulated Changes") +
     scale_x_continuous("", labels = percent, breaks = seq(-.5, .5, .05)) +
@@ -123,11 +123,6 @@ boot.plot(BJsales, trials = 100, months.back = 12, months.forward = 12, alph = .
 ```
 
 ```
-## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
-## `geom_histogram()` instead.
-```
-
-```
 ## Warning: Ignoring unknown parameters: se
 ```
 
@@ -138,9 +133,6 @@ boot.plot(BJsales, trials = 500, months.back = 24, months.forward = 24, alph = .
 ```
 
 ```
-## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
-## `geom_histogram()` instead.
-
 ## Warning: Ignoring unknown parameters: se
 ```
 
@@ -151,9 +143,6 @@ boot.plot(BJsales, trials = 1500, months.back = 36, months.forward = 36, alph = 
 ```
 
 ```
-## Warning: `geom_bar()` no longer has a `binwidth` parameter. Please use
-## `geom_histogram()` instead.
-
 ## Warning: Ignoring unknown parameters: se
 ```
 
@@ -233,7 +222,7 @@ boot.plot = function(dt, trials, months.back = 24, months.forward = 12, alph = .
               fill = "red", color = "gray", alpha = .1) +
     geom_rect(aes(xmin = -Inf, xmax = cuml.1qrt - iqr.15,  ymin = -Inf, ymax = Inf), data = cuml,
               fill = "red", color = "gray", alpha = .1) +
-    geom_bar(aes(x = Price.Change), stat = "bin", binwidth = .005, fill = "white", color = "black",
+    geom_histogram(aes(x = Price.Change), stat = "bin", binwidth = .005, fill = "white", color = "black",
              alpha = .15) +
     ggtitle("Distibution of Simulated Changes") +
     scale_x_continuous("", labels = percent, breaks = seq(-.5, .5, .05)) +

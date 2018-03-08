@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Science Tasks</title>
   <meta name="description" content="Data Science and Statistical Analysis I want to remember">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
@@ -48,41 +48,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -178,16 +206,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="background" class="section level5 unnumbered">
 <h5>Background</h5>
 <p>The following dataset are career stats for over 1000 MLB baseball players. The data consists of the position of each player along with 19 numeric variables measure offense. The training set consists of 677 observations and the testing set has 339 observations. The objective is to build a model that will predict whether a player is in the Hall of Fame based on his career statistics. Since so few players make it to the Hall of Fame, the methodology for scoring the accuracy of models is based on the following calculation: <span class="math inline">\((sensitivity + 3*specificity) / 4\)</span>. The objective is to get as few incorrect predictions as possible, but having fewer false positives will affect the accuracy measure more than false negatives.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## required packages
-<span class="kw">library</span>(randomForest)
-
-## Training and Testing Data
-hof.train =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/HOF_tr.csv&quot;</span>); hof.test =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/HOF_te.csv&quot;</span>)
-
-## remove unwanted columns
-hof.train =<span class="st"> </span>hof.train[, <span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)]; hof.test =<span class="st"> </span>hof.test[, <span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)]
-
-<span class="kw">head</span>(hof.train)</code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1">## required packages</a>
+<a class="sourceLine" id="cb279-2" data-line-number="2"><span class="kw">library</span>(randomForest)</a>
+<a class="sourceLine" id="cb279-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb279-4" data-line-number="4">## Training and Testing Data</a>
+<a class="sourceLine" id="cb279-5" data-line-number="5">hof.train =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/HOF_tr.csv&quot;</span>); hof.test =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/HOF_te.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb279-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb279-7" data-line-number="7">## remove unwanted columns</a>
+<a class="sourceLine" id="cb279-8" data-line-number="8">hof.train =<span class="st"> </span>hof.train[, <span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)]; hof.test =<span class="st"> </span>hof.test[, <span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)]</a>
+<a class="sourceLine" id="cb279-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb279-10" data-line-number="10"><span class="kw">head</span>(hof.train)</a></code></pre></div>
 <pre><code>  HOF POS  ASG    G    AB    R    H  DB  TP  HR  RBI  SB  CS   BB   SO AVG
 1   Y  OF 0.75 2440  9288 1383 3141 543  85 135 1138 319 125  790  434 338
 2   Y  SS 0.56 2601 10230 1335 2677 394  92  83  791 506 136  736  742 262
@@ -202,7 +230,7 @@ hof.train =<span class="st"> </span>hof.train[, <span class="op">-</span><span c
 4 476 359
 5 429 393
 6 499 350</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(hof.train)</code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1"><span class="kw">summary</span>(hof.train)</a></code></pre></div>
 <pre><code> HOF     POS           ASG               G              AB       
  N:644   1B: 77   Min.   :0.0000   Min.   : 253   Min.   :  559  
  Y: 33   2B: 83   1st Qu.:0.0000   1st Qu.: 924   1st Qu.: 2626  
@@ -238,8 +266,8 @@ hof.train =<span class="st"> </span>hof.train[, <span class="op">-</span><span c
  Mean   :328.8  
  3rd Qu.:347.0  
  Max.   :415.0  </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Simple Random Forest
-(<span class="dt">mdl =</span> <span class="kw">randomForest</span>(HOF <span class="op">~</span><span class="st"> </span>., <span class="dt">ntree =</span> <span class="dv">1000</span>, <span class="dt">data =</span> hof.train))</code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">## Simple Random Forest</a>
+<a class="sourceLine" id="cb283-2" data-line-number="2">(<span class="dt">mdl =</span> <span class="kw">randomForest</span>(HOF <span class="op">~</span><span class="st"> </span>., <span class="dt">ntree =</span> <span class="dv">1000</span>, <span class="dt">data =</span> hof.train))</a></code></pre></div>
 <pre><code>
 Call:
  randomForest(formula = HOF ~ ., data = hof.train, ntree = 1000) 
@@ -247,56 +275,56 @@ Call:
                      Number of trees: 1000
 No. of variables tried at each split: 4
 
-        OOB estimate of  error rate: 1.62%
+        OOB estimate of  error rate: 1.48%
 Confusion matrix:
     N  Y class.error
-N 640  4  0.00621118
-Y   7 26  0.21212121</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Function for testing accuracy
-metric =<span class="st"> </span><span class="cf">function</span>(confusion) {
-  sensitivity =<span class="st"> </span>confusion[<span class="dv">4</span>] <span class="op">/</span><span class="st"> </span>(confusion[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>confusion[<span class="dv">4</span>])
-  specificity =<span class="st"> </span>confusion[<span class="dv">1</span>] <span class="op">/</span><span class="st"> </span>(confusion[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>confusion[<span class="dv">3</span>])
-  score =<span class="st"> </span>(sensitivity <span class="op">+</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>specificity)) <span class="op">/</span><span class="st"> </span><span class="dv">4</span>
-  <span class="kw">return</span>(score)
-}
-
-## Plot of the model performance
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">y =</span> mdl<span class="op">$</span>err.rate[,<span class="dv">1</span>], <span class="dt">xlab =</span> <span class="st">&quot;Trees&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Error&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Out of Sample Error Rate&quot;</span>)
-<span class="kw">varImpPlot</span>(mdl, <span class="dt">main =</span> <span class="st">&quot;Variable Importance Plot&quot;</span>)</code></pre></div>
+N 641  3 0.004658385
+Y   7 26 0.212121212</code></pre>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1">## Function for testing accuracy</a>
+<a class="sourceLine" id="cb285-2" data-line-number="2">metric =<span class="st"> </span><span class="cf">function</span>(confusion) {</a>
+<a class="sourceLine" id="cb285-3" data-line-number="3">  sensitivity =<span class="st"> </span>confusion[<span class="dv">4</span>] <span class="op">/</span><span class="st"> </span>(confusion[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>confusion[<span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb285-4" data-line-number="4">  specificity =<span class="st"> </span>confusion[<span class="dv">1</span>] <span class="op">/</span><span class="st"> </span>(confusion[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>confusion[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb285-5" data-line-number="5">  score =<span class="st"> </span>(sensitivity <span class="op">+</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>specificity)) <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb285-6" data-line-number="6">  <span class="kw">return</span>(score)</a>
+<a class="sourceLine" id="cb285-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb285-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb285-9" data-line-number="9">## Plot of the model performance</a>
+<a class="sourceLine" id="cb285-10" data-line-number="10"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb285-11" data-line-number="11"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">y =</span> mdl<span class="op">$</span>err.rate[,<span class="dv">1</span>], <span class="dt">xlab =</span> <span class="st">&quot;Trees&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Error&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb285-12" data-line-number="12">     <span class="dt">main =</span> <span class="st">&quot;Out of Sample Error Rate&quot;</span>)</a>
+<a class="sourceLine" id="cb285-13" data-line-number="13"><span class="kw">varImpPlot</span>(mdl, <span class="dt">main =</span> <span class="st">&quot;Variable Importance Plot&quot;</span>)</a></code></pre></div>
 <p><img src="05-02-ML-Random-Forest_files/figure-html/b1-1.png" width="864" /></p>
 </div>
 <div id="testing-model-accuracy-on-new-data" class="section level5 unnumbered">
 <h5>Testing Model Accuracy on New Data</h5>
 <p>Now that we have a trained model, we will apply the model to data that was not used in the training set. We will calculate the same accuracy score and compare the two. If they are wildly different we may have a problem with overfitting.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## predict the probability of HOF
-estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, hof.test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))
-estimate<span class="op">$</span>predict =<span class="st"> </span><span class="kw">predict</span>(mdl, hof.test)
-estimate<span class="op">$</span>actual =<span class="st"> </span>hof.test<span class="op">$</span>HOF
-
-## Generate a confusion matrix
-(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">## predict the probability of HOF</a>
+<a class="sourceLine" id="cb286-2" data-line-number="2">estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, hof.test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))</a>
+<a class="sourceLine" id="cb286-3" data-line-number="3">estimate<span class="op">$</span>predict =<span class="st"> </span><span class="kw">predict</span>(mdl, hof.test)</a>
+<a class="sourceLine" id="cb286-4" data-line-number="4">estimate<span class="op">$</span>actual =<span class="st"> </span>hof.test<span class="op">$</span>HOF</a>
+<a class="sourceLine" id="cb286-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb286-6" data-line-number="6">## Generate a confusion matrix</a>
+<a class="sourceLine" id="cb286-7" data-line-number="7">(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</a></code></pre></div>
 <pre><code>       actual
 predict   N   Y
-      N 321   2
-      Y   2  14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Final Accuracy Measure
-(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</code></pre></div>
-<pre><code>[1] 0.964106</code></pre>
+      N 323   1
+      Y   0  15</code></pre>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">## Final Accuracy Measure</a>
+<a class="sourceLine" id="cb288-2" data-line-number="2">(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</a></code></pre></div>
+<pre><code>[1] 0.9976852</code></pre>
 <p>The random forest method is fairly robust to overfitting because it reserves some of the training data to use as test data which is called Out of Bag (OOB error). Because of this internal mechanism we could probably ues a larger portion of the overall data to train. The next sections tests this to see if accuracy is improved.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hof =<span class="st"> </span><span class="kw">rbind</span>(hof.train, hof.test)
-
-## create a training and testing set by randomly sampling from all of the data
-<span class="kw">set.seed</span>(<span class="dv">1002</span>)
-x =<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(hof), <span class="dt">replace =</span> <span class="ot">FALSE</span>)
-
-## lets train the model on about 90% of the data
-train =<span class="st"> </span>hof[x[<span class="dv">1</span><span class="op">:</span><span class="dv">900</span>], ]
-test =<span class="st"> </span>hof[<span class="op">-</span>x[<span class="dv">1</span><span class="op">:</span><span class="dv">900</span>], ]
-
-## build the model
-(<span class="dt">mdl =</span> <span class="kw">randomForest</span>(HOF <span class="op">~</span><span class="st"> </span>., <span class="dt">ntree =</span> <span class="dv">1000</span>, <span class="dt">data =</span> train))</code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">hof =<span class="st"> </span><span class="kw">rbind</span>(hof.train, hof.test)</a>
+<a class="sourceLine" id="cb290-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb290-3" data-line-number="3">## create a training and testing set by randomly sampling from all of the data</a>
+<a class="sourceLine" id="cb290-4" data-line-number="4"><span class="kw">set.seed</span>(<span class="dv">1002</span>)</a>
+<a class="sourceLine" id="cb290-5" data-line-number="5">x =<span class="st"> </span><span class="kw">sample</span>(<span class="kw">nrow</span>(hof), <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb290-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb290-7" data-line-number="7">## lets train the model on about 90% of the data</a>
+<a class="sourceLine" id="cb290-8" data-line-number="8">train =<span class="st"> </span>hof[x[<span class="dv">1</span><span class="op">:</span><span class="dv">900</span>], ]</a>
+<a class="sourceLine" id="cb290-9" data-line-number="9">test =<span class="st"> </span>hof[<span class="op">-</span>x[<span class="dv">1</span><span class="op">:</span><span class="dv">900</span>], ]</a>
+<a class="sourceLine" id="cb290-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb290-11" data-line-number="11">## build the model</a>
+<a class="sourceLine" id="cb290-12" data-line-number="12">(<span class="dt">mdl =</span> <span class="kw">randomForest</span>(HOF <span class="op">~</span><span class="st"> </span>., <span class="dt">ntree =</span> <span class="dv">1000</span>, <span class="dt">data =</span> train))</a></code></pre></div>
 <pre><code>
 Call:
  randomForest(formula = HOF ~ ., data = train, ntree = 1000) 
@@ -309,39 +337,39 @@ Confusion matrix:
     N  Y class.error
 N 858  3 0.003484321
 Y  11 28 0.282051282</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## predict the probability of HOF
-estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))
-estimate<span class="op">$</span>predict =<span class="st"> </span><span class="kw">predict</span>(mdl, test)
-estimate<span class="op">$</span>actual =<span class="st"> </span>test<span class="op">$</span>HOF
-
-## confusion matrix
-(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">## predict the probability of HOF</a>
+<a class="sourceLine" id="cb292-2" data-line-number="2">estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))</a>
+<a class="sourceLine" id="cb292-3" data-line-number="3">estimate<span class="op">$</span>predict =<span class="st"> </span><span class="kw">predict</span>(mdl, test)</a>
+<a class="sourceLine" id="cb292-4" data-line-number="4">estimate<span class="op">$</span>actual =<span class="st"> </span>test<span class="op">$</span>HOF</a>
+<a class="sourceLine" id="cb292-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb292-6" data-line-number="6">## confusion matrix</a>
+<a class="sourceLine" id="cb292-7" data-line-number="7">(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</a></code></pre></div>
 <pre><code>       actual
 predict   N   Y
       N 106   2
       Y   0   8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</a></code></pre></div>
 <pre><code>[1] 0.9861111</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## model plots
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">y =</span> mdl<span class="op">$</span>err.rate[,<span class="dv">1</span>], <span class="dt">xlab =</span> <span class="st">&quot;Trees&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Error&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Out of Sample Error Rate&quot;</span>)
-<span class="kw">varImpPlot</span>(mdl, <span class="dt">main =</span> <span class="st">&quot;Variable Importance Plot&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">## model plots</a>
+<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb296-3" data-line-number="3"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">y =</span> mdl<span class="op">$</span>err.rate[,<span class="dv">1</span>], <span class="dt">xlab =</span> <span class="st">&quot;Trees&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Error&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb296-4" data-line-number="4">     <span class="dt">main =</span> <span class="st">&quot;Out of Sample Error Rate&quot;</span>)</a>
+<a class="sourceLine" id="cb296-5" data-line-number="5"><span class="kw">varImpPlot</span>(mdl, <span class="dt">main =</span> <span class="st">&quot;Variable Importance Plot&quot;</span>)</a></code></pre></div>
 <p><img src="05-02-ML-Random-Forest_files/figure-html/b3-1.png" width="864" /></p>
 <p>We get slightly better results from increasing the training set. The Random Forest model is predicting Yes to Hall of Fame if it measures the probability &gt; .5. Since it is is so rare that a player gets voted to the Hall of Fame how accurate is the model if we lower the threshold? Based on a review of some of the false negatives I will make the minimum threshold for predicting yes .33</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## predict the probability of HOF
-estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))
-estimate<span class="op">$</span>predict =<span class="st"> &quot;N&quot;</span>
-estimate<span class="op">$</span>predict[<span class="kw">which</span>(estimate<span class="op">$</span>Y <span class="op">&gt;</span><span class="st"> </span>.<span class="dv">33</span>)] =<span class="st"> &quot;Y&quot;</span>
-estimate<span class="op">$</span>actual =<span class="st"> </span>test<span class="op">$</span>HOF
-
-## confusion matrix
-(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">## predict the probability of HOF</a>
+<a class="sourceLine" id="cb297-2" data-line-number="2">estimate =<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">predict</span>(mdl, test, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>))</a>
+<a class="sourceLine" id="cb297-3" data-line-number="3">estimate<span class="op">$</span>predict =<span class="st"> &quot;N&quot;</span></a>
+<a class="sourceLine" id="cb297-4" data-line-number="4">estimate<span class="op">$</span>predict[<span class="kw">which</span>(estimate<span class="op">$</span>Y <span class="op">&gt;</span><span class="st"> </span><span class="fl">.33</span>)] =<span class="st"> &quot;Y&quot;</span></a>
+<a class="sourceLine" id="cb297-5" data-line-number="5">estimate<span class="op">$</span>actual =<span class="st"> </span>test<span class="op">$</span>HOF</a>
+<a class="sourceLine" id="cb297-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb297-7" data-line-number="7">## confusion matrix</a>
+<a class="sourceLine" id="cb297-8" data-line-number="8">(<span class="dt">confusion =</span> <span class="kw">table</span>(estimate[, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]))</a></code></pre></div>
 <pre><code>       actual
 predict   N   Y
       N 106   0
       Y   0  10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">(<span class="dt">test.metric =</span> <span class="kw">metric</span>(confusion))</a></code></pre></div>
 <pre><code>[1] 1</code></pre>
 
 </div>
@@ -370,10 +398,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -398,12 +427,14 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
 </body>
 
-<!-- </html> -->
+</html>

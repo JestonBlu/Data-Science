@@ -85,21 +85,22 @@ results.svm = data.frame(actual = test$y, predicted = tmp)
 results.svm$Result = FALSE
 results.svm$Result[which(results.svm$actual == results.svm$predicted)] = TRUE
 
-
 ## create Predict the training set
 train.results.svm = data.frame(actual = train$y, pred = predict(mdl.svm, train))
 train.results.svm$Result = FALSE
 train.results.svm$Result[train.results.svm$actual == train.results.svm$pred] = TRUE
 
+x = as.numeric(round(table(train.results.svm$Result) / 475, 3))
+y = as.numeric(round(table(results.svm$Result) / 20, 3))
+
+if (length(x) == 1) { x = c(0, x)}
+if (length(y) == 1) {y = c(y, 0)}
 
 ## Aggregate results
 results = list(
-  Train.Incorrect = round(table(train.results.svm$Result)[[1]]/475, 3),
-  Train.Correct = round(table(train.results.svm$Result)[[2]]/475, 3),
-  Test.Incorrect = round(table(results.svm$Result)[[1]]/20, 3),
-  Test.Correct = round(table(results.svm$Result)[[2]]/20, 3)
+  Train.Incorrect = x[1], Train.Correct = x[2],
+  Test.Incorrect = y[1], Test.Correct = y[2]
 )
-
 
 pandoc.table(results, split.tables = Inf)
 

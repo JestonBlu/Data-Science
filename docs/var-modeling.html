@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Science Tasks</title>
   <meta name="description" content="Data Science and Statistical Analysis I want to remember">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
@@ -48,41 +48,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -175,31 +203,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="var-modeling" class="section level2 unnumbered">
 <h2>VAR Modeling</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(vars)
-
-<span class="co"># Generated Time Series</span>
-x1  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
-x2  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
-x3  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
-x4  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> .<span class="dv">1</span>, <span class="dt">ma =</span> .<span class="dv">2</span>))
-
-<span class="co"># Combine into a multivariate time series</span>
-x =<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, x3, x4)
-
-<span class="co"># Create a variable auto-regression modle</span>
-mdl =<span class="st"> </span><span class="kw">VAR</span>(x)
-
-<span class="co"># Model summary</span>
-<span class="kw">summary</span>(mdl)</code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">library</span>(vars)</a>
+<a class="sourceLine" id="cb267-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb267-3" data-line-number="3"><span class="co"># Generated Time Series</span></a>
+<a class="sourceLine" id="cb267-4" data-line-number="4">x1  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> <span class="fl">.1</span>, <span class="dt">ma =</span> <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb267-5" data-line-number="5">x2  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> <span class="fl">.1</span>, <span class="dt">ma =</span> <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb267-6" data-line-number="6">x3  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> <span class="fl">.1</span>, <span class="dt">ma =</span> <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb267-7" data-line-number="7">x4  =<span class="st"> </span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">arima.sim</span>(<span class="dt">n =</span> <span class="dv">100</span>,<span class="dt">model =</span> <span class="kw">list</span>(<span class="dt">order =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ar =</span> <span class="fl">.1</span>, <span class="dt">ma =</span> <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb267-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb267-9" data-line-number="9"><span class="co"># Combine into a multivariate time series</span></a>
+<a class="sourceLine" id="cb267-10" data-line-number="10">x =<span class="st"> </span><span class="kw">data.frame</span>(x1, x2, x3, x4)</a>
+<a class="sourceLine" id="cb267-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb267-12" data-line-number="12"><span class="co"># Create a variable auto-regression modle</span></a>
+<a class="sourceLine" id="cb267-13" data-line-number="13">mdl =<span class="st"> </span><span class="kw">VAR</span>(x)</a>
+<a class="sourceLine" id="cb267-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb267-15" data-line-number="15"><span class="co"># Model summary</span></a>
+<a class="sourceLine" id="cb267-16" data-line-number="16"><span class="kw">summary</span>(mdl)</a></code></pre></div>
 <pre><code>
 VAR Estimation Results:
 ========================= 
 Endogenous variables: x1, x2, x3, x4 
 Deterministic variables: const 
 Sample size: 100 
-Log Likelihood: -562.528 
+Log Likelihood: -550.481 
 Roots of the characteristic polynomial:
-0.9677 0.9395 0.9395 0.8534
+0.9705 0.9411 0.9183 0.799
 Call:
 VAR(y = x)
 
@@ -209,18 +237,18 @@ Estimation results for equation x1:
 x1 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
        Estimate Std. Error t value Pr(&gt;|t|)    
-x1.l1  0.959497   0.045008  21.319   &lt;2e-16 ***
-x2.l1  0.052164   0.051326   1.016   0.3120    
-x3.l1 -0.004411   0.043049  -0.102   0.9186    
-x4.l1 -0.059537   0.035148  -1.694   0.0936 .  
-const  0.419126   1.136497   0.369   0.7131    
+x1.l1  0.852421   0.061182  13.933   &lt;2e-16 ***
+x2.l1 -0.053292   0.056565  -0.942    0.349    
+x3.l1  0.003780   0.030598   0.124    0.902    
+x4.l1 -0.003551   0.035589  -0.100    0.921    
+const  2.506815   1.444862   1.735    0.086 .  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 
-Residual standard error: 1.146 on 95 degrees of freedom
-Multiple R-Squared: 0.8525, Adjusted R-squared: 0.8463 
-F-statistic: 137.3 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+Residual standard error: 1.035 on 95 degrees of freedom
+Multiple R-Squared: 0.7241, Adjusted R-squared: 0.7124 
+F-statistic: 62.32 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
 
 
 Estimation results for equation x2: 
@@ -228,18 +256,18 @@ Estimation results for equation x2:
 x2 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
        Estimate Std. Error t value Pr(&gt;|t|)    
-x1.l1  0.043039   0.038719   1.112   0.2691    
-x2.l1  0.914072   0.044155  20.702   &lt;2e-16 ***
-x3.l1 -0.055735   0.037034  -1.505   0.1357    
-x4.l1 -0.003661   0.030237  -0.121   0.9039    
-const  1.733010   0.977712   1.773   0.0795 .  
+x1.l1 -0.075582   0.053943  -1.401    0.164    
+x2.l1  0.881307   0.049873  17.671   &lt;2e-16 ***
+x3.l1 -0.006345   0.026978  -0.235    0.815    
+x4.l1 -0.008027   0.031378  -0.256    0.799    
+const  2.434378   1.273921   1.911    0.059 .  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 
-Residual standard error: 0.9857 on 95 degrees of freedom
-Multiple R-Squared: 0.9293, Adjusted R-squared: 0.9263 
-F-statistic: 312.1 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+Residual standard error: 0.9128 on 95 degrees of freedom
+Multiple R-Squared: 0.8194, Adjusted R-squared: 0.8118 
+F-statistic: 107.8 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
 
 
 Estimation results for equation x3: 
@@ -247,58 +275,58 @@ Estimation results for equation x3:
 x3 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
       Estimate Std. Error t value Pr(&gt;|t|)    
-x1.l1 -0.01793    0.03876  -0.462   0.6448    
-x2.l1 -0.05733    0.04420  -1.297   0.1978    
-x3.l1  0.92205    0.03708  24.869   &lt;2e-16 ***
-x4.l1 -0.01357    0.03027  -0.448   0.6549    
-const  2.41643    0.97881   2.469   0.0153 *  
+x1.l1 -0.07556    0.06403  -1.180   0.2409    
+x2.l1 -0.11611    0.05920  -1.961   0.0528 .  
+x3.l1  0.94696    0.03202  29.570   &lt;2e-16 ***
+x4.l1 -0.01750    0.03725  -0.470   0.6395    
+const  3.39618    1.51217   2.246   0.0270 *  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 
-Residual standard error: 0.9868 on 95 degrees of freedom
-Multiple R-Squared: 0.942,  Adjusted R-squared: 0.9396 
-F-statistic: 385.8 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+Residual standard error: 1.084 on 95 degrees of freedom
+Multiple R-Squared: 0.947,  Adjusted R-squared: 0.9448 
+F-statistic: 424.8 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
 
 
 Estimation results for equation x4: 
 =================================== 
 x4 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
-        Estimate Std. Error t value Pr(&gt;|t|)    
-x1.l1  0.1434568  0.0383801   3.738 0.000317 ***
-x2.l1  0.1387279  0.0437678   3.170 0.002054 ** 
-x3.l1  0.0002962  0.0367097   0.008 0.993579    
-x4.l1  0.8980475  0.0299720  29.963  &lt; 2e-16 ***
-const -2.4737956  0.9691464  -2.553 0.012287 *  
+      Estimate Std. Error t value Pr(&gt;|t|)    
+x1.l1 -0.06413    0.05696  -1.126    0.263    
+x2.l1  0.04873    0.05267   0.925    0.357    
+x3.l1 -0.04077    0.02849  -1.431    0.156    
+x4.l1  0.94816    0.03314  28.614   &lt;2e-16 ***
+const  1.35853    1.34528   1.010    0.315    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 
-Residual standard error: 0.9771 on 95 degrees of freedom
-Multiple R-Squared: 0.9701, Adjusted R-squared: 0.9688 
-F-statistic: 769.9 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
+Residual standard error: 0.9639 on 95 degrees of freedom
+Multiple R-Squared: 0.945,  Adjusted R-squared: 0.9426 
+F-statistic: 407.7 on 4 and 95 DF,  p-value: &lt; 2.2e-16 
 
 
 
 Covariance matrix of residuals:
-         x1      x2       x3       x4
-x1  1.31282 -0.1843 -0.02528  0.06478
-x2 -0.18425  0.9716 -0.15628  0.03490
-x3 -0.02528 -0.1563  0.97379 -0.07605
-x4  0.06478  0.0349 -0.07605  0.95466
+         x1      x2       x3      x4
+x1  1.07184 -0.1290  0.08087 -0.1130
+x2 -0.12900  0.8332 -0.18907  0.1310
+x3  0.08087 -0.1891  1.17403 -0.1792
+x4 -0.11305  0.1310 -0.17917  0.9292
 
 Correlation matrix of residuals:
-         x1       x2       x3       x4
-x1  1.00000 -0.16314 -0.02236  0.05786
-x2 -0.16314  1.00000 -0.16067  0.03624
-x3 -0.02236 -0.16067  1.00000 -0.07887
-x4  0.05786  0.03624 -0.07887  1.00000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot model</span>
-<span class="kw">plot</span>(mdl)</code></pre></div>
+         x1      x2       x3      x4
+x1  1.00000 -0.1365  0.07209 -0.1133
+x2 -0.13651  1.0000 -0.19117  0.1489
+x3  0.07209 -0.1912  1.00000 -0.1715
+x4 -0.11328  0.1489 -0.17155  1.0000</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="co"># Plot model</span></a>
+<a class="sourceLine" id="cb269-2" data-line-number="2"><span class="kw">plot</span>(mdl)</a></code></pre></div>
 <p><img src="04-04-Forecast-VAR_files/figure-html/a1-1.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-2.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-3.png" width="864" /><img src="04-04-Forecast-VAR_files/figure-html/a1-4.png" width="864" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot forecast</span>
-<span class="kw">plot</span>(<span class="kw">predict</span>(mdl, <span class="dt">h =</span> <span class="dv">12</span>))</code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="co"># Plot forecast</span></a>
+<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">predict</span>(mdl, <span class="dt">h =</span> <span class="dv">12</span>))</a></code></pre></div>
 <p><img src="04-04-Forecast-VAR_files/figure-html/a1-5.png" width="864" /></p>
 
 </div>
@@ -327,10 +355,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -355,12 +384,14 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
 </body>
 
-<!-- </html> -->
+</html>

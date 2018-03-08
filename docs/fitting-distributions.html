@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Science Tasks</title>
   <meta name="description" content="Data Science and Statistical Analysis I want to remember">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
@@ -48,41 +48,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -183,41 +211,41 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Maximum Likelihood calculation</li>
 </ul>
 <p><strong>Normal Distribution</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nortest)
-<span class="kw">library</span>(MASS)
-
-## Draw some random data
-<span class="kw">set.seed</span>(<span class="dv">10</span>)
-x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>)
-
-## Distribution plots
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
-<span class="kw">qqnorm</span>(x1)
-<span class="kw">qqline</span>(x1)
-<span class="kw">boxplot</span>(x1, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)
-<span class="kw">hist</span>(x1, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(x1))
-<span class="kw">plot</span>(<span class="kw">ecdf</span>(x1), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(nortest)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">## Draw some random data</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">## Distribution plots</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">qqnorm</span>(x1)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">qqline</span>(x1)</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">boxplot</span>(x1, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw">hist</span>(x1, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="kw">lines</span>(<span class="kw">density</span>(x1))</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="kw">plot</span>(<span class="kw">ecdf</span>(x1), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</a></code></pre></div>
 <p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a0-1.png" width="768" /></p>
 <p>QQ plot indicates the data might be normal by remaining close to the line. The Box plot, histogram, and density curve all support this assumption.</p>
 <p>Formal tests all agree that the data are from the normal distribution. Shapiro Wilk is considered the best for test for testing normality.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Are the data from a normal distribution?
-## Shapiro-Wilk Test
-<span class="kw">shapiro.test</span>(x1)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">## Are the data from a normal distribution?</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">## Shapiro-Wilk Test</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">shapiro.test</span>(x1)</a></code></pre></div>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  x1
 W = 0.95643, p-value = 0.4753</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Anderson Darling Test
-<span class="kw">ad.test</span>(x1)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## Anderson Darling Test</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">ad.test</span>(x1)</a></code></pre></div>
 <pre><code>
     Anderson-Darling normality test
 
 data:  x1
 A = 0.27523, p-value = 0.6216</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> ## Kolmogorov-Smirnoff Test
-<span class="kw">ks.test</span>(x1, <span class="st">&#39;pnorm&#39;</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"> ## Kolmogorov-Smirnoff Test</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">ks.test</span>(x1, <span class="st">&#39;pnorm&#39;</span>)</a></code></pre></div>
 <pre><code>
     One-sample Kolmogorov-Smirnov test
 
@@ -225,65 +253,65 @@ data:  x1
 D = 0.13528, p-value = 0.8109
 alternative hypothesis: two-sided</code></pre>
 <p><strong>Chi-squared Distribution</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Draw some random data
-<span class="kw">set.seed</span>(<span class="dv">10</span>)
-x2 =<span class="st"> </span><span class="kw">rchisq</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dv">2</span>)
-
-## Estimate the DF parameter by maximum likelihood
-<span class="kw">fitdistr</span>(<span class="dt">x =</span> x2, dchisq, <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">df =</span> <span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## Draw some random data</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">x2 =<span class="st"> </span><span class="kw">rchisq</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">## Estimate the DF parameter by maximum likelihood</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">fitdistr</span>(<span class="dt">x =</span> x2, dchisq, <span class="dt">start =</span> <span class="kw">list</span>(<span class="dt">df =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>      df    
   1.8140625 
  (0.3244201)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Input the estimate from MLE
-<span class="kw">ks.test</span>(<span class="dt">x =</span> x2, <span class="dt">y =</span> pchisq, <span class="dt">df =</span> <span class="fl">1.8140625</span>)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">## Input the estimate from MLE</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">ks.test</span>(<span class="dt">x =</span> x2, <span class="dt">y =</span> pchisq, <span class="dt">df =</span> <span class="fl">1.8140625</span>)</a></code></pre></div>
 <pre><code>
     One-sample Kolmogorov-Smirnov test
 
 data:  x2
 D = 0.15608, p-value = 0.6584
 alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Distribution plots
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
-<span class="kw">qqplot</span>(<span class="kw">qchisq</span>(<span class="kw">ppoints</span>(<span class="dv">20</span>), <span class="dt">df =</span> <span class="fl">1.8140625</span>), x2, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
-<span class="kw">qqline</span>(x2, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qchisq</span>(p, <span class="dt">df =</span> <span class="fl">1.8140625</span>))
-<span class="kw">boxplot</span>(x2, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)
-<span class="kw">hist</span>(x2, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(x2))
-<span class="kw">plot</span>(<span class="kw">ecdf</span>(x2), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">## Distribution plots</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="kw">qqplot</span>(<span class="kw">qchisq</span>(<span class="kw">ppoints</span>(<span class="dv">20</span>), <span class="dt">df =</span> <span class="fl">1.8140625</span>), x2, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">qqline</span>(x2, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qchisq</span>(p, <span class="dt">df =</span> <span class="fl">1.8140625</span>))</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="kw">boxplot</span>(x2, <span class="dt">main =</span> <span class="st">&quot;Boxplot&quot;</span>)</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw">hist</span>(x2, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Histogram with Density Curve&quot;</span>)</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="kw">lines</span>(<span class="kw">density</span>(x2))</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="kw">plot</span>(<span class="kw">ecdf</span>(x2), <span class="dt">main =</span> <span class="st">&quot;Empiracle CDF&quot;</span>)</a></code></pre></div>
 <p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a2-1.png" width="768" /></p>
 <p><strong>Calculating the MLE manually</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generate data from the exponential distribution with mean = 1/5
-<span class="kw">set.seed</span>(<span class="dv">1000</span>)
-X =<span class="st"> </span><span class="kw">rexp</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">rate =</span> <span class="dv">5</span>)
-
-## sample size and range of betas to test
-n =<span class="st"> </span><span class="dv">20</span>; beta =<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, .<span class="dv">5</span>, <span class="dt">by =</span> .<span class="dv">01</span>)
-
-## Liklihood function
-Likelihood =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>beta)<span class="op">^</span>n <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">1</span><span class="op">/</span>beta <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(X))
-
-## Maximum Likelihood
-(<span class="dt">mle =</span> <span class="kw">max</span>(Likelihood))</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">## Generate data from the exponential distribution with mean = 1/5</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">X =<span class="st"> </span><span class="kw">rexp</span>(<span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">rate =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">## sample size and range of betas to test</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">n =<span class="st"> </span><span class="dv">20</span>; beta =<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.5</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">## Liklihood function</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">Likelihood =<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>beta)<span class="op">^</span>n <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">1</span><span class="op">/</span>beta <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(X))</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">## Maximum Likelihood</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">(<span class="dt">mle =</span> <span class="kw">max</span>(Likelihood))</a></code></pre></div>
 <pre><code>[1] 276565.8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">mle.beta =</span> beta[<span class="kw">which</span>(Likelihood <span class="op">==</span><span class="st"> </span>mle)])</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">(<span class="dt">mle.beta =</span> beta[<span class="kw">which</span>(Likelihood <span class="op">==</span><span class="st"> </span>mle)])</a></code></pre></div>
 <pre><code>[1] 0.2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Statistical test for how well the specified distribution fits the data
-<span class="kw">ks.test</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="st">&quot;pexp&quot;</span>, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta)</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">## Statistical test for how well the specified distribution fits the data</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">ks.test</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="st">&quot;pexp&quot;</span>, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta)</a></code></pre></div>
 <pre><code>
     One-sample Kolmogorov-Smirnov test
 
 data:  X
 D = 0.1475, p-value = 0.7232
 alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-
-## Plot the maximum likelihood
-<span class="kw">plot</span>(<span class="dt">x =</span> beta, <span class="dt">y =</span> Likelihood, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Maximum Likelihood&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
-<span class="kw">abline</span>(<span class="dt">h =</span> mle, <span class="dt">v =</span> mle.beta, <span class="dt">lty =</span> <span class="dv">2</span>)
-
-## QQplot for assessing distribution fit visually
-<span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)
-<span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">## Plot the maximum likelihood</a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="kw">plot</span>(<span class="dt">x =</span> beta, <span class="dt">y =</span> Likelihood, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Maximum Likelihood&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw">abline</span>(<span class="dt">h =</span> mle, <span class="dt">v =</span> mle.beta, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">## QQplot for assessing distribution fit visually</a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="kw">qqplot</span>(<span class="kw">qexp</span>(<span class="kw">ppoints</span>(<span class="dv">10</span>), <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta), X, <span class="dt">xlab =</span> <span class="st">&quot;QQ&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;QQ Plot&quot;</span>)</a>
+<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="kw">qqline</span>(X, <span class="dt">distribution =</span> <span class="cf">function</span>(p) <span class="kw">qexp</span>(p, <span class="dt">rate =</span> <span class="dv">1</span><span class="op">/</span>mle.beta))</a></code></pre></div>
 <p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a3-1.png" width="768" /></p>
 <hr />
 </div>
@@ -295,13 +323,13 @@ alternative hypothesis: two-sided</code></pre>
 <li>Producing a markdown table</li>
 </ul>
 <p>A rare but fatal disease of genetic origin occurring chiefly in infants and children is under investigation. An experiment was conducted on a 100 couples who are both carriers of the disease and have 5 children. A researcher recorded the number of children having the disease for each couple.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
-
-## Dataset
-(<span class="dt">dta =</span> <span class="kw">data.frame</span>(
-  <span class="dt">Diseased =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),
-  <span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">1</span>)
-))</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">## Dataset</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">(<span class="dt">dta =</span> <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">  <span class="dt">Diseased =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">  <span class="dt">Count =</span> <span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7">))</a></code></pre></div>
 <pre><code>  Diseased Count
 1        0    21
 2        1    42
@@ -309,19 +337,19 @@ alternative hypothesis: two-sided</code></pre>
 4        3     8
 5        4     4
 6        5     1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Number of diseased children (d) and the total number of children (c)
-(<span class="dt">d =</span> <span class="kw">sum</span>(<span class="kw">apply</span>(<span class="dt">X =</span> dta, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(p) dta<span class="op">$</span>Diseased <span class="op">*</span><span class="st"> </span>dta<span class="op">$</span>Count)[,<span class="dv">1</span>]))</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">## Number of diseased children (d) and the total number of children (c)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">(<span class="dt">d =</span> <span class="kw">sum</span>(<span class="kw">apply</span>(<span class="dt">X =</span> dta, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(p) dta<span class="op">$</span>Diseased <span class="op">*</span><span class="st"> </span>dta<span class="op">$</span>Count)[,<span class="dv">1</span>]))</a></code></pre></div>
 <pre><code>[1] 135</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dt">c =</span> <span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(dta<span class="op">$</span>Count))</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">(<span class="dt">c =</span> <span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(dta<span class="op">$</span>Count))</a></code></pre></div>
 <pre><code>[1] 500</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## MLE
-(<span class="dt">mle =</span> d <span class="op">/</span><span class="st"> </span>c)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">## MLE</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">(<span class="dt">mle =</span> d <span class="op">/</span><span class="st"> </span>c)</a></code></pre></div>
 <pre><code>[1] 0.27</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate the expected probabilities and expected diseased children
-dta<span class="op">$</span>Exp.Prob =<span class="st"> </span><span class="kw">round</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> mle), <span class="dv">4</span>)
-dta<span class="op">$</span>Exp.Diseased =<span class="st"> </span><span class="kw">with</span>(dta, <span class="kw">sum</span>(Count) <span class="op">*</span><span class="st"> </span>Exp.Prob)
-
-dta</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">## Calculate the expected probabilities and expected diseased children</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">dta<span class="op">$</span>Exp.Prob =<span class="st"> </span><span class="kw">round</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> mle), <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">dta<span class="op">$</span>Exp.Diseased =<span class="st"> </span><span class="kw">with</span>(dta, <span class="kw">sum</span>(Count) <span class="op">*</span><span class="st"> </span>Exp.Prob)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">dta</a></code></pre></div>
 <pre><code>  Diseased Count Exp.Prob Exp.Diseased
 1        0    21   0.2073        20.73
 2        1    42   0.3834        38.34
@@ -329,51 +357,51 @@ dta</code></pre></div>
 4        3     8   0.1049        10.49
 5        4     4   0.0194         1.94
 6        5     1   0.0014         0.14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Chi-square test requirements:
-##  1) all Exp must be &gt; 1
-##  2) at most 20% of Exp may be less than 5
-##
-## So we need to combine counts 4 and 5 and meet these requirements
-
-dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] =<span class="st"> </span>dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>dta[<span class="dv">6</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]
-dta =<span class="st"> </span>dta[<span class="op">-</span><span class="dv">6</span>, ]
-dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">as.character</span>(dta<span class="op">$</span>Diseased)
-dta<span class="op">$</span>Diseased[<span class="dv">5</span>] =<span class="st"> &#39;4 or 5&#39;</span>
-
-## Compute the Chi-Squared Statistic
-dta<span class="op">$</span>X.<span class="dv">2</span> =<span class="st"> </span><span class="kw">round</span>(<span class="kw">with</span>(dta, (Count <span class="op">-</span><span class="st"> </span>Exp.Diseased)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>Exp.Diseased), <span class="dv">4</span>)
-dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">factor</span>(dta<span class="op">$</span>Diseased)
-dta</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">## Chi-square test requirements:</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">##  1) all Exp must be &gt; 1</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">##  2) at most 20% of Exp may be less than 5</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">##</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">## So we need to combine counts 4 and 5 and meet these requirements</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] =<span class="st"> </span>dta[<span class="dv">5</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>dta[<span class="dv">6</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">dta =<span class="st"> </span>dta[<span class="op">-</span><span class="dv">6</span>, ]</a>
+<a class="sourceLine" id="cb30-9" data-line-number="9">dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">as.character</span>(dta<span class="op">$</span>Diseased)</a>
+<a class="sourceLine" id="cb30-10" data-line-number="10">dta<span class="op">$</span>Diseased[<span class="dv">5</span>] =<span class="st"> &#39;4 or 5&#39;</span></a>
+<a class="sourceLine" id="cb30-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb30-12" data-line-number="12">## Compute the Chi-Squared Statistic</a>
+<a class="sourceLine" id="cb30-13" data-line-number="13">dta<span class="op">$</span>X<span class="fl">.2</span> =<span class="st"> </span><span class="kw">round</span>(<span class="kw">with</span>(dta, (Count <span class="op">-</span><span class="st"> </span>Exp.Diseased)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>Exp.Diseased), <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb30-14" data-line-number="14">dta<span class="op">$</span>Diseased =<span class="st"> </span><span class="kw">factor</span>(dta<span class="op">$</span>Diseased)</a>
+<a class="sourceLine" id="cb30-15" data-line-number="15">dta</a></code></pre></div>
 <pre><code>  Diseased Count Exp.Prob Exp.Diseased    X.2
 1        0    21   0.2073        20.73 0.0035
 2        1    42   0.3834        38.34 0.3494
 3        2    24   0.2836        28.36 0.6703
 4        3     8   0.1049        10.49 0.5910
 5   4 or 5     5   0.0208         2.08 4.0992</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Compute the test statistic pvalue
-(<span class="dt">TS =</span> <span class="kw">sum</span>(dta<span class="op">$</span>X.<span class="dv">2</span>)); <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(TS, <span class="dt">df =</span> <span class="dv">4</span>)</code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">## Compute the test statistic pvalue</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">(<span class="dt">TS =</span> <span class="kw">sum</span>(dta<span class="op">$</span>X<span class="fl">.2</span>)); <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pchisq</span>(TS, <span class="dt">df =</span> <span class="dv">4</span>)</a></code></pre></div>
 <pre><code>[1] 5.7134</code></pre>
 <pre><code>[1] 0.2215985</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Based on the table below we conclude the binomial model is a good fit for the data
-##
-## Assessment of Chi-squared GOF P-value
-##  •       p-value &gt; .25 ⇒ Excellent fit
-##  • .15 ≤ p−value &lt; .25 ⇒ Good fit
-##  • .05 ≤ p−value &lt; .15 ⇒ Moderately Good fit
-##  • .01 ≤ p−value &lt; .05 ⇒ Poor fit
-##  •       p-value &lt; .01 ⇒ Unacceptable fit
-##
-## Plot of the data vs model and create a markdown table from the data frame
-<span class="kw">plot</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> <span class="ot">NULL</span>, <span class="dt">xlab =</span> <span class="st">&quot;Diseased Children per Couple&quot;</span>,
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>), <span class="dt">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,
-     <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Binomial Model vs Data&quot;</span>)
-<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">labels =</span> dta<span class="op">$</span>Diseased, <span class="dt">at =</span> dta<span class="op">$</span>Diseased)
-<span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>), <span class="dt">at =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>))
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Model&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Count, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Exp.Diseased, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">## Based on the table below we conclude the binomial model is a good fit for the data</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">##</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">## Assessment of Chi-squared GOF P-value</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">##  •       p-value &gt; .25 ⇒ Excellent fit</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">##  • .15 ≤ p−value &lt; .25 ⇒ Good fit</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">##  • .05 ≤ p−value &lt; .15 ⇒ Moderately Good fit</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">##  • .01 ≤ p−value &lt; .05 ⇒ Poor fit</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">##  •       p-value &lt; .01 ⇒ Unacceptable fit</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">##</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">## Plot of the data vs model and create a markdown table from the data frame</a>
+<a class="sourceLine" id="cb35-11" data-line-number="11"><span class="kw">plot</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> <span class="ot">NULL</span>, <span class="dt">xlab =</span> <span class="st">&quot;Diseased Children per Couple&quot;</span>,</a>
+<a class="sourceLine" id="cb35-12" data-line-number="12">     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>), <span class="dt">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</a>
+<a class="sourceLine" id="cb35-13" data-line-number="13">     <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Binomial Model vs Data&quot;</span>)</a>
+<a class="sourceLine" id="cb35-14" data-line-number="14"><span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">labels =</span> dta<span class="op">$</span>Diseased, <span class="dt">at =</span> dta<span class="op">$</span>Diseased)</a>
+<a class="sourceLine" id="cb35-15" data-line-number="15"><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">labels =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>), <span class="dt">at =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb35-16" data-line-number="16"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Model&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb35-17" data-line-number="17"><span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Count, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</a>
+<a class="sourceLine" id="cb35-18" data-line-number="18"><span class="kw">points</span>(<span class="dt">x =</span> dta<span class="op">$</span>Diseased, <span class="dt">y =</span> dta<span class="op">$</span>Exp.Diseased, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</a></code></pre></div>
 <p><img src="01-01-Stat-Methods-Distributions_files/figure-html/a4-1.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(dta)</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">kable</span>(dta)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -422,13 +450,13 @@ dta</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Some Conclusions
-## Since N is large we can use asymptotic confidence intervals
-## A 95% confidence interval for whether a child will have the disease
-mle <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(.<span class="dv">27</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>.<span class="dv">27</span>))<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)</code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">## Some Conclusions</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">## Since N is large we can use asymptotic confidence intervals</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">## A 95% confidence interval for whether a child will have the disease</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">mle <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(.<span class="dv">27</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="fl">.27</span>))<span class="op">/</span><span class="kw">sqrt</span>(<span class="dv">100</span>)</a></code></pre></div>
 <pre><code>[1] 0.1829839 0.3570161</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the probability that a couple will have at least 1 child with the disease?
-<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> .<span class="dv">27</span>)</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">## What is the probability that a couple will have at least 1 child with the disease?</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">prob =</span> <span class="fl">.27</span>)</a></code></pre></div>
 <pre><code>[1] 0.7926928</code></pre>
 
 </div>
@@ -457,10 +485,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -485,12 +514,14 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
 </body>
 
-<!-- </html> -->
+</html>

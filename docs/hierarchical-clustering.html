@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Science Tasks</title>
   <meta name="description" content="Data Science and Statistical Analysis I want to remember">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
@@ -48,41 +48,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -175,48 +203,48 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="hierarchical-clustering" class="section level2 unnumbered">
 <h2>Hierarchical Clustering</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cluster)
-
-## Hierarchical clustering using the mtcars dataset
-##
-## Data description from R:
-## The data was extracted from the 1974 Motor Trend US magazine, and comprises
-## fuel consumption and 10 aspects of automobile design and performance for
-## 32 automobiles (1973-74 models).
-##
-
-## Since the attributes have different scales we need to standardize them
-cars.dist =<span class="st"> </span><span class="kw">dist</span>(<span class="kw">scale</span>(mtcars, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>))
-
-## Clustering by rows (cars)
-## Method Average, average distance between all points in a cluster
-<span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;average&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">library</span>(cluster)</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb231-3" data-line-number="3">## Hierarchical clustering using the mtcars dataset</a>
+<a class="sourceLine" id="cb231-4" data-line-number="4">##</a>
+<a class="sourceLine" id="cb231-5" data-line-number="5">## Data description from R:</a>
+<a class="sourceLine" id="cb231-6" data-line-number="6">## The data was extracted from the 1974 Motor Trend US magazine, and comprises</a>
+<a class="sourceLine" id="cb231-7" data-line-number="7">## fuel consumption and 10 aspects of automobile design and performance for</a>
+<a class="sourceLine" id="cb231-8" data-line-number="8">## 32 automobiles (1973-74 models).</a>
+<a class="sourceLine" id="cb231-9" data-line-number="9">##</a>
+<a class="sourceLine" id="cb231-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb231-11" data-line-number="11">## Since the attributes have different scales we need to standardize them</a>
+<a class="sourceLine" id="cb231-12" data-line-number="12">cars.dist =<span class="st"> </span><span class="kw">dist</span>(<span class="kw">scale</span>(mtcars, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb231-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb231-14" data-line-number="14">## Clustering by rows (cars)</a>
+<a class="sourceLine" id="cb231-15" data-line-number="15">## Method Average, average distance between all points in a cluster</a>
+<a class="sourceLine" id="cb231-16" data-line-number="16"><span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;average&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</a></code></pre></div>
 <p><img src="03-02-Hierarchical-Clustering_files/figure-html/a2-1.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Method Single, shortest distance between each cluster
-<span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;single&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">## Method Single, shortest distance between each cluster</a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;single&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</a></code></pre></div>
 <p><img src="03-02-Hierarchical-Clustering_files/figure-html/a2-2.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Method Complete, longest distance between each cluster
-<span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;complete&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">## Method Complete, longest distance between each cluster</a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;complete&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</a></code></pre></div>
 <p><img src="03-02-Hierarchical-Clustering_files/figure-html/a2-3.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Method Ward, minimizes the loss of exmplained variance
-<span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;ward.D&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">## Method Ward, minimizes the loss of exmplained variance</a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">hclust</span>(cars.dist, <span class="dt">method =</span> <span class="st">&quot;ward.D&quot;</span>), <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span><span class="st">&quot;Distance&quot;</span>)</a></code></pre></div>
 <p><img src="03-02-Hierarchical-Clustering_files/figure-html/a2-4.png" width="768" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Attribute Descriptions:
-##
-## mpg   Miles/(US) gallon
-## cyl   Number of cylinders
-## disp  Displacement (cu.in.)
-## hp    Gross horsepower
-## drat  Rear axle ratio
-## wt    Weight (lb/1000)
-## qsec  1/4 mile time
-## vs    V/S
-## am    Transmission (0 = automatic, 1 = manual)
-## gear  Number of forward gears
-## carb  Number of carburetors
-
-## Data and Summary
-mtcars; <span class="kw">summary</span>(mtcars)</code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">## Attribute Descriptions:</a>
+<a class="sourceLine" id="cb235-2" data-line-number="2">##</a>
+<a class="sourceLine" id="cb235-3" data-line-number="3">## mpg   Miles/(US) gallon</a>
+<a class="sourceLine" id="cb235-4" data-line-number="4">## cyl   Number of cylinders</a>
+<a class="sourceLine" id="cb235-5" data-line-number="5">## disp  Displacement (cu.in.)</a>
+<a class="sourceLine" id="cb235-6" data-line-number="6">## hp    Gross horsepower</a>
+<a class="sourceLine" id="cb235-7" data-line-number="7">## drat  Rear axle ratio</a>
+<a class="sourceLine" id="cb235-8" data-line-number="8">## wt    Weight (lb/1000)</a>
+<a class="sourceLine" id="cb235-9" data-line-number="9">## qsec  1/4 mile time</a>
+<a class="sourceLine" id="cb235-10" data-line-number="10">## vs    V/S</a>
+<a class="sourceLine" id="cb235-11" data-line-number="11">## am    Transmission (0 = automatic, 1 = manual)</a>
+<a class="sourceLine" id="cb235-12" data-line-number="12">## gear  Number of forward gears</a>
+<a class="sourceLine" id="cb235-13" data-line-number="13">## carb  Number of carburetors</a>
+<a class="sourceLine" id="cb235-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb235-15" data-line-number="15">## Data and Summary</a>
+<a class="sourceLine" id="cb235-16" data-line-number="16">mtcars; <span class="kw">summary</span>(mtcars)</a></code></pre></div>
 <pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -298,10 +326,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -326,12 +355,14 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
 </body>
 
-<!-- </html> -->
+</html>

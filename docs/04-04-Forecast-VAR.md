@@ -28,9 +28,9 @@ VAR Estimation Results:
 Endogenous variables: x1, x2, x3, x4 
 Deterministic variables: const 
 Sample size: 100 
-Log Likelihood: -562.528 
+Log Likelihood: -550.481 
 Roots of the characteristic polynomial:
-0.9677 0.9395 0.9395 0.8534
+0.9705 0.9411 0.9183 0.799
 Call:
 VAR(y = x)
 
@@ -40,18 +40,18 @@ Estimation results for equation x1:
 x1 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
        Estimate Std. Error t value Pr(>|t|)    
-x1.l1  0.959497   0.045008  21.319   <2e-16 ***
-x2.l1  0.052164   0.051326   1.016   0.3120    
-x3.l1 -0.004411   0.043049  -0.102   0.9186    
-x4.l1 -0.059537   0.035148  -1.694   0.0936 .  
-const  0.419126   1.136497   0.369   0.7131    
+x1.l1  0.852421   0.061182  13.933   <2e-16 ***
+x2.l1 -0.053292   0.056565  -0.942    0.349    
+x3.l1  0.003780   0.030598   0.124    0.902    
+x4.l1 -0.003551   0.035589  -0.100    0.921    
+const  2.506815   1.444862   1.735    0.086 .  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 
-Residual standard error: 1.146 on 95 degrees of freedom
-Multiple R-Squared: 0.8525,	Adjusted R-squared: 0.8463 
-F-statistic: 137.3 on 4 and 95 DF,  p-value: < 2.2e-16 
+Residual standard error: 1.035 on 95 degrees of freedom
+Multiple R-Squared: 0.7241,	Adjusted R-squared: 0.7124 
+F-statistic: 62.32 on 4 and 95 DF,  p-value: < 2.2e-16 
 
 
 Estimation results for equation x2: 
@@ -59,18 +59,18 @@ Estimation results for equation x2:
 x2 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
        Estimate Std. Error t value Pr(>|t|)    
-x1.l1  0.043039   0.038719   1.112   0.2691    
-x2.l1  0.914072   0.044155  20.702   <2e-16 ***
-x3.l1 -0.055735   0.037034  -1.505   0.1357    
-x4.l1 -0.003661   0.030237  -0.121   0.9039    
-const  1.733010   0.977712   1.773   0.0795 .  
+x1.l1 -0.075582   0.053943  -1.401    0.164    
+x2.l1  0.881307   0.049873  17.671   <2e-16 ***
+x3.l1 -0.006345   0.026978  -0.235    0.815    
+x4.l1 -0.008027   0.031378  -0.256    0.799    
+const  2.434378   1.273921   1.911    0.059 .  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 
-Residual standard error: 0.9857 on 95 degrees of freedom
-Multiple R-Squared: 0.9293,	Adjusted R-squared: 0.9263 
-F-statistic: 312.1 on 4 and 95 DF,  p-value: < 2.2e-16 
+Residual standard error: 0.9128 on 95 degrees of freedom
+Multiple R-Squared: 0.8194,	Adjusted R-squared: 0.8118 
+F-statistic: 107.8 on 4 and 95 DF,  p-value: < 2.2e-16 
 
 
 Estimation results for equation x3: 
@@ -78,53 +78,53 @@ Estimation results for equation x3:
 x3 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
       Estimate Std. Error t value Pr(>|t|)    
-x1.l1 -0.01793    0.03876  -0.462   0.6448    
-x2.l1 -0.05733    0.04420  -1.297   0.1978    
-x3.l1  0.92205    0.03708  24.869   <2e-16 ***
-x4.l1 -0.01357    0.03027  -0.448   0.6549    
-const  2.41643    0.97881   2.469   0.0153 *  
+x1.l1 -0.07556    0.06403  -1.180   0.2409    
+x2.l1 -0.11611    0.05920  -1.961   0.0528 .  
+x3.l1  0.94696    0.03202  29.570   <2e-16 ***
+x4.l1 -0.01750    0.03725  -0.470   0.6395    
+const  3.39618    1.51217   2.246   0.0270 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 
-Residual standard error: 0.9868 on 95 degrees of freedom
-Multiple R-Squared: 0.942,	Adjusted R-squared: 0.9396 
-F-statistic: 385.8 on 4 and 95 DF,  p-value: < 2.2e-16 
+Residual standard error: 1.084 on 95 degrees of freedom
+Multiple R-Squared: 0.947,	Adjusted R-squared: 0.9448 
+F-statistic: 424.8 on 4 and 95 DF,  p-value: < 2.2e-16 
 
 
 Estimation results for equation x4: 
 =================================== 
 x4 = x1.l1 + x2.l1 + x3.l1 + x4.l1 + const 
 
-        Estimate Std. Error t value Pr(>|t|)    
-x1.l1  0.1434568  0.0383801   3.738 0.000317 ***
-x2.l1  0.1387279  0.0437678   3.170 0.002054 ** 
-x3.l1  0.0002962  0.0367097   0.008 0.993579    
-x4.l1  0.8980475  0.0299720  29.963  < 2e-16 ***
-const -2.4737956  0.9691464  -2.553 0.012287 *  
+      Estimate Std. Error t value Pr(>|t|)    
+x1.l1 -0.06413    0.05696  -1.126    0.263    
+x2.l1  0.04873    0.05267   0.925    0.357    
+x3.l1 -0.04077    0.02849  -1.431    0.156    
+x4.l1  0.94816    0.03314  28.614   <2e-16 ***
+const  1.35853    1.34528   1.010    0.315    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 
-Residual standard error: 0.9771 on 95 degrees of freedom
-Multiple R-Squared: 0.9701,	Adjusted R-squared: 0.9688 
-F-statistic: 769.9 on 4 and 95 DF,  p-value: < 2.2e-16 
+Residual standard error: 0.9639 on 95 degrees of freedom
+Multiple R-Squared: 0.945,	Adjusted R-squared: 0.9426 
+F-statistic: 407.7 on 4 and 95 DF,  p-value: < 2.2e-16 
 
 
 
 Covariance matrix of residuals:
-         x1      x2       x3       x4
-x1  1.31282 -0.1843 -0.02528  0.06478
-x2 -0.18425  0.9716 -0.15628  0.03490
-x3 -0.02528 -0.1563  0.97379 -0.07605
-x4  0.06478  0.0349 -0.07605  0.95466
+         x1      x2       x3      x4
+x1  1.07184 -0.1290  0.08087 -0.1130
+x2 -0.12900  0.8332 -0.18907  0.1310
+x3  0.08087 -0.1891  1.17403 -0.1792
+x4 -0.11305  0.1310 -0.17917  0.9292
 
 Correlation matrix of residuals:
-         x1       x2       x3       x4
-x1  1.00000 -0.16314 -0.02236  0.05786
-x2 -0.16314  1.00000 -0.16067  0.03624
-x3 -0.02236 -0.16067  1.00000 -0.07887
-x4  0.05786  0.03624 -0.07887  1.00000
+         x1      x2       x3      x4
+x1  1.00000 -0.1365  0.07209 -0.1133
+x2 -0.13651  1.0000 -0.19117  0.1489
+x3  0.07209 -0.1912  1.00000 -0.1715
+x4 -0.11328  0.1489 -0.17155  1.0000
 ```
 
 ```r

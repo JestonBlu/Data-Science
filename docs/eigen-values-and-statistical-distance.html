@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Science Tasks</title>
   <meta name="description" content="Data Science and Statistical Analysis I want to remember">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Science Tasks" />
   <meta property="og:type" content="book" />
@@ -48,41 +48,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -175,78 +203,78 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="eigen-values-and-statistical-distance" class="section level2 unnumbered">
 <h2>Eigen Values and Statistical Distance</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Eigen values and vectors are used to describe a positie definate covariance matrix.
-(<span class="dt">Cov =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">## Eigen values and vectors are used to describe a positie definate covariance matrix.</a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">(<span class="dt">Cov =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]    1    0
 [2,]    0    2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eig =<span class="st"> </span><span class="kw">eigen</span>(Cov)
-
-## eigen values
-(<span class="dt">lambda =</span> eig<span class="op">$</span>values)</code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">eig =<span class="st"> </span><span class="kw">eigen</span>(Cov)</a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">## eigen values</a>
+<a class="sourceLine" id="cb149-4" data-line-number="4">(<span class="dt">lambda =</span> eig<span class="op">$</span>values)</a></code></pre></div>
 <pre><code>[1] 2 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## eigen vectors
-(<span class="dt">ee =</span> eig<span class="op">$</span>vectors)</code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">## eigen vectors</a>
+<a class="sourceLine" id="cb151-2" data-line-number="2">(<span class="dt">ee =</span> eig<span class="op">$</span>vectors)</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]    0   -1
 [2,]    1    0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Spectural decompsotion allows you to reconstruct a matrix using only the eigen
-## values and vectors
-lambda[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">1</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span>lambda[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">2</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">2</span>])</code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">## Spectural decompsotion allows you to reconstruct a matrix using only the eigen</a>
+<a class="sourceLine" id="cb153-2" data-line-number="2">## values and vectors</a>
+<a class="sourceLine" id="cb153-3" data-line-number="3">lambda[<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">1</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">1</span>]) <span class="op">+</span><span class="st"> </span>lambda[<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>ee[,<span class="dv">2</span>] <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(ee[,<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>     [,1] [,2]
 [1,]    1    0
 [2,]    0    2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Straight line distance (Euclidean) vs Statistical Distance
-## Straight line distance to the origin using point(1, 1)
-<span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">## Straight line distance (Euclidean) vs Statistical Distance</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">## Straight line distance to the origin using point(1, 1)</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 1.414214</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Statistical Distance to the origin</span>
-<span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="co"># Statistical Distance to the origin</span></a>
+<a class="sourceLine" id="cb157-2" data-line-number="2"><span class="kw">sqrt</span>((<span class="dv">1</span> <span class="op">-</span><span class="st">  </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>[1] 1.095445</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Generating Multivariate Normal Data
-<span class="kw">library</span>(mvtnorm)
-
-## set up parameters, 2 means use the covariance matrix from earlier
-mu =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)
-
-## generate a large dataset
-<span class="kw">set.seed</span>(<span class="dv">1000</span>)
-X =<span class="st"> </span><span class="kw">rmvnorm</span>(<span class="dv">1000</span>, mu, Cov)
-
-## Correlation of X, should be close to 0
-<span class="kw">cor</span>(X)</code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">## Generating Multivariate Normal Data</a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">library</span>(mvtnorm)</a>
+<a class="sourceLine" id="cb159-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb159-4" data-line-number="4">## set up parameters, 2 means use the covariance matrix from earlier</a>
+<a class="sourceLine" id="cb159-5" data-line-number="5">mu =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb159-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb159-7" data-line-number="7">## generate a large dataset</a>
+<a class="sourceLine" id="cb159-8" data-line-number="8"><span class="kw">set.seed</span>(<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb159-9" data-line-number="9">X =<span class="st"> </span><span class="kw">rmvnorm</span>(<span class="dv">1000</span>, mu, Cov)</a>
+<a class="sourceLine" id="cb159-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb159-11" data-line-number="11">## Correlation of X, should be close to 0</a>
+<a class="sourceLine" id="cb159-12" data-line-number="12"><span class="kw">cor</span>(X)</a></code></pre></div>
 <pre><code>           [,1]       [,2]
 [1,]  1.0000000 -0.0217756
 [2,] -0.0217756  1.0000000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Calculate the distance between each point and the means
-distance =<span class="st"> </span><span class="kw">c</span>()
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(X)) {
-  x =<span class="st"> </span><span class="kw">t</span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X)) <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(X)) <span class="op">%*%</span><span class="st"> </span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X))
-  distance =<span class="st"> </span><span class="kw">c</span>(distance, x)
-}
-## distances
-<span class="kw">head</span>(distance)</code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1">## Calculate the distance between each point and the means</a>
+<a class="sourceLine" id="cb161-2" data-line-number="2">distance =<span class="st"> </span><span class="kw">c</span>()</a>
+<a class="sourceLine" id="cb161-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(X)) {</a>
+<a class="sourceLine" id="cb161-4" data-line-number="4">  x =<span class="st"> </span><span class="kw">t</span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X)) <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(X)) <span class="op">%*%</span><span class="st"> </span>(X[i, ] <span class="op">-</span><span class="st"> </span><span class="kw">colMeans</span>(X))</a>
+<a class="sourceLine" id="cb161-5" data-line-number="5">  distance =<span class="st"> </span><span class="kw">c</span>(distance, x)</a>
+<a class="sourceLine" id="cb161-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb161-7" data-line-number="7">## distances</a>
+<a class="sourceLine" id="cb161-8" data-line-number="8"><span class="kw">head</span>(distance)</a></code></pre></div>
 <pre><code>[1] 1.7095871 0.4531800 0.7819858 0.7832673 1.9309843 1.3017149</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the distance that captures 95% of all points generated from the distribution?
-(<span class="dt">critical.value =</span> <span class="kw">qchisq</span>(.<span class="dv">95</span>, <span class="dv">2</span>))</code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">## What is the distance that captures 95% of all points generated from the distribution?</a>
+<a class="sourceLine" id="cb163-2" data-line-number="2">(<span class="dt">critical.value =</span> <span class="kw">qchisq</span>(.<span class="dv">95</span>, <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>[1] 5.991465</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## What is the proportion of points that fall within this distance?
-## As n increases the proportion should converge on 5%
-<span class="kw">length</span>(<span class="kw">which</span>((distance <span class="op">-</span><span class="st"> </span>critical.value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))<span class="op">/</span><span class="kw">length</span>(distance)</code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1">## What is the proportion of points that fall within this distance?</a>
+<a class="sourceLine" id="cb165-2" data-line-number="2">## As n increases the proportion should converge on 5%</a>
+<a class="sourceLine" id="cb165-3" data-line-number="3"><span class="kw">length</span>(<span class="kw">which</span>((distance <span class="op">-</span><span class="st"> </span>critical.value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))<span class="op">/</span><span class="kw">length</span>(distance)</a></code></pre></div>
 <pre><code>[1] 0.051</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## plot a 95% confidence ellipse for the generated data
-<span class="kw">library</span>(plotrix)
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">13</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">24</span>), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,
-  <span class="dt">xlab =</span> <span class="kw">expression</span>(x[<span class="dv">1</span>]), <span class="dt">ylab =</span> <span class="kw">expression</span>(x[<span class="dv">2</span>]),
-  <span class="dt">main =</span> <span class="st">&quot;95% Confidence Ellipsoid&quot;</span>)
-<span class="kw">points</span>(X[, <span class="dv">1</span>], X[, <span class="dv">2</span>])
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">20</span>, <span class="dt">v =</span> <span class="dv">10</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="kw">draw.ellipse</span>(<span class="dv">10</span>, <span class="dv">20</span>,
-  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">1</span>]),
-  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">2</span>]),
-  ## convert radians to degrees
-  <span class="dt">angle =</span> <span class="kw">acos</span>(<span class="kw">abs</span>(ee[<span class="dv">1</span>,<span class="dv">1</span>])) <span class="op">*</span><span class="st"> </span><span class="fl">57.2957795</span>,
-  <span class="dt">border =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">## plot a 95% confidence ellipse for the generated data</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="kw">library</span>(plotrix)</a>
+<a class="sourceLine" id="cb167-3" data-line-number="3"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">13</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">24</span>), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,</a>
+<a class="sourceLine" id="cb167-4" data-line-number="4">  <span class="dt">xlab =</span> <span class="kw">expression</span>(x[<span class="dv">1</span>]), <span class="dt">ylab =</span> <span class="kw">expression</span>(x[<span class="dv">2</span>]),</a>
+<a class="sourceLine" id="cb167-5" data-line-number="5">  <span class="dt">main =</span> <span class="st">&quot;95% Confidence Ellipsoid&quot;</span>)</a>
+<a class="sourceLine" id="cb167-6" data-line-number="6"><span class="kw">points</span>(X[, <span class="dv">1</span>], X[, <span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb167-7" data-line-number="7"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">20</span>, <span class="dt">v =</span> <span class="dv">10</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb167-8" data-line-number="8"><span class="kw">draw.ellipse</span>(<span class="dv">10</span>, <span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb167-9" data-line-number="9">  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">1</span>]),</a>
+<a class="sourceLine" id="cb167-10" data-line-number="10">  <span class="kw">sqrt</span>(critical.value <span class="op">*</span><span class="st"> </span>lambda[<span class="dv">2</span>]),</a>
+<a class="sourceLine" id="cb167-11" data-line-number="11">  ## convert radians to degrees</a>
+<a class="sourceLine" id="cb167-12" data-line-number="12">  <span class="dt">angle =</span> <span class="kw">acos</span>(<span class="kw">abs</span>(ee[<span class="dv">1</span>,<span class="dv">1</span>])) <span class="op">*</span><span class="st"> </span><span class="fl">57.2957795</span>,</a>
+<a class="sourceLine" id="cb167-13" data-line-number="13">  <span class="dt">border =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="01-09-Stat-Methods-Eigen-Distance_files/figure-html/a25-1.png" width="672" /></p>
 
 </div>
@@ -275,10 +303,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -303,12 +332,14 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
 </body>
 
-<!-- </html> -->
+</html>

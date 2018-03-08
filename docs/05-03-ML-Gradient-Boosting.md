@@ -123,7 +123,7 @@ Resampling results across tuning parameters:
 Tuning parameter 'shrinkage' was held constant at a value of 0.1
 
 Tuning parameter 'n.minobsinnode' was held constant at a value of 10
-Accuracy was used to select the optimal model using  the largest value.
+Accuracy was used to select the optimal model using the largest value.
 The final values used for the model were n.trees = 50, interaction.depth
  = 2, shrinkage = 0.1 and n.minobsinnode = 10.
 ```
