@@ -1,7 +1,7 @@
 
 ## Generate Time Series Data {-}
 
-### Manually Generated Series
+### Manually Generated Series {-}
 
 ```{r b1, comment=NA, warning=FALSE, message=FALSE, fig.width=9}
 
